@@ -24,7 +24,7 @@
 #header .nav .lnb>a{padding: 20px 0; text-align: center;}
 #header .nav .lnb:last-child>a{padding-right: 0;}
 #header .nav .lnb:first-child:before{content: '';}
-#header .nav .lnb ul.dap2{display: none; width: 100%; background: url(../images/header/menu_bg.jpg); background-size: contain; position: absolute; top: 18.5%; left: 0;border-top: 1px solid #eee; box-shadow: 0 30px 30px 0 rgba(114, 114, 114, 0.062); z-index: 10;}
+#header .nav .lnb ul.dap2{display: none; width: 100%; background: url(../images/header/menu_bg.jpg); background-size: contain; position: absolute; top: 170px; left: 0;border-top: 1px solid #eee; box-shadow: 0 30px 30px 0 rgba(114, 114, 114, 0.062); z-index: 10;}
 #header .nav .lnb ul.dap2 li.lnb_tit{padding: 90px 0px 0px calc((100vw - 110px)/2); position: relative; float: left;}
 #header .nav .lnb ul.dap2 li.lnb_tit p{position: absolute; top: 80%; left: 65%; font-size: 28px; color: #1565A2; font-weight: 600;}
 #header .nav .lnb ul.dap2>li.lnb_tit p::after{content: url(../images/header/icon/akar-title-alert-fill.svg); position: absolute; top: -45%; left: 18%; transform: translate(-50%, -50%);}
@@ -227,8 +227,9 @@
 .signup .sig_inputs .sig_input p{width: 150px; font-size: 19px; color: #373737;}
 .signup .sig_inputs .sig_input input{width: 320px; border: 1px solid #E3E3E3; padding: 12px 15px; border-radius: 7px; margin-right: 12px;}
 .signup .sig_inputs .sig_input input::placeholder{color: #CECECE;}
+.signup .sig_inputs .sig_input input[type=radio]{width: auto;}
 .signup .sig_inputs .sig_input .check_btn{border: 1px solid #1565A2; color: #1565A2; padding: 11px 25px; border-radius: 7px;}
-.signup .sig_inputs .common_btn{float: right;}
+.signup .common_btn{float: right;}
 
 
 
