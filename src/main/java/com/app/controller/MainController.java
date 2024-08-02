@@ -6,15 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 
-	@GetMapping("/main")
+	
+	@GetMapping("/index")
 	public String main() {
-		
-		return "main";
+		return "index";
 	}
 	
 	@GetMapping("/")
 	public String main2() {
-		
-		return "redirect:/main";
+		return "redirect:/index";
 	}
 }
