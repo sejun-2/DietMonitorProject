@@ -11,7 +11,7 @@
                 <div class="inner">
                     <ul class="gnb wrap_s">
                         <li class="lnb"><a href="" class="login">로그인</a></li>
-                        <li class="lnb"><a href="" class="signup">회원가입</a></li>
+                        <li class="lnb"><a href="/signup" class="signup">회원가입</a></li>
                         <li class="lnb"><a href="" class="admin">관리자</a></li>
                     </ul>
                 </div>
@@ -20,7 +20,7 @@
                 <div class="inner">
                     <div class="menu_inner wrap">
                         <h1 class="logo">
-                            <a href="#">
+                            <a href="/">
                                 <img src="./images/header/logo/header_logo.png" alt="로고이미지">
                             </a>
                         </h1>
