@@ -8,8 +8,9 @@
 			<!--	_ 표시 -> CamelCase  userType  맵핑	 -->
 	</settings>						
 							
-	<typeAliases>						
-		
+	<typeAliases>	
+		<typeAlias type="com.app.dto.search.SearchCategory" alias="SearchCategory"/>
+		<typeAlias type="com.app.dto.search.Food" alias="Food"/>
 	</typeAliases>						
 							
 </configuration>							
