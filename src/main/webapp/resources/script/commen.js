@@ -1,25 +1,4 @@
 $(document).ready(function() {
-
-    var swiper = new Swiper('.swiper-container', {
-        navigation: {
-            nextEl: '.slide_next',
-            prevEl: '.slide_prev',
-        },
-        slidesPerView: 1,
-        spaceBetween: 30,
-        loop: true,
-    });
-    
-    var isPlaying = true;
-    document.querySelector('.slide_stop').addEventListener('click', function () {
-        if (isPlaying) {
-            swiper.autoplay.stop();
-        } else {
-            swiper.autoplay.start();
-        }
-        isPlaying = !isPlaying;
-    });
-
     $(".search_cont ul.tab li.lnb").on('click', function() {
         let index = $(".search_cont ul.tab li.lnb").index(this);
       
@@ -77,12 +56,8 @@ $(document).ready(function() {
         $(".popup").show();
     });
 
-
-    
-
-
     const slideDistance = 600; // 슬라이드 이동 거리
-    const animationDuration = 100; // 애니메이션 지속 시간 (밀리초)
+    const animationDuration = 300; // 애니메이션 지속 시간 (밀리초)
 
     function updateScroll(button, direction) {
         var target = $(button).data('target');
@@ -107,7 +82,6 @@ $(document).ready(function() {
         updateScroll(this, 'right');
     });
 
-    
     $('tbody tr').click(function() {
         var $nextTr = $(this).next('tr');
         if ($nextTr.length > 0 && $nextTr.hasClass('tr_event')) {
@@ -116,7 +90,8 @@ $(document).ready(function() {
             $nextTr.find('.more_information').toggle();
         }
     });
-    
+
+
 
     
 
@@ -167,14 +142,6 @@ $(document).ready(function() {
         updateLinearBoxPosition();
     });
 
-
-    
-
-
-    $('.today_inner').click(function() {
-        var index = $('.today_inner').index(this);
-        $('.table_toggle').eq(index).toggle();
-    });
 
 
     

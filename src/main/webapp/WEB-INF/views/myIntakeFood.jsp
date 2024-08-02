@@ -101,9 +101,9 @@
                     <tr class="tr_event">
                         <td class="more_information" colspan="6">
                             <div class="wrap">
-                                <img class="slider-left" src="./images/sub/icon/slider/slider-left.svg" alt="">
+                                <img  class="slider-left" data-target=".nutrient1" src="./images/sub/icon/slider/slider-left.svg" alt="">
                                 <div class="more_nutrient">
-                                    <ul class="nutrient wrap">
+                                    <ul class="nutrient nutrient1 wrap">
 
                                         <li class="more_item wrap">
                                             <p class="title">중량</p>
@@ -161,8 +161,7 @@
                                 </div>
 
 
-                                <img class="slider-right" data-target=".nutrient1"
-                                    src="./images/sub/icon/slider/slider-right.svg" alt="">
+                                <img  class="slider-right" data-target=".nutrient1" src="./images/sub/icon/slider/slider-right.svg" alt="">
                             </div>
                         </td>
                     </tr>
@@ -184,9 +183,9 @@
                     <tr class="tr_event">
                         <td class="more_information" colspan="6">
                             <div class="wrap">
-                                <img class="slider-left" src="./images/sub/icon/slider/slider-left.svg" alt="">
+                                <img  class="slider-left" data-target=".nutrient2" src="./images/sub/icon/slider/slider-left.svg" alt="">
                                 <div class="more_nutrient">
-                                    <ul class="nutrient wrap">
+                                    <ul class="nutrient nutrient2 wrap">
 
                                         <li class="more_item wrap">
                                             <p class="title">중량</p>
@@ -244,8 +243,7 @@
                                 </div>
 
 
-                                <img class="slider-right" data-target=".nutrient2"
-                                    src="./images/sub/icon/slider/slider-right.svg" alt="">
+                                <img class="slider-right" data-target=".nutrient2" src="./images/sub/icon/slider/slider-right.svg" alt="">
                             </div>
                         </td>
                     </tr>
@@ -303,7 +301,7 @@
                             <th scope="col">레티놀(μg)</th>
                         </tr>
                     </thead>
-
+                    
                     <tbody>
                         <tr onclick="">
                             <td>100</td>
@@ -372,7 +370,7 @@
                             <th scope="col">레티놀(μg)</th>
                         </tr>
                     </thead>
-
+                    
                     <tbody>
                         <tr onclick="">
                             <td>100</td>
@@ -395,7 +393,7 @@
             </div>
     </section>
 
-    <section class="decibal_titlebusiness_list mb80">
+    <section class="decibal_title mb80">
         <div class="inner">
             <div class="info">
                 <span class="blue_style">에너지(kcal),</span>
@@ -418,58 +416,56 @@
                 </div>
             </div>
 
-            <div class="slide_cont_box swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="slide_box wrap">
-                        <div class="box swiper-slide">
-                            <div class="title_food">에너지(kcal)</div>
-                            <div class="info">
-                                <div class="info_title">에너지가 부족할 경우</div>
-                                <div class="info_detail">
-                                    하루종일 힘이없다. 칼로리는 우리 몸이 움직이고
-                                    활동하는데 필요한 에너지이다. 하루 섭취 칼로리
-                                    가 너무 적다는 것은 기름 없는 자동차나 마찬가...
-                                </div>
+            <div class="slide_cont_box wrap">
+                <div class="linear_box"></div>
+                <div class="slide_box wrap">
+                    <div class="box">
+                        <div class="title_food">에너지(kcal)</div>
+                        <div class="info">
+                            <div class="info_title">에너지가 부족할 경우</div>
+                            <div class="info_detail">
+                                하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 
+                                활동하는데 필요한 에너지이다. 하루 섭취 칼로리
+                                가 너무 적다는 것은 기름 없는 자동차나 마찬가...
                             </div>
-                            <div class="more">상세보기</div>
                         </div>
+                        <div class="more">상세보기</div>
                     </div>
-
-                    <div class="slide_box wrap">
-                        <div class="box swiper-slide">
-                            <div class="title_food">에너지(kcal)</div>
-                            <div class="info">
-                                <div class="info_title">에너지가 부족할 경우</div>
-                                <div class="info_detail">
-                                    하루종일 힘이없다. 칼로리는 우리 몸이 움직이고
-                                    활동하는데 필요한 에너지이다. 하루 섭취 칼로리
-                                    가 너무 적다는 것은 기름 없는 자동차나 마찬가...
-                                </div>
+                </div>
+    
+                <div class="slide_box wrap">
+                    <div class="box">
+                        <div class="title_food">에너지(kcal)</div>
+                        <div class="info">
+                            <div class="info_title">에너지가 부족할 경우</div>
+                            <div class="info_detail">
+                                하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 
+                                활동하는데 필요한 에너지이다. 하루 섭취 칼로리
+                                가 너무 적다는 것은 기름 없는 자동차나 마찬가...
                             </div>
-                            <div class="more">상세보기</div>
                         </div>
+                        <div class="more">상세보기</div>
                     </div>
-
-                    <div class="slide_box wrap">
-                        <div class="box swiper-slide">
-                            <div class="title_food">에너지(kcal)</div>
-                            <div class="info">
-                                <div class="info_title">에너지가 부족할 경우</div>
-                                <div class="info_detail">
-                                    하루종일 힘이없다. 칼로리는 우리 몸이 움직이고
-                                    활동하는데 필요한 에너지이다. 하루 섭취 칼로리
-                                    가 너무 적다는 것은 기름 없는 자동차나 마찬가...
-                                </div>
+                </div>
+    
+                <div class="slide_box wrap">
+                    <div class="box">
+                        <div class="title_food">에너지(kcal)</div>
+                        <div class="info">
+                            <div class="info_title">에너지가 부족할 경우</div>
+                            <div class="info_detail">
+                                하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 
+                                활동하는데 필요한 에너지이다. 하루 섭취 칼로리
+                                가 너무 적다는 것은 기름 없는 자동차나 마찬가...
                             </div>
-                            <div class="more">상세보기</div>
                         </div>
+                        <div class="more">상세보기</div>
                     </div>
                 </div>
             </div>
+            
         </div>
     </section>
-
-
 
     <div class="popup">
         <div class="box">
@@ -479,7 +475,7 @@
             <div class="title">에너지가 부족할 경우 나타나는 현상</div>
             <div class="info">
                 하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 하루 섭취 칼로리가 너무 적다는 것은
-                기름 없는 자동차나 마찬가지 하루종일 힘이없다.
+                기름 없는 자동차나 마찬가지 하루종일 힘이없다. 
                 칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 하루 섭취 칼로리가 너무 적다는 것은 기름 없는 자동차나
                 마찬가지 하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 하루 섭취 칼로리가 너무 적
                 다는 것은 기름 없는 자동차나 마찬가지 하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다.
