@@ -63,13 +63,14 @@
             </div>
 
 
-            <table id="find_business_table" class="new_tbl_board tb01 mt20 mb20">
+            <table class="new_tbl_board tbl_boards tb01 mt20 mb20">
                 <colgroup>
-                    <col style="width: 4%;">
+                    <col style="width: 10%;">
+                    <col style="width: 30%;">
+                    <col style="width: 15%;">
                     <col style="width: 15%;">
                     <col style="width: 10%;">
                     <col style="width: 10%;">
-                    <col style="width: 3.5%;">
                 </colgroup>
                 <thead>
                     <tr>
@@ -78,6 +79,7 @@
                         <th scope="col">식품대분류</th>
                         <th scope="col">식품중분류</th>
                         <th scope="col">에너지(Kcal)</th>
+                        <th scope="col">하루 섭취<br>식품 등록</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -86,6 +88,7 @@
                         <td>햄버거</td>
                         <td>빵 및 과자류</td>
                         <td>해당없음</td>
+                        <td>225</td>
                         <td>
                             <button class="board_td_btn wrap" type="button">
                                 <img src="./images/sub/icon/feather-x-box.svg" alt="">
@@ -95,10 +98,10 @@
 
                     </tr>
 
-                    <tr>
-                        <td class="more_information" colspan="5">
+                    <tr class="tr_event">
+                        <td class="more_information" colspan="6">
                             <div class="wrap">
-                                <img src="./images/sub/icon/slider/slider-left.svg" alt="">
+                                <img class="slider-left" src="./images/sub/icon/slider/slider-left.svg" alt="">
                                 <div class="more_nutrient">
                                     <ul class="nutrient wrap">
 
@@ -158,7 +161,8 @@
                                 </div>
 
 
-                                <img src="./images/sub/icon/slider/slider-right.svg" alt="">
+                                <img class="slider-right" data-target=".nutrient1"
+                                    src="./images/sub/icon/slider/slider-right.svg" alt="">
                             </div>
                         </td>
                     </tr>
@@ -168,6 +172,7 @@
                         <td>싸이버거</td>
                         <td>즉석식품류</td>
                         <td>해당없음</td>
+                        <td>225</td>
                         <td>
                             <button class="board_td_btn wrap" type="button">
                                 <img src="./images/sub/icon/feather-x-box.svg" alt="">
@@ -176,10 +181,10 @@
                         </td>
                     </tr>
 
-                    <tr>
-                        <td class="more_information" colspan="5">
+                    <tr class="tr_event">
+                        <td class="more_information" colspan="6">
                             <div class="wrap">
-                                <img src="./images/sub/icon/slider/slider-left.svg" alt="">
+                                <img class="slider-left" src="./images/sub/icon/slider/slider-left.svg" alt="">
                                 <div class="more_nutrient">
                                     <ul class="nutrient wrap">
 
@@ -239,26 +244,31 @@
                                 </div>
 
 
-                                <img src="./images/sub/icon/slider/slider-right.svg" alt="">
+                                <img class="slider-right" data-target=".nutrient2"
+                                    src="./images/sub/icon/slider/slider-right.svg" alt="">
                             </div>
                         </td>
                     </tr>
 
                 </tbody>
             </table>
-            <button class="common_btn mb60" type="submit">전체등록 취소</button>
+            <button class="common_btn mb80" type="submit">전체등록 취소</button>
 
     </section>
 
 
-    <section class="table_menu">
+    <section class="table_menu" id="section1">
         <div class="inner">
             <div class="wrap">
                 <p class="table_menu_sub">등록 식품 영양성분 함량 합계</p>
 
                 <div class="pagenation_btn wrap">
-                    <img src="./images/sub/icon/slider/slider-left.svg" alt="">
-                    <img src="./images/sub/icon/slider/slider-right.svg" alt="">
+                    <div class="slider_prev">
+                        <img src="./images/sub/icon/slider/slider-left.svg" alt="">
+                    </div>
+                    <div class="slider_next">
+                        <img src="./images/sub/icon/slider/slider-right.svg" alt="">
+                    </div>
                 </div>
 
             </div>
@@ -267,7 +277,7 @@
                 <div class="linear_box">
 
                 </div>
-                <table id="find_business_table" class="new_tbl_board tb01 mt20 mb60">
+                <table class="new_tbl_board tbl_boards tb01 mt20 mb60">
                     <colgroup>
                         <col style="width: 10%;">
                         <col style="width: 15%;">
@@ -293,7 +303,7 @@
                             <th scope="col">레티놀(μg)</th>
                         </tr>
                     </thead>
-                    
+
                     <tbody>
                         <tr onclick="">
                             <td>100</td>
@@ -316,14 +326,18 @@
             </div>
     </section>
 
-    <section class="table_menu">
+    <section class="table_menu" id="section2">
         <div class="inner">
             <div class="wrap">
                 <p class="table_menu_sub">일일 권장량 대비 비교</p>
 
                 <div class="pagenation_btn wrap">
-                    <img src="./images/sub/icon/slider/slider-left.svg" alt="">
-                    <img src="./images/sub/icon/slider/slider-right.svg" alt="">
+                    <div class="slider_prev">
+                        <img src="./images/sub/icon/slider/slider-left.svg" alt="">
+                    </div>
+                    <div class="slider_next">
+                        <img src="./images/sub/icon/slider/slider-right.svg" alt="">
+                    </div>
                 </div>
 
             </div>
@@ -332,7 +346,7 @@
                 <div class="linear_box">
 
                 </div>
-                <table id="find_business_table" class="new_tbl_board tb01 mt20 mb60">
+                <table class="new_tbl_board tb01 mt20 mb60">
                     <colgroup>
                         <col style="width: 10%;">
                         <col style="width: 15%;">
@@ -358,7 +372,7 @@
                             <th scope="col">레티놀(μg)</th>
                         </tr>
                     </thead>
-                    
+
                     <tbody>
                         <tr onclick="">
                             <td>100</td>
@@ -381,7 +395,7 @@
             </div>
     </section>
 
-    <section class="decibal_title">
+    <section class="decibal_titlebusiness_list mb80">
         <div class="inner">
             <div class="info">
                 <span class="blue_style">에너지(kcal),</span>
@@ -392,62 +406,101 @@
             <div class="wrap mb50">
                 <p class="text">부족한 영양성분의 상세 설명과 추천 식품이 궁금하시다면 해당 영양성분의 상세보기를 눌러주세요.</p>
                 <div class="page_nation wrap">
-                    <img src="./images/sub/icon/slider/akar-chevron-left-small.svg" alt="">
-                    <img src="./images/sub/icon/slider/akar-two-line-vertical.svg" alt="">
-                    <img src="./images/sub/icon/slider/akar-chevron-right-small.svg" alt="">
+                    <div class="slide_prev">
+                        <img src="./images/sub/icon/slider/akar-chevron-left-small.svg" alt="">
+                    </div>
+                    <div class="slide_stop">
+                        <img src="./images/sub/icon/slider/akar-two-line-vertical.svg" alt="">
+                    </div>
+                    <div class="slide_next">
+                        <img src="./images/sub/icon/slider/akar-chevron-right-small.svg" alt="">
+                    </div>
                 </div>
             </div>
 
-            <div class="slide_cont_box wrap">
-                <div class="linear_box"></div>
-                <div class="slide_box wrap">
-                    <div class="box">
-                        <div class="title_food">에너지(kcal)</div>
-                        <div class="info">
-                            <div class="info_title">에너지가 부족할 경우</div>
-                            <div class="info_detail">
-                                하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 
-                                활동하는데 필요한 에너지이다. 하루 섭취 칼로리
-                                가 너무 적다는 것은 기름 없는 자동차나 마찬가...
+            <div class="slide_cont_box swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="slide_box wrap">
+                        <div class="box swiper-slide">
+                            <div class="title_food">에너지(kcal)</div>
+                            <div class="info">
+                                <div class="info_title">에너지가 부족할 경우</div>
+                                <div class="info_detail">
+                                    하루종일 힘이없다. 칼로리는 우리 몸이 움직이고
+                                    활동하는데 필요한 에너지이다. 하루 섭취 칼로리
+                                    가 너무 적다는 것은 기름 없는 자동차나 마찬가...
+                                </div>
                             </div>
+                            <div class="more">상세보기</div>
                         </div>
-                        <div class="more">상세보기</div>
                     </div>
-                </div>
-    
-                <div class="slide_box wrap">
-                    <div class="box">
-                        <div class="title_food">에너지(kcal)</div>
-                        <div class="info">
-                            <div class="info_title">에너지가 부족할 경우</div>
-                            <div class="info_detail">
-                                하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 
-                                활동하는데 필요한 에너지이다. 하루 섭취 칼로리
-                                가 너무 적다는 것은 기름 없는 자동차나 마찬가...
+
+                    <div class="slide_box wrap">
+                        <div class="box swiper-slide">
+                            <div class="title_food">에너지(kcal)</div>
+                            <div class="info">
+                                <div class="info_title">에너지가 부족할 경우</div>
+                                <div class="info_detail">
+                                    하루종일 힘이없다. 칼로리는 우리 몸이 움직이고
+                                    활동하는데 필요한 에너지이다. 하루 섭취 칼로리
+                                    가 너무 적다는 것은 기름 없는 자동차나 마찬가...
+                                </div>
                             </div>
+                            <div class="more">상세보기</div>
                         </div>
-                        <div class="more">상세보기</div>
                     </div>
-                </div>
-    
-                <div class="slide_box wrap">
-                    <div class="box">
-                        <div class="title_food">에너지(kcal)</div>
-                        <div class="info">
-                            <div class="info_title">에너지가 부족할 경우</div>
-                            <div class="info_detail">
-                                하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 
-                                활동하는데 필요한 에너지이다. 하루 섭취 칼로리
-                                가 너무 적다는 것은 기름 없는 자동차나 마찬가...
+
+                    <div class="slide_box wrap">
+                        <div class="box swiper-slide">
+                            <div class="title_food">에너지(kcal)</div>
+                            <div class="info">
+                                <div class="info_title">에너지가 부족할 경우</div>
+                                <div class="info_detail">
+                                    하루종일 힘이없다. 칼로리는 우리 몸이 움직이고
+                                    활동하는데 필요한 에너지이다. 하루 섭취 칼로리
+                                    가 너무 적다는 것은 기름 없는 자동차나 마찬가...
+                                </div>
                             </div>
+                            <div class="more">상세보기</div>
                         </div>
-                        <div class="more">상세보기</div>
                     </div>
                 </div>
             </div>
-            
         </div>
     </section>
+
+
+
+    <div class="popup">
+        <div class="box">
+            <div class="close">
+                <img src="./images/sub/icon/close-x.svg" alt="">
+            </div>
+            <div class="title">에너지가 부족할 경우 나타나는 현상</div>
+            <div class="info">
+                하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 하루 섭취 칼로리가 너무 적다는 것은
+                기름 없는 자동차나 마찬가지 하루종일 힘이없다.
+                칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 하루 섭취 칼로리가 너무 적다는 것은 기름 없는 자동차나
+                마찬가지 하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 하루 섭취 칼로리가 너무 적
+                다는 것은 기름 없는 자동차나 마찬가지 하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다.
+                칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 하루 섭취 칼로리가 너무 적다는 것은 기름 없는 자동차나
+                마찬가지 하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 다다다다다다다다
+            </div>
+
+            <div class="wrap_s mt40 mb30">
+                <img src="./images/sub/icon/Icon fa-solid-star.svg" alt="">
+                <p class="popup_title">일일 권장량 대비 부족 영양소 별 추천 검색</p>
+            </div>
+            <ul class="tag_inner wrap_s">
+                <li class="tag">#햄버거</li>
+                <li class="tag">#아이스크림</li>
+                <li class="tag">#햄버거</li>
+                <li class="tag">#아이스크림</li>
+                <li class="tag">#아이스크림</li>
+                <li class="tag">#햄버거</li>
+            </ul>
+        </div>
+    </div>
 
 
    <jsp:include page="footer.jsp" />

@@ -8,6 +8,7 @@
 /*통합게시판 팝업창*/
 .total_b_pop{padding:10px;}
 
+
 /* 통합게시판 상단 검색바*/
 .com_search_box{overflow:hidden; text-align:right; }
 .com_search_box_l{display:inline-block; margin-right:10px; overflow:hidden; font-weight:bold;}
@@ -213,7 +214,7 @@ div.rgtBtn{display:block;float:right;margin:-30px 0 0 0;padding:0}
 div.rgtBtn span.button{font:bold 1em/1.25em '굴림',Gulim,Tahoma,Geneva,sans-serif}
 
 #bbs{clear:both;position:relative;width:100%;padding:0;margin:0;background:#fff;font-size:1em;color:#767676}
-table td img{width: auto !important; display: inline-block;}
+table td img{width: auto !important; display: inline-block; cursor: pointer;}
 
 
 .boardHead{clear:both;display:inline-block;overflow:visible;position:relative;width:100%;padding:0 0 1em;white-space:nowrap}
@@ -994,3 +995,4 @@ table.basic_table{margin-bottom: 40px; border-bottom: 2px solid #aaa;}
 
 
 .tb01 th{padding: 22px 40px;}
+.tbl_boards td{padding: 8px 12px;}

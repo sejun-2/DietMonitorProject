@@ -73,11 +73,14 @@ select {border: none;}
 .tab_search_btn:hover{background: #ebebeb;}
 
 .common_btn{background: #1565A2; padding: 0 35px; border-radius: 5px; color: white; height: 45px;}
+.common_opposite_btn{background: white; border: 1px solid #1565A2; padding: 0 35px; border-radius: 5px; color: #1565A2; height: 45px;}
 
-.board_btn{background: #E9F4FF; padding: 15px 20px; border: 1px solid #1565A2; border-radius: 7px; color: #1565A2;}
+.board_btn{background: #E9F4FF; padding: 11px 20px; border: 1px solid #1565A2; border-radius: 7px; color: #1565A2;}
 .board_td_btn{background: #FEFEFE; padding: 8px 20px; border: 1px solid #D5D5D5; border-radius: 7px; color: #1565A2;}
-
+.board_td_btn.wrap{flex-wrap: nowrap;}
 
 
 /* linear_box */
-.linear_box{width: 300px;height: 165px; position: absolute;background: linear-gradient(90deg, transparent 0%, rgb(255, 255, 255) 100%); z-index: 10; right: 0;}
+.linear_box{width: 300px;height: 165px; position: absolute; background: linear-gradient(90deg, transparent 0%, rgb(255, 255, 255) 100%); z-index: 10; right: 0;}
+
+
