@@ -16,4 +16,6 @@ public class MainController {
 	public String main2() {
 		return "redirect:/index";
 	}
+	
+	
 }

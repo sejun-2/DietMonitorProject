@@ -13,7 +13,7 @@
 	
 	<c:forEach var="dataSort" items="${dataSortList}">
 		
-		<label><input type="checkbox" value="${dataSort.dataSortId}" name="${dataSortId}" onclick="mainCategoryOrder">${dataSort.dataSortName}</label><br>
+		<label><input type="checkbox" value="${dataSort.dataSortId}" name="${dataSortId}" onclick="findMainCategory()">${dataSort.dataSortName}</label><br>
 		
 		<c:forEach var="mainCategory" items="${mainCategoryList}">
 		
