@@ -16,5 +16,8 @@ public class SearchInfo {
     List<String> manufacturingCompany; 
      
     List<String> repFoodName;
-   
+    
+    int currentPage;
+    
+    int itemsPerPage;
 }

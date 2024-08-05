@@ -1,5 +1,6 @@
 package com.app.controller.search;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.app.dto.search.Food;
+import com.app.dto.search.Page;
 import com.app.dto.search.SearchCategory;
 import com.app.dto.search.SearchInfo;
+import com.app.dto.search.SearchResult;
 import com.app.service.search.SearchService;
+import com.app.util.page.PageManager;
 
 @Controller
 public class SearchController {
@@ -36,14 +40,28 @@ public class SearchController {
 	
 	@ResponseBody
 	@RequestMapping("/foodSearch")
-	public List<Food> foodSearch(@RequestBody SearchInfo searchInfo){
+	public SearchResult foodSearch(@RequestBody SearchInfo searchInfo){
 		
 		System.out.println(searchInfo);		
 		System.out.println(searchInfo.getMainCategoryName());
+		System.out.println(searchInfo.getCurrentPage());
 		
-		System.out.println("aa");
-		List<Food> foodList = searchService.findFoodList();
+		Page page = PageManager.pageCalculate(searchInfo.getCurrentPage(),
+					searchInfo.getItemsPerPage(), searchService.findFoodTotalItems());
 		
-		return foodList;
+		System.out.println(page);	
+		
+		List<Food> foodList = searchService.findFoodList(page);
+		
+		//List<Food> foodList = new ArrayList<Food>();
+		
+		System.out.println(foodList);
+		
+		SearchResult searchResult = new SearchResult();
+		
+		searchResult.setPage(page);
+		searchResult.setFoodList(foodList);
+		
+		return searchResult;
 	}
 }

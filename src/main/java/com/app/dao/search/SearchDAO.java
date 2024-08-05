@@ -3,6 +3,7 @@ package com.app.dao.search;
 import java.util.List;
 
 import com.app.dto.search.Food;
+import com.app.dto.search.Page;
 import com.app.dto.search.SearchCategory;
 
 public interface SearchDAO {
@@ -11,6 +12,8 @@ public interface SearchDAO {
 	
 	public List<SearchCategory> findMainCategoryList();
 	
-	public List<Food> findFoodList();
+	public int findFoodTotalItems();
+	
+	public List<Food> findFoodList(Page page);
 	
 }

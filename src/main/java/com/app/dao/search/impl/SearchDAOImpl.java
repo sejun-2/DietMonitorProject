@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.app.dao.search.SearchDAO;
 import com.app.dto.search.Food;
+import com.app.dto.search.Page;
 import com.app.dto.search.SearchCategory;
 
 @Repository
@@ -33,12 +34,25 @@ public class SearchDAOImpl implements SearchDAO{
 	}
 	
 	@Override
-	public List<Food> findFoodList() {
+	public int findFoodTotalItems() {
 		
-		List<Food> FoodList = sqlSessionTemplate.selectList("search_mapper.findFoodList");
+		int foodTotalItems = sqlSessionTemplate.selectOne("search_mapper.findfoodTotalItems");
 		
+		return foodTotalItems;
+	}
+	
+	@Override
+	public List<Food> findFoodList(Page page) {
+		
+		System.out.println("dao");
+		System.out.println(page);
+		
+		List<Food> FoodList = sqlSessionTemplate.selectList("search_mapper.findFoodList", page);
+		System.out.println(FoodList);
 		return FoodList;
 	}
+
+	
 
 	
 	

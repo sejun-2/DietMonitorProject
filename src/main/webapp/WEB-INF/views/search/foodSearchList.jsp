@@ -225,11 +225,12 @@
     
     	
     	function foodListShow(requestPage){
-    		console.log(requestPage);
+    		
     		let dataSortName = "";
 			$('input[name=selection]:checked').each(function(){
     			dataSortName = $(this).val();
     		});
+			
     		let mainCategoryNameArr = [];
     		$('input[name=mainCategory]:checked').each(function(){
     			let mainCategoryName = $(this).val();
@@ -237,13 +238,20 @@
     		});
     		
     		let manufacturingCompany = [];
-    		let repFoodName = [];		
+    		
+    		let repFoodName = [];
+    		
+    		let currentPage = requestPage == "" || requestPage == null ? 1: requestPage;
+    		
+    		let itemsPerPage = parseInt($('.page_num').val());
     		    		
     		let requestJsonData = {
     			'dataSortName' : dataSortName,
     			'mainCategoryName' : mainCategoryNameArr,
     			'manufacturingCompany' : manufacturingCompany,
-    			'repFoodName' : repFoodName
+    			'repFoodName' : repFoodName,
+    			'currentPage' : currentPage,
+    			'itemsPerPage' : itemsPerPage
     		};
     		
     		console.log(requestJsonData);
@@ -257,25 +265,41 @@
 				},
     			dataType: 'json',
     			data:requestJsonDataString,
-    			success: function(result){
+    			success: function(result){    				
     				
-    				let itemsPerPage = parseInt($('.page_num').val());
-    				let currentPage = requestPage == "" || requestPage == null ? 1: requestPage;
+    				
+    				console.log(result);
+    				
+    				
+    				/* 
     				let totalItems = result.length;
     				let totalPages = parseInt(Math.ceil(result.length/itemsPerPage));
     				let start = (currentPage - 1) * itemsPerPage;
-    				let end = Math.min((start + itemsPerPage), totalItems);
+    				let end = Math.min((start + itemsPerPage), totalItems); */
     					
-    				console.log(itemsPerPage);
+    				/* console.log(itemsPerPage);
     				console.log(currentPage);
     				console.log(totalItems);
     				console.log(totalPages);
     				console.log(start);
-    				console.log(end);	    				
+    				console.log(end);	 */    				
+    				
+    				console.log(result.foodList);
     				
     				let data = "";
     				
-    				for(let i=start; i<end; i++){
+    				for(item in result.foodList){
+    					
+    					data += '<tr onclick="">';
+    					data += '<td>' + result.foodList[item].num + '</td>';
+    					data += '<td>' + result.foodList[item].foodName + '</td>';
+    					data += '<td>' + result.foodList[item].mainCategoryName + '</td>';
+    					data += '<td>' + result.foodList[item].midCategoryName + '</td>';
+    					data += '<td>' + result.foodList[item].kcal + '</td>';
+	                    data += '</tr>';
+    				}
+    				
+					/* for(let i=start; i<end; i++){
     					
     					data += '<tr onclick="">';
     					data += '<td>' + (i+1) + '</td>';
@@ -284,25 +308,35 @@
     					data += '<td>' + result[i].midCategoryName + '</td>';
     					data += '<td>' + result[i].kcal + '</td>';
 	                    data += '</tr>';
-    				}
+    				} */
+    				
+    				
     				$('#foodList').html(data);
     				
-    				let pageStart = Math.floor((currentPage-1)/10) * 10 + 1;
+    				/* let pageStart = Math.floor((currentPage-1)/10) * 10 + 1;
     				let pageEnd = Math.min((pageStart + 9), totalPages);    				
     				
     				let frontPage = currentPage < 11 ? 1 : pageStart - 10;
-    				let backPage = Math.min((pageEnd + 1), totalPages);
+    				let backPage = Math.min((pageEnd + 1), totalPages); */
     				
-    				$('#at_front').html(
+    				/* $('#at_front').html(
     					'<a href="javascript:foodListShow(' + frontPage + ')"> <img src="./images/sub/icon/at_front.svg" alt=""> </a>'
     				);
     				
     				$('#left').html(
         					'<a href="javascript:foodListShow(' + (currentPage-1) + ')"> <img src="./images/sub/icon/Icon akar-chevron-left-small.svg" alt=""> </a>'
-        			);
-    				    				
+        			); */
     				
-    				data = "";
+    				$('#at_front').html(
+        					'<a href="javascript:foodListShow(' + result.page.frontPage + ')"> <img src="./images/sub/icon/at_front.svg" alt=""> </a>'
+       				);
+        				
+       				$('#left').html(
+           					'<a href="javascript:foodListShow(' + (result.page.currentPage-1) + ')"> <img src="./images/sub/icon/Icon akar-chevron-left-small.svg" alt=""> </a>'
+           			);
+    				
+    				
+    				/* data = "";
     				for(let i=pageStart; i<=pageEnd; i++) {
     					
     					if(i == currentPage) {
@@ -312,20 +346,33 @@
     					}
     					  					
     				}
+    				$('.page-numbers').html(data);   */
+    				
+    				data = "";
+    				for(let i=result.page.pageStart; i<=result.page.pageEnd; i++) {
+    					
+    					if(i == result.page.currentPage) {
+    						data += '<div class="number on" data-page="' + i + '"><a href="javascript:foodListShow(' + i + ')">' + i + '</a></div>';
+    					} else {
+    						data += '<div class="number" data-page="' + i + '"><a href="javascript:foodListShow(' + i + ')">' + i + '</a></div>';
+    					}
+    					  					
+    				}
     				$('.page-numbers').html(data);  
     				
+    				
     				$('#right').html(
-        					'<a href="javascript:foodListShow(' + (currentPage+1) + ')"> <img src="./images/sub/icon/Icon akar-chevron-right-small.svg" alt=""> </a>'
+        					'<a href="javascript:foodListShow(' + (result.page.currentPage+1) + ')"> <img src="./images/sub/icon/Icon akar-chevron-right-small.svg" alt=""> </a>'
         			);    				
     				
     				$('#at_back').html(
-        					'<a href="javascript:foodListShow(' + backPage + ')"> <img src="./images/sub/icon/at_back.svg" alt=""> </a>'
+        					'<a href="javascript:foodListShow(' + result.page.backPage + ')"> <img src="./images/sub/icon/at_back.svg" alt=""> </a>'
         			);
         		
     				
     			},
     			error: function(error){
-    				
+    				console.log('통신실패');
     			}
     		});			
     	}

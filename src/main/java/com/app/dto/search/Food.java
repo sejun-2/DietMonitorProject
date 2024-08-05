@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class Food {
 
+	int num;
 	String foodCode;
     String foodName;
     String dataSortId;
