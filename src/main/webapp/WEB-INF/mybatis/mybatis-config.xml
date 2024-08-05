@@ -11,6 +11,7 @@
 	<typeAliases>	
 		<typeAlias type="com.app.dto.search.SearchCategory" alias="SearchCategory"/>
 		<typeAlias type="com.app.dto.search.Page" alias="Page"/>
+		<typeAlias type="com.app.dto.search.SearchInfo" alias="SearchInfo"/>
 		<typeAlias type="com.app.dto.search.Food" alias="Food"/>
 	</typeAliases>						
 							

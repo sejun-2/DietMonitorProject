@@ -263,7 +263,7 @@
 	
 	
 
-	<select id="findFoodList" resultType="Food" parameterType="Page">
+	<select id="findFoodList" resultType="Food" parameterType="SearchInfo">
 		SELECT * 
 		FROM(
 			SELECT 
@@ -486,10 +486,32 @@
 			    data_creation_date,
 			    data_base_date
 			FROM food_list_fisheries)
-			order by food_code
+			<where>
+				<if test="searchKeyword != null and searchKeyword != '' ">
+					food_name LIKE '%' || #{searchKeyword} || '%'				
+				</if>
+				
+				<if test="dataSortId != null and dataSortId != '' ">
+					AND data_sort_id = #{dataSortId}
+				</if>
+				
+				<if test="mainCategoryName != null and mainCategoryName.size != 0 ">
+					AND main_category_name IN
+					<foreach item="item" index="index" collection="mainCategoryName"
+	      				open="(" separator="," close=")">
+	        			#{item}
+	  				</foreach>				
+				</if>
+			</where>
+			ORDER BY food_code
+			
 			) total
 		)
-		WHERE num BETWEEN #{viewStartItem} AND #{viewEndItem}
+		<where>
+			num BETWEEN #{page.viewStartItem} AND #{page.viewEndItem}
+		</where>
+		
+		
 	</select>
 
 

@@ -10,6 +10,7 @@ import com.app.dao.search.SearchDAO;
 import com.app.dto.search.Food;
 import com.app.dto.search.Page;
 import com.app.dto.search.SearchCategory;
+import com.app.dto.search.SearchInfo;
 
 @Repository
 public class SearchDAOImpl implements SearchDAO{
@@ -42,12 +43,12 @@ public class SearchDAOImpl implements SearchDAO{
 	}
 	
 	@Override
-	public List<Food> findFoodList(Page page) {
+	public List<Food> findFoodList(SearchInfo searchInfo) {
 		
 		System.out.println("dao");
-		System.out.println(page);
+		System.out.println(searchInfo);
 		
-		List<Food> FoodList = sqlSessionTemplate.selectList("search_mapper.findFoodList", page);
+		List<Food> FoodList = sqlSessionTemplate.selectList("search_mapper.findFoodList", searchInfo);
 		System.out.println(FoodList);
 		return FoodList;
 	}

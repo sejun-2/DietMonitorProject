@@ -5,6 +5,7 @@ import java.util.List;
 import com.app.dto.search.Food;
 import com.app.dto.search.Page;
 import com.app.dto.search.SearchCategory;
+import com.app.dto.search.SearchInfo;
 
 public interface SearchService {
 
@@ -14,6 +15,6 @@ public interface SearchService {
 	
 	public int findFoodTotalItems();
 	
-	public List<Food> findFoodList(Page page);
+	public List<Food> findFoodList(SearchInfo searchInfo);
 	
 }

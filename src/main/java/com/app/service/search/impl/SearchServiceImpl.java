@@ -9,6 +9,7 @@ import com.app.dao.search.SearchDAO;
 import com.app.dto.search.Food;
 import com.app.dto.search.Page;
 import com.app.dto.search.SearchCategory;
+import com.app.dto.search.SearchInfo;
 import com.app.service.search.SearchService;
 
 @Service
@@ -43,12 +44,12 @@ public class SearchServiceImpl implements SearchService{
 	
 	
 	@Override
-	public List<Food> findFoodList(Page page) {
+	public List<Food> findFoodList(SearchInfo searchInfo) {
 		
 		System.out.println("service");
-		System.out.println(page);
+		System.out.println(searchInfo);
 		
-		List<Food> FoodList = searchDAO.findFoodList(page);
+		List<Food> FoodList = searchDAO.findFoodList(searchInfo);
 		
 		return FoodList;
 	}

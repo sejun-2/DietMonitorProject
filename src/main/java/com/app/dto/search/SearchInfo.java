@@ -7,9 +7,9 @@ import lombok.Data;
 @Data
 public class SearchInfo {
 
-	String keyword;
+	String searchKeyword;
 	
-	String dataSortName;    
+	String dataSortId;    
    
     List<String> mainCategoryName;
       
@@ -17,7 +17,5 @@ public class SearchInfo {
      
     List<String> repFoodName;
     
-    int currentPage;
-    
-    int itemsPerPage;
+    Page page;
 }

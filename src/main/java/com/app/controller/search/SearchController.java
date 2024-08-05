@@ -44,16 +44,16 @@ public class SearchController {
 		
 		System.out.println(searchInfo);		
 		System.out.println(searchInfo.getMainCategoryName());
-		System.out.println(searchInfo.getCurrentPage());
+		System.out.println(searchInfo.getPage().getCurrentPage());
 		
-		Page page = PageManager.pageCalculate(searchInfo.getCurrentPage(),
-					searchInfo.getItemsPerPage(), searchService.findFoodTotalItems());
+		Page page = PageManager.pageCalculate(searchInfo.getPage().getCurrentPage(),
+					searchInfo.getPage().getItemsPerPage(), searchService.findFoodTotalItems());
 		
 		System.out.println(page);	
 		
-		List<Food> foodList = searchService.findFoodList(page);
+		searchInfo.setPage(page);
 		
-		//List<Food> foodList = new ArrayList<Food>();
+		List<Food> foodList = searchService.findFoodList(searchInfo);
 		
 		System.out.println(foodList);
 		
