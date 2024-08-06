@@ -12,7 +12,7 @@ public class User {
 	//@NotEmpty //띄어쓰기도 Empty 는 아니다~
 	@NotBlank //띄어쓰기 제외 뭐라도 있어야한다
 	String email;
-	String gender;
+	int genderId;
 
 	@NotBlank
 	@Size(min = 8, max = 16)

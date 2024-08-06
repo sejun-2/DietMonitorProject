@@ -10,7 +10,7 @@
             <div class="top_nav">
                 <div class="inner">
                     <ul class="gnb wrap_s">
-                        <li class="lnb"><a href="" class="login">로그인</a></li>
+                        <li class="lnb"><a href="/login" class="login">로그인</a></li>
                         <li class="lnb"><a href="/signup" class="signup">회원가입</a></li>
                         <li class="lnb"><a href="" class="admin">관리자</a></li>
                     </ul>

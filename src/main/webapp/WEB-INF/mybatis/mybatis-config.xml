@@ -6,10 +6,12 @@
 	<settings>						
 		<setting name="mapUnderscoreToCamelCase" value="true"/>	
 			<!--	_ 표시 -> CamelCase  userType  맵핑	 -->
+			<!-- <setting name="jdbcTypeForNull" value="VARCHAR"/> -->
 	</settings>						
 							
 	<typeAliases>						
-		<typeAlias type="com.app.dto.user.User" alias="User"/>					
+		<typeAlias type="com.app.dto.user.User" alias="User"/>	
+		<typeAlias type="com.app.dto.user.Gender" alias="Gender"/>			
 	</typeAliases>						
 							
 </configuration>							

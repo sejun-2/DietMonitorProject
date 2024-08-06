@@ -62,6 +62,22 @@ public class UserDAOImpl implements UserDAO {
 		
 		return loginUser;
 	}
+
+	@Override
+	public int getAgeByEmail(String email) {
+		// TODO Auto-generated method stub
+		int result = sqlSessionTemplate.selectOne("user_mapper.getAgeByEmail", email);
+		
+		return result;
+	}
+
+	@Override
+	public String getGenderNameByGenderId(int genderId) {
+		// TODO Auto-generated method stub
+		String result = sqlSessionTemplate.selectOne("user_mapper.getGenderNameByGenderId", genderId);
+		
+		return result;
+	}
 			
 	
 }
