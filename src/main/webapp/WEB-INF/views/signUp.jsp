@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>							
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>	
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -10,10 +12,8 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link href="./css/base.css" rel="stylesheet">
-    <link href="./css/commen.css" rel="stylesheet">
-    <link href="./css/board.css" rel="stylesheet">
+    <link href="./css/common.css" rel="stylesheet">
     <script type="text/javascript" src="./script/header.js"></script>
-    <script type="text/javascript" src="./script/commen.js"></script>
 
     <title>foodIngredients</title>
 </head>
@@ -25,318 +25,141 @@
     </header>
 
 
-
-    <div class="sub_content"></div>
-
-    <section class="sub_title">
+    <section class="signup">
         <div class="inner">
-            <div class="wrap">
-                <h1 class="title">식품으로 찾아보기</h1>
-                <div class="route wrap">
-                    <a href="./index.html"><img class="home center" src="./images/sub/icon/material-home.svg"
-                            alt="홈 아이콘"></a>
-                    <div class="route_info wrap">
-                        <a href="./foodSearchList.html"><span class="dap1">영양정보 찾아보기</span></a>
-                        <a href="./foodSearchList.html"><span class="dap2">식품으로 찾아보기</span></a>
-                    </div>
-                </div>
+            <div class="sig_inner">
+            	<form action="/signup" method="post">
+                <div class="sig_inputs">
+                    <div class="sig_title">회원가입</div>
+	                    <div class="sig_input wrap_s">
+	                        <p>이메일<span class="red">*</span></p>
+	                        <input type="text" name="email" id="inputEmail" placeholder="이메일을 입력해 주세요" value="${user.email}">
+	                        <button class="check_btn" type="button">중복확인</button>
+	                        <c:if test="${ not empty userValidError.id }">
+								<br/>
+									<span class="red">${userValidError.id}</span>
+								<br/>
+							</c:if>
+							<span id="dupMsg"></span>
+	                    </div>
+	                    <div class="sig_input wrap_s">
+	                        <p>비밀번호<span class="red">*</span></p>
+	                        <input type="text" name="pw" placeholder="비밀번호를 입력해 주세요" value="${user.pw}">
+	                        <c:if test="${ not empty userValidError.pw }">
+								<br/>
+									<span class="red">${userValidError.pw}</span>
+								<br/>
+							</c:if>
+	                    </div>
+	                    <div class="sig_input wrap_s">
+	                        <p>비밀번호확인<span class="red">*</span></p>
+	                        <input type="text" name="chkPw" placeholder="비밀번호를 한번 더 입력해 주세요" value="${user.chkPw}">
+	                        <c:if test="${ not empty userValidError.chkPw }">
+								<br/>
+									<span class="red">${userValidError.chkPw}</span>
+								<br/>
+							</c:if>
+	                    </div>
+	                    <div class="sig_input wrap_s">
+	                        <p>이름<span class="red">*</span></p>
+	                        <input type="text" name="name" placeholder="이름을 입력해주세요" value="${user.name}">
+	                        <c:if test="${ not empty userValidError.name }">
+								<br/>
+									<span class="font-error">${userValidError.name}</span>
+								<br/>
+							</c:if>
+	                    </div>
+	                    <div class="sig_input wrap_s">
+	                        <p>전화번호<span class="red">*</span></p>
+	                        <input type="tel" name="tel" placeholder="전화번호를 입력해주세요" value="${user.tel}">
+	                        <c:if test="${ not empty userValidError.tel }">
+								<br/>
+									<span class="font-error">${userValidError.tel}</span>
+								<br/>
+							</c:if>
+	                    </div>
+	                    <div class="sig_input wrap_s">
+	                        <p>생년월일<span class="red">*</span></p>
+	                        <input type="text" name="birth" placeholder="생년월일 6자리를 입력해주세요" value="${user.birth}">
+	                        <c:if test="${ not empty userValidError.birth }">
+								<br/>
+									<span class="font-error">${userValidError.birth}</span>
+								<br/>
+							</c:if>
+	                    </div>
+	                    <div class="sig_input wrap_s">
+	                        <p>성별<span class="red">*</span></p>
+	                        <div class="wrap_s">
+	                        	<span class="mr20"><input type="radio" name="chk_info" value="${user.gender}" checked="checked">남자</span>
+	                            <span><input type="radio" name="chk_info" value="${user.gender}">여자</span>
+	                        </div>
+	                    </div>
+	                </div>
+                <button class="common_btn" type="submit">가입하기</button>
+                </form>
             </div>
-
+            
+            
         </div>
 
     </section>
-
-    <section class="search_cont">
-        <div class="inner">
-            <div class="big_search">
-                <div class="wrap">
-                    <div class="search_input wrap">
-                        <p class="title">식품명</p>
-                        <input type="search" value="" placeholder="영양정보가 궁금한 식품을 입력해주세요">
-                        <button class="search_icon center" type="submit">
-                            <img src="./images/sub/icon/akar-search2.svg" alt="">
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="search_inner mb60">
-                <ul class="tab">
-                    <div class="wrap_s">
-                        <li class="lnb big_category on">
-                            <div class="wrap">
-                                <span>식품대분류</span>
-                            </div>
-                        </li>
-                        <li class="lnb Middle_category">
-                            <div class="wrap">
-                                <span>식품중분류</span>
-                            </div>
-                        </li>
-                        <li class="lnb small_category">
-                            <div class="wrap">
-                                <span>식품소분류</span>
-                            </div>
-                        </li>
-                    </div>
-
-                </ul>
-
-                <div class="tab_content">
-                    <ul class="tab_info">
-                        <form action="">
-                            <div class="tab_info_inner">
-                                <li class="tab_inner_search">
-                                    <div class="wrap_s center">
     
-                                        <img src="./images/sub/icon/akar-search.svg" alt="">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
     
-                                        <input type="search" placeholder="식품대분류 검색항목 입력">
-    
-                                    </div>
-                                </li>
-                                <button class="tab_search_btn" type="submit">검색</button>
-                            </div>
-                            <div class="icheck_sm_wrap">
-                                <div class="icheck_sm mar">
-                                    <input type="checkbox" name="big_Allcheck" id="big_Allcheck">
-                                    <label for="big_Allcheck">대분류 전체</label>
-                                </div>
-                                <div class="icheck_sm mar">
-                                    <input type="checkbox" name="big_n1" id="big_n1">
-                                    <label for="big_n1">과자류 빵류 또는 떡류</label>
-                                </div>
-                                <div class="icheck_sm mar">
-                                    <input type="checkbox" name="big_n2" id="big_n2">
-                                    <label for="big_n2">빵 및 과자류</label>
-                                </div>
-                                <div class="icheck_sm mar">
-                                    <input type="checkbox" name="big_n3" id="big_n3">
-                                    <label for="big_n3">식육가공품 및 포장육</label>
-                                </div>
-                                <div class="icheck_sm mar">
-                                    <input type="checkbox" name="big_n4" id="big_n4">
-                                    <label for="big_n4">즉석식품류</label>
-                                </div>
-                            </div>
-                        </form>
-                    </ul>
-
-                    <div class="tab_inner_list clearfix">
-                        <div class="tag_inner wrap">
-                            <div class="tag_gnb"></div>
-                            <div class="reset center">
-                                <img src="./images/sub/icon/akar-arrow-repeat.svg" alt="">
-                                <span>선택초기화</span>
-                            </div>
-                        </div>
-                        <button class="common_btn" type="button">선택된 4건 검색하기</button>
-                    </div>
-                </div>
-
-                <div class="tab_content">
-                    <ul class="tab_info">
-                        <form action="">
-                            <div class="tab_info_inner">
-                                <li class="tab_inner_search">
-                                    <div class="wrap_s center">
-    
-                                        <img src="./images/sub/icon/akar-search.svg" alt="">
-    
-                                        <input type="search" placeholder="식품중분류 검색항목 입력">
-    
-                                    </div>
-                                </li>
-                                <button class="tab_search_btn" type="submit">검색</button>
-                            </div>
-                            <div class="icheck_sm_wrap">
-                                <div class="icheck_sm mar">
-                                    <input type="checkbox" name="middle_Allcheck" id="middle_Allcheck">
-                                    <label for="middle_Allcheck">중분류 전체</label>
-                                </div>
-                                <div class="icheck_sm mar">
-                                    <input type="checkbox" name="middle_n1" id="middle_n1">
-                                    <label for="middle_n1">중분류1</label>
-                                </div>
-                                <div class="icheck_sm mar">
-                                    <input type="checkbox" name="middle_n2" id="middle_n2">
-                                    <label for="middle_n2">중분류2</label>
-                                </div>
-                                <div class="icheck_sm mar">
-                                    <input type="checkbox" name="middle_n3" id="middle_n3">
-                                    <label for="middle_n3">중분류3333</label>
-                                </div>
-                                <div class="icheck_sm mar">
-                                    <input type="checkbox" name="middle_n4" id="middle_n4">
-                                    <label for="middle_n4">중분류4</label>
-                                </div>
-                            </div>
-                        </form>
-                    </ul>
-
-                    <div class="tab_inner_list clearfix">
-                        <div class="tag_inner wrap">
-                            <div class="tag_gnb"></div>
-                            <div class="reset center">
-                                <img src="./images/sub/icon/akar-arrow-repeat.svg" alt="">
-                                <span>선택초기화</span>
-                            </div>
-                        </div>
-                        <button class="common_btn" type="button">선택된 4건 검색하기</button>
-                    </div>
-                </div>
+		$(document).ready(function(){
+			
+			$('.check_btn').click(function(){
+				
+				let inputEmail = $('#inputEmail').val();
+				//let inputEmail = document.getElementById('inputEmail').value;
+				
+				console.log('버튼 눌림');
+				console.log(inputEmail);
+				
+				let requestJsonData = {
+					'email':inputEmail,
+				};
+				console.log(requestJsonData);
+				
+				let requestJsonDataString = JSON.stringify(requestJsonData);
+				console.log(requestJsonDataString);
+				
+				$.ajax({
+					type: "POST",
+					url: "http://localhost:8080/customer/isDuplicatedEmail",
+					headers:{
+						"Content-type":"application/json;charset:UTF-8"
+					},
+					//dataType: 'text',  //요청->응답 데이터의 형태	text
+					dataType: 'json',  //요청->응답 데이터의 형태	json
+					data:requestJsonDataString, //전송할 데이터
+					//data:inputId, //전송할 데이터
+					success: function(result){	// 'N'	콜백함수
+						console.log(result);
+						console.log(result.header.resultCode);
+						console.log(result.body);
+					
+						if(result.header.resultCode == '200'){
+							$('#dupMsg').text('사용 가능한 이메일입니다.');
+						} else {
+							$('#dupMsg').text('이미 가입된 이메일입니다.');
+						}
+					
+					},
+					error: function(error){
+						console.log(error);
+					}
+				});
+			});
+			
+		});
+		
+		
+	</script>
 
 
-                <div class="tab_content">
-                    <ul class="tab_info">
-                        <form action="">
-                            <div class="tab_info_inner">
-                                <li class="tab_inner_search">
-                                    <div class="wrap_s center">
-    
-                                        <img src="./images/sub/icon/akar-search.svg" alt="">
-    
-                                        <input type="search" placeholder="식품소분류 검색항목 입력">
-    
-                                    </div>
-                                </li>
-                                <button class="tab_search_btn" type="submit">검색</button>
-                            </div>
-                            <div class="icheck_sm_wrap">
-                                <div class="icheck_sm mar">
-                                    <input type="checkbox" name="small_Allcheck" id="small_Allcheck">
-                                    <label for="small_Allcheck">소분류 전체</label>
-                                </div>
-                                <div class="icheck_sm mar">
-                                    <input type="checkbox" name="small_n1" id="small_n1">
-                                    <label for="small_n1">소분류11111</label>
-                                </div>
-                                <div class="icheck_sm mar">
-                                    <input type="checkbox" name="small_n2" id="small_n2">
-                                    <label for="small_n2">소분류222</label>
-                                </div>
-                                <div class="icheck_sm mar">
-                                    <input type="checkbox" name="small_n3" id="small_n3">
-                                    <label for="small_n3">소분류3</label>
-                                </div>
-                                <div class="icheck_sm mar">
-                                    <input type="checkbox" name="small_n4" id="small_n4">
-                                    <label for="small_n4">소분류4</label>
-                                </div>
-                            </div>
-                        </form>
-                    </ul>
 
-                    <div class="tab_inner_list clearfix">
-                        <div class="tag_inner wrap">
-                            <div class="tag_gnb"></div>
-                            <div class="reset center">
-                                <img src="./images/sub/icon/akar-arrow-repeat.svg" alt="">
-                                <span>선택초기화</span>
-                            </div>
-                        </div>
-                        <button class="common_btn" type="button">선택된 4건 검색하기</button>
-                    </div>
-                </div>
-
-                
-            </div>
-        </div>
-
-    </section>
-
-    <section class="table_menu">
-        <div class="inner">
-            <div class="wrap">
-
-                <div class="menu_list">
-                    <div class="wrap_s">
-                        <div class="icheck_wrap">
-                            <div class="icheck mar">
-                                <input type="radio" name="selection" id="s1" value="s1">
-                                <label for="s1">가공식품만 보기</label>
-                            </div>
-                            <div class="icheck mar">
-                                <input type="radio" name="selection" id="s2" value="s2">
-                                <label for="s2">음식만 보기</label>
-                            </div>
-                            <div class="icheck mar">
-                                <input type="radio" name="selection" id="s3" value="s3">
-                                <label for="s3">원재료만 보기</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <select class="page_num">
-                    <div class="wrap">
-                        <option value="">
-                            <span>10개씩</span>
-                            <img src="./images/sub/icon/fa-solid-caret-down.svg" alt="">
-                        </option>
-                    </div>
-                </select>
-            </div>
-
-
-            <table id="find_business_table" class="new_tbl_board tb01 mt20 mb60">
-                <colgroup>
-                    <col style="width: 4%;">
-                    <col style="width: 15%;">
-                    <col style="width: 10%;">
-                    <col style="width: 10%;">
-                    <col style="width: 7%;">
-                </colgroup>
-                <thead>
-                    <tr>
-                        <th scope="col">번호</th>
-                        <th scope="col">식품명</th>
-                        <th scope="col">식품대분류</th>
-                        <th scope="col">식품중분류</th>
-                        <th scope="col">에너지(Kcal)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr onclick="">
-                        <td>1</td>
-                        <td>햄버거</td>
-                        <td>빵 및 과자류</td>
-                        <td>해당없음</td>
-                        <td>225</td>
-                    </tr>
-
-                    <tr onclick="">
-                        <td>2</td>
-                        <td>싸이버거</td>
-                        <td>즉석식품류</td>
-                        <td>해당없음</td>
-                        <td>225</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="pagenation wrap center mb80">
-                <div id="at_front" class="at_front boder_box">
-                    <img src="./images/sub/icon/at_front.svg" alt="">
-                </div>
-                <div id="left" class="left boder_box">
-                    <img src="./images/sub/icon/Icon akar-chevron-left-small.svg" alt="">
-                </div>
-
-                <div id="page-numbers" class="page-numbers"></div>
-
-                <div id="right" class="right boder_box">
-                    <img src="./images/sub/icon/Icon akar-chevron-right-small.svg" alt="">
-                </div>
-                <div id="at_back" class="at_back boder_box">
-                    <img src="./images/sub/icon/at_back.svg" alt="">
-                </div>
-            </div>
-        </div>
-    </section>
-
-	
-	<jsp:include page="footer.jsp" />
-
-    
+    <jsp:include page="footer.jsp" />
 </body>
 </html>

@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link href="./css/base.css" rel="stylesheet">
-    <link href="./css/commen.css" rel="stylesheet">
+    <link href="./css/common.css" rel="stylesheet">
     <link href="./css/board.css" rel="stylesheet">
     <script type="text/javascript" src="./script/header.js"></script>
-    <script type="text/javascript" src="./script/commen.js"></script>
+    <script type="text/javascript" src="./script/common.js"></script>
 
     <title>foodIngredients</title>
 </head>
