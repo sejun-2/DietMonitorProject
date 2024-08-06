@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.dao.search.SearchDAO;
 import com.app.dto.search.Food;
-import com.app.dto.search.Page;
+import com.app.dto.search.Nutrient;
 import com.app.dto.search.SearchCategory;
 import com.app.dto.search.SearchInfo;
 import com.app.service.search.SearchService;
@@ -35,9 +35,9 @@ public class SearchServiceImpl implements SearchService{
 	}
 	
 	@Override
-	public int findFoodTotalItems() {
+	public int findFoodTotalItems(SearchInfo searchInfo) {
 		
-		int foodTotalItems = searchDAO.findFoodTotalItems();
+		int foodTotalItems = searchDAO.findFoodTotalItems(searchInfo);
 		
 		return foodTotalItems;
 	}
@@ -46,12 +46,25 @@ public class SearchServiceImpl implements SearchService{
 	@Override
 	public List<Food> findFoodList(SearchInfo searchInfo) {
 		
-		System.out.println("service");
-		System.out.println(searchInfo);
-		
 		List<Food> FoodList = searchDAO.findFoodList(searchInfo);
 		
 		return FoodList;
+	}
+
+	@Override
+	public Food findFoodByFoodCode(String foodCode) {
+		
+		Food food = searchDAO.findFoodByFoodCode(foodCode); 
+		
+		return food;
+	}
+
+	@Override
+	public List<Nutrient> findNutrientList() {
+		
+		List<Nutrient> nutrientList = searchDAO.findNutrientList();
+		
+		return nutrientList;
 	}
 
 	

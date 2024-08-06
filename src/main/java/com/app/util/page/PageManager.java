@@ -7,7 +7,7 @@ public class PageManager {
 	public static Page pageCalculate(int currentPage, int itemsPerPage, int totalItems) {
 		
 			
-		int totalPages = (int)(Math.ceil(totalItems/itemsPerPage));		
+		int totalPages = (int)(Math.ceil(totalItems/(double)itemsPerPage));		
 		int viewStartItem = (currentPage - 1) * itemsPerPage + 1;		
 		int viewEndItem = Math.min((viewStartItem + itemsPerPage - 1), totalItems);		
 		int pageStart = (int)(Math.floor((currentPage-1)/10)) * 10 + 1;		

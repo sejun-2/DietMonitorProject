@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>		
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -12,18 +12,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link href="./css/base.css" rel="stylesheet">
-    <link href="./css/commen.css" rel="stylesheet">
-    <link href="./css/board.css" rel="stylesheet">
-    <script type="text/javascript" src="./script/header.js"></script>
-    <script type="text/javascript" src="./script/commen.js"></script>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/commen.css" rel="stylesheet">
+    <link href="../css/board.css" rel="stylesheet">
+    <script type="text/javascript" src="../script/header.js"></script>
+    <script type="text/javascript" src="../script/commen.js"></script>
 	
     <title>foodIngredients</title>
 </head>
 <body>
 	<header id="header">
         <div class="header_inner header_sub">
-            <jsp:include page="../header.jsp" />
+            <jsp:include page="./header.jsp" />
         </div>
     </header>
 
@@ -36,7 +36,7 @@
             <div class="wrap">
                 <h1 class="title">식품으로 찾아보기</h1>
                 <div class="route wrap">
-                    <a href="./index.html"><img class="home center" src="./images/sub/icon/material-home.svg"
+                    <a href="./index.html"><img class="home center" src="../images/sub/icon/material-home.svg"
                             alt="홈 아이콘"></a>
                     <div class="route_info wrap">
                         <a href="./foodSearchList.html"><span class="dap1">영양정보 찾아보기</span></a>
@@ -66,7 +66,7 @@
                 <ul class="tab">
                     <div class="wrap_s">
                     	<c:forEach var="dataSort" items="${dataSortList}">
-                        <li class="lnb big_category on">
+                        <li class="lnb big_category">
                             <div class="wrap">
                                 <span>${dataSort.dataSortName}</span>
                             </div>
@@ -78,7 +78,6 @@
                 <div class="tab_content">
                     <ul class="tab_info">
                         <form action="">
-
                             <div class="icheck_sm_wrap">
                                 <div class="icheck_sm mar">
                                     <input type="checkbox" name="mainCategory_Allcheck" id="big_Allcheck" value="${dataSort.dataSortName}">
@@ -122,17 +121,21 @@
                 <div class="menu_list">
                     <div class="wrap_s">
                         <div class="icheck_wrap">
-                            <div class="icheck mar">
-                                <input type="radio" name="selection" id="s1" value="P">
-                                <label for="s1">가공식품만 보기</label>
+                        	<div class="icheck mar">
+                                <input type="radio" name="selection" id="s1" value="" checked="checked">
+                                <label for="s1">전체 보기</label>
                             </div>
                             <div class="icheck mar">
-                                <input type="radio" name="selection" id="s2" value="D">
-                                <label for="s2">음식만 보기</label>
+                                <input type="radio" name="selection" id="s2" value="P">
+                                <label for="s2">가공식품만 보기</label>
                             </div>
                             <div class="icheck mar">
-                                <input type="radio" name="selection" id="s3" value="R">
-                                <label for="s3">원재료만 보기</label>
+                                <input type="radio" name="selection" id="s3" value="D">
+                                <label for="s3">음식만 보기</label>
+                            </div>
+                            <div class="icheck mar">
+                                <input type="radio" name="selection" id="s4" value="R">
+                                <label for="s4">원재료만 보기</label>
                             </div>
                         </div>
                     </div>
@@ -143,7 +146,7 @@
                     <c:forEach var="i" begin="10" end="50" step="10">
                         <option value="${i}">
                             <span>${i}개씩</span>
-                            <img src="./images/sub/icon/fa-solid-caret-down.svg" alt="">
+                            <img src="../images/sub/icon/fa-solid-caret-down.svg" alt="">
                         </option>
                     </c:forEach>
                     </div>
@@ -187,7 +190,7 @@
         </div>
     </section>
 
-    <jsp:include page="../footer.jsp" />
+    <jsp:include page="./footer.jsp" />
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
@@ -195,18 +198,9 @@
     	
     	$(document).ready(function(){ 		
     		
+    		$('.big_category').eq(0).addClass('on');
+    		
     		foodListShow();
-    		
-    		$('#page-numbers .number').on('click', function() {
-    			console.log('버튼눌림');
-    			console.log(page);
-    		});
-    		
-    		    		
-    		$('#search__btn').click(function(){
-    			foodListShow();
-    		});     		
-
     		
     		$('.page_num').click(function(){
     			foodListShow();
@@ -215,6 +209,21 @@
     		$('input[name=selection]').click(function(){
     			foodListShow();
     		});
+    		
+    		$('#searchKeyword').keypress(function(e){
+    			if(e.keyCode && e.keyCode == 13){
+    				foodListShow();
+    			}
+    		});
+    		
+    		$('.search_icon').click(function(){
+    			foodListShow();
+    		});
+    		
+    		$('.common_btn').click(function(){
+    			foodListShow();
+    		});    		
+
     	});
     
     	
@@ -251,9 +260,10 @@
     				'currentPage' : currentPage,
         			'itemsPerPage' : itemsPerPage	
     			}
-    		};
+    		};   		
     		
     		console.log(requestJsonData);
+    		
     		let requestJsonDataString = JSON.stringify(requestJsonData);
 			
     		$.ajax({
@@ -270,7 +280,7 @@
     				
     				for(item in result.foodList){
     					
-    					data += '<tr onclick="">';
+    					data += '<tr onclick="location.href=\'foodDetail/' + result.foodList[item].foodCode + '\'">';
     					data += '<td>' + result.foodList[item].num + '</td>';
     					data += '<td>' + result.foodList[item].foodName + '</td>';
     					data += '<td>' + result.foodList[item].mainCategoryName + '</td>';
