@@ -15,7 +15,6 @@
 		<typeAlias type="com.app.dto.search.SearchInfo" alias="SearchInfo"/>
 		<typeAlias type="com.app.dto.search.Food" alias="Food"/>
 		<typeAlias type="com.app.dto.search.Nutrient" alias="Nutrient"/>
-	<typeAliases>						
 		<typeAlias type="com.app.dto.user.User" alias="User"/>					
 	</typeAliases>						
 							
