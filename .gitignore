@@ -139,3 +139,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,eclipse,java,maven
+target/m2e-wtp/web-resources/META-INF/maven/DietMonitorProject/DietMonitorProject/pom.properties
