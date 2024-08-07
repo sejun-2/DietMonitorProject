@@ -33,13 +33,14 @@
                     <div class="sig_title">회원가입</div>
 	                    <div class="sig_input wrap_s">
 	                        <p>이메일<span class="red">*</span></p>
-	                        <input type="text" name="email" id="inputEmail" placeholder="이메일을 입력해 주세요" value="${user.email}">
+	                        <div>
+		                        <input type="text" name="email" id="inputEmail" placeholder="이메일을 입력해 주세요" value="${user.email}">
+		                        <c:if test="${ not empty userValidError.email }">
+										<span class="red">${userValidError.email}</span>
+								</c:if>
+	                        </div>
 	                        <button class="check_btn" type="button">중복확인</button>
-	                        <c:if test="${ not empty userValidError.email }">
-								<br/>
-									<span class="red">${userValidError.email}</span>
-								<br/>
-							</c:if>
+	                        
 							<span class="red" id="dupMsg"></span>
 	                    </div>
 	                    <div class="sig_input wrap_s">
@@ -154,7 +155,7 @@
 							$('#dupMsg').text('이미 가입된 이메일입니다.');
 						}
 						
-						if($('#dupMsg').value == '사용 가능한 이메일입니다.'){
+						/* if($('#dupMsg').value == '사용 가능한 이메일입니다.'){
 							commentForm.addEventListener('submit', () => {
 							    console.log('HELLOssssssssss');
 							 	})
@@ -163,7 +164,7 @@
 							    console.log('HELLO');
 							    e.preventDefault();
 							    })
-						}
+						} */
 					},
 					
 					error: function(error){

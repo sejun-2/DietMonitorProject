@@ -28,7 +28,7 @@
 	
 	<insert id="saveUser" parameterType="User">
 		INSERT INTO member
-		VALUES ( member_id_seq.nextval, #{email}, #{pw}, #{name},  #{tel}, #{birth}, #{gender_id},  sysdate )
+		VALUES ( member_id_seq.nextval, #{email}, #{pw}, #{name},  #{tel}, #{birth}, #{genderId},  sysdate )
 	</insert>
 	
 	<select id="getAgeByEmail" parameterType="String" resultType="int">
