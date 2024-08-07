@@ -6,19 +6,17 @@
 	<settings>						
 		<setting name="mapUnderscoreToCamelCase" value="true"/>	
 			<!--	_ 표시 -> CamelCase  userType  맵핑	 -->
+			<!-- <setting name="jdbcTypeForNull" value="VARCHAR"/> -->
 	</settings>						
 							
-<<<<<<< HEAD
 	<typeAliases>	
 		<typeAlias type="com.app.dto.search.SearchCategory" alias="SearchCategory"/>
 		<typeAlias type="com.app.dto.search.Page" alias="Page"/>
 		<typeAlias type="com.app.dto.search.SearchInfo" alias="SearchInfo"/>
 		<typeAlias type="com.app.dto.search.Food" alias="Food"/>
 		<typeAlias type="com.app.dto.search.Nutrient" alias="Nutrient"/>
-=======
 	<typeAliases>						
 		<typeAlias type="com.app.dto.user.User" alias="User"/>					
->>>>>>> 5d7baad6b3f606dbe9e9a3918e187b48f8de2db7
 	</typeAliases>						
 							
 </configuration>							

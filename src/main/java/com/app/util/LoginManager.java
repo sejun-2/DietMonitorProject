@@ -11,9 +11,9 @@ public class LoginManager {
 		session.setAttribute(SESSION_LOGIN_EMAIL, email);
 	}
 	
-	public static void setSessionLogin(String id, HttpServletRequest request ) {
+	public static void setSessionLogin(String email, HttpServletRequest request ) {
 		//request.getSession().setAttribute(SESSION_LOGIN_ID, id);
-		setSessionLogin(id, request.getSession());
+		setSessionLogin(email, request.getSession());
 	}
 	
 	public static boolean isLogin(HttpSession session) {

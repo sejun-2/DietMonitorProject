@@ -15,7 +15,7 @@
     <link href="./css/common.css" rel="stylesheet">
     <script type="text/javascript" src="./script/header.js"></script>
 
-    <title>foodIngredients</title>
+    <title>회원가입</title>
 </head>
 <body>
 	<header id="header">
@@ -28,19 +28,20 @@
     <section class="signup">
         <div class="inner">
             <div class="sig_inner">
-            	<form action="/signup" method="post">
+            	<form id="commentForm" action="/signup" method="post">
                 <div class="sig_inputs">
                     <div class="sig_title">회원가입</div>
 	                    <div class="sig_input wrap_s">
 	                        <p>이메일<span class="red">*</span></p>
-	                        <input type="text" name="email" id="inputEmail" placeholder="이메일을 입력해 주세요" value="${user.email}">
+	                        <div>
+		                        <input type="text" name="email" id="inputEmail" placeholder="이메일을 입력해 주세요" value="${user.email}">
+		                        <c:if test="${ not empty userValidError.email }">
+										<span class="red">${userValidError.email}</span>
+								</c:if>
+	                        </div>
 	                        <button class="check_btn" type="button">중복확인</button>
-	                        <c:if test="${ not empty userValidError.id }">
-								<br/>
-									<span class="red">${userValidError.id}</span>
-								<br/>
-							</c:if>
-							<span id="dupMsg"></span>
+	                        
+							<span class="red" id="dupMsg"></span>
 	                    </div>
 	                    <div class="sig_input wrap_s">
 	                        <p>비밀번호<span class="red">*</span></p>
@@ -65,7 +66,7 @@
 	                        <input type="text" name="name" placeholder="이름을 입력해주세요" value="${user.name}">
 	                        <c:if test="${ not empty userValidError.name }">
 								<br/>
-									<span class="font-error">${userValidError.name}</span>
+									<span class="red">${userValidError.name}</span>
 								<br/>
 							</c:if>
 	                    </div>
@@ -74,7 +75,7 @@
 	                        <input type="tel" name="tel" placeholder="전화번호를 입력해주세요" value="${user.tel}">
 	                        <c:if test="${ not empty userValidError.tel }">
 								<br/>
-									<span class="font-error">${userValidError.tel}</span>
+									<span class="red">${userValidError.tel}</span>
 								<br/>
 							</c:if>
 	                    </div>
@@ -83,15 +84,21 @@
 	                        <input type="text" name="birth" placeholder="생년월일 6자리를 입력해주세요" value="${user.birth}">
 	                        <c:if test="${ not empty userValidError.birth }">
 								<br/>
-									<span class="font-error">${userValidError.birth}</span>
+									<span class="red">${userValidError.birth}</span>
 								<br/>
 							</c:if>
 	                    </div>
 	                    <div class="sig_input wrap_s">
 	                        <p>성별<span class="red">*</span></p>
 	                        <div class="wrap_s">
-	                        	<span class="mr20"><input type="radio" name="chk_info" value="${user.gender}" checked="checked">남자</span>
-	                            <span><input type="radio" name="chk_info" value="${user.gender}">여자</span>
+	                        	<span class="mr20">
+	                        		<input type="radio" name="genderId"  value="3"  id="male" checked="checked">
+	                        		<label for="male">남자</label>
+	                        	</span>
+	                            <span>
+	                            	<input type="radio" name="genderId"  value="4" id="female">
+	                            	<label for="female">여자</label>
+	                            </span>
 	                        </div>
 	                    </div>
 	                </div>
@@ -139,14 +146,27 @@
 						console.log(result);
 						console.log(result.header.resultCode);
 						console.log(result.body);
+						
+						const commentForm = document.querySelector('#commentForm');
 					
 						if(result.header.resultCode == '200'){
 							$('#dupMsg').text('사용 가능한 이메일입니다.');
 						} else {
 							$('#dupMsg').text('이미 가입된 이메일입니다.');
 						}
-					
+						
+						/* if($('#dupMsg').value == '사용 가능한 이메일입니다.'){
+							commentForm.addEventListener('submit', () => {
+							    console.log('HELLOssssssssss');
+							 	})
+						} else {
+							commentForm.addEventListener('submit', (e) => {
+							    console.log('HELLO');
+							    e.preventDefault();
+							    })
+						} */
 					},
+					
 					error: function(error){
 						console.log(error);
 					}

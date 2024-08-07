@@ -17,6 +17,10 @@ public interface UserService {
 	public boolean isDuplicatedEmail(String email);
 	
 	public User isValidCustomerLogin(User user);
+
+	public Integer getAgeByEmail(String email);
+
+	public String getGenderNameByGenderId(int genderId);
 	
 	//public User findLoginUser(User user);
 	

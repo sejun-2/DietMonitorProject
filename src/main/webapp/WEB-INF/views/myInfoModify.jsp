@@ -27,23 +27,38 @@
         <div class="inner">
             <div class="sig_inner">
                 <div class="sig_inputs">
-                    <div class="sig_title">내 정보</div>
+                    <div class="sig_title">회원정보수정</div>
 
                     <div class="sig_input active wrap_s">
-                        <p>아이디</p>
-                        <p class="information">rkdwldms9058</p>
+                        <p>아이디<span class="red">*</span></p>
+                        <input type="text" placeholder="rkdwldms9058" readonly>
                     </div>
                     <div class="sig_input wrap_s">
-                        <p>이름</p>
-                        <p class="information">강지은</p>
+                        <p>비밀번호<span class="red">*</span></p>
+                        <input type="text" placeholder="비밀번호를 입력해 주세요">
                     </div>
                     <div class="sig_input wrap_s">
-                        <p>나이</p>
-                        <p class="information">26</p>
+                        <p>비밀번호확인<span class="red">*</span></p>
+                        <input type="text" placeholder="비밀번호를 한번 더 입력해 주세요">
                     </div>
                     <div class="sig_input wrap_s">
-                        <p>성별</p>
-                        <p class="information">여자</p>
+                        <p>이름<span class="red">*</span></p>
+                        <input type="text" placeholder="이름을 입력해주세요">
+                    </div>
+                    <div class="sig_input wrap_s">
+                        <p>나이<span class="red">*</span></p>
+                        <input type="text" placeholder="나이를 입력해주세요">
+                    </div>
+                    <div class="sig_input wrap_s">
+                        <p>성별<span class="red">*</span></p>
+                        <div class="wrap_s">
+                            <input type="radio" name="chk_info" value="gender"><span class="mr20">여자</span>
+                            <input type="radio" name="chk_info" value="man" checked="checked"><span>남자</span>
+                        </div>
+                    </div>
+                    <div class="sig_input wrap_s">
+                        <p>키/몸무게<span class="red">*</span></p>
+                        <input type="text" placeholder="키/몸무게 입력해 주세요">
                     </div>
                 </div>
     
