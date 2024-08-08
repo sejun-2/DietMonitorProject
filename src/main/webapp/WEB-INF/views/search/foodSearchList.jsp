@@ -79,10 +79,6 @@
                     <ul class="tab_info">
                         <form action="">
                             <div class="icheck_sm_wrap">
-                                <div class="icheck_sm mar">
-                                    <input type="checkbox" name="mainCategory_Allcheck" id="big_Allcheck" value="${dataSort.dataSortName}">
-                                    <label for="big_Allcheck">${dataSort.dataSortName} 전체</label>
-                                </div>
                                 <c:forEach var="mainCategory" items="${mainCategoryList}">
 	                                <c:if test="${mainCategory.dataSortId == dataSort.dataSortId}">
 		                                <div class="icheck_sm mar">
