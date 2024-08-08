@@ -17,6 +17,11 @@ public interface UserDAO {
 	public int saveUser(User user);	
 	
 	public User findLoginUser(User user);
+
+	public int getAgeByEmail(String email);
+
+	public String getGenderNameByGenderId(int genderId);
+
 	
 
 }

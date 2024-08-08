@@ -68,4 +68,21 @@ public class UserServiceImpl implements UserService {
 		return loginUser;
 	}
 
+	@Override
+	public Integer getAgeByEmail(String email) {
+		// TODO Auto-generated method stub
+		int result = userDAO.getAgeByEmail(email);
+		
+		return result;
+	}
+
+	@Override
+	public String getGenderNameByGenderId(int genderId) {
+		// TODO Auto-generated method stub
+		
+		String result = userDAO.getGenderNameByGenderId(genderId);
+		return result;
+	}
+
+
 }

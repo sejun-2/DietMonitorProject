@@ -28,8 +28,26 @@
 	
 	<insert id="saveUser" parameterType="User">
 		INSERT INTO member
-		VALUES ( member_id_seq.nextval, #{email}, #{pw}, #{name}, 'tel', sysdate, 1, 'address', sysdate )
+		VALUES ( member_id_seq.nextval, #{email}, #{pw}, #{name},  #{tel}, #{birth}, #{genderId},  sysdate )
 	</insert>
+	
+	<select id="getAgeByEmail" parameterType="String" resultType="int">
+        SELECT CEIL(MONTHS_BETWEEN(SYSDATE, birth) / 12) AS age
+        FROM member
+        WHERE email = #{email}
+    </select>
+    
+    <select id="getGenderNameByGenderId" parameterType="int" resultType="String">
+        SELECT gender_name
+		FROM gender
+		WHERE gender_id = #{genderId}
+    </select>
+    
+     <select id="getEmailCountByEmail" parameterType="String" resultType="int">
+        SELECT COUNT(*)
+		  FROM member
+		 WHERE email = #{email}
+    </select>
 	
 </mapper>					
 
