@@ -153,6 +153,11 @@ public class CustomerController {
 		return "redirect:/login";		
 	}
 	
+	@GetMapping("/myIntakeFood")
+	public String myIntakeFood() {
+		return "myIntakeFood";
+	}
+
 }
 
 

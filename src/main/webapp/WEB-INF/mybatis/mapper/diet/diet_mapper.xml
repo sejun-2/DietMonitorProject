@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="diet_mapper">
+
+	<select id="findTotalDiet" parameterType="User" resultType="Diet">
+		SELECT * FROM total_diet
+		WHERE account_no = #{accountNo} AND member_no = #{memberNo}
+	</select>
+	
+</mapper>

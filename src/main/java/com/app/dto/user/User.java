@@ -9,8 +9,8 @@ import lombok.Data;
 @Data
 public class User {
 	
-	//@NotEmpty //띄어쓰기도 Empty 는 아니다~
-	@NotBlank //띄어쓰기 제외 뭐라도 있어야한다
+	int accountNo;
+	int memberNo;
 	String email;
 	String gender;
 

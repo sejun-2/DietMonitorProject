@@ -23,21 +23,20 @@
             <jsp:include page="header.jsp" />
         </div>
     </header>
-
-
+	
 
     <div class="sub_content"></div>
 
     <section class="sub_title">
         <div class="inner">
             <div class="wrap">
-                <h1 class="title">식품으로 찾아보기</h1>
+                <h1 class="title">나의 하루 섭취 식품</h1>
                 <div class="route wrap">
                     <a href="./index.html"><img class="home center" src="./images/sub/icon/material-home.svg"
                             alt="홈 아이콘"></a>
                     <div class="route_info wrap">
-                        <a href="./foodSearchList.html"><span class="dap1">영양정보 찾아보기</span></a>
-                        <a href="./foodSearchList.html"><span class="dap2">식품으로 찾아보기</span></a>
+                        <a href="./foodSearchList"><span class="dap1">마이페이지</span></a>
+                        <a href="./myIntakeFood"><span class="dap2">나의 하루 섭취 식품</span></a>
                     </div>
                 </div>
             </div>
