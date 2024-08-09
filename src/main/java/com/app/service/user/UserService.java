@@ -2,6 +2,9 @@ package com.app.service.user;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import com.app.dto.user.NutritionStandard;
 import com.app.dto.user.User;
 
 public interface UserService {
@@ -18,9 +21,17 @@ public interface UserService {
 	
 	public User isValidCustomerLogin(User user);
 
-	public Integer getAgeByEmail(String email);
+	public int getAgeByMemberInfo(int accountNo, int memberNo);
 
 	public String getGenderNameByGenderId(int genderId);
+
+	public User findUserByMemberInfo(int accountNo, int memberNo);
+	
+	public List<NutritionStandard> getNutritionStandardByMemberInfo(HttpSession session);
+
+
+
+
 	
 	//public User findLoginUser(User user);
 	

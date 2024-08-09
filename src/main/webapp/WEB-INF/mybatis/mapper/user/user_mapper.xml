@@ -9,6 +9,12 @@
 	<select id="findLoginUser" parameterType="User" resultType="User">
 		SELECT * FROM member WHERE email=#{email} and pw=#{pw}
 	</select>
+	
+	<select id="findUserByMemberInfo" parameterType="map" resultType="User">
+		SELECT *
+		FROM member
+		WHERE account_no = #{accountNo} and member_no = #{memberNo}
+	</select>
 
 	<select id="findUserList" resultType="User">
 		SELECT * FROM member
@@ -27,14 +33,14 @@
 	</update>
 	
 	<insert id="saveUser" parameterType="User">
-		INSERT INTO member
-		VALUES ( member_id_seq.nextval, #{email}, #{pw}, #{name},  #{tel}, #{birth}, #{genderId},  sysdate )
+			INSERT INTO member
+			VALUES ( account_no_seq.nextval, (SELECT NVL(MAX(member_no), 0) + 1 FROM member), #{email}, #{pw}, #{name}, #{nickname}, #{tel}, #{birth}, #{genderId},  SYSDATE )
 	</insert>
 	
-	<select id="getAgeByEmail" parameterType="String" resultType="int">
+	<select id="getAgeByMemberInfo" parameterType="map" resultType="int">
         SELECT CEIL(MONTHS_BETWEEN(SYSDATE, birth) / 12) AS age
         FROM member
-        WHERE email = #{email}
+        WHERE account_no = #{accountNo} and member_no = #{memberNo}
     </select>
     
     <select id="getGenderNameByGenderId" parameterType="int" resultType="String">
@@ -47,6 +53,16 @@
         SELECT COUNT(*)
 		  FROM member
 		 WHERE email = #{email}
+    </select>
+    
+    <select id="getNutritionStandardByMemberInfo" parameterType="Map" resultType="NutritionStandard">
+    	SELECT *
+		FROM nutrition_standard
+		WHERE (SELECT CEIL(MONTHS_BETWEEN(SYSDATE, birth)) 
+				        FROM member
+				        WHERE account_no = #{accountNo} AND member_no = #{memberNo}) 
+		BETWEEN age_min AND age_max
+		AND gender_id = (SELECT gender_id FROM member WHERE account_no = #{accountNo} AND member_no = #{memberNo})
     </select>
 	
 </mapper>					

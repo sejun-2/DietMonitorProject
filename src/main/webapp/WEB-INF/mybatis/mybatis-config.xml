@@ -11,7 +11,8 @@
 							
 	<typeAliases>						
 		<typeAlias type="com.app.dto.user.User" alias="User"/>	
-		<typeAlias type="com.app.dto.user.Gender" alias="Gender"/>			
+		<typeAlias type="com.app.dto.user.Gender" alias="Gender"/>
+		<typeAlias type="com.app.dto.user.NutritionStandard" alias="NutritionStandard"/>		
 	</typeAliases>						
 							
 </configuration>							

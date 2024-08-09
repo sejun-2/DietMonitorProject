@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>							
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>	
 <html>
 <head>
 <meta charset="UTF-8">
@@ -10,9 +12,17 @@
             <div class="top_nav">
                 <div class="inner">
                     <ul class="gnb wrap_s">
-                        <li class="lnb"><a href="/login" class="login">로그인</a></li>
-                        <li class="lnb"><a href="/signup" class="signup">회원가입</a></li>
-                        <li class="lnb"><a href="" class="admin">관리자</a></li>
+	                    <c:choose>
+					        <c:when test="${ not empty accountNo and not empty memberNo }">
+					            <li class="white">Welcome, ${user.nickname}!</li>
+					            <a href="/logout">Logout</a>
+					        </c:when>
+					        <c:otherwise>
+					            <li class="lnb"><a href="/login" class="login">로그인</a></li>
+		                        <li class="lnb"><a href="/signup" class="signup">회원가입</a></li>
+		                        <li class="lnb"><a href="" class="admin">관리자</a></li>
+					        </c:otherwise>
+					    </c:choose>
                     </ul>
                 </div>
             </div>
