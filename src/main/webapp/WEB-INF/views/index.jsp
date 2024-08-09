@@ -46,7 +46,7 @@
                         </a>
                     </div>
                     <div class="box">
-                        <a href="">
+                        <a href="/myIntakeFood">
                             <div class="pic center">
                                 <img src="./images/main/icon/quick_icon3.png" alt="나의 하루 섭취 식품 아이콘">
                             </div>

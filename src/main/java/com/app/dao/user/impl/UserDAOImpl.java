@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.app.dao.user.UserDAO;
 import com.app.dto.user.NutritionStandard;
+import com.app.dto.user.Profile;
 import com.app.dto.user.User;
 
 @Repository
@@ -104,6 +105,16 @@ public class UserDAOImpl implements UserDAO {
 		List<NutritionStandard> nutritionStandard = sqlSessionTemplate.selectList("user_mapper.getNutritionStandardByMemberInfo", memberInfo);
 		
 		return nutritionStandard;
+	}
+
+	@Override
+	public int addProfile(Profile profile) {
+		// TODO Auto-generated method stub
+		System.out.println("DAO");
+		System.out.println(profile);
+		int result = sqlSessionTemplate.insert("user_mapper.addProfile", profile);
+		System.out.println(result);
+		return result;
 	}
 
 	

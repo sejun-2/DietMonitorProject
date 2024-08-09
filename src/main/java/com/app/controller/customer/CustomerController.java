@@ -22,6 +22,7 @@ import com.app.dto.api.ApiResponse;
 import com.app.dto.api.ApiResponseHeader;
 import com.app.dto.user.CustomerDupEmailCheckRequest;
 import com.app.dto.user.NutritionStandard;
+import com.app.dto.user.Profile;
 import com.app.dto.user.User;
 import com.app.dto.user.UserValidError;
 import com.app.service.user.UserService;
@@ -139,7 +140,6 @@ public class CustomerController {
 		session.setAttribute("user", loginUser);
 		SessionManager.setSessionAccount(loginUser.getAccountNo(), loginUser.getMemberNo(), session);
 		
-		
 		List<NutritionStandard> nc = userService.getNutritionStandardByMemberInfo(session);
 		System.out.println(nc);
 
@@ -181,5 +181,36 @@ public class CustomerController {
 
 		return "redirect:/login"; // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
 	}
+	
+	@GetMapping("/myIntakeFood")
+	public String myIntakeFood() {
 
+		return "myIntakeFood";
+	}
+	
+	@PostMapping("/myIntakeFood")
+	public String myIntakeFoodAction() {
+		
+		return "myIntakeFood";
+	}
+	
+	@GetMapping("/manageProfile")
+	public String manageProfile() {
+		return "manageProfile";
+	}
+	
+	@PostMapping("/manageProfile")
+	public String manageProfileAction(Profile profile) {
+			System.out.println("controller");
+			
+			profile.setAccountNo(accountNo);
+			System.out.println(profile);
+			int result = userService.addProfile(profile);
+			System.out.println(result);
+//			(result >0) {
+//				
+//			}
+			
+			return "main";
+	}
 }

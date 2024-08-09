@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.dao.user.UserDAO;
 import com.app.dto.user.NutritionStandard;
+import com.app.dto.user.Profile;
 import com.app.dto.user.User;
 import com.app.service.user.UserService;
 
@@ -108,6 +109,16 @@ public class UserServiceImpl implements UserService {
 	    List<NutritionStandard> nutritionStandard = userDAO.getNutritionStandardByMemberInfo(memberInfo);
 
 	    return nutritionStandard;
+	}
+
+	@Override
+	public int addProfile(Profile profile) {
+		// TODO Auto-generated method stub
+		System.out.println("service");
+		System.out.println(profile);
+		int result = userDAO.addProfile(profile);
+		System.out.println(result);
+		return result;
 	}
 
 	

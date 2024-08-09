@@ -14,8 +14,11 @@
                     <ul class="gnb wrap_s">
 	                    <c:choose>
 					        <c:when test="${ not empty accountNo and not empty memberNo }">
-					            <li class="white">Welcome, ${user.nickname}!</li>
-					            <a href="/logout">Logout</a>
+					            <li class="lnb white mr20">${user.nickname} 님 환영합니다!</li>
+					            <li class="lnb main_profile">
+	                                <img src="./images/header/chipmunk.jpg" alt="">
+		                        </li>
+					            <li class="lnb"><a href="/logout" class="logout">로그아웃</a></li>
 					        </c:when>
 					        <c:otherwise>
 					            <li class="lnb"><a href="/login" class="login">로그인</a></li>
@@ -25,6 +28,35 @@
 					    </c:choose>
                     </ul>
                 </div>
+            </div>
+            <div class="profile">
+                <p class="title">프로필 전환</p>
+                <ul class="box_wrap wrap">
+                    <li class="box">
+                        <a href="">
+                            <img src="./images/header/ocean.jpg" alt="">
+                            <p>누구누구</p>
+                        </a>
+                    </li>
+                    <li class="box">
+                        <a href="">
+                            <img src="./images/header/ocean.jpg" alt="">
+                            <p>누구누구</p>
+                        </a>
+                    </li>
+                    <li class="box">
+                        <a href="">
+                            <img src="./images/header/ocean.jpg" alt="">
+                            <p>누구누구</p>
+                        </a>
+                    </li>
+                    <li class="box">
+                        <a href="">
+                            <img src="./images/header/ocean.jpg" alt="">
+                            <p>누구누구</p>
+                        </a>
+                    </li>
+                </ul>
             </div>
             <div class="nav">
                 <div class="inner">

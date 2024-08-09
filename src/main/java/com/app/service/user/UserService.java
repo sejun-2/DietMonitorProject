@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import com.app.dto.user.NutritionStandard;
+import com.app.dto.user.Profile;
 import com.app.dto.user.User;
 
 public interface UserService {
@@ -28,6 +29,8 @@ public interface UserService {
 	public User findUserByMemberInfo(int accountNo, int memberNo);
 	
 	public List<NutritionStandard> getNutritionStandardByMemberInfo(HttpSession session);
+
+	public int addProfile(Profile profile);
 
 
 
