@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link href="../css/base.css" rel="stylesheet">
-    <link href="../css/commen.css" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
     <link href="../css/board.css" rel="stylesheet">
     <link href="../css/import.css" rel="stylesheet">
     <script type="text/javascript" src="../script/header.js"></script>
-    <script type="text/javascript" src="../script/commen.js"></script>
+    <script type="text/javascript" src="../script/common.js"></script>
 
     <title>foodIngredients</title>
 </head>
@@ -103,7 +103,8 @@
                         class="button white docs-creator"><span>이전 화면으로</span></a>
                 </div>
             </div>
-    
+    		<form id="frm_diet" action="" method="post">
+    		<input type="hidden" name="foodCode" value="${food.foodCode}">
             <div data-skin-food="simple" class="mt20">
                 <ul data-skin-food="head">
                     <li>분류</li>
@@ -111,48 +112,55 @@
                     <li style="width:18%">100g 당 함량</li>
                     <li style="width:20%" data-skin-food="input">
                         <div id="defaultServingSizeForm">
-                            <input type="number" name="foodAmount" id="servingSize" value="100" size="5" title="영양성분입력항목">
-                            <a href="javascript:;" class="button sm black docs-creator"
-                                onclick="javascript:fnObj.fnSearch(1);"><span>적용</span></a>
+                        	<span style="color: white">섭취량입력</span></a>
+                            <input type="number" name="foodAmount" id="servingSize" value="100" size="5" title="영양성분입력항목">                            
                         </div>
                     </li>
                     <li style="width:15%">1일영양섭취기준(%)</li>
                 </ul>
                 
                 <div data-skin-food="list">
-                    <div data-skin-food="row">
-    					<c:forEach var="item" items="${nutrientList}" varStatus="status">
-    						<c:if test="${status.count == 1}">
-    							<em>일반성분</em>
-    						</c:if>                        	
-                        	<c:if test="${status.count == 7}">
-    							<em>기타</em>
-    						</c:if>
-    						<c:if test="${status.count == 8}">
-    							<em>무기질</em>
-    						</c:if>
-    						<c:if test="${status.count == 13}">
-    							<em>비타민</em>
-    						</c:if>
-    						<c:if test="${status.count == 21}">
-    							<em>지방산</em>
-    						</c:if>
-                        	<div data-skin-food="cell">
-	                        	<span></span>
-	                            <span style="width:30%">${item.nutrientName}(${item.nutrientUnit})</span>
-	                            <span style="width:18%" class="nutrient-content"></span>
-	                            <span style="width:20%" class="nutrient-result" data-skin-food="size"></span>
-	                            <span style="width:15%" class="tac">13.20%</span>
-                            </div>
-                    	</c:forEach>
+                    <div data-skin-food="row">                    	
+	    					<c:forEach var="item" items="${nutrientList}" varStatus="status">
+	    						<c:if test="${status.count == 1}">
+	    							<em>일반성분</em>
+	    						</c:if>                        	
+	                        	<c:if test="${status.count == 7}">
+	    							<em>기타</em>
+	    						</c:if>
+	    						<c:if test="${status.count == 8}">
+	    							<em>무기질</em>
+	    						</c:if>
+	    						<c:if test="${status.count == 13}">
+	    							<em>비타민</em>
+	    						</c:if>
+	    						<c:if test="${status.count == 21}">
+	    							<em>지방산</em>
+	    						</c:if>
+	                        	<div data-skin-food="cell">
+		                        	<span></span>
+		                            <span style="width:30%">${item.nutrientName}(${item.nutrientUnit})</span>
+		                            <span style="width:18%" class="nutrient-content"></span>
+		                            <span style="width:20%" class="nutrient-result" data-skin-food="size"></span>
+		                            <input type="hidden" name="nutrient${status.count}">
+		                            <span style="width:15%" class="tac">13.20%</span>
+	                            </div>
+	                    	</c:forEach>
+	                    	
                     </div>
                 </div>
     
                 <div class="area_btn">
                     <a href="javascript:;" onclick="history.back();"
-                        class="button lg black docs-creator"><span>이전화면으로</span></a>
+                        class="button lg black docs-creator" style="margin: 0 20px 30px 20px"><span>이전화면으로</span></a>
+                    <a href="javascript:;" id="submit1"
+                        class="button lg black docs-creator" style="margin: 0 20px 30px 20px"><span>예상식단 추가</span></a>
+                    <a href="javascript:;" id="submit2"
+                        class="button lg black docs-creator" style="margin: 0 20px 30px 20px"><span>금일식단 추가</span></a>
                 </div>
+                
             </div>
+            </form>
         </div>
 
         
@@ -173,6 +181,15 @@
     		nutrientShow();
     	});
     	
+    	$('#submit1').click(function(){    		
+    		$('#frm_diet').attr("action", "/preIntakeFood");
+			$('#frm_diet').submit();
+		});
+    	
+    	$('#submit1').click(function(){    		
+    		$('#frm_diet').attr("action", "/myIntakeFood");
+			$('#frm_diet').submit();
+		});
     });
     
     function nutrientShow(){
@@ -182,72 +199,117 @@
     	$('.nutrient-content').eq(0).text('${food.kcal}');
     	let nutrientContent = '${food.kcal}' * foodAmountPer;
     	$('.nutrient-result').eq(0).text(nutrientContent.toFixed(2));
+    	$('input[name=nutrient1]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(1).text('${food.water}');
     	nutrientContent = '${food.water}' * foodAmountPer;
     	$('.nutrient-result').eq(1).text(nutrientContent.toFixed(2));
+    	$('input[name=nutrient2]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(2).text('${food.protein}');
     	nutrientContent = '${food.protein}' * foodAmountPer;
     	$('.nutrient-result').eq(2).text(nutrientContent.toFixed(2));
+    	$('input[name=nutrient3]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(3).text('${food.fat}');
     	nutrientContent = '${food.fat}' * foodAmountPer;
     	$('.nutrient-result').eq(3).text(nutrientContent.toFixed(2));
+    	$('input[name=nutrient4]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(4).text('${food.carbohydrate}');
     	nutrientContent = '${food.carbohydrate}' * foodAmountPer;
     	$('.nutrient-result').eq(4).text(nutrientContent.toFixed(2));
+    	$('input[name=nutrient5]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(5).text('${food.sugars}');
     	nutrientContent = '${food.sugars}' * foodAmountPer;
     	$('.nutrient-result').eq(5).text(nutrientContent.toFixed(2));
+    	$('input[name=nutrient6]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(6).text('${food.dietary_fiber}');
     	nutrientContent = '${food.dietary_fiber}' * foodAmountPer;
     	$('.nutrient-result').eq(6).text(nutrientContent.toFixed(2));
+    	$('input[name=nutrient7]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(7).text('${food.calcium}');
     	nutrientContent = '${food.calcium}' * foodAmountPer;
     	$('.nutrient-result').eq(7).text(nutrientContent.toFixed(2));
+    	$('input[name=nutrient8]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(8).text('${food.ironContent}');
     	nutrientContent = '${food.ironContent}' * foodAmountPer;
     	$('.nutrient-result').eq(8).text(nutrientContent.toFixed(2));
-    	$('.nutrient-content').eq(9).text('${food.ironContent}');
-    	nutrientContent = '${food.ironContent}' * foodAmountPer;
+    	$('input[name=nutrient9]').val(nutrientContent.toFixed(2));
+    	
+    	$('.nutrient-content').eq(9).text('${food.phosphorus}');
+    	nutrientContent = '${food.phosphorus}' * foodAmountPer;
     	$('.nutrient-result').eq(9).text(nutrientContent.toFixed(2));
+    	$('input[name=nutrient10]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(10).text('${food.potassium}');
     	nutrientContent = '${food.potassium}' * foodAmountPer;
     	$('.nutrient-result').eq(10).text(nutrientContent.toFixed(2));
+    	$('input[name=nutrient11]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(11).text('${food.sodium}');
     	nutrientContent = '${food.sodium}' * foodAmountPer;
     	$('.nutrient-result').eq(11).text(nutrientContent.toFixed(2));
+    	$('input[name=nutrient12]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(12).text('${food.vitaminA}');
     	nutrientContent = '${food.vitaminA}' * foodAmountPer;
     	$('.nutrient-result').eq(12).text(nutrientContent.toFixed(2));
+    	$('input[name=nutrient13]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(13).text('${food.retinol}');
     	nutrientContent = '${food.retinol}' * foodAmountPer;
     	$('.nutrient-result').eq(13).text(nutrientContent.toFixed(2));
+    	$('input[name=nutrient14]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(14).text('${food.betaCarotene}');
     	nutrientContent = '${food.betaCarotene}' * foodAmountPer;
     	$('.nutrient-result').eq(14).text(nutrientContent.toFixed(2));
+    	$('input[name=nutrient15]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(15).text('${food.thiamine}');
     	nutrientContent = '${food.thiamine}' * foodAmountPer;
     	$('.nutrient-result').eq(15).text(nutrientContent.toFixed(3));
+    	$('input[name=nutrient16]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(16).text('${food.riboflavin}');
     	nutrientContent = '${food.riboflavin}' * foodAmountPer;
     	$('.nutrient-result').eq(16).text(nutrientContent.toFixed(3));
+    	$('input[name=nutrient17]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(17).text('${food.niacin}');
     	nutrientContent = '${food.niacin}' * foodAmountPer;
     	$('.nutrient-result').eq(17).text(nutrientContent.toFixed(2));
+    	$('input[name=nutrient18]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(18).text('${food.vitaminC}');
     	nutrientContent = '${food.vitaminC}' * foodAmountPer;
     	$('.nutrient-result').eq(18).text(nutrientContent.toFixed(2));
+    	$('input[name=nutrient19]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(19).text('${food.vitaminD}');
     	nutrientContent = '${food.vitaminD}' * foodAmountPer;
     	$('.nutrient-result').eq(19).text(nutrientContent.toFixed(2));
+    	$('input[name=nutrient20]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(20).text('${food.cholesterol}');
     	nutrientContent = '${food.cholesterol}' * foodAmountPer;
     	$('.nutrient-result').eq(20).text(nutrientContent.toFixed(2));
+    	$('input[name=nutrient21]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(21).text('${food.saturatedFat}');
     	nutrientContent = '${food.saturatedFat}' * foodAmountPer;
     	$('.nutrient-result').eq(21).text(nutrientContent.toFixed(2));
+    	$('input[name=nutrient22]').val(nutrientContent.toFixed(2));
+    	
     	$('.nutrient-content').eq(22).text('${food.transFat}');
     	nutrientContent = '${food.transFat}' * foodAmountPer;
     	$('.nutrient-result').eq(22).text(nutrientContent.toFixed(2));
+    	$('input[name=nutrient23]').val(nutrientContent.toFixed(2));
     	
     }
     

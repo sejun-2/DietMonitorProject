@@ -13,10 +13,10 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link href="../css/base.css" rel="stylesheet">
-    <link href="../css/commen.css" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
     <link href="../css/board.css" rel="stylesheet">
     <script type="text/javascript" src="../script/header.js"></script>
-    <script type="text/javascript" src="../script/commen.js"></script>
+    <script type="text/javascript" src="../script/common.js"></script>
 	
     <title>foodIngredients</title>
 </head>
@@ -79,10 +79,6 @@
                     <ul class="tab_info">
                         <form action="">
                             <div class="icheck_sm_wrap">
-                                <div class="icheck_sm mar">
-                                    <input type="checkbox" name="mainCategory_Allcheck" id="big_Allcheck" value="${dataSort.dataSortName}">
-                                    <label for="big_Allcheck">${dataSort.dataSortName} 전체</label>
-                                </div>
                                 <c:forEach var="mainCategory" items="${mainCategoryList}">
 	                                <c:if test="${mainCategory.dataSortId == dataSort.dataSortId}">
 		                                <div class="icheck_sm mar">
