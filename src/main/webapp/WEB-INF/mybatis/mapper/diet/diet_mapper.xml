@@ -11,4 +11,14 @@
 		WHERE account_no = #{accountNo} AND member_no = #{memberNo}
 	</select>
 	
+	<insert id="addFoodToDailyDiet" parameterType="Diet">
+		INSERT INTO daily_diet 
+		VALUES( log_no_seq.nextval, #{accountNo}, #{memberNo}, SYSDATE, #{foodCode},
+				#{foodIntake}, #{kcal}, #{water}, #{protein}, #{fat}, #{batch}, #{carbohydrate}
+				, #{sugars}, #{dietaryFiber}, #{calcium}, #{ironContent}, #{phosphorus}
+				, #{potassium}, #{sodium}, #{vitaminA}, #{retinol}, #{betaCarotene}, #{thiamine}
+				, #{riboflavin}, #{niacin}, #{vitaminC}, #{vitaminD}, #{cholesterol}
+				, #{saturatedFat}, #{transFat}, 1 )
+	</insert>
+	
 </mapper>

@@ -113,7 +113,7 @@
                     <li style="width:20%" data-skin-food="input">
                         <div id="defaultServingSizeForm">
                         	<span style="color: white">섭취량입력</span></a>
-                            <input type="number" name="foodAmount" id="servingSize" value="100" size="5" title="영양성분입력항목">                            
+                            <input type="number" step="0.1" name="foodIntake" id="servingSize" value="100" size="5" title="영양성분입력항목">                            
                         </div>
                     </li>
                     <li style="width:15%">1일영양섭취기준(%)</li>
@@ -177,7 +177,7 @@
     	
     	nutrientShow();
     	
-    	$('input[name=foodAmount]').change(function(){
+    	$('input[name=foodIntake]').change(function(){
     		nutrientShow();
     	});
     	
@@ -186,7 +186,7 @@
 			$('#frm_diet').submit();
 		});
     	
-    	$('#submit1').click(function(){    		
+    	$('#submit2').click(function(){    		
     		$('#frm_diet').attr("action", "/myIntakeFood");
 			$('#frm_diet').submit();
 		});
@@ -194,7 +194,7 @@
     
     function nutrientShow(){
     	
-    	let foodAmountPer = parseFloat($('input[name=foodAmount]').val() / 100);
+    	let foodAmountPer = parseFloat($('input[name=foodIntake]').val() / 100);
     	
     	$('.nutrient-content').eq(0).text('${food.kcal}');
     	let nutrientContent = '${food.kcal}' * foodAmountPer;
