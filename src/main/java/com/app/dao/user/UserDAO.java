@@ -1,7 +1,11 @@
 package com.app.dao.user;
 
-import java.util.List; 
+import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
+import com.app.dto.user.NutritionStandard;
 import com.app.dto.user.User;
 
 public interface UserDAO {
@@ -18,9 +22,15 @@ public interface UserDAO {
 	
 	public User findLoginUser(User user);
 
-	public int getAgeByEmail(String email);
+	public int getAgeByMemberInfo(int accountNo, int memberNo);
 
 	public String getGenderNameByGenderId(int genderId);
+
+	public User findUserByMemberInfo(int accountNo, int memberNo);
+
+	public List<NutritionStandard> getNutritionStandardByMemberInfo(Map<String, String> memberInfo);
+
+	
 
 	
 

@@ -1,12 +1,12 @@
 package com.app.interceptor;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest; 
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.app.util.LoginManager;
+import com.app.util.SessionManager;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,7 +16,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		if(LoginManager.isLogin(request) == false) {
+		if(SessionManager.isLoginedAccount(request) == false) {
 			response.sendRedirect("/login");
 			//return "redirect:/customer/login";
 			return false; //인터셉터 cut.. 더이상 진행 X
