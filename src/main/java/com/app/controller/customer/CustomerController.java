@@ -1,6 +1,6 @@
 package com.app.controller.customer;
 
-import java.util.List;
+import java.util.List;  
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -20,11 +20,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.app.dto.api.ApiResponse;
 import com.app.dto.api.ApiResponseHeader;
-import com.app.dto.customer.CustomerDupEmailCheckRequest;
+import com.app.dto.user.CustomerDupEmailCheckRequest;
+import com.app.dto.user.NutritionStandard;
 import com.app.dto.user.User;
 import com.app.dto.user.UserValidError;
 import com.app.service.user.UserService;
-import com.app.util.LoginManager;
+import com.app.util.SessionManager;
 import com.app.validator.UserValidator;
 
 import lombok.extern.slf4j.Slf4j;
@@ -89,14 +90,6 @@ public class CustomerController {
 		return "signUp";
 	}
 
-	@GetMapping("/userInfo")
-	public String getUserInfo(@RequestParam("email") String email, Model model) {
-		Integer age = userService.getAgeByEmail(email);
-		model.addAttribute("email", email);
-		model.addAttribute("age", age);
-		return "myInfo";
-	}
-
 	@ResponseBody
 	@RequestMapping("/customer/isDuplicatedEmail")
 	public ApiResponse<String> isDuplicatedEmail(@Valid @RequestBody CustomerDupEmailCheckRequest customerDupEmailCheckRequest) {
@@ -131,47 +124,46 @@ public class CustomerController {
 
 	@GetMapping("/login")
 	public String login() {
-
 		return "login"; 
 	}
 
 	@PostMapping("/login")
 	public String loginAction(User user, HttpSession session) {
-		//id pw 
-
-		//id pw 동일한값이 DB 있는가?
 		User loginUser = userService.isValidCustomerLogin(user);
-
 		System.out.println(loginUser);
+		
 		if(loginUser == null) {
 			System.out.println("null : " + loginUser);
 			return "login";
 		}
+		session.setAttribute("user", loginUser);
+		SessionManager.setSessionAccount(loginUser.getAccountNo(), loginUser.getMemberNo(), session);
+		
+		
+		List<NutritionStandard> nc = userService.getNutritionStandardByMemberInfo(session);
+		System.out.println(nc);
 
-		//Session로그인 처리
-		//session.setAttribute("loginUserId", loginUser.getId());	//
-		LoginManager.setSessionLogin(loginUser.getEmail(), session);
-
-		return "redirect:/myInfo"; // 마이페이지로 리다이렉트
+		return "redirect:/myInfo"; 
 	}
 
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		//session.invalidate();
-		LoginManager.logout(session);
+		SessionManager.logout(session);
 
 		return "redirect:/main";
 	}
 
 	@GetMapping("/myInfo")
-	public String mypage(HttpSession session, Model model) {
-		if (LoginManager.isLogin(session)) {
+	public String myInfo(HttpSession session, Model model) {
+		if (SessionManager.isLoginedAccount(session)) {
 			// 세션에서 로그인된 사용자의 이메일을 조회
-			String email = LoginManager.getLoginUserEmail(session);
+			int accountNo = (int)session.getAttribute("accountNo");
+			int memberNo = (int)session.getAttribute("memberNo");
 			// 사용자 정보를 조회
-			User user = userService.findUserByEmail(email);
+			User user = userService.findUserByMemberInfo(accountNo, memberNo);
 			// 사용자의 나이 계산
-			int age = userService.getAgeByEmail(email);
+			int age = userService.getAgeByMemberInfo(accountNo, memberNo);
 			System.out.println(age);
 			int genderId = user.getGenderId();
 			
@@ -181,6 +173,8 @@ public class CustomerController {
 			model.addAttribute("user", user);
 			model.addAttribute("age", age);
 			model.addAttribute("genderName", genderName);
+			model.addAttribute("accountNo", accountNo);
+			model.addAttribute("memberNo", memberNo);
 
 			return "myInfo"; // 마이페이지 뷰로 이동
 		}

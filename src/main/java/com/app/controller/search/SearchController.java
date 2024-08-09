@@ -2,6 +2,8 @@ package com.app.controller.search;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +19,9 @@ import com.app.dto.search.Page;
 import com.app.dto.search.SearchCategory;
 import com.app.dto.search.SearchInfo;
 import com.app.dto.search.SearchResult;
+import com.app.dto.user.NutritionStandard;
 import com.app.service.search.SearchService;
+import com.app.service.user.UserService;
 import com.app.util.page.PageManager;
 
 @Controller
@@ -25,6 +29,9 @@ public class SearchController {
 	
 	@Autowired
 	SearchService searchService;
+	
+	@Autowired
+	UserService userService;	
 	
 	@GetMapping("/foodSearchList")
 	public String search(Model model) {
@@ -55,13 +62,16 @@ public class SearchController {
 	}
 	
 	@GetMapping("/foodDetail/{foodCode}")
-	public String foodDetail(@PathVariable String foodCode, Model model) {
+	public String foodDetail(@PathVariable String foodCode, Model model, HttpSession session) {
 		
 		Food food = searchService.findFoodByFoodCode(foodCode);
 		model.addAttribute("food", food);
 		
 		List<Nutrient> nutrientList = searchService.findNutrientList();
 		model.addAttribute("nutrientList", nutrientList);
+		
+		List<NutritionStandard> nc = userService.getNutritionStandardByMemberInfo(session);
+		model.addAttribute("nc", nc);
 		
 		return "search/foodRegisterDetail";
 	}
