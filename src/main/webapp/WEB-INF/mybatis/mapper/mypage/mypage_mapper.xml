@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="mypage_mapper">
+	
+	<select id="findTotalDietBySearchCondition" parameterType="TotalDietSearchCondition" resultType="TotalDiet">
+		SELECT * FROM total_diet
+		<where>
+			<if test="accountNo != null and accountNo != '' ">
+				account_no = #{accountNo}				
+			</if>
+			<if test="memberNo != null and memberNo != '' ">
+				AND member_no = #{memberNo}				
+			</if>		
+				AND save_date BETWEEN SYSDATE-7 and SYSDATE
+		</where>				
+	</select>
+	
+	<select id="findTotalDietByAvg" parameterType="TotalDietSearchCondition" resultType="TotalDiet">
+		select 
+        AVG(kcal) kcal,
+		AVG(water) water,
+		AVG(protein) protein,
+		AVG(fat) fat,
+		AVG(batch) batch,
+		AVG(carbohydrate) carbohydrate,
+		AVG(sugars) sugars,
+		AVG(dietary_fiber) dietary_fiber,
+		AVG(calcium) calcium,
+		AVG(iron_content) iron_content,
+		AVG(phosphorus) phosphorus,
+		AVG(potassium) potassium,
+		AVG(sodium) sodium,
+		AVG(vitamin_a) vitamin_a,
+		AVG(retinol) retinol,
+		AVG(beta_carotene) beta_carotene,
+		AVG(thiamine) thiamine,
+		AVG(riboflavin) riboflavin,
+		AVG(niacin) niacin,
+		AVG(vitamin_c) vitamin_c,
+		AVG(vitamin_d) vitamin_d,
+		AVG(cholesterol) cholesterol,
+		AVG(saturated_fat) saturated_fat,
+		AVG(trans_fat) trans_fat 
+        from
+        (SELECT 
+		SUM(kcal) kcal,
+		SUM(water) water,
+		SUM(protein) protein,
+		SUM(fat) fat,
+		SUM(batch) batch,
+		SUM(carbohydrate) carbohydrate,
+		SUM(sugars) sugars,
+		SUM(dietary_fiber) dietary_fiber,
+		SUM(calcium) calcium,
+		SUM(iron_content) iron_content,
+		SUM(phosphorus) phosphorus,
+		SUM(potassium) potassium,
+		SUM(sodium) sodium,
+		SUM(vitamin_a) vitamin_a,
+		SUM(retinol) retinol,
+		SUM(beta_carotene) beta_carotene,
+		SUM(thiamine) thiamine,
+		SUM(riboflavin) riboflavin,
+		SUM(niacin) niacin,
+		SUM(vitamin_c) vitamin_c,
+		SUM(vitamin_d) vitamin_d,
+		SUM(cholesterol) cholesterol,
+		SUM(saturated_fat) saturated_fat,
+		SUM(trans_fat) trans_fat
+		FROM total_diet
+		<where>
+			<if test="accountNo != null and accountNo != '' ">
+				account_no = #{accountNo}				
+			</if>
+			<if test="memberNo != null and memberNo != '' ">
+				AND member_no = #{memberNo}				
+			</if>		
+				AND save_date BETWEEN SYSDATE-7 and SYSDATE
+				GROUP BY save_date)							
+		</where>				
+	</select>
+	
+	<!-- <select id="findTotalDietBySum" parameterType="TotalDietSearchCondition" resultType="TotalDiet">
+		SELECT 
+		SUM(kcal) kcal,
+		SUM(water) water,
+		SUM(protein) protein,
+		SUM(fat) fat,
+		SUM(batch) batch,
+		SUM(carbohydrate) carbohydrate,
+		SUM(sugars) sugars,
+		SUM(dietary_fiber) dietary_fiber,
+		SUM(calcium) calcium,
+		SUM(iron_content) iron_content,
+		SUM(phosphorus) phosphorus,
+		SUM(potassium) potassium,
+		SUM(sodium) sodium,
+		SUM(vitamin_a) vitamin_a,
+		SUM(retinol) retinol,
+		SUM(beta_carotene) beta_carotene,
+		SUM(thiamine) thiamine,
+		SUM(riboflavin) riboflavin,
+		SUM(niacin) niacin,
+		SUM(vitamin_c) vitamin_c,
+		SUM(vitamin_d) vitamin_d,
+		SUM(cholesterol) cholesterol,
+		SUM(saturated_fat) saturated_fat,
+		SUM(trans_fat) trans_fat
+		FROM total_diet
+		<where>
+			<if test="accountNo != null and accountNo != '' ">
+				account_no = #{accountNo}				
+			</if>
+			<if test="memberNo != null and memberNo != '' ">
+				AND member_no = #{memberNo}				
+			</if>		
+				GROUP BY carbohydrate;								
+		</where>				
+	</select> -->
+	
+	<!-- <select id="findTotalDietBysearchCondition" parameterType="TotalDietSearchCondition" resultType="TotalDiet">
+		SELECT * FROM total_diet
+		<where>
+			<if test="accountNo != null and accountNo != '' ">
+				account_no = #{accountNo}				
+			</if>
+			<if test="memberNo != null and memberNo != '' ">
+				AND member_no = #{memberNo}				
+			</if>		
+			<if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
+				AND save_date BETWEEN TO_DATE(#{startDate}, 'YYYY-MM-DD') AND TO_DATE(#{endDate}, 'YYYY-MM-DD')								
+			</if>
+				GROUP BY save_date
+		</where>				
+	</select> -->
+	
+	
+	
+	
+	
+</mapper>
