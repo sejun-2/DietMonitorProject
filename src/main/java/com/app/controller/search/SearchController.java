@@ -72,8 +72,6 @@ public class SearchController {
 		
 		List<NutritionStandard> nc = userService.getNutritionStandardByMemberInfo(session);
 		model.addAttribute("nc", nc);
-		System.out.println(nc);
-		
 		
 		return "search/foodRegisterDetail";
 	}

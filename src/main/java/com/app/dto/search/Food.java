@@ -30,7 +30,7 @@ public class Food {
     double batch;
     double carbohydrate;
     double sugars;
-    double dietary_fiber;
+    double dietaryFiber;
     double calcium;
     double ironContent;
     double phosphorus;
