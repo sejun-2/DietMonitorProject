@@ -1,6 +1,7 @@
 package com.app.service.user;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,7 +15,7 @@ public interface UserService {
 	
 	public User findUserByEmail(String email);
 	
-	public int modifyUser(User user);
+	public int modifyUser(int accountNo, int memberNo);
 	
 	public int saveUser(User user);
 	
@@ -30,7 +31,14 @@ public interface UserService {
 	
 	public List<NutritionStandard> getNutritionStandardByMemberInfo(HttpSession session);
 
-	public int addProfile(Profile profile);
+	public int addProfile(User user);
+
+	public int getMemberCount(User user);
+
+	public List<User> findUserListByAccountNo(int accountNo);
+
+	public int removeProfile(int accountNo, int memberNo);
+
 
 
 

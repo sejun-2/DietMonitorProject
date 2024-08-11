@@ -23,7 +23,7 @@
 <body>
 	<header id="header">
         <div class="header_inner header_sub">
-            <jsp:include page="./header.jsp" />
+            <%-- <jsp:include page="./header.jsp" /> --%>
         </div>
     </header>
 
@@ -167,7 +167,7 @@
 
     </div>
 
-    <jsp:include page="./footer.jsp" />
+    <%-- <jsp:include page="./footer.jsp" /> --%>
     
     
     

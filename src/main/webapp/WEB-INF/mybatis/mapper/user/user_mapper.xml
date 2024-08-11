@@ -15,6 +15,12 @@
 		FROM member
 		WHERE account_no = #{accountNo} and member_no = #{memberNo}
 	</select>
+	
+	<select id="findUserListByAccountNo" parameterType="int" resultType="User">
+		SELECT *
+		FROM member
+		WHERE account_no = #{accountNo}
+	</select>
 
 	<select id="findUserList" resultType="User">
 		SELECT * FROM member
@@ -25,22 +31,32 @@
 		WHERE email = #{email}
 	</select>
 	
-	<update id="modifyUser" parameterType="User">
+	<update id="modifyUser" parameterType="Map">
 		UPDATE member
 		SET pw = #{pw},
 			name = #{name},
+			nickname = #{nickname},
+			tel = #{tel},
+			birth = #{birth},
+			genderId = #{genderId}
 		WHERE email = #{email}
 	</update>
 	
 	<insert id="saveUser" parameterType="User">
-			INSERT INTO member
-			VALUES ( account_no_seq.nextval, 1, #{email}, #{pw}, #{name}, #{nickname}, #{tel}, #{birth}, #{genderId},  SYSDATE )
+		INSERT INTO member
+		VALUES ( account_no_seq.nextval, 1, #{email}, #{pw}, #{name}, #{nickname}, #{tel}, #{birth}, #{genderId},  SYSDATE )
 	</insert>
 	
-	<insert id="addProfile" parameterType="Profile">
-					INSERT INTO member
-					VALUES ( #{accountNo}, (SELECT NVL(MAX(member_no), 0) + 1 FROM member), NULL, NULL, #{nickname}, NULL, #{birth}, #{genderId},  NULL )
+	<insert id="addProfile" parameterType="User">
+		INSERT INTO member
+		VALUES ( #{accountNo}, (SELECT NVL(MAX(member_no), 0) + 1 FROM member), NULL, NULL, NUll, #{nickname}, NULL, #{birth}, #{genderId},  NULL )
 	</insert>
+	
+	<select id="getMemberCount" resultType="int">
+        SELECT count(*) 
+		FROM member
+		WHERE account_no = #{accountNo}
+    </select>
 	
 	<select id="getAgeByMemberInfo" parameterType="map" resultType="int">
         SELECT CEIL(MONTHS_BETWEEN(SYSDATE, birth) / 12) AS age
@@ -69,6 +85,11 @@
 		BETWEEN age_min AND age_max
 		AND gender_id = (SELECT gender_id FROM member WHERE account_no = #{accountNo} AND member_no = #{memberNo})
     </select>
+    
+    <delete id="removeProfile" parameterType="map">
+    	DELETE FROM member
+    	WHERE account_no = #{accountNo} AND member_no = #{memberNo}
+    </delete>
 	
 </mapper>					
 

@@ -41,8 +41,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int modifyUser(User user) {
-		int result = userDAO.modifyUser(user);
+	public int modifyUser(int accountNo, int memberNo) {
+		int result = userDAO.modifyUser(accountNo, memberNo);
 		
 		return result;
 	}
@@ -112,11 +112,36 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int addProfile(Profile profile) {
+	public int addProfile(User user) {
 		// TODO Auto-generated method stub
-		System.out.println("service");
-		System.out.println(profile);
-		int result = userDAO.addProfile(profile);
+		int result = userDAO.addProfile(user);
+		return result;
+	}
+
+	@Override
+	public int getMemberCount(User user) {
+		// TODO Auto-generated method stub
+		int result = userDAO.getMemberCount(user);
+		return result;
+	}
+
+	@Override
+	public List<User> findUserListByAccountNo(int accountNo) {
+		// TODO Auto-generated method stub
+		List<User> user = userDAO.findUserListByAccountNo(accountNo);
+		
+		return user;
+	}
+
+	@Override
+	public int removeProfile(int accountNo, int memberNo) {
+		// TODO Auto-generated method stub
+		if (memberNo == 1) {
+	        System.out.println("주인 계정임.");
+	        return 0;
+	    }
+		
+		int result = userDAO.removeProfile(accountNo, memberNo);
 		System.out.println(result);
 		return result;
 	}

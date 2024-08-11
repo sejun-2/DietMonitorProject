@@ -14,6 +14,7 @@
 #header{background: url(../images/main/main_bg.svg); background-position: center;background-size: cover;}
 #header .top_nav{border-bottom: 1px solid white;}
 #header .top_nav.active{background: #31343D;}
+#header .top_nav.active li{color: white;}
 #header .top_nav.active a{color: white;}
 #header .top_nav .gnb{justify-content: flex-end; padding: 10px 0;}
 #header .top_nav .gnb a{font-size: 14px;}
@@ -22,12 +23,12 @@
 #header .top_nav .gnb .lnb a.logout::before{content: "|"; margin: 20px; color: #808080;}
 #header .top_nav .gnb .lnb.main_profile{display: flex; cursor: pointer;}
 #header .top_nav .gnb .lnb.main_profile>img{width: 35px; height: 35px; border-radius: 5px; border: 2px solid #0F64BB;}
-#header .profile{background: #31343D; padding: 20px; position: absolute; right: 120px; border-radius: 10px;}
+#header .profile{background: #31343D; padding: 20px; position: absolute; right: 120px; border-radius: 10px;z-index:100;}
 #header .profile .title{color: white; font-size: 16px; margin-bottom: 20px;}
 #header .profile .box{margin-right: 20px;}
 #header .profile .box:last-child{margin-right: 0;}
-#header .profile .box>a>img{width: 50px; height: 50px; border-radius: 5px;}
-#header .profile .box>a>p{font-size: 13px; color: white; margin-top: 5px;}
+#header .profile .box img{width: 50px; height: 50px; border-radius: 5px;}
+#header .profile .box p{font-size: 13px; color: white; margin-top: 5px; text-align:center;}
 #header .nav{padding: 30px 0;}
 #header .nav.active{box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.089);}
 #header .nav .lnb>a{padding: 20px 0; text-align: center;}

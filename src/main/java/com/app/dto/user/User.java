@@ -14,6 +14,7 @@ public class User {
 	String tel;
 	String birth;
 	int genderId;
-	
+	int age;
+	String genderName;
 }
 

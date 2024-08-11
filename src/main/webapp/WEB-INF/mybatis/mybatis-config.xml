@@ -13,11 +13,11 @@
 		<typeAlias type="com.app.dto.user.User" alias="User"/>	
 		<typeAlias type="com.app.dto.user.Gender" alias="Gender"/>
 		<typeAlias type="com.app.dto.user.NutritionStandard" alias="NutritionStandard"/>		
-		<typeAlias type="com.app.dto.search.SearchCategory" alias="SearchCategory"/>
+		<!-- <typeAlias type="com.app.dto.search.SearchCategory" alias="SearchCategory"/>
 		<typeAlias type="com.app.dto.search.Page" alias="Page"/>
 		<typeAlias type="com.app.dto.search.SearchInfo" alias="SearchInfo"/>
 		<typeAlias type="com.app.dto.search.Food" alias="Food"/>
-		<typeAlias type="com.app.dto.search.Nutrient" alias="Nutrient"/>	
+		<typeAlias type="com.app.dto.search.Nutrient" alias="Nutrient"/> -->	
 		<typeAlias type="com.app.dto.user.Profile" alias="Profile"/>	
 	</typeAliases>						
 							
