@@ -1,8 +1,5 @@
 package com.app.util;
 
-import java.util.Arrays;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -42,18 +39,18 @@ public class SessionManager {
 		return isLoginedAccount(request.getSession());
 	}
 	
-	public static String getAccountNo(HttpSession session) {
+	public static int getAccountNo(HttpSession session) {
 		if(session != null) {
-			return (String)session.getAttribute(SESSION_ACCOUNT_NO);
+			return (int) session.getAttribute(SESSION_ACCOUNT_NO);
 		}
-		return null;
+		return 0;
 	}
 	
-	public static String getMemberNo(HttpSession session) {
+	public static int getMemberNo(HttpSession session) {
 		if(session != null) {
-			return (String)session.getAttribute(SESSION_MEMBER_NO);
+			return (int) session.getAttribute(SESSION_MEMBER_NO);
 		}
-		return null;
+		return 0;
 	}
 	
 	public static void logout(HttpSession session) {

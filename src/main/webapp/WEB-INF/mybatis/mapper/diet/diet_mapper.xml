@@ -11,7 +11,12 @@
 		WHERE account_no = #{accountNo} AND member_no = #{memberNo}
 	</select>
 	
-	<insert id="addFoodToDailyDiet" parameterType="Diet">
+	<select id="findDailyDiet" parameterType="User" resultType="Diet">
+		SELECT * FROM daily_diet
+		WHERE account_no = #{accountNo} AND member_no = #{memberNo}
+	</select>
+	
+	<insert id="addDailyDiet" parameterType="Diet">
 		INSERT INTO daily_diet 
 		VALUES( log_no_seq.nextval, #{accountNo}, #{memberNo}, SYSDATE, #{foodCode},
 				#{foodIntake}, #{kcal}, #{water}, #{protein}, #{fat}, #{batch}, #{carbohydrate}
@@ -20,5 +25,15 @@
 				, #{riboflavin}, #{niacin}, #{vitaminC}, #{vitaminD}, #{cholesterol}
 				, #{saturatedFat}, #{transFat}, 1 )
 	</insert>
+	
+	<select id="findFoodListByMemberInfo" parameterType="User" resultType="Diet">
+		SELECT food.*
+		FROM (SELECT * FROM daily_diet diet 
+			  WHERE account_no = #{accountNo} AND member_no = #{memberNo}) diet,
+			 food_union_table food
+		WHERE diet.food_code = food.food_code
+	</select>
+	
+	
 	
 </mapper>

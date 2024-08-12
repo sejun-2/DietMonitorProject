@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.app.dto.api.ApiResponse;
@@ -158,8 +157,8 @@ public class CustomerController {
 	public String myInfo(HttpSession session, Model model) {
 		if (SessionManager.isLoginedAccount(session)) {
 			// 세션에서 로그인된 사용자의 이메일을 조회
-			int accountNo = (int)session.getAttribute("accountNo");
-			int memberNo = (int)session.getAttribute("memberNo");
+			int accountNo = SessionManager.getAccountNo(session);
+			int memberNo = SessionManager.getMemberNo(session);
 			// 사용자 정보를 조회
 			User user = userService.findUserByMemberInfo(accountNo, memberNo);
 			// 사용자의 나이 계산

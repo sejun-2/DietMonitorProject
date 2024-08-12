@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="ko">
 <head>
 	<meta charset="UTF-8">
@@ -46,7 +47,6 @@
     </section>
 
 
-
     <section class="table_menu">
         <div class="inner">
             <div class="wrap">
@@ -81,9 +81,11 @@
                         <th scope="col">하루 섭취<br>식품 등록</th>
                     </tr>
                 </thead>
+                
                 <tbody>
+                	<c:forEach var="item" items="${dailyDiet}" varStatus="status">
                     <tr onclick="">
-                        <td>1</td>
+                        <td>${status.count}</td>
                         <td>햄버거</td>
                         <td>빵 및 과자류</td>
                         <td>해당없음</td>
@@ -164,7 +166,7 @@
                             </div>
                         </td>
                     </tr>
-
+					</c:forEach>
                     <tr onclick="">
                         <td>2</td>
                         <td>싸이버거</td>

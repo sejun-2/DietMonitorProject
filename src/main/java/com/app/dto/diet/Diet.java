@@ -10,6 +10,9 @@ public class Diet {
 	int memberNo;
 	String saveDate;
 	String foodCode;
+	String foodName;
+	String mainCategoryName;
+	String midCategoryName;
 	double foodIntake;
 	double kcal;
     double water;
