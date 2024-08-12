@@ -40,16 +40,20 @@ public class SessionManager {
 	}
 	
 	public static int getAccountNo(HttpSession session) {
+	public static int getAccountNo(HttpSession session) {
 		if(session != null) {
 			return (int) session.getAttribute(SESSION_ACCOUNT_NO);
 		}
 		return 0;
+		return 0;
 	}
 	
+	public static int getMemberNo(HttpSession session) {
 	public static int getMemberNo(HttpSession session) {
 		if(session != null) {
 			return (int) session.getAttribute(SESSION_MEMBER_NO);
 		}
+		return 0;
 		return 0;
 	}
 	

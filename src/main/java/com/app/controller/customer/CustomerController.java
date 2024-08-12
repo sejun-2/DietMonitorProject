@@ -1,7 +1,12 @@
 package com.app.controller.customer;
 
-import java.util.List;  
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -21,6 +26,7 @@ import com.app.dto.api.ApiResponse;
 import com.app.dto.api.ApiResponseHeader;
 import com.app.dto.user.CustomerDupEmailCheckRequest;
 import com.app.dto.user.NutritionStandard;
+import com.app.dto.user.Profile;
 import com.app.dto.user.User;
 import com.app.dto.user.UserValidError;
 import com.app.service.user.UserService;
@@ -123,11 +129,13 @@ public class CustomerController {
 
 	@GetMapping("/login")
 	public String login() {
+		
 		return "login"; 
 	}
 
 	@PostMapping("/login")
-	public String loginAction(User user, HttpSession session) {
+	public String loginAction(User user, HttpSession session, Model model) {
+		
 		User loginUser = userService.isValidCustomerLogin(user);
 		System.out.println(loginUser);
 		
@@ -138,9 +146,26 @@ public class CustomerController {
 		session.setAttribute("user", loginUser);
 		SessionManager.setSessionAccount(loginUser.getAccountNo(), loginUser.getMemberNo(), session);
 		
-		
 		List<NutritionStandard> nc = userService.getNutritionStandardByMemberInfo(session);
 		System.out.println(nc);
+		
+		int accountNo = (int)session.getAttribute("accountNo");
+	    int memberNo = (int)session.getAttribute("memberNo");
+
+	    user.setAccountNo(accountNo);
+	    user.setMemberNo(memberNo);
+
+	    List<User> profiles = userService.findUserListByAccountNo(accountNo);
+
+	    for (User profile : profiles) {
+	        int age = userService.getAgeByMemberInfo(profile.getAccountNo(), profile.getMemberNo());
+	        String genderName = userService.getGenderNameByGenderId(profile.getGenderId());
+	        profile.setAge(age);
+	        profile.setGenderName(genderName);
+	    }
+
+	    session.setAttribute("profiles", profiles);
+	    model.addAttribute("profiles", profiles);
 
 		return "redirect:/myInfo"; 
 	}

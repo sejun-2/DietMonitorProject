@@ -97,61 +97,62 @@
                         class="button white docs-creator"><span>이전 화면으로</span></a>
                 </div>
             </div>
-    		<form id="frm_diet" action="" method="POST">
-	    		<input type="hidden" name="foodCode" value="${food.foodCode}">
-	            <div data-skin-food="simple" class="mt20">
-	                <ul data-skin-food="head">
-	                    <li>분류</li>
-	                    <li style="width:30%">영양성분</li>
-	                    <li style="width:18%">100g 당 함량</li>
-	                    <li style="width:20%" data-skin-food="input">
-	                        <div id="defaultServingSizeForm">
-	                        	<span style="color: white">섭취량입력</span></a>
-	                            <input type="number" step="0.1" name="foodIntake" id="servingSize" value="100" size="5" title="영양성분입력항목">                            
-	                        </div>
-	                    </li>
-	                    <li style="width:15%">1일영양섭취기준(%)</li>
-	                </ul>
-	                
-	                <div data-skin-food="list">
-	                    <div data-skin-food="row">                    	
-		    					<c:forEach var="item" items="${nutrientList}" varStatus="status">
-		    						<c:if test="${status.count == 1}">
-		    							<em>일반성분</em>
-		    						</c:if>                        	
-		                        	<c:if test="${status.count == 7}">
-		    							<em>기타</em>
-		    						</c:if>
-		    						<c:if test="${status.count == 8}">
-		    							<em>무기질</em>
-		    						</c:if>
-		    						<c:if test="${status.count == 13}">
-		    							<em>비타민</em>
-		    						</c:if>
-		    						<c:if test="${status.count == 21}">
-		    							<em>지방산</em>
-		    						</c:if>
-		                        	<div data-skin-food="cell">
-			                        	<span></span>
-			                            <span style="width:30%">${item.nutrientName}(${item.nutrientUnit})</span>
-			                            <span style="width:18%; text-align : center;" class="nutrient-content"></span>
-			                            <span style="width:20%" class="nutrient-result" data-skin-food="size" ></span>
-			                            <input type="hidden" class="nutrient-id">
-			                            <span style="width:15%; text-align : center;" class="nutrient-rec-per"></span>
-		                            </div>
-		                    	</c:forEach>
-	                    </div>
-	                </div>
-	    
-	                <div class="area_btn">
-	                    <a href="javascript:;" onclick="history.back();"
-	                        class="button lg black docs-creator" style="margin: 0 20px 30px 20px"><span>이전화면으로</span></a>
-	                    <a href="javascript:;" id="submit1"
-	                        class="button lg black docs-creator" style="margin: 0 20px 30px 20px"><span>예상식단 추가</span></a>
-	                    <a href="javascript:;" id="submit2"
-	                        class="button lg black docs-creator" style="margin: 0 20px 30px 20px"><span>금일식단 추가</span></a>
-	                </div>
-	            </div>
+    		<form id="frm_diet" action="" method="get">
+    		<input type="hidden" name="foodCode" value="${food.foodCode}">
+            <div data-skin-food="simple" class="mt20">
+                <ul data-skin-food="head">
+                    <li>분류</li>
+                    <li style="width:30%">영양성분</li>
+                    <li style="width:18%">100g 당 함량</li>
+                    <li style="width:20%" data-skin-food="input">
+                        <div id="defaultServingSizeForm">
+                        	<span style="color: white">섭취량입력</span></a>
+                            <input type="number" step="0.1" name="foodIntake" id="servingSize" value="100" size="5" title="영양성분입력항목">                            
+                        </div>
+                    </li>
+                    <li style="width:15%">1일영양섭취기준(%)</li>
+                </ul>
+                
+                <div data-skin-food="list">
+                    <div data-skin-food="row">                    	
+	    					<c:forEach var="item" items="${nutrientList}" varStatus="status">
+	    						<c:if test="${status.count == 1}">
+	    							<em>일반성분</em>
+	    						</c:if>                        	
+	                        	<c:if test="${status.count == 7}">
+	    							<em>기타</em>
+	    						</c:if>
+	    						<c:if test="${status.count == 8}">
+	    							<em>무기질</em>
+	    						</c:if>
+	    						<c:if test="${status.count == 13}">
+	    							<em>비타민</em>
+	    						</c:if>
+	    						<c:if test="${status.count == 21}">
+	    							<em>지방산</em>
+	    						</c:if>
+	                        	<div data-skin-food="cell">
+		                        	<span></span>
+		                            <span style="width:30%">${item.nutrientName}(${item.nutrientUnit})</span>
+		                            <span style="width:18%; text-align : center;" class="nutrient-content"></span>
+		                            <span style="width:20%" class="nutrient-result" data-skin-food="size" ></span>
+		                            <input type="hidden" class="nutrient-id">
+		                            <span style="width:15%; text-align : center;" class="nutrient-rec-per"></span>
+	                            </div>
+	                    	</c:forEach>
+                    </div>
+                </div>
+    
+                <div class="area_btn">
+                    <a href="javascript:;" onclick="history.back();"
+                        class="button lg black docs-creator" style="margin: 0 20px 30px 20px"><span>이전화면으로</span></a>
+                    <a href="javascript:;" id="submit1"
+                        class="button lg black docs-creator" style="margin: 0 20px 30px 20px"><span>예상식단 추가</span></a>
+                    <a href="javascript:;" id="submit2"
+                        class="button lg black docs-creator" style="margin: 0 20px 30px 20px"><span>금일식단 추가</span></a>
+                </div>
+                
+            </div>
             </form>
         </div>
 
