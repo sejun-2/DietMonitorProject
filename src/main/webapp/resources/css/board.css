@@ -59,7 +59,7 @@
 h4.comm {padding-left:20px; margin-bottom:10px; border-bottom:0}
 
 
-.new_tbl_board            {clear:both;position:relative;width:100%;border-collapse:collapse;border-top:2px solid #00B9FF;border-bottom:1px solid #cdcdcd;background:#fff;font-size:14px;line-height:18px;color:#555; overflow: hidden;}
+.new_tbl_board            {clear:both;position:relative;width:100%;border-collapse:collapse;border-top:2px solid #00B9FF;border-bottom:1px solid #cdcdcd;background:#fff;font-size:14px;line-height:18px;color:#555; overflow: hidden; table-layout: auto;}
 .new_tbl_board th         {padding:22px 10px; border:1px solid #cdcdcd; border-left:0; text-align:center; color:#333; font-size: 18px; white-space: nowrap;}
 .new_tbl_board th.stats   {padding:12px 3px; border:1px solid #cdcdcd; border-left:0; text-align:center}
 .new_tbl_board th.end     {border-right:0;}
@@ -90,7 +90,7 @@ h4.comm {padding-left:20px; margin-bottom:10px; border-bottom:0}
 	.new_tbl_board td:first-child{width: 100%;}
 }
 
-
+.new_tbl_board col:last-child {width: auto;}
 .new_tbl_board .file{width:12px;height:15px;background:url(http://www.chungnam.net/images/board/ico_disket_small.gif) no-repeat left top}
 .new_tbl_board .pic{width:13px;height:16px;background:url(http://www.chungnam.net/images/board/ico_pic.gif) no-repeat left top}
 .new_tbl_board .new{width:10px;height:15px;background:url(http://www.chungnam.net/images/board/ico_new.gif) no-repeat left top}

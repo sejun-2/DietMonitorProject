@@ -1,11 +1,18 @@
 package com.app.service.user.impl;
 
-import java.util.List;  
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.dao.user.UserDAO;
+import com.app.dto.user.NutritionStandard;
+import com.app.dto.user.Profile;
 import com.app.dto.user.User;
 import com.app.service.user.UserService;
 
@@ -34,8 +41,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int modifyUser(User user) {
-		int result = userDAO.modifyUser(user);
+	public int modifyUser(int accountNo, int memberNo) {
+		int result = userDAO.modifyUser(accountNo, memberNo);
 		
 		return result;
 	}
@@ -69,10 +76,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Integer getAgeByEmail(String email) {
+	public int getAgeByMemberInfo(int accountNo, int memberNo) {
 		// TODO Auto-generated method stub
-		int result = userDAO.getAgeByEmail(email);
-		
+		int result = userDAO.getAgeByMemberInfo(accountNo, memberNo);
+			
 		return result;
 	}
 
@@ -83,6 +90,65 @@ public class UserServiceImpl implements UserService {
 		String result = userDAO.getGenderNameByGenderId(genderId);
 		return result;
 	}
+
+	@Override
+	public User findUserByMemberInfo(int accountNo, int memberNo) {
+		// TODO Auto-generated method stub
+		User user = userDAO.findUserByMemberInfo(accountNo, memberNo);
+		
+		return user;
+	}
+	
+	@Override
+	public List<NutritionStandard> getNutritionStandardByMemberInfo(HttpSession session){
+		
+	    Map<String, String> memberInfo = new HashMap<>();
+	    memberInfo.put("accountNo", session.getAttribute("accountNo").toString());
+	    memberInfo.put("memberNo", session.getAttribute("memberNo").toString());
+
+	    List<NutritionStandard> nutritionStandard = userDAO.getNutritionStandardByMemberInfo(memberInfo);
+
+	    return nutritionStandard;
+	}
+
+	@Override
+	public int addProfile(User user) {
+		// TODO Auto-generated method stub
+		int result = userDAO.addProfile(user);
+		return result;
+	}
+
+	@Override
+	public int getMemberCount(User user) {
+		// TODO Auto-generated method stub
+		int result = userDAO.getMemberCount(user);
+		return result;
+	}
+
+	@Override
+	public List<User> findUserListByAccountNo(int accountNo) {
+		// TODO Auto-generated method stub
+		List<User> user = userDAO.findUserListByAccountNo(accountNo);
+		
+		return user;
+	}
+
+	@Override
+	public int removeProfile(int accountNo, int memberNo) {
+		// TODO Auto-generated method stub
+		if (memberNo == 1) {
+	        System.out.println("주인 계정임.");
+	        return 0;
+	    }
+		
+		int result = userDAO.removeProfile(accountNo, memberNo);
+		System.out.println(result);
+		return result;
+	}
+
+	
+
+
 
 
 }

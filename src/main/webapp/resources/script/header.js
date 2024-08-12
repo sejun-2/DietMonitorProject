@@ -49,6 +49,15 @@ $(document).ready(function () {
     }
 
     generateMenuItems();
+    
+    
+    
+    
+    
+    $("#header .profile").hide();
+    $("#header .top_nav .gnb .lnb.main_profile").on('click', function(){
+        $("#header .profile").toggle();
+    }); 
 
 
     //header_menu_slider
@@ -147,5 +156,8 @@ $(document).ready(function () {
         e.stopPropagation();
         $(this).next($('.trd_menu')).slideToggle('fast');
     })
+    
+    
+    
 
 });

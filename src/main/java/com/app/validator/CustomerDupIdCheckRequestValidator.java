@@ -3,7 +3,7 @@ package com.app.validator;
 import org.springframework.validation.Errors; 
 import org.springframework.validation.Validator;
 
-import com.app.dto.customer.CustomerDupEmailCheckRequest;
+import com.app.dto.user.CustomerDupEmailCheckRequest;
 
 public class CustomerDupIdCheckRequestValidator implements Validator {
 

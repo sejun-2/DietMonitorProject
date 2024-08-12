@@ -1,12 +1,16 @@
 package com.app.dao.user.impl;
 
-import java.util.List; 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.app.dao.user.UserDAO;
+import com.app.dto.user.NutritionStandard;
+import com.app.dto.user.Profile;
 import com.app.dto.user.User;
 
 @Repository
@@ -40,9 +44,11 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public int modifyUser(User user) {
-		
-		int result = sqlSessionTemplate.update("user_mapper.modifyUser", user);
+	public int modifyUser(int accountNo, int memberNo) {
+		Map<String, Object> params = new HashMap<>();
+	    params.put("accountNo", accountNo);
+	    params.put("memberNo", memberNo);
+		int result = sqlSessionTemplate.update("user_mapper.modifyUser", params);
 		
 		return result;
 	}
@@ -64,10 +70,14 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public int getAgeByEmail(String email) {
+	public int getAgeByMemberInfo(int accountNo, int memberNo) {
 		// TODO Auto-generated method stub
-		int result = sqlSessionTemplate.selectOne("user_mapper.getAgeByEmail", email);
-		
+		Map<String, Object> params = new HashMap<>();
+	    params.put("accountNo", accountNo);
+	    params.put("memberNo", memberNo);
+	    
+	    int result = sqlSessionTemplate.selectOne("user_mapper.getAgeByMemberInfo", params);
+	    
 		return result;
 	}
 
@@ -78,6 +88,64 @@ public class UserDAOImpl implements UserDAO {
 		
 		return result;
 	}
+
+	@Override
+	public User findUserByMemberInfo(int accountNo, int memberNo) {
+		// TODO Auto-generated method stub
+		Map<String, Object> params = new HashMap<>();
+	    params.put("accountNo", accountNo);
+	    params.put("memberNo", memberNo);
+	    
+	    User user = sqlSessionTemplate.selectOne("user_mapper.findUserByMemberInfo", params);
+	    
+		return user;
+	}
+
+	@Override
+	public List<NutritionStandard> getNutritionStandardByMemberInfo(Map<String, String> memberInfo) {
+		// TODO Auto-generated method stub
+		List<NutritionStandard> nutritionStandard = sqlSessionTemplate.selectList("user_mapper.getNutritionStandardByMemberInfo", memberInfo);
+		
+		return nutritionStandard;
+	}
+
+	@Override
+	public int addProfile(User user) {
+		// TODO Auto-generated method stub
+		int result = sqlSessionTemplate.insert("user_mapper.addProfile", user);
+
+		return result;
+	}
+
+	@Override
+	public int getMemberCount(User user) {
+		// TODO Auto-generated method stub
+		int result = sqlSessionTemplate.selectOne("user_mapper.getMemberCount", user);
+		
+		return result;
+	}
+
+	@Override
+	public List<User> findUserListByAccountNo(int accountNo) {
+		// TODO Auto-generated method stub
+		List<User> user = sqlSessionTemplate.selectList("user_mapper.findUserListByAccountNo", accountNo);
+		
+		return user;
+	}
+
+	@Override
+	public int removeProfile(int accountNo, int memberNo) {
+		// TODO Auto-generated method stub
+		Map<String, Object> params = new HashMap<>();
+	    params.put("accountNo", accountNo);
+	    params.put("memberNo", memberNo);
+		int result = sqlSessionTemplate.delete("user_mapper.removeProfile", params);
+		
+		return result;
+	}
+
+
+	
 			
 	
 }
