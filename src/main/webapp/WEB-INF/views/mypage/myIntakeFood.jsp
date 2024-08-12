@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="ko">
 <head>
 	<meta charset="UTF-8">
@@ -10,11 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link href="./css/base.css" rel="stylesheet">
-    <link href="./css/common.css" rel="stylesheet">
-    <link href="./css/board.css" rel="stylesheet">
-    <script type="text/javascript" src="./script/header.js"></script>
-    <script type="text/javascript" src="./script/common.js"></script>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
+    <link href="../css/board.css" rel="stylesheet">
+    <script type="text/javascript" src="../script/header.js"></script>
+    <script type="text/javascript" src="../script/common.js"></script>
 
     <title>foodIngredients</title>
 </head>
@@ -24,20 +23,21 @@
             <jsp:include page="header.jsp" />
         </div>
     </header>
-	
+
+
 
     <div class="sub_content"></div>
 
     <section class="sub_title">
         <div class="inner">
             <div class="wrap">
-                <h1 class="title">나의 하루 섭취 식품</h1>
+                <h1 class="title">식품으로 찾아보기</h1>
                 <div class="route wrap">
-                    <a href="./index.html"><img class="home center" src="./images/sub/icon/material-home.svg"
+                    <a href="../index.html"><img class="home center" src="../images/sub/icon/material-home.svg"
                             alt="홈 아이콘"></a>
                     <div class="route_info wrap">
-                        <a href="./foodSearchList"><span class="dap1">마이페이지</span></a>
-                        <a href="./myIntakeFood"><span class="dap2">나의 하루 섭취 식품</span></a>
+                        <a href="./foodSearchList.html"><span class="dap1">영양정보 찾아보기</span></a>
+                        <a href="./foodSearchList.html"><span class="dap2">식품으로 찾아보기</span></a>
                     </div>
                 </div>
             </div>
@@ -45,6 +45,7 @@
         </div>
 
     </section>
+
 
 
     <section class="table_menu">
@@ -81,11 +82,9 @@
                         <th scope="col">하루 섭취<br>식품 등록</th>
                     </tr>
                 </thead>
-                
                 <tbody>
-                	<c:forEach var="item" items="${dailyDiet}" varStatus="status">
                     <tr onclick="">
-                        <td>${status.count}</td>
+                        <td>1</td>
                         <td>햄버거</td>
                         <td>빵 및 과자류</td>
                         <td>해당없음</td>
@@ -166,7 +165,7 @@
                             </div>
                         </td>
                     </tr>
-					</c:forEach>
+
                     <tr onclick="">
                         <td>2</td>
                         <td>싸이버거</td>

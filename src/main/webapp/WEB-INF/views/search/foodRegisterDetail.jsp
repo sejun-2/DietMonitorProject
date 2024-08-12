@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -152,6 +151,7 @@
                     <a href="javascript:;" id="submit2"
                         class="button lg black docs-creator" style="margin: 0 20px 30px 20px"><span>금일식단 추가</span></a>
                 </div>
+                
             </div>
             </form>
         </div>
@@ -182,7 +182,7 @@
 			});
 	    	
 	    	$('#submit2').click(function(){    		
-	    		$('#frm_diet').attr("action", "/myIntakeFood");
+	    		$('#frm_diet').attr("action", "/registerDiet");
 				$('#frm_diet').submit();
 			});
 	    });
