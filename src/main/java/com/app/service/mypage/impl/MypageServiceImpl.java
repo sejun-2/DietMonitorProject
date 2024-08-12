@@ -31,6 +31,29 @@ public class MypageServiceImpl implements MypageService {
 		return totalDietList;
 	}
 
+	@Override
+	public List<TotalDiet> findTotalDietBySaveHistory(TotalDietSearchCondition totalDietSearchCondition) {
+		// TODO Auto-generated method stub
+		List<TotalDiet> totalDietList = mypageDAO.findTotalDietBySaveHistory(totalDietSearchCondition);
+		return totalDietList;
+	}
+
+	@Override
+	public List<TotalDiet> findTotalDietBySaveHistoryAvg(TotalDietSearchCondition totalDietSearchCondition) {
+		// TODO Auto-generated method stub
+		List<TotalDiet> totalDietListAvg = mypageDAO.findTotalDietBySaveHistoryAvg(totalDietSearchCondition);
+		return totalDietListAvg;
+	}
+
+	@Override
+	public List<TotalDiet> findTotalDietByMonthSum(TotalDietSearchCondition totalDietSearchCondition) {
+		// TODO Auto-generated method stub
+		List<TotalDiet> totalDietListMonthSum = mypageDAO.findTotalDietByMonthSum(totalDietSearchCondition);
+		return null;
+	}
+	
+	
+
 	
 
 }

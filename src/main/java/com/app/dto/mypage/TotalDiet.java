@@ -9,6 +9,7 @@ public class TotalDiet {
 	int accountNo;
 	int memberNo;
 	String saveDate;
+	String foodName;
 	String foodIntake;
 	int kcal;
 	int water;

@@ -25,12 +25,16 @@ public class MypageController {
 		
 		t1.setAccountNo(1);
 		t1.setMemberNo(2);
-		
+		t1.setStartDate("20240805");
+		t1.setEndDate("20240809");
+
 		System.out.println(t1);
 		List<TotalDiet> totalDietList = mypageService.findTotalDietByAvg(t1);
+		List<TotalDiet> totalDietListMonthSum = mypageService.findTotalDietByMonthSum(t1);
 		
 		System.out.println(totalDietList);
 		model.addAttribute("totalDietList", totalDietList);
+		model.addAttribute("totalDietListMonthSum", totalDietListMonthSum);
 		
 		return"/mypage/myInfo";
 	}
@@ -47,17 +51,25 @@ public class MypageController {
 		
 		t1.setAccountNo(1);
 		t1.setMemberNo(2);
+		t1.setStartDate("20240805");
+		t1.setEndDate("20240809");
 		
 		System.out.println(t1);
-		List<TotalDiet> totalDietList = mypageService.findTotalDietBySearchCondition(t1);
+		List<TotalDiet> totalDietList = mypageService.findTotalDietBySaveHistory(t1);
+		List<TotalDiet> totalDietListAvg = mypageService.findTotalDietBySaveHistoryAvg(t1);
 		
 		System.out.println(totalDietList);
 		model.addAttribute("totalDietList", totalDietList);
+		model.addAttribute("totalDietListAvg", totalDietListAvg);
 		
-		return "/mypage/mySaveHistory";
+		//return "/mypage/mySaveHistory";
+		return "/mypage/test";
 	}
 	
-	
+	@GetMapping("/test")
+	public String test() {
+		return "mypage/test";
+	}
 	
 	
 	

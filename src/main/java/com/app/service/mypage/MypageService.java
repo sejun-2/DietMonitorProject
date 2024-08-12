@@ -11,4 +11,10 @@ public interface MypageService {
 	
 	public List<TotalDiet> findTotalDietByAvg(TotalDietSearchCondition totalDietSearchCondition);
 	
+	public List<TotalDiet> findTotalDietBySaveHistory(TotalDietSearchCondition totalDietSearchCondition);
+	
+	public List<TotalDiet> findTotalDietBySaveHistoryAvg(TotalDietSearchCondition totalDietSearchCondition);
+	
+	public List<TotalDiet> findTotalDietByMonthSum(TotalDietSearchCondition totalDietSearchCondition);
+	
 }

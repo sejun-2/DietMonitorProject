@@ -66,7 +66,7 @@ function barChart(totalDietData) {
     });
 }
 
-function lineChart(totalDietData) {
+function lineChart(totalDietListMonthSum) {
     var ctx = document.getElementById("lineCanvas").getContext("2d");
 
     var data = {
@@ -74,7 +74,7 @@ function lineChart(totalDietData) {
         datasets: [
             {
                 label: "필수영양소",
-                data: [65, 75, 85, 95, 200, 210, totalDietData.fat],
+                data: [totalDietListMonthSum.kcal, totalDietListMonthSum.water, totalDietListMonthSum.protein, totalDietListMonthSum.fat, totalDietListMonthSum.batch, totalDietListMonthSum.carbohydrate, totalDietData.sugars],
                 backgroundColor: "rgba(220,220,220,0.2)",
                 borderColor: "rgba(255,0,0,1)",
                 borderWidth: 1

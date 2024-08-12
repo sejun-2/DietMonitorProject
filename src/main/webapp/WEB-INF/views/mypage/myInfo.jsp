@@ -159,9 +159,9 @@
 			<canvas id="barCanvas"></canvas>
 		</div>
 	
-		<%-- <div class="graphBox" style="width: 600px; height: 400px;">
+		<div class="graphBox" style="width: 600px; height: 400px;">
 			<canvas id="lineCanvas"></canvas>
-		</div> --%>
+		</div>
 		</div>
 
 	</div>
@@ -206,10 +206,46 @@
         	
         </c:forEach>
         
+		var totalDietListMonthSum = [];
+        
+        <c:forEach var="item" items="${totalDietListMonthSum}">
+        	       	
+        	var totalDietListMonthSumItem =
+        	{
+        			kcal: '${item.kcal}',
+                    water: '${item.water}',
+                    protein: '${item.protein}',
+                    fat: '${item.fat}',
+                    batch: '${item.batch}',
+                    carbohydrate: '${item.carbohydrate}',
+                    sugars: '${item.sugars}',
+                    dietaryFiber: '${item.dietaryFiber}',
+                    calcium: '${item.calcium}',
+                    ironContent: '${item.ironContent}',
+                    phosphorus: '${item.phosphorus}',
+                    potassium: '${item.potassium}',
+                    sodium: '${item.sodium}',
+                    vitaminA: '${item.vitaminA}',
+                    retinol: '${item.retinol}',
+                    betaCarotene: '${item.betaCarotene}',
+                    thiamine: '${item.thiamine}',
+                    riboflavin: '${item.riboflavin}',
+                    niacin: '${item.niacin}',
+                    vitaminC: '${item.vitaminC}',
+                    vitaminD: '${item.vitaminD}',
+                    cholesterol: '${item.cholesterol}',
+                    saturatedFat: '${item.saturatedFat}',
+                    transFat: '${item.transFat}'
+        	};
+        	
+        	totalDietListMonthSum.push(totalDietListMonthSumItem);
+        	
+        </c:forEach>
+        
         document.addEventListener('DOMContentLoaded', function() {
             // Chart.js가 로드된 후에 차트 생성
             barChart(totalDietDataItem); //평균 DAO 
-            //lineChart(totalDietDataItem[0]); //리스트값
+            lineChart(totalDietListMonthSumItem); //리스트값
         });
         
     </script>

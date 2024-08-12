@@ -33,6 +33,30 @@ public class MypageDAOImpl implements MypageDAO {
 		
 		return totalDietList;
 	}
+
+
+	@Override
+	public List<TotalDiet> findTotalDietBySaveHistory(TotalDietSearchCondition totalDietSearchCondition) {
+		// TODO Auto-generated method stub
+		List<TotalDiet> totalDietList = sqlSessionTemplate.selectList("mypage_mapper.findTotalDietBySaveHistory", totalDietSearchCondition);
+		return totalDietList;
+	}
+
+
+	@Override
+	public List<TotalDiet> findTotalDietBySaveHistoryAvg(TotalDietSearchCondition totalDietSearchCondition) {
+		// TODO Auto-generated method stub
+		List<TotalDiet> totalDietListAvg = sqlSessionTemplate.selectList("mypage_mapper.findTotalDietBySaveHistoryAvg", totalDietSearchCondition);
+		return totalDietListAvg;
+	}
+
+
+	@Override
+	public List<TotalDiet> findTotalDietByMonthSum(TotalDietSearchCondition totalDietSearchCondition) {
+		// TODO Auto-generated method stub
+		List<TotalDiet> totalDietListMonthSum = sqlSessionTemplate.selectList("mypage_mapper.findTotalDietByMonthSum", totalDietSearchCondition);
+		return null;
+	}
 	
 	
 

@@ -163,29 +163,29 @@ public class CustomerController {
 		return "redirect:/main";
 	}
 
-	@GetMapping("/myInfo")
-	public String mypage(HttpSession session, Model model) {
-		if (LoginManager.isLogin(session)) {
-			// 세션에서 로그인된 사용자의 이메일을 조회
-			String email = LoginManager.getLoginUserEmail(session);
-			// 사용자 정보를 조회
-			User user = userService.findUserByEmail(email);
-			// 사용자의 나이 계산
-			int age = userService.getAgeByEmail(email);
-			System.out.println(age);
-			int genderId = user.getGenderId();
-			
-			String genderName = userService.getGenderNameByGenderId(genderId);
-
-			// 모델에 사용자 정보와 나이 추가
-			model.addAttribute("user", user);
-			model.addAttribute("age", age);
-			model.addAttribute("genderName", genderName);
-
-			return "myInfo"; // 마이페이지 뷰로 이동
-		}
-
-		return "redirect:/login"; // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
-	}
+//	@GetMapping("/myInfo")
+//	public String mypage(HttpSession session, Model model) {
+//		if (LoginManager.isLogin(session)) {
+//			// 세션에서 로그인된 사용자의 이메일을 조회
+//			String email = LoginManager.getLoginUserEmail(session);
+//			// 사용자 정보를 조회
+//			User user = userService.findUserByEmail(email);
+//			// 사용자의 나이 계산
+//			int age = userService.getAgeByEmail(email);
+//			System.out.println(age);
+//			int genderId = user.getGenderId();
+//			
+//			String genderName = userService.getGenderNameByGenderId(genderId);
+//
+//			// 모델에 사용자 정보와 나이 추가
+//			model.addAttribute("user", user);
+//			model.addAttribute("age", age);
+//			model.addAttribute("genderName", genderName);
+//
+//			return "myInfo"; // 마이페이지 뷰로 이동
+//		}
+//
+//		return "redirect:/login"; // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
+//	}
 
 }
