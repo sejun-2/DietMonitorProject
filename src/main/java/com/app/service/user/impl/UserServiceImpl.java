@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.dao.user.UserDAO;
 import com.app.dto.user.NutritionStandard;
+import com.app.dto.user.Profile;
 import com.app.dto.user.User;
 import com.app.service.user.UserService;
 
@@ -40,8 +41,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int modifyUser(User user) {
-		int result = userDAO.modifyUser(user);
+	public int modifyUser(int accountNo, int memberNo) {
+		int result = userDAO.modifyUser(accountNo, memberNo);
 		
 		return result;
 	}
@@ -108,6 +109,41 @@ public class UserServiceImpl implements UserService {
 	    List<NutritionStandard> nutritionStandard = userDAO.getNutritionStandardByMemberInfo(memberInfo);
 
 	    return nutritionStandard;
+	}
+
+	@Override
+	public int addProfile(User user) {
+		// TODO Auto-generated method stub
+		int result = userDAO.addProfile(user);
+		return result;
+	}
+
+	@Override
+	public int getMemberCount(User user) {
+		// TODO Auto-generated method stub
+		int result = userDAO.getMemberCount(user);
+		return result;
+	}
+
+	@Override
+	public List<User> findUserListByAccountNo(int accountNo) {
+		// TODO Auto-generated method stub
+		List<User> user = userDAO.findUserListByAccountNo(accountNo);
+		
+		return user;
+	}
+
+	@Override
+	public int removeProfile(int accountNo, int memberNo) {
+		// TODO Auto-generated method stub
+		if (memberNo == 1) {
+	        System.out.println("주인 계정임.");
+	        return 0;
+	    }
+		
+		int result = userDAO.removeProfile(accountNo, memberNo);
+		System.out.println(result);
+		return result;
 	}
 
 	

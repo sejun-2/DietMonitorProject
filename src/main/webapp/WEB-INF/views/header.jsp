@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>							
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>	
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -13,20 +14,60 @@
                 <div class="inner">
                     <ul class="gnb wrap_s">
 	                    <c:choose>
-					        <c:when test="${ not empty accountNo and not empty memberNo }">
-					            <li class="white">Welcome, ${user.nickname}!</li>
-					            <a href="/logout">Logout</a>
-					        </c:when>
-					        <c:otherwise>
-					            <li class="lnb"><a href="/login" class="login">로그인</a></li>
-		                        <li class="lnb"><a href="/signup" class="signup">회원가입</a></li>
-		                        <li class="lnb"><a href="" class="admin">관리자</a></li>
-					        </c:otherwise>
-					    </c:choose>
+	                        <c:when test="${not empty switchProfile}">
+	                            <li class="lnb mr20">${switchProfile.nickname} 님 환영합니다!</li>
+	                            <li class="lnb main_profile">
+	                                <img src="./images/header/chipmunk.jpg" alt="">
+	                            </li>
+	                            <li class="lnb"><a href="/logout" class="logout">로그아웃</a></li>
+	                        </c:when>
+	                        <c:otherwise>
+	                            <c:if test="${not empty user}">
+	                                <li class="lnb mr20">${user.nickname} 님 환영합니다!</li>
+	                                <li class="lnb main_profile">
+	                                    <img src="./images/header/chipmunk.jpg" alt="">
+	                                </li>
+	                                <li class="lnb"><a href="/logout" class="logout">로그아웃</a></li>
+	                            </c:if>
+	                            <c:if test="${empty user}">
+	                                <li class="lnb"><a href="/login" class="login">로그인</a></li>
+	                                <li class="lnb"><a href="/signup" class="signup">회원가입</a></li>
+	                                <li class="lnb"><a href="" class="admin">관리자</a></li>
+	                            </c:if>
+	                        </c:otherwise>
+	                    </c:choose>
                     </ul>
                 </div>
             </div>
-            <div class="nav">
+		<div class="profile">
+			<p class="title">프로필 전환</p>
+			<ul class="box_wrap wrap">
+				<c:forEach var="profile" items="${profiles}">
+						<li class="box">
+							<form action="/switchProfile" method="post">
+								<input type="hidden" name="accountNo" value="${profile.accountNo}">
+			                    <input type="hidden" name="memberNo" value="${profile.memberNo}">
+			                    <button type="submit">
+			                        <img src="./images/header/ocean.jpg" alt="">
+			                        <p>${profile.nickname}</p>
+			                    </button>
+							</form>
+						</li>
+				</c:forEach>
+
+				<c:set var="profileCount" value="${fn:length(profiles)}" />
+
+				<c:if test="${profileCount < 5}">
+					<c:forEach var="i" begin="1" end="${5 - profileCount}">
+						<li class="box"><a href="/manageProfile"> <img
+								src="./images/header/propile_add.svg" alt="">
+								<p>추가</p>
+						</a></li>
+					</c:forEach>
+				</c:if>
+			</ul>
+		</div>
+		<div class="nav">
                 <div class="inner">
                     <div class="menu_inner wrap">
                         <h1 class="logo">
