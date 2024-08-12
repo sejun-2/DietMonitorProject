@@ -45,7 +45,7 @@
 							
 		                    <div class="sig_input wrap_s">
 		                        <p>비밀번호<span class="red">*</span></p>
-		                        <input type="text" name="pw" placeholder="비밀번호를 입력해 주세요" value="${user.pw}">
+		                        <input type="password" name="pw" placeholder="비밀번호를 입력해 주세요" value="${user.pw}">
 		                        <c:if test="${ not empty userValidError.pw }">
 									<br/>
 										<span class="red">${userValidError.pw}</span>
@@ -54,7 +54,7 @@
 		                    </div>
 		                    <div class="sig_input wrap_s">
 		                        <p>비밀번호 확인<span class="red">*</span></p>
-		                        <input type="text" name="chkPw" placeholder="비밀번호를 한번 더 입력해 주세요" value="${user.chkPw}">
+		                        <input type="password" name="chkPw" placeholder="비밀번호를 한번 더 입력해 주세요" value="${user.chkPw}">
 		                        <c:if test="${ not empty userValidError.chkPw }">
 									<br/>
 										<span class="red">${userValidError.chkPw}</span>

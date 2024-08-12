@@ -32,8 +32,6 @@
 		<div class="inner">
 			<div class="sig_inner">
 				<form action="/myInfoModify" method="post">
-				<input type="hidden" name="accountNo" value="${profile.accountNo}">
-    			<input type="hidden" name="memberNo" value="${profile.memberNo}">
 				<div class="sig_inputs">
 					<div class="sig_title">회원정보수정</div>
 					
@@ -43,11 +41,6 @@
 						</p>
 						<input type="text" name="email" placeholder="${user.email}"
 							value="${user.email}" readonly>
-						<c:if test="${ not empty userValidError.chkPw }">
-							<br />
-							<span class="red">${userValidError.chkPw}</span>
-							<br />
-						</c:if>
 					</div>
 					<div class="sig_input wrap_s">
 						<p>
@@ -65,7 +58,7 @@
 						<p>
 							비밀번호 확인<span class="red">*</span>
 						</p>
-						<input type="text" name="chkPw" placeholder="비밀번호를 한번 더 입력해 주세요"
+						<input type="password" name="chkPw" placeholder="비밀번호를 한번 더 입력해 주세요"
 							value="${user.chkPw}">
 						<c:if test="${ not empty userValidError.chkPw }">
 							<br />

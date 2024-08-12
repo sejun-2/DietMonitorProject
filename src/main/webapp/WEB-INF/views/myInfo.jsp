@@ -38,6 +38,18 @@
                         <p class="information">${user.name}</p>
                     </div>
                     <div class="sig_input wrap_s">
+                        <p>닉네임</p>
+                        <p class="information">${user.nickname}</p>
+                    </div>
+                    <div class="sig_input wrap_s">
+                        <p>전화번호</p>
+                        <p class="information">${user.tel}</p>
+                    </div>
+                    <div class="sig_input wrap_s">
+                        <p>생년월일</p>
+                        <p class="information">${user.birth}</p>
+                    </div>
+                    <div class="sig_input wrap_s">
                         <p>나이</p>
                         <p class="information">${age}</p>
                     </div>

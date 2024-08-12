@@ -17,7 +17,7 @@ public interface UserDAO {
 	
 	public User findUserByEmail(String email);
 	
-	public int modifyUser(int accountNo, int memberNo);
+	public int modifyUser(User user);
 	
 	public int saveUser(User user);	
 	
@@ -38,6 +38,8 @@ public interface UserDAO {
 	public List<User> findUserListByAccountNo(int accountNo);
 
 	public int removeProfile(int accountNo, int memberNo);
+
+	
 
 	
 
