@@ -214,8 +214,51 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/myInfoModify")
-	public String myInfoModifyActive() {
-	    
+	public String myInfoModifyActive(HttpSession session, @Valid @ModelAttribute User user, BindingResult br, Model model) {
+		user.setAccountNo((int)session.getAttribute("accountNo"));
+		user.setMemberNo((int)session.getAttribute("memberNo"));
+		user.setGenderId((int)user.getGenderId());
+		
+		System.out.println(user);
+		System.out.println(user.getGenderId());
+		
+		
+		UserValidError userValidError = new UserValidError();
+		boolean isValid = UserValidator.validate(user, userValidError);
+		model.addAttribute("userValidError", userValidError);
+
+		if(br.hasErrors()) { //유효성 검증에서 문제가 있다!
+
+			List<ObjectError> errorList = br.getAllErrors();
+			for(ObjectError er : errorList) {
+				log.info( er.getObjectName());
+				log.info( er.getDefaultMessage());
+				log.info( er.getCode());
+				log.info( er.getCodes()[0] );
+				System.out.println(er.getObjectName());
+				System.out.println(er.getDefaultMessage());
+				System.out.println(er.getCode());
+				System.out.println(er.getCodes()[0] );
+				System.out.println("BindingResult에서 오류감지");
+			}
+
+			return "myInfoModify";
+		}
+		
+		if(user.getPw().equals(user.getChkPw()) &&UserValidator.isBirth(user.getBirth())) {
+			int result = userService.modifyUser(user);
+			
+			if(result > 0) {
+				log.debug("사용자 회원정보수정 성공 {}", user);
+				return "redirect:/myInfo";
+			} else {
+				log.info("사용자 회원정보수정 실패 {}", user);
+				System.out.println("쿼리문 작동 안됨");
+				return "myInfoModify";
+			}
+		}
+		
+		
 	    return "redirect:/myInfo";
 	}
 	

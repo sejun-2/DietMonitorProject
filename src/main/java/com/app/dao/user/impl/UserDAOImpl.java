@@ -44,11 +44,8 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public int modifyUser(int accountNo, int memberNo) {
-		Map<String, Object> params = new HashMap<>();
-	    params.put("accountNo", accountNo);
-	    params.put("memberNo", memberNo);
-		int result = sqlSessionTemplate.update("user_mapper.modifyUser", params);
+	public int modifyUser(User user) {
+		int result = sqlSessionTemplate.update("user_mapper.modifyUser", user);
 		
 		return result;
 	}

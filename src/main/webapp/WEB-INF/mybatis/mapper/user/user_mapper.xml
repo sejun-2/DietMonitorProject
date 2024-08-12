@@ -31,15 +31,15 @@
 		WHERE email = #{email}
 	</select>
 	
-	<update id="modifyUser" parameterType="Map">
+	<update id="modifyUser"  parameterType="User">
 		UPDATE member
 		SET pw = #{pw},
 			name = #{name},
 			nickname = #{nickname},
 			tel = #{tel},
 			birth = #{birth},
-			genderId = #{genderId}
-		WHERE email = #{email}
+			gender_id = #{genderId}
+		WHERE account_no = #{accountNo} and member_no = #{memberNo}
 	</update>
 	
 	<insert id="saveUser" parameterType="User">
@@ -49,7 +49,7 @@
 	
 	<insert id="addProfile" parameterType="User">
 		INSERT INTO member
-		VALUES ( #{accountNo}, (SELECT NVL(MAX(member_no), 0) + 1 FROM member), NULL, NULL, NUll, #{nickname}, NULL, #{birth}, #{genderId},  NULL )
+		VALUES ( #{accountNo}, (SELECT NVL(MAX(member_no), 0) + 1 FROM member), NULL, NULL, NULL, #{nickname}, NULL, #{birth}, #{genderId},  NULL )
 	</insert>
 	
 	<select id="getMemberCount" resultType="int">
