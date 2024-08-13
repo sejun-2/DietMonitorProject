@@ -83,9 +83,9 @@
 							<p>프로필 선택<span class="red">*</span></p>
 							<div class="cc-selector">
 								<c:forEach var="i" begin="1" end="5" step="1">
-									<input style="display: none;" id="profile${i }" type="radio" name="iconId" value="${i }" /> 
-									<label class="drinkcard-cc profiles" for="profile${i }">
-										<img src="../images/header/profile/profile_${i }.jpg">
+									<input style="display: none;" id="profile${i}" type="radio" name="iconId" value="${i}" /> 
+									<label class="drinkcard-cc profiles" for="profile${i}">
+										<img src="../images/header/profile/profile_${i}.png">
 									</label>
 								</c:forEach>
 							</div>
@@ -125,68 +125,59 @@
                 		<button class="common_btn" type="submit">가입하기</button>
                 </form>
             </div>
-            
-            
         </div>
-
     </section>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
     
 		$(document).ready(function(){
 			
+			let emailDupChk;
+			
+			$('#inputEmail').change(function(){
+				emailDupChk = false;
+			});
+			
+			$('.common_btn').click(function(){
+				if(emailDupChk == true){
+					$('#commentForm').submit();
+				} else {
+					alert("중복 확인 해주세요");
+					$('#inputEmail').focus();
+				}
+			});
+			
 			$('.check_btn').click(function(){
 				
 				let inputEmail = $('#inputEmail').val();
-				//let inputEmail = document.getElementById('inputEmail').value;
-				
-				console.log('버튼 눌림');
-				console.log(inputEmail);
 				
 				let requestJsonData = {
 					'email':inputEmail,
 				};
-				console.log(requestJsonData);
 				
 				let requestJsonDataString = JSON.stringify(requestJsonData);
-				console.log(requestJsonDataString);
 				
 				$.ajax({
 					type: "POST",
-					url: "http://localhost:8080/customer/isDuplicatedEmail",
+					url: "http://localhost:8080/user/isDuplicatedEmail",
 					headers:{
 						"Content-type":"application/json;charset:UTF-8"
 					},
-					//dataType: 'text',  //요청->응답 데이터의 형태	text
-					dataType: 'json',  //요청->응답 데이터의 형태	json
-					data:requestJsonDataString, //전송할 데이터
-					//data:inputId, //전송할 데이터
-					success: function(result){	// 'N'	콜백함수
-						console.log(result);
-						console.log(result.header.resultCode);
-						console.log(result.body);
-						
-						const commentForm = document.querySelector('#commentForm');
+					dataType: 'json',
+					data:requestJsonDataString,
+					success: function(result){
 					
 						if(result.header.resultCode == '200'){
 							$('#dupMsg').text('사용 가능한 이메일입니다.');
+							emailDupChk = true;
+						} else if(result.header.resultCode == '10') {
+							$('#dupMsg').text('올바르지 않은 이메일 형식입니다.');
+							emailDupChk = false;
 						} else {
 							$('#dupMsg').text('이미 가입된 이메일입니다.');
+							emailDupChk = false;
 						}
-						
-						/* if($('#dupMsg').value == '사용 가능한 이메일입니다.'){
-							commentForm.addEventListener('submit', () => {
-							    console.log('HELLOssssssssss');
-							 	})
-						} else {
-							commentForm.addEventListener('submit', (e) => {
-							    console.log('HELLO');
-							    e.preventDefault();
-							    })
-						} */
 					},
-					
 					error: function(error){
 						console.log(error);
 					}
@@ -194,8 +185,6 @@
 			});
 			
 		});
-		
-		
 	</script>
 
 

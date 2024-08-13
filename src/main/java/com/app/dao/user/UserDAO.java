@@ -10,9 +10,6 @@ import com.app.dto.user.User;
 
 public interface UserDAO {
 
-	public List<User> findUserList();
-	
-	public List<User> findUserListByUserType(String userType);
 	
 	public User findUserByEmail(String email);
 	

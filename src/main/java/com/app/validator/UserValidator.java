@@ -32,42 +32,6 @@ public class UserValidator {
         return Pattern.matches("^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))", str);
     }
 
-
-	//검증식
-	public static void validate(User user, Errors errors) {
-		
-		if (user.getEmail() == null || user.getEmail().trim().equals("")) {
-			errors.rejectValue("email", "EmptyUserEmail", "이메일 필수 입력해주세요.");
-		} else if(!isEmail(user.getEmail())) {
-			errors.rejectValue("email", "wrongEmailFormat", "올바르지 않은 이메일 형식입니다.");
-		}
-
-		if (user.getPw().length() > 16) {
-			errors.rejectValue("pw", "overSize", "16자리 이하로 입력해주세요.");
-		}
-
-		if (user.getPw().length() < 8) {
-			errors.rejectValue("pw", "lackingSize", "8자리 이상 입력해주세요.");
-		}
-
-		if ( !user.getPw().equals( user.getChkPw()) ) {
-			errors.rejectValue("chkPw", "pwNotMatched", "비밀번호가 일치하지 않습니다.");
-		}
-
-		if(!isKorean(user.getName()) || user.getName().length() < 2 || user.getName().length() > 4) {
-			errors.rejectValue("name", "wrongNameFormat", "올바르지 않은 이름입니다.");
-		}
-		
-		if(!isPhone(user.getTel())) {
-			errors.rejectValue("tel", "wrongTelFormat","-를 제외한 전화번호 11자리를 입력해주세요.");
-		}
-		
-		if(!isBirth(user.getBirth())) {
-			errors.rejectValue("birth", "wrongBirthFormat","생년월일 6자리를 입력해주세요.");
-		}
-		
-	}
-
 	public static boolean validate(User user, UserValidError userValidError) {
 		boolean result = true;
 
@@ -86,22 +50,27 @@ public class UserValidator {
 
 		if (user.getPw().length() < 8) {
 			userValidError.setPw("8자리 이상 입력해주세요.");
+			result = false;
 		}
 
 		if(!user.getPw().equals( user.getChkPw()) ) {
 			userValidError.setChkPw("비밀번호가 일치하지 않습니다.");
+			result = false;
 		}
 
 		if(!isKorean(user.getName()) || user.getName().length() < 2 || user.getName().length() > 4) {
 			userValidError.setName("올바르지 않은 이름입니다.");
+			result = false;
 		}
 
 		if(!isPhone(user.getTel())) {
 			userValidError.setTel("-를 제외한 전화번호 11자리를 입력해주세요");
+			result = false;
 		}
 		
 		if(!isBirth(user.getBirth())) {
 			userValidError.setBirth("정확한 생년월일 6자리를 입력해주세요.");
+			result = false;
 		}
 
 		return result;

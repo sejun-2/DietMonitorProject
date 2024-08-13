@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class UserValidError {
-
+	
 	String email;
 	String pw;
 	String chkPw;

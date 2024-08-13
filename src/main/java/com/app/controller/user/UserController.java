@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.accept.HeaderContentNegotiationStrategy;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,34 +40,22 @@ public class UserController {
 
 	@GetMapping("/signup")
 	public String signup() {
+		
+		System.out.println("get signup");
+		
 		return "user/signUp";
 	}
 
 	@PostMapping("/signup")
 	public String signupAction(@Valid @ModelAttribute User user, BindingResult br, Model model) {
-		System.out.println(UserValidator.isEmail(user.getEmail()));
-		User targetUser = userService.findUserByEmail(user.getEmail());
 		
 		UserValidError userValidError = new UserValidError();
-		boolean isValid = UserValidator.validate(user, userValidError);
-		model.addAttribute("userValidError", userValidError);
-
-		if(br.hasErrors()) { //유효성 검증에서 문제가 있다!
-
-			List<ObjectError> errorList = br.getAllErrors();
-			for(ObjectError er : errorList) {
-				System.out.println(er.getObjectName());
-				System.out.println(er.getDefaultMessage());
-				System.out.println(er.getCode());
-				System.out.println(er.getCodes()[0] );
-				System.out.println("BindingResult에서 오류감지");
-			}
-
-			return "user/signUp";
-		}
 		
-		if(user.getPw().equals(user.getChkPw()) &&UserValidator.isBirth(user.getBirth())
-				&& targetUser == null) {
+		boolean isValid = UserValidator.validate(user, userValidError);
+		
+		model.addAttribute("userValidError", userValidError);		
+		
+		if(isValid) {
 			int result = userService.saveUser(user);
 			
 			if(result > 0) {
@@ -75,40 +64,42 @@ public class UserController {
 				System.out.println("쿼리문 작동 안됨");
 				return "user/signUp";
 			}
-		} else if ( targetUser != null ) {
-			userValidError.setEmail("이미 가입된 이메일입니다.");
+			
+		} else {
+			System.out.println("회원가입 양식 오류  수정 요망");
+			return "user/signUp";
 		}
-		return "user/signUp";
+		
 	}
 
 	@ResponseBody
-	@RequestMapping("/customer/isDuplicatedEmail")
-	public ApiResponse<String> isDuplicatedEmail(@Valid @RequestBody CustomerDupEmailCheckRequest customerDupEmailCheckRequest) {
-
-		// JSONObject json-simple
-
-		//System.out.println(id);
-		System.out.println(customerDupEmailCheckRequest.getEmail());	//abcd
-
-		//id 중복체크 
-		// DB에 해당 id가 있는지 확인
-		boolean result = userService.isDuplicatedEmail(customerDupEmailCheckRequest.getEmail());
-
+	@RequestMapping("/user/isDuplicatedEmail")
+	public ApiResponse<String> isDuplicatedEmail(@RequestBody CustomerDupEmailCheckRequest customerDupEmailCheckRequest) {
+		
+		boolean validResult = UserValidator.isEmail(customerDupEmailCheckRequest.getEmail());
+		
+		boolean dupResult = userService.isDuplicatedEmail(customerDupEmailCheckRequest.getEmail());
+		
 		ApiResponse<String> response = new ApiResponse<String>();
 		ApiResponseHeader header = new ApiResponseHeader();
 		response.setBody(customerDupEmailCheckRequest.getEmail());
 
+		if(!validResult) {
+			header.setResultCode("10");
+			header.setResultMessage("올바르지 않은 이메일 형식입니다.");
+			response.setHeader(header);
+			return response;
+		}
 		
-		if(result) { //중복
+		if(dupResult) {
 			header.setResultCode("99");
 			header.setResultMessage("중복된 이메일입니다.");
-		} else { //아니다 사용가능하다
+		} else {
 			header.setResultCode("200");
 			header.setResultMessage("사용가능한 이메일입니다.");
 		}
 
 		response.setHeader(header);
-
 		return response;
 	}
 
