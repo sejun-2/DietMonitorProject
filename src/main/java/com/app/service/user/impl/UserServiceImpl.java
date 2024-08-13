@@ -1,6 +1,6 @@
 package com.app.service.user.impl;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import com.app.dao.user.UserDAO;
 import com.app.dto.user.NutritionStandard;
-import com.app.dto.user.Profile;
 import com.app.dto.user.User;
 import com.app.service.user.UserService;
 
@@ -119,18 +118,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int getMemberCount(User user) {
-		// TODO Auto-generated method stub
-		int result = userDAO.getMemberCount(user);
-		return result;
-	}
-
-	@Override
 	public List<User> findUserListByAccountNo(int accountNo) {
 		// TODO Auto-generated method stub
-		List<User> user = userDAO.findUserListByAccountNo(accountNo);
+		List<User> userList = userDAO.findUserListByAccountNo(accountNo);
 		
-		return user;
+		return userList;
 	}
 
 	@Override
@@ -143,6 +135,23 @@ public class UserServiceImpl implements UserService {
 		
 		int result = userDAO.removeProfile(accountNo, memberNo);
 		System.out.println(result);
+		return result;
+	}
+
+	@Override
+	public List<User> findMemberList(User user) {
+		// TODO Auto-generated method stub
+		
+		List<User> userList = userDAO.findMemberList(user);
+		
+		return userList;
+	}
+
+	@Override
+	public int getMemberCountByAccountNo(int accountNo) {
+		// TODO Auto-generated method stub
+		int result = userDAO.getMemberCountByAccountNo(accountNo);
+		
 		return result;
 	}
 

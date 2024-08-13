@@ -1,10 +1,8 @@
 package com.app.controller.customer;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -26,16 +24,12 @@ import com.app.dto.api.ApiResponse;
 import com.app.dto.api.ApiResponseHeader;
 import com.app.dto.user.CustomerDupEmailCheckRequest;
 import com.app.dto.user.NutritionStandard;
-import com.app.dto.user.Profile;
 import com.app.dto.user.User;
 import com.app.dto.user.UserValidError;
 import com.app.service.user.UserService;
 import com.app.util.SessionManager;
 import com.app.validator.UserValidator;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @Controller
 public class CustomerController {
 
@@ -44,9 +38,6 @@ public class CustomerController {
 
 	@GetMapping("/signup")
 	public String signup() {
-
-		log.info("/signup 접근 확인");
-
 		return "signUp";
 	}
 
@@ -63,10 +54,6 @@ public class CustomerController {
 
 			List<ObjectError> errorList = br.getAllErrors();
 			for(ObjectError er : errorList) {
-				log.info( er.getObjectName());
-				log.info( er.getDefaultMessage());
-				log.info( er.getCode());
-				log.info( er.getCodes()[0] );
 				System.out.println(er.getObjectName());
 				System.out.println(er.getDefaultMessage());
 				System.out.println(er.getCode());
@@ -82,10 +69,8 @@ public class CustomerController {
 			int result = userService.saveUser(user);
 			
 			if(result > 0) {
-				log.debug("사용자 회원가입 성공 {}", user);
 				return "redirect:/login";
 			} else {
-				log.info("사용자 회원가입 실패 {}", user);
 				System.out.println("쿼리문 작동 안됨");
 				return "signUp";
 			}
@@ -103,7 +88,6 @@ public class CustomerController {
 
 		//System.out.println(id);
 		System.out.println(customerDupEmailCheckRequest.getEmail());	//abcd
-		log.info("아이디 중복체크 시도" + customerDupEmailCheckRequest.getEmail());
 
 		//id 중복체크 
 		// DB에 해당 id가 있는지 확인
@@ -149,8 +133,8 @@ public class CustomerController {
 		List<NutritionStandard> nc = userService.getNutritionStandardByMemberInfo(session);
 		System.out.println(nc);
 		
-		int accountNo = (int)session.getAttribute("accountNo");
-	    int memberNo = (int)session.getAttribute("memberNo");
+		int accountNo = SessionManager.getAccountNo(session);
+		int memberNo = SessionManager.getMemberNo(session);
 
 	    user.setAccountNo(accountNo);
 	    user.setMemberNo(memberNo);
@@ -164,7 +148,7 @@ public class CustomerController {
 	        profile.setGenderName(genderName);
 	    }
 
-	    session.setAttribute("profiles", profiles);
+//	    session.setAttribute("profiles", profiles);
 	    model.addAttribute("profiles", profiles);
 
 		return "redirect:/myInfo"; 
@@ -181,7 +165,7 @@ public class CustomerController {
 	@GetMapping("/myInfo")
 	public String myInfo(HttpSession session, Model model) {
 		if (SessionManager.isLoginedAccount(session)) {
-			// 세션에서 로그인된 사용자의 이메일을 조회
+			// 세션에서 로그인된 사용자의 accountNo와 memberNo를 조회
 			int accountNo = SessionManager.getAccountNo(session);
 			int memberNo = SessionManager.getMemberNo(session);
 			// 사용자 정보를 조회
@@ -208,12 +192,12 @@ public class CustomerController {
 	
 	@GetMapping("/myInfoModify")
 	public String myInfoModify() {
-		
+			
 		return "myInfoModify";
 	}
 	
 	@PostMapping("/myInfoModify")
-	public String myInfoModifyActive(HttpSession session, @Valid @ModelAttribute User user, BindingResult br, Model model) {
+	public String myInfoModifyAction(HttpSession session, User user, BindingResult br, Model model) {
 		user.setAccountNo((int)session.getAttribute("accountNo"));
 		user.setMemberNo((int)session.getAttribute("memberNo"));
 		user.setGenderId((int)user.getGenderId());
@@ -230,10 +214,6 @@ public class CustomerController {
 
 			List<ObjectError> errorList = br.getAllErrors();
 			for(ObjectError er : errorList) {
-				log.info( er.getObjectName());
-				log.info( er.getDefaultMessage());
-				log.info( er.getCode());
-				log.info( er.getCodes()[0] );
 				System.out.println(er.getObjectName());
 				System.out.println(er.getDefaultMessage());
 				System.out.println(er.getCode());
@@ -248,10 +228,8 @@ public class CustomerController {
 			int result = userService.modifyUser(user);
 			
 			if(result > 0) {
-				log.debug("사용자 회원정보수정 성공 {}", user);
 				return "redirect:/myInfo";
 			} else {
-				log.info("사용자 회원정보수정 실패 {}", user);
 				System.out.println("쿼리문 작동 안됨");
 				return "myInfoModify";
 			}
@@ -273,50 +251,74 @@ public class CustomerController {
 		return "myIntakeFood";
 	}
 	
-	@GetMapping("/manageProfile")
-	public String manageProfile(){
-	    
-	    return "manageProfile";
-	}
-	
-	@PostMapping("/manageProfile")
-	public String manageProfileAction(HttpSession session, HttpServletResponse response,
-										User user, Model model) throws IOException {
+
+	@RequestMapping("/manageProfile")
+	public String manageProfile(HttpSession session, Model model)  {
 		System.out.println("controller");
 		
-		int accountNo = (int) session.getAttribute("accountNo");
-		int memberNo = (int) session.getAttribute("memberNo");
+		/*
+		 * int accountNo = SessionManager.getAccountNo(session); int memberNo =
+		 * SessionManager.getMemberNo(session);
+		 */
+		
+		int accountNo = SessionManager.getAccountNo(session);
+		int memberNo = SessionManager.getMemberNo(session);
+		
+		User user = userService.findUserByMemberInfo(accountNo, memberNo);
 	    
+		System.out.println(user.getNickname());
+		
 	    user.setAccountNo(accountNo);
 	    user.setMemberNo(memberNo);
 	    
 	    List<User> profiles = userService.findUserListByAccountNo(accountNo);
-
+	    
 	    for (User profile : profiles) {
 	        int age = userService.getAgeByMemberInfo(profile.getAccountNo(), profile.getMemberNo());
 	        String genderName = userService.getGenderNameByGenderId(profile.getGenderId());
 	        profile.setAge(age);
 	        profile.setGenderName(genderName);
 	    }
-
-	    session.setAttribute("profiles", profiles);
+	    
+	    System.out.println("profiles");
+	    System.out.println(profiles);
+	    
+//	    session.setAttribute("profiles", profiles);
 	    model.addAttribute("profiles", profiles);
+	   
+			return "manageProfile";
+		}
+
+	
+	@PostMapping("/addProfile")
+	public String addProfile(User user, Model model, HttpSession session,  HttpServletResponse response) throws IOException {
+		int accountNo = SessionManager.getAccountNo(session);
+		int memberNo = SessionManager.getMemberNo(session);
 		
-		int profileCount = userService.getMemberCount(user);
+		User loginUser = userService.findUserByMemberInfo(accountNo, memberNo);
+		User newProfile = new User();
+		newProfile.setAccountNo(accountNo);
+		newProfile.setNickname(user.getNickname());
+		newProfile.setBirth(user.getBirth());
+		newProfile.setGenderId(user.getGenderId());
+		
+		int profileCount = userService.getMemberCountByAccountNo(accountNo);
 		
 		model.addAttribute("profileCount", profileCount);
 		if(profileCount < 5) {
-			System.out.println(user);
-			int result = userService.addProfile(user);
+			System.out.println(loginUser);
+			int result = userService.addProfile(newProfile);
 			System.out.println(result);
 			
 			if(result > 0) {
-				log.debug("프로필 추가 성공 {}", user);
-				
 				return "redirect:/manageProfile";
 			} else {
-				log.info("프로필 추가 실패 {}", user);
-				return "manageProfile";
+				PrintWriter out = response.getWriter();
+				response.setCharacterEncoding("utf-8");
+				response.setContentType("text/html; charset=utf-8");
+				out.println("<script> alert('프로필 추가 중 오류가 발생했습니다.');");
+				out.println("history.go(-1); </script>"); 
+				out.close();
 			}
 		}else {
 			System.out.println("5개 초과");
@@ -326,14 +328,16 @@ public class CustomerController {
 			out.println("<script> alert('프로필 추가 개수는 5개까지입니다.');");
 			out.println("history.go(-1); </script>"); 
 			out.close();
-			return "manageProfile";
 		}
 		
+		return "redirect:/manageProfile";
 	}
 	
 	@PostMapping("/removeProfile")
-	public String removeProfile(@RequestParam("accountNo") int accountNo,
-	                            @RequestParam("memberNo") int memberNo, HttpServletResponse response) throws IOException {
+	public String removeProfile(HttpSession session,HttpServletResponse response) throws IOException {
+		int accountNo = SessionManager.getAccountNo(session);
+		int memberNo = SessionManager.getMemberNo(session);
+		
 	    int result = userService.removeProfile(accountNo, memberNo);
 	    if(result == 0) {
 	    	PrintWriter out = response.getWriter();
@@ -347,9 +351,9 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/switchProfile")
-	public String switchProfile(@RequestParam("accountNo") int accountNo, 
-	                            @RequestParam("memberNo") int memberNo, 
-	                            HttpSession session) {
+	public String switchProfile(HttpSession session) {
+		int accountNo = SessionManager.getAccountNo(session);
+		int memberNo = SessionManager.getMemberNo(session);
 	    
 		User switchProfile = userService.findUserByMemberInfo(accountNo, memberNo);
 	    
@@ -358,4 +362,16 @@ public class CustomerController {
 	    
 	    return "redirect:/main";
 	}
+	
+	@ResponseBody
+	@PostMapping("/findMemberList")
+	public List<User> findMemberList(User user) {
+		
+		List<User> userList = userService.findMemberList(user);
+		
+		System.out.println(userList);
+		
+		return userList;
+	}
+	
 }

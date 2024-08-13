@@ -16,5 +16,6 @@ public class User {
 	int genderId;
 	int age;
 	String genderName;
+	int iconId;
 }
 
