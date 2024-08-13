@@ -17,7 +17,7 @@
 	                        <c:when test="${not empty switchProfile}">
 	                            <li class="lnb mr20">${switchProfile.nickname} 님 환영합니다!</li>
 	                            <li class="lnb main_profile">
-	                                <img src="./images/header/chipmunk.jpg" alt="">
+	                                <img src="../images/header/profile/profile_${switchProfile.iconId}.jpg">
 	                            </li>
 	                            <li class="lnb"><a href="/logout" class="logout">로그아웃</a></li>
 	                        </c:when>
@@ -25,7 +25,7 @@
 	                            <c:if test="${not empty user}">
 	                                <li class="lnb mr20">${user.nickname} 님 환영합니다!</li>
 	                                <li class="lnb main_profile">
-	                                    <img src="./images/header/chipmunk.jpg" alt="">
+	                                    <img src="../images/header/profile/profile_${user.iconId}.jpg">
 	                                </li>
 	                                <li class="lnb"><a href="/logout" class="logout">로그아웃</a></li>
 	                            </c:if>

@@ -1,6 +1,6 @@
 package com.app.dao.user.impl;
 
-import java.util.HashMap;
+import java.util.HashMap; 
 import java.util.List;
 import java.util.Map;
 
@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.app.dao.user.UserDAO;
 import com.app.dto.user.NutritionStandard;
-import com.app.dto.user.Profile;
 import com.app.dto.user.User;
 
 @Repository
@@ -115,19 +114,11 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public int getMemberCount(User user) {
-		// TODO Auto-generated method stub
-		int result = sqlSessionTemplate.selectOne("user_mapper.getMemberCount", user);
-		
-		return result;
-	}
-
-	@Override
 	public List<User> findUserListByAccountNo(int accountNo) {
 		// TODO Auto-generated method stub
-		List<User> user = sqlSessionTemplate.selectList("user_mapper.findUserListByAccountNo", accountNo);
+		List<User> userList = sqlSessionTemplate.selectList("user_mapper.findUserListByAccountNo", accountNo);
 		
-		return user;
+		return userList;
 	}
 
 	@Override
@@ -137,6 +128,23 @@ public class UserDAOImpl implements UserDAO {
 	    params.put("accountNo", accountNo);
 	    params.put("memberNo", memberNo);
 		int result = sqlSessionTemplate.delete("user_mapper.removeProfile", params);
+		
+		return result;
+	}
+
+	@Override
+	public List<User> findMemberList(User user) {
+		// TODO Auto-generated method stub
+		
+		List<User> userList = sqlSessionTemplate.selectList("user_mapper.findMemberList", user);
+		
+		return userList;
+	}
+
+	@Override
+	public int getMemberCountByAccountNo(int accountNo) {
+		// TODO Auto-generated method stub
+		int result = sqlSessionTemplate.selectOne("user_mapper.getMemberCountByAccountNo", accountNo);
 		
 		return result;
 	}

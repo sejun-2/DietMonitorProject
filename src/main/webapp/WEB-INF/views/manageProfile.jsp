@@ -34,7 +34,7 @@
 			<div class="sig_inner">
 				<div class="sig_inputs">
 					<div class="sig_title">프로필 추가</div>
-					<form action="" method="post">
+					<form action="/addProfile" method="POST">
 						<div class="sig_input wrap_s">
 							<p>
 								프로필 닉네임<span class="red">*</span>
@@ -86,7 +86,7 @@
 								<th scope="col">프로필삭제</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="memberList">
 							<c:forEach var="profile" items="${profiles}">
 								<tr onclick="">
 									<td>1</td>
@@ -115,5 +115,71 @@
 
 
 	<jsp:include page="footer.jsp" />
+	
+	<!-- <script>
+	$(document).ready(function(){
+		memberListShow();
+		
+	});
+	
+		function memberListShow(){
+			let requestJsonData = {
+				
+			}
+			let requestJsonDataString = JSON.stringify(requestJsonData);
+			
+			$.ajax({
+				type: "POST",
+				url: "http://localhost:8080/findMemberList",
+				headers:{
+				"Content-type":"application/json;charset:UTF-8"
+			},		
+			dataType: 'json', 
+			data: requestJsonDataString, 
+			success: function(userList){
+				
+			let data = "";
+			
+			console.log(userList);
+				
+						/* for(item in userList){
+							
+							data += "	<tr onclick="">";
+							data += "	<td>1</td>";
+							data += "	<td>" + profiles[item].nickname + "</td>";
+							data += "	<td>" + profiles[item].age + "</td>";
+							data += "	<td>" + profiles[item].genderName + "</td>";
+							data += "	<td>";
+							data += "		<form action=\"/removeProfile\" method=\"post\" onsubmit=\"return confirm('정말로 삭제하시겠습니까?');\">";
+							data += "         <input type=\"hidden\" name=\"accountNo\" value=" + userList.accountNo + ">";
+							data += "	            <input type=\"hidden\" name=\"memberNo\" value=" + userList.memberNo + ">";
+							data += "	            <button class=\"board_td_btn\" type=\"submit\">프로필삭제</button>";
+							data += "	        </form>";
+							data += "		</td>";
+							data += "	</tr>";
+					
+						} */
+							$('#memberList').html(data);
+			
+						},
+						error: function(error){
+							console.log('통신에러');
+						}
+					});
+				});
+		}	
+		
+
+	
+	 	
+	 	
+	 	
+	
+	
+
+	
+	</script> -->
+	
+	
 </body>
 </html>

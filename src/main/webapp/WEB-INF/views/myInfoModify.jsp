@@ -91,6 +91,17 @@
 						</c:if>
 					</div>
 					<div class="sig_input wrap_s">
+							<p>프로필 선택<span class="red">*</span></p>
+							<div class="cc-selector">
+								<c:forEach var="i" begin="1" end="5" step="1">
+									<input style="display: none;" id="propile${i }" type="radio" name="iconId" value="${i }" /> 
+									<label class="drinkcard-cc profiles" for="profile${i }">
+										<img src="../images/header/profile/profile_${i }.jpg">
+									</label>
+								</c:forEach>
+							</div>
+						</div>
+					<div class="sig_input wrap_s">
 						<p>
 							전화번호<span class="red">*</span>
 						</p>

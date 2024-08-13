@@ -18,7 +18,6 @@
 		<typeAlias type="com.app.dto.search.SearchInfo" alias="SearchInfo"/>
 		<typeAlias type="com.app.dto.search.Food" alias="Food"/>
 		<typeAlias type="com.app.dto.search.Nutrient" alias="Nutrient"/> -->	
-		<typeAlias type="com.app.dto.user.Profile" alias="Profile"/>	
 	</typeAliases>						
 							
 </configuration>							

@@ -29,6 +29,12 @@
                 <div class="sig_inputs">
                     <div class="sig_title">내 정보</div>
 
+					<div class="sig_input wrap_s">
+                        <p>프로필</p>
+                        <p class="information profiles">
+                        	<img src="../images/header/profile/profile_${user.iconId}.jpg">
+                        </p>
+                    </div>
                     <div class="sig_input active wrap_s">
                         <p>아이디</p>
                         <p class="information">${user.email}</p>
