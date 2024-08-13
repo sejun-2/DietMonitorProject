@@ -97,7 +97,7 @@
                         class="button white docs-creator"><span>이전 화면으로</span></a>
                 </div>
             </div>
-    		<form id="frm_diet" action="" method="get">
+    		<form id="frm_diet" action="" method="POST">
     		<input type="hidden" name="foodCode" value="${food.foodCode}">
             <div data-skin-food="simple" class="mt20">
                 <ul data-skin-food="head">

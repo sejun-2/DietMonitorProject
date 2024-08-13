@@ -163,8 +163,8 @@ public class CustomerController {
 		return "redirect:/main";
 	}
 
-	@GetMapping("/myInfo")
-	public String myInfo(HttpSession session, Model model) {
+	@GetMapping("/myInfo2")
+	public String myInfo2(HttpSession session, Model model) {
 		if (SessionManager.isLoginedAccount(session)) {
 			// 세션에서 로그인된 사용자의 accountNo와 memberNo를 조회
 			int accountNo = SessionManager.getAccountNo(session);
@@ -185,7 +185,7 @@ public class CustomerController {
 			model.addAttribute("accountNo", accountNo);
 			model.addAttribute("memberNo", memberNo);
 
-			return "myInfo";
+			return "myInfo2";
 		}
 
 		return "redirect:/login";
@@ -239,19 +239,6 @@ public class CustomerController {
 		
 	    return "redirect:/myInfo";
 	}
-	
-	@GetMapping("/myIntakeFood")
-	public String myIntakeFood() {
-
-		return "myIntakeFood";
-	}
-	
-	@PostMapping("/myIntakeFood")
-	public String myIntakeFoodAction() {
-		
-		return "myIntakeFood";
-	}
-	
 
 	@RequestMapping("/manageProfile")
 	public String manageProfile(HttpSession session, Model model)  {

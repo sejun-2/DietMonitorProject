@@ -1,9 +1,8 @@
 package com.app.service.diet;
 
-import java.util.List;
+import java.util.List; 
 
 import com.app.dto.diet.Diet;
-import com.app.dto.diet.Nutrients;
 import com.app.dto.user.User;
 
 public interface DietService {
@@ -12,6 +11,6 @@ public interface DietService {
 
 	List<Diet> findFoodListByMemberInfo(User user);
 
-	Nutrients findTotalNutrientFromDailyDietByMemberInfo(User user);
+	Diet findTotalNutrientFromDailyDietByMemberInfo(User user);
 
 }

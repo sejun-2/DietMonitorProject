@@ -1,6 +1,6 @@
 package com.app.dao.diet.impl;
 
-import java.util.List;
+import java.util.List; 
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import com.app.dao.diet.DietDAO;
 import com.app.dto.diet.Diet;
-import com.app.dto.diet.Nutrients;
 import com.app.dto.user.User;
 
 @Repository
@@ -35,9 +34,9 @@ public class DietDAOImpl implements DietDAO {
 	}
 
 	@Override
-	public Nutrients findTotalNutrientFromDailyDietByMemberInfo(User user) {
+	public Diet findTotalNutrientFromDailyDietByMemberInfo(User user) {
 		// TODO Auto-generated method stub
-		Nutrients totalNutrient = sqlSessionTemplate.selectOne("diet_mapper."
+		Diet totalNutrient = sqlSessionTemplate.selectOne("diet_mapper."
 						+ "findTotalNutrientFromDailyDietByMemberInfo", user);
 		
 		return totalNutrient;

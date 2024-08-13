@@ -17,7 +17,7 @@
 	</select>
 	
 	<insert id="addFoodToDailyDiet" parameterType="Diet">
-		INSERT INTO daily_diet 
+		INSERT INTO total_diet 
 		VALUES( log_no_seq.nextval, #{accountNo}, #{memberNo}, SYSDATE, #{foodCode},
 				#{foodIntake}, #{kcal}, #{water}, #{protein}, #{fat}, #{batch}, #{carbohydrate}
 				, #{sugars}, #{dietaryFiber}, #{calcium}, #{ironContent}, #{phosphorus}
@@ -34,7 +34,7 @@
 		WHERE diet.food_code = food.food_code
 	</select>
 	
-	<select id="findTotalNutrientFromDailyDietByMemberInfo" parameterType="User" resultType="Nutrients">
+	<select id="findTotalNutrientFromDailyDietByMemberInfo" parameterType="User" resultType="Diet">
 		SELECT SUM(kcal) kcal, SUM(water) water, SUM(protein) protein, SUM(fat) fat
 		    , SUM(carbohydrate) carbohydrate, SUM(sugars) sugars
 		    , SUM(dietary_fiber) dietary_fiber, SUM(calcium) calcium

@@ -21,12 +21,14 @@ public class MypageController {
 	@GetMapping("/myInfo")
 	public String myInfo(Model model) {
 		
+		
+		
 		TotalDietSearchCondition t1 = new TotalDietSearchCondition();
 		
-		t1.setAccountNo(1);
-		t1.setMemberNo(2);
+		t1.setAccountNo(22);
+		t1.setMemberNo(1);
 		t1.setStartDate("20240805");
-		t1.setEndDate("20240809");
+		t1.setEndDate("20240813");
 
 		System.out.println(t1);
 		List<TotalDiet> totalDietList = mypageService.findTotalDietByAvg(t1);

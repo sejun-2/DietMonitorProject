@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.app.dto.diet.Diet;
-import com.app.dto.diet.Nutrients;
 import com.app.dto.search.Nutrient;
 import com.app.dto.user.User;
 import com.app.service.diet.DietService;
@@ -63,7 +62,7 @@ public class DietController {
 		user.setAccountNo(accountNo);
 		user.setMemberNo(memberNo);
 		
-		Nutrients totalNutrient = dietService.findTotalNutrientFromDailyDietByMemberInfo(user);
+		Diet totalNutrient = dietService.findTotalNutrientFromDailyDietByMemberInfo(user);
 		List<Diet> dailyDiet = dietService.findFoodListByMemberInfo(user);
 		System.out.println(dailyDiet);
 		System.out.println(totalNutrient);
