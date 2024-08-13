@@ -10,18 +10,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link href="./css/base.css" rel="stylesheet">
-    <link href="./css/common.css" rel="stylesheet">
-    <link href="./css/board.css" rel="stylesheet">
-    <script type="text/javascript" src="./script/header.js"></script>
-    <script type="text/javascript" src="./script/common.js"></script>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
+    <link href="../css/board.css" rel="stylesheet">
+    <script type="text/javascript" src="../script/header.js"></script>
+    <script type="text/javascript" src="../script/common.js"></script>
 
     <title>foodIngredients</title>
 </head>
 <body>
 	<header id="header">
         <div class="header_inner header_sub">
-            <jsp:include page="header.jsp" />
+            <jsp:include page="../common/header.jsp" />
         </div>
     </header>
 	
@@ -33,7 +33,7 @@
             <div class="wrap">
                 <h1 class="title">나의 하루 섭취 식품</h1>
                 <div class="route wrap">
-                    <a href="./index.html"><img class="home center" src="./images/sub/icon/material-home.svg"
+                    <a href="./index.html"><img class="home center" src="../images/sub/icon/material-home.svg"
                             alt="홈 아이콘"></a>
                     <div class="route_info wrap">
                         <a href="./foodSearchList"><span class="dap1">마이페이지</span></a>
@@ -55,7 +55,7 @@
                 </p>
 
                 <button class="board_btn wrap">
-                    <img src="./images/sub/icon/material-install-desktop.svg" alt="">
+                    <img src="../images/sub/icon/material-install-desktop.svg" alt="">
                     <p class="ml10">나의 영양성분 기록 저장</p>
                 </button>
 
@@ -92,7 +92,7 @@
 	                        <td>${diet.kcal}</td>
 	                        <td>
 	                            <button class="board_td_btn wrap" type="button">
-	                                <img src="./images/sub/icon/feather-x-box.svg" alt="">
+	                                <img src="../images/sub/icon/feather-x-box.svg" alt="">
 	                                <p>등록취소</p>
 	                            </button>
 	                        </td>
@@ -102,7 +102,7 @@
 	                    <tr class="tr_event">
 	                        <td class="more_information" colspan="6">
 	                            <div class="wrap">
-	                                <img  class="slider-left" data-target=".nutrient${status.count}" src="./images/sub/icon/slider/slider-left.svg" alt="">
+	                                <img  class="slider-left" data-target=".nutrient${status.count}" src="../images/sub/icon/slider/slider-left.svg" alt="">
 	                                <div class="more_nutrient">
 	                                    <ul class="nutrient nutrient${status.count} wrap">
 	                                        <li class="more_item wrap">
@@ -201,7 +201,7 @@
 	                                </div>
 	
 	
-	                                <img  class="slider-right" data-target=".nutrient${status.count}" src="./images/sub/icon/slider/slider-right.svg" alt="">
+	                                <img  class="slider-right" data-target=".nutrient${status.count}" src="../images/sub/icon/slider/slider-right.svg" alt="">
 	                            </div>
 	                        </td>
 	                    </tr>
@@ -220,10 +220,10 @@
 
                 <div class="pagenation_btn wrap">
                     <div class="slider_prev">
-                        <img src="./images/sub/icon/slider/slider-left.svg" alt="">
+                        <img src="../images/sub/icon/slider/slider-left.svg" alt="">
                     </div>
                     <div class="slider_next">
-                        <img src="./images/sub/icon/slider/slider-right.svg" alt="">
+                        <img src="../images/sub/icon/slider/slider-right.svg" alt="">
                     </div>
                 </div>
 
@@ -307,10 +307,10 @@
 
                 <div class="pagenation_btn wrap">
                     <div class="slider_prev">
-                        <img src="./images/sub/icon/slider/slider-left.svg" alt="">
+                        <img src="../images/sub/icon/slider/slider-left.svg" alt="">
                     </div>
                     <div class="slider_next">
-                        <img src="./images/sub/icon/slider/slider-right.svg" alt="">
+                        <img src="../images/sub/icon/slider/slider-right.svg" alt="">
                     </div>
                 </div>
 
@@ -390,13 +390,13 @@
                 <p class="text">부족한 영양성분의 상세 설명과 추천 식품이 궁금하시다면 해당 영양성분의 상세보기를 눌러주세요.</p>
                 <div class="page_nation wrap">
                     <div class="slide_prev">
-                        <img src="./images/sub/icon/slider/akar-chevron-left-small.svg" alt="">
+                        <img src="../images/sub/icon/slider/akar-chevron-left-small.svg" alt="">
                     </div>
                     <div class="slide_stop">
-                        <img src="./images/sub/icon/slider/akar-two-line-vertical.svg" alt="">
+                        <img src="../images/sub/icon/slider/akar-two-line-vertical.svg" alt="">
                     </div>
                     <div class="slide_next">
-                        <img src="./images/sub/icon/slider/akar-chevron-right-small.svg" alt="">
+                        <img src="../images/sub/icon/slider/akar-chevron-right-small.svg" alt="">
                     </div>
                 </div>
             </div>
@@ -455,7 +455,7 @@
     <div class="popup">
         <div class="box">
             <div class="close">
-                <img src="./images/sub/icon/close-x.svg" alt="">
+                <img src="../images/sub/icon/close-x.svg" alt="">
             </div>
             <div class="title">에너지가 부족할 경우 나타나는 현상</div>
             <div class="info">
@@ -469,7 +469,7 @@
             </div>
 
             <div class="wrap_s mt40 mb30">
-                <img src="./images/sub/icon/Icon fa-solid-star.svg" alt="">
+                <img src="../images/sub/icon/Icon fa-solid-star.svg" alt="">
                 <p class="popup_title">일일 권장량 대비 부족 영양소 별 추천 검색</p>
             </div>
             <ul class="tag_inner wrap_s">
@@ -484,6 +484,6 @@
     </div>
 
 
-   <jsp:include page="footer.jsp" />
+   <jsp:include page="../common/footer.jsp" />
 </body>
 </html>

@@ -10,18 +10,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link href="./css/base.css" rel="stylesheet">
-    <link href="./css/common.css" rel="stylesheet">
-    <link href="./css/board.css" rel="stylesheet">
-    <script type="text/javascript" src="./script/header.js"></script>
-    <script type="text/javascript" src="./script/common.js"></script>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
+    <link href="../css/board.css" rel="stylesheet">
+    <script type="text/javascript" src="../script/header.js"></script>
+    <script type="text/javascript" src="../script/common.js"></script>
 
     <title>foodIngredients</title>
 </head>
 <body>
    <header id="header">
         <div class="header_inner header_sub">
-            <jsp:include page="header.jsp" />
+            <jsp:include page="../common/header.jsp" />
         </div>
     </header>
 
@@ -34,7 +34,7 @@
             <div class="wrap">
                 <h1 class="title">식품으로 찾아보기</h1>
                 <div class="route wrap">
-                    <a href="./index.html"><img class="home center" src="./images/sub/icon/material-home.svg"
+                    <a href="./index.html"><img class="home center" src="../images/sub/icon/material-home.svg"
                             alt="홈 아이콘"></a>
                     <div class="route_info wrap">
                         <a href="./foodSearchList.html"><span class="dap1">영양정보 찾아보기</span></a>
@@ -56,11 +56,11 @@
         	<c:forEach var="dailySumItem" items="${totalDietListAvg}">
             <div class="today_inner wrap">
                 <div class="wrap">
-                    <img src="./images/sub/icon/material-today.svg" alt="">
+                    <img src="../images/sub/icon/material-today.svg" alt="">
                     <p class="today ml20">${dailySumItem.saveDate}</p>
                 </div>
                 <div class="down_icon">
-                    <img src="./images/sub/icon/akar-chevron-down-small.svg" alt="">
+                    <img src="../images/sub/icon/akar-chevron-down-small.svg" alt="">
                 </div>
 
             </div>
@@ -109,7 +109,7 @@
 		                        <tr class="tr_event">
 		                            <td class="more_information" colspan="6">
 		                                <div class="wrap">
-		                                    <img  class="slider-left" data-target=".nutrient1" src="./images/sub/icon/slider/slider-left.svg" alt="">
+		                                    <img  class="slider-left" data-target=".nutrient1" src="../images/sub/icon/slider/slider-left.svg" alt="">
 		                                    <div class="more_nutrient">
 		                                        <ul class="nutrient nutrient1 wrap">
 		    
@@ -189,7 +189,7 @@
 		                                    </div>
 		    
 		    
-		                                    <img  class="slider-right" data-target=".nutrient1" src="./images/sub/icon/slider/slider-right.svg" alt="">
+		                                    <img  class="slider-right" data-target=".nutrient1" src="../images/sub/icon/slider/slider-right.svg" alt="">
 		                                </div>
 		                            </td>
 		                        </tr> 
@@ -211,7 +211,7 @@
 		                        <tr class="tr_event">
 		                            <td class="more_information" colspan="6">
 		                                <div class="wrap">
-		                                    <img  class="slider-left" data-target=".nutrient1" src="./images/sub/icon/slider/slider-left.svg" alt="">
+		                                    <img  class="slider-left" data-target=".nutrient1" src="../images/sub/icon/slider/slider-left.svg" alt="">
 		                                    <div class="more_nutrient">
 		                                        <ul class="nutrient nutrient1 wrap">
 		    
@@ -291,7 +291,7 @@
 		                                    </div>
 		    
 		    
-		                                    <img  class="slider-right" data-target=".nutrient1" src="./images/sub/icon/slider/slider-right.svg" alt="">
+		                                    <img  class="slider-right" data-target=".nutrient1" src="../images/sub/icon/slider/slider-right.svg" alt="">
 		                                </div>
 		                            </td>
 		                        </tr> 
@@ -308,6 +308,6 @@
 
 
 
-   <jsp:include page="footer.jsp" />
+   <jsp:include page="../common/footer.jsp" />
 </body>
 </html>

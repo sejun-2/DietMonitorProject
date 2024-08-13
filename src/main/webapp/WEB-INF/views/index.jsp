@@ -18,7 +18,7 @@
 <body>
 	<header id="header">
         <div class="header_inner">
-        	<jsp:include page="header.jsp" />
+        	<jsp:include page="./common/header.jsp" />
         </div>
         
 
@@ -46,7 +46,7 @@
                         </a>
                     </div>
                     <div class="box">
-                        <a href="/dailyDiet">
+                        <a href="/diet/dailyDiet">
                             <div class="pic center">
                                 <img src="./images/main/icon/quick_icon3.png" alt="나의 하루 섭취 식품 아이콘">
                             </div>
@@ -168,6 +168,6 @@
 
 
 
-    <jsp:include page="footer.jsp" />
+    <jsp:include page="./common/footer.jsp" />
 </body>
 </html>

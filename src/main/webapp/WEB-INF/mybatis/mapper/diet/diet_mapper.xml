@@ -17,7 +17,7 @@
 	</select>
 	
 	<insert id="addFoodToDailyDiet" parameterType="Diet">
-		INSERT INTO total_diet 
+		INSERT INTO daily_diet 
 		VALUES( log_no_seq.nextval, #{accountNo}, #{memberNo}, SYSDATE, #{foodCode},
 				#{foodIntake}, #{kcal}, #{water}, #{protein}, #{fat}, #{batch}, #{carbohydrate}
 				, #{sugars}, #{dietaryFiber}, #{calcium}, #{ironContent}, #{phosphorus}

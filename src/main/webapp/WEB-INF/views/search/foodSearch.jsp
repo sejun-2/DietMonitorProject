@@ -23,7 +23,7 @@
 <body>
 	<header id="header">
         <div class="header_inner header_sub">
-            <jsp:include page="./header.jsp" />
+            <jsp:include page="../common/header.jsp" />
         </div>
     </header>
 
@@ -57,7 +57,7 @@
                         <p class="title">식품명</p>
                         <input id="searchKeyword" type="search" value="" placeholder="영양정보가 궁금한 식품을 입력해주세요">
                         <button class="search_icon center" type="submit">
-                            <img src="./images/sub/icon/akar-search2.svg" alt="">
+                            <img src="../images/sub/icon/akar-search2.svg" alt="">
                         </button>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
                         <div class="tag_inner wrap">
                             <div class="tag_gnb"></div>
                             <div class="reset center">
-                                <img src="./images/sub/icon/akar-arrow-repeat.svg" alt="">
+                                <img src="../images/sub/icon/akar-arrow-repeat.svg" alt="">
                                 <span>선택초기화</span>
                             </div>
                         </div>
@@ -186,7 +186,7 @@
         </div>
     </section>
 
-    <jsp:include page="./footer.jsp" />
+    <jsp:include page="../common/footer.jsp" />
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
@@ -264,7 +264,7 @@
 			
     		$.ajax({
     			type: "POST",
-    			url: "http://localhost:8080/foodSearch",
+    			url: "http://localhost:8080/foodSearchList",
     			headers:{
 					"Content-type":"application/json;charset:UTF-8"
 				},
@@ -289,11 +289,11 @@
     				
     				    				
     				$('#at_front').html(
-        					'<a href="javascript:foodListShow(' + result.page.frontPage + ')"> <img src="./images/sub/icon/at_front.svg" alt=""> </a>'
+        					'<a href="javascript:foodListShow(' + result.page.frontPage + ')"> <img src="../images/sub/icon/at_front.svg" alt=""> </a>'
        				);
         				
        				$('#left').html(
-           					'<a href="javascript:foodListShow(' + (result.page.currentPage-1) + ')"> <img src="./images/sub/icon/Icon akar-chevron-left-small.svg" alt=""> </a>'
+           					'<a href="javascript:foodListShow(' + (result.page.currentPage-1) + ')"> <img src="../images/sub/icon/Icon akar-chevron-left-small.svg" alt=""> </a>'
            			);    				
     				
     				data = "";
@@ -310,11 +310,11 @@
     				
     				
     				$('#right').html(
-        					'<a href="javascript:foodListShow(' + (result.page.currentPage+1) + ')"> <img src="./images/sub/icon/Icon akar-chevron-right-small.svg" alt=""> </a>'
+        					'<a href="javascript:foodListShow(' + (result.page.currentPage+1) + ')"> <img src="../images/sub/icon/Icon akar-chevron-right-small.svg" alt=""> </a>'
         			);    				
     				
     				$('#at_back').html(
-        					'<a href="javascript:foodListShow(' + result.page.backPage + ')"> <img src="./images/sub/icon/at_back.svg" alt=""> </a>'
+        					'<a href="javascript:foodListShow(' + result.page.backPage + ')"> <img src="../images/sub/icon/at_back.svg" alt=""> </a>'
         			);
         		
     				

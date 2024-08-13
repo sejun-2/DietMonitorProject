@@ -14,17 +14,17 @@
 	href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<link href="./css/base.css" rel="stylesheet">
-<link href="./css/board.css" rel="stylesheet">
-<link href="./css/common.css" rel="stylesheet">
-<script type="text/javascript" src="./script/header.js"></script>
+<link href="../css/base.css" rel="stylesheet">
+<link href="../css/board.css" rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
+<script type="text/javascript" src="../script/header.js"></script>
 
 <title>회원가입</title>
 </head>
 <body>
 	<header id="header">
 		<div class="header_inner header_sub">
-			<jsp:include page="header.jsp" />
+			<jsp:include page="../common/header.jsp" />
 		</div>
 	</header>
 
@@ -114,7 +114,7 @@
 
 
 
-	<jsp:include page="footer.jsp" />
+	<jsp:include page="../common/footer.jsp" />
 	
 	<!-- <script>
 	$(document).ready(function(){

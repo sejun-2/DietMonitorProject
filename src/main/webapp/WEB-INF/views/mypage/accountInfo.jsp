@@ -9,16 +9,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link href="./css/base.css" rel="stylesheet">
-    <link href="./css/common.css" rel="stylesheet">
-    <script type="text/javascript" src="./script/header.js"></script>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
+    <script type="text/javascript" src="../script/header.js"></script>
 
     <title>foodIngredients</title>
 </head>
 <body>
 	<header id="header">
         <div class="header_inner header_sub">
-            <jsp:include page="header.jsp" />
+            <jsp:include page="../common/header.jsp" />
         </div>
     </header>
 
@@ -65,13 +65,13 @@
                     </div>
                 </div>
                 
-                <button class="common_btn" onclick="location.href='/myInfoModify'">회원정보수정</button>
+                <button class="common_btn" onclick="location.href='/mypage/modifyAccount'">회원정보수정</button>
             </div>
         </div>
     </section>
 
 	
 
-    <jsp:include page="footer.jsp" />
+    <jsp:include page="../common/footer.jsp" />
 </body>
 </html>

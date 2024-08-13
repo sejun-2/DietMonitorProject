@@ -6,7 +6,7 @@
 
 <mapper namespace="mypage_mapper">
 	
-	<select id="findTotalDietBySearchCondition" parameterType="TotalDietSearchCondition" resultType="TotalDiet">
+	<select id="findTotalDietBySearchCondition" parameterType="TotalDietSearchCondition" resultType="Diet">
 		SELECT * FROM total_diet
 		<where>
 			<if test="accountNo != null and accountNo != '' ">
@@ -19,7 +19,7 @@
 		</where>				
 	</select>
 	
-	<select id="findTotalDietByAvg" parameterType="TotalDietSearchCondition" resultType="TotalDiet">
+	<select id="findTotalDietByAvg" parameterType="TotalDietSearchCondition" resultType="Diet">
 		select 
         AVG(kcal) kcal,
 		AVG(water) water,
@@ -84,7 +84,7 @@
 		</where>				
 	</select>
 	
-	<select id="findTotalDietByMonthSum" parameterType="TotalDietSearchCondition" resultType="TotalDiet">
+	<select id="findTotalDietByMonthSum" parameterType="TotalDietSearchCondition" resultType="Diet">
 		select 
         AVG(kcal) kcal,
 		AVG(water) water,
@@ -149,7 +149,7 @@
 		</where>				
 	</select>
 	
-	<select id="findTotalDietBySaveHistory" parameterType="TotalDietSearchCondition" resultType="TotalDiet">
+	<select id="findTotalDietBySaveHistory" parameterType="TotalDietSearchCondition" resultType="Diet">
 		SELECT
 		    td.log_no log_no,
 		    td.account_no account_no,
@@ -312,7 +312,7 @@
 		ORDER BY td.save_date DESC		
 	</select>
 	
-	<select id="findTotalDietBySaveHistoryAvg" parameterType="TotalDietSearchCondition" resultType="TotalDiet">
+	<select id="findTotalDietBySaveHistoryAvg" parameterType="TotalDietSearchCondition" resultType="Diet">
 		SELECT
 		COUNT(*) foodName,
         TO_CHAR(save_date, 'YYYY-MM-DD') save_date,
@@ -358,7 +358,7 @@
 	
 	
 	
-	<!-- <select id="findTotalDietBysearchCondition" parameterType="TotalDietSearchCondition" resultType="TotalDiet">
+	<!-- <select id="findTotalDietBysearchCondition" parameterType="TotalDietSearchCondition" resultType="Diet">
 		SELECT * FROM total_diet
 		<where>
 			<if test="accountNo != null and accountNo != '' ">

@@ -2,19 +2,19 @@ package com.app.service.mypage;
 
 import java.util.List;
 
-import com.app.dto.mypage.TotalDiet;
+import com.app.dto.diet.Diet;
 import com.app.dto.mypage.TotalDietSearchCondition;
 
 public interface MypageService {
 	
-	public List<TotalDiet> findTotalDietBySearchCondition(TotalDietSearchCondition totalDietSearchCondition);
+	public List<Diet> findTotalDietBySearchCondition(TotalDietSearchCondition totalDietSearchCondition);
 	
-	public List<TotalDiet> findTotalDietByAvg(TotalDietSearchCondition totalDietSearchCondition);
+	public List<Diet> findTotalDietByAvg(TotalDietSearchCondition totalDietSearchCondition);
 	
-	public List<TotalDiet> findTotalDietBySaveHistory(TotalDietSearchCondition totalDietSearchCondition);
+	public List<Diet> findTotalDietBySaveHistory(TotalDietSearchCondition totalDietSearchCondition);
 	
-	public List<TotalDiet> findTotalDietBySaveHistoryAvg(TotalDietSearchCondition totalDietSearchCondition);
+	public List<Diet> findTotalDietBySaveHistoryAvg(TotalDietSearchCondition totalDietSearchCondition);
 	
-	public List<TotalDiet> findTotalDietByMonthSum(TotalDietSearchCondition totalDietSearchCondition);
+	public List<Diet> findTotalDietByMonthSum(TotalDietSearchCondition totalDietSearchCondition);
 	
 }

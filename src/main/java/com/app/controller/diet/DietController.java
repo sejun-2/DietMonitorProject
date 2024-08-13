@@ -7,12 +7,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.app.dto.diet.Diet;
-import com.app.dto.search.Nutrient;
 import com.app.dto.user.User;
 import com.app.service.diet.DietService;
 import com.app.service.search.SearchService;
@@ -44,20 +42,19 @@ public class DietController {
 		int result = dietService.addFoodToDailyDiet(diet);
 		
 		if(result > 0) {
-			return "redirect:/dailyDiet";
+			return "redirect:/diet/dailyDiet";
 		} else {
-			return "redirect:/foodDetail";
+			return "redirect:/search/foodDetail";
 		}
 	}
 	
-	@RequestMapping("/dailyDiet")
-	public String dailyDiet(HttpSession session, Model model) {
+	@RequestMapping("/diet/dailyDiet")
+	public String dailyDiet(HttpSession session, Model model, User user) {
 
 		int accountNo = SessionManager.getAccountNo(session);
 		int memberNo = SessionManager.getMemberNo(session);
 		System.out.println(accountNo);
-		
-		User user = new User();
+		System.out.println(memberNo);
 		
 		user.setAccountNo(accountNo);
 		user.setMemberNo(memberNo);
@@ -72,6 +69,6 @@ public class DietController {
 		model.addAttribute("dailyDiet", dailyDiet);
 		model.addAttribute("totalNutrient", totalNutrient);
 		
-		return "dailyDiet";
+		return "diet/dailyDiet";
 	}
 }

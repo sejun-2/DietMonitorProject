@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.dao.mypage.MypageDAO;
-import com.app.dto.mypage.TotalDiet;
+import com.app.dto.diet.Diet;
 import com.app.dto.mypage.TotalDietSearchCondition;
 import com.app.service.mypage.MypageService;
 
@@ -17,39 +17,39 @@ public class MypageServiceImpl implements MypageService {
 	MypageDAO mypageDAO;
 
 	@Override
-	public List<TotalDiet> findTotalDietBySearchCondition(TotalDietSearchCondition totalDietSearchCondition) {
+	public List<Diet> findTotalDietBySearchCondition(TotalDietSearchCondition totalDietSearchCondition) {
 		
-		List<TotalDiet> totalDietList = mypageDAO.findTotalDietBySearchCondition(totalDietSearchCondition);
+		List<Diet> totalDietList = mypageDAO.findTotalDietBySearchCondition(totalDietSearchCondition);
 		
 		return totalDietList;
 	}
 
 	@Override
-	public List<TotalDiet> findTotalDietByAvg(TotalDietSearchCondition totalDietSearchCondition) {
+	public List<Diet> findTotalDietByAvg(TotalDietSearchCondition totalDietSearchCondition) {
 		// TODO Auto-generated method stub
-		List<TotalDiet> totalDietList = mypageDAO.findTotalDietByAvg(totalDietSearchCondition);
+		List<Diet> totalDietList = mypageDAO.findTotalDietByAvg(totalDietSearchCondition);
 		return totalDietList;
 	}
 
 	@Override
-	public List<TotalDiet> findTotalDietBySaveHistory(TotalDietSearchCondition totalDietSearchCondition) {
+	public List<Diet> findTotalDietBySaveHistory(TotalDietSearchCondition totalDietSearchCondition) {
 		// TODO Auto-generated method stub
-		List<TotalDiet> totalDietList = mypageDAO.findTotalDietBySaveHistory(totalDietSearchCondition);
+		List<Diet> totalDietList = mypageDAO.findTotalDietBySaveHistory(totalDietSearchCondition);
 		return totalDietList;
 	}
 
 	@Override
-	public List<TotalDiet> findTotalDietBySaveHistoryAvg(TotalDietSearchCondition totalDietSearchCondition) {
+	public List<Diet> findTotalDietBySaveHistoryAvg(TotalDietSearchCondition totalDietSearchCondition) {
 		// TODO Auto-generated method stub
-		List<TotalDiet> totalDietListAvg = mypageDAO.findTotalDietBySaveHistoryAvg(totalDietSearchCondition);
+		List<Diet> totalDietListAvg = mypageDAO.findTotalDietBySaveHistoryAvg(totalDietSearchCondition);
 		return totalDietListAvg;
 	}
 
 	@Override
-	public List<TotalDiet> findTotalDietByMonthSum(TotalDietSearchCondition totalDietSearchCondition) {
+	public List<Diet> findTotalDietByMonthSum(TotalDietSearchCondition totalDietSearchCondition) {
 		// TODO Auto-generated method stub
-		List<TotalDiet> totalDietListMonthSum = mypageDAO.findTotalDietByMonthSum(totalDietSearchCondition);
-		return null;
+		List<Diet> totalDietListMonthSum = mypageDAO.findTotalDietByMonthSum(totalDietSearchCondition);
+		return totalDietListMonthSum;
 	}
 	
 	

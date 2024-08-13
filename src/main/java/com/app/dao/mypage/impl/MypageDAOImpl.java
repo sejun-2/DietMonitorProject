@@ -1,13 +1,13 @@
 package com.app.dao.mypage.impl;
 
-import java.util.List;
+import java.util.List; 
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.app.dao.mypage.MypageDAO;
-import com.app.dto.mypage.TotalDiet;
+import com.app.dto.diet.Diet;
 import com.app.dto.mypage.TotalDietSearchCondition;
 
 @Repository
@@ -18,43 +18,43 @@ public class MypageDAOImpl implements MypageDAO {
 
 
 	@Override
-	public List<TotalDiet> findTotalDietBySearchCondition(TotalDietSearchCondition totalDietSearchCondition) {
+	public List<Diet> findTotalDietBySearchCondition(TotalDietSearchCondition totalDietSearchCondition) {
 		
-		List<TotalDiet> totalDietList = sqlSessionTemplate.selectList("mypage_mapper.findTotalDietBySearchCondition", totalDietSearchCondition);
-		
-		return totalDietList;
-	}
-
-
-	@Override
-	public List<TotalDiet> findTotalDietByAvg(TotalDietSearchCondition totalDietSearchCondition) {
-		// TODO Auto-generated method stub
-		List<TotalDiet> totalDietList = sqlSessionTemplate.selectList("mypage_mapper.findTotalDietByAvg", totalDietSearchCondition);
+		List<Diet> totalDietList = sqlSessionTemplate.selectList("mypage_mapper.findTotalDietBySearchCondition", totalDietSearchCondition);
 		
 		return totalDietList;
 	}
 
 
 	@Override
-	public List<TotalDiet> findTotalDietBySaveHistory(TotalDietSearchCondition totalDietSearchCondition) {
+	public List<Diet> findTotalDietByAvg(TotalDietSearchCondition totalDietSearchCondition) {
 		// TODO Auto-generated method stub
-		List<TotalDiet> totalDietList = sqlSessionTemplate.selectList("mypage_mapper.findTotalDietBySaveHistory", totalDietSearchCondition);
+		List<Diet> totalDietList = sqlSessionTemplate.selectList("mypage_mapper.findTotalDietByAvg", totalDietSearchCondition);
+		
 		return totalDietList;
 	}
 
 
 	@Override
-	public List<TotalDiet> findTotalDietBySaveHistoryAvg(TotalDietSearchCondition totalDietSearchCondition) {
+	public List<Diet> findTotalDietBySaveHistory(TotalDietSearchCondition totalDietSearchCondition) {
 		// TODO Auto-generated method stub
-		List<TotalDiet> totalDietListAvg = sqlSessionTemplate.selectList("mypage_mapper.findTotalDietBySaveHistoryAvg", totalDietSearchCondition);
+		List<Diet> totalDietList = sqlSessionTemplate.selectList("mypage_mapper.findTotalDietBySaveHistory", totalDietSearchCondition);
+		return totalDietList;
+	}
+
+
+	@Override
+	public List<Diet> findTotalDietBySaveHistoryAvg(TotalDietSearchCondition totalDietSearchCondition) {
+		// TODO Auto-generated method stub
+		List<Diet> totalDietListAvg = sqlSessionTemplate.selectList("mypage_mapper.findTotalDietBySaveHistoryAvg", totalDietSearchCondition);
 		return totalDietListAvg;
 	}
 
 
 	@Override
-	public List<TotalDiet> findTotalDietByMonthSum(TotalDietSearchCondition totalDietSearchCondition) {
+	public List<Diet> findTotalDietByMonthSum(TotalDietSearchCondition totalDietSearchCondition) {
 		// TODO Auto-generated method stub
-		List<TotalDiet> totalDietListMonthSum = sqlSessionTemplate.selectList("mypage_mapper.findTotalDietByMonthSum", totalDietSearchCondition);
+		List<Diet> totalDietListMonthSum = sqlSessionTemplate.selectList("mypage_mapper.findTotalDietByMonthSum", totalDietSearchCondition);
 		return null;
 	}
 	

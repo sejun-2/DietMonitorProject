@@ -33,8 +33,8 @@ public class SearchController {
 	@Autowired
 	UserService userService;	
 	
-	@GetMapping("/foodSearchList")
-	public String search(Model model) {
+	@GetMapping("/foodSearch")
+	public String foodSearch(Model model) {
 		
 		List<SearchCategory> dataSortList = searchService.findDataSortList();		
 		model.addAttribute("dataSortList", dataSortList);
@@ -42,12 +42,12 @@ public class SearchController {
 		List<SearchCategory> mainCategoryList = searchService.findMainCategoryList();		
 		model.addAttribute("mainCategoryList", mainCategoryList);
 		
-		return "search/foodSearchList";
+		return "search/foodSearch";
 	}
 	
 	@ResponseBody
-	@RequestMapping("/foodSearch")
-	public SearchResult foodSearch(@RequestBody SearchInfo searchInfo){
+	@RequestMapping("/foodSearchList")
+	public SearchResult foodSearchList(@RequestBody SearchInfo searchInfo){
 		
 		Page page = PageManager.pageCalculate(searchInfo.getPage().getCurrentPage(),
 					searchInfo.getPage().getItemsPerPage(), searchService.findFoodTotalItems(searchInfo));
@@ -73,6 +73,6 @@ public class SearchController {
 		List<NutritionStandard> nc = userService.getNutritionStandardByMemberInfo(session);
 		model.addAttribute("nc", nc);
 		
-		return "search/foodRegisterDetail";
+		return "search/foodDetail";
 	}
 }
