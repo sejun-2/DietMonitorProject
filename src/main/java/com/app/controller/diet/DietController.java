@@ -49,7 +49,7 @@ public class DietController {
 	}
 	
 	@RequestMapping("/diet/dailyDiet")
-	public String dailyDiet(HttpSession session, Model model, User user) {
+	public String dailyDiet(HttpSession session, Model model, User user, Diet diet) {
 
 		int accountNo = SessionManager.getAccountNo(session);
 		int memberNo = SessionManager.getMemberNo(session);
@@ -61,14 +61,22 @@ public class DietController {
 		
 		Diet totalNutrient = dietService.findTotalNutrientFromDailyDietByMemberInfo(user);
 		List<Diet> dailyDiet = dietService.findFoodListByMemberInfo(user);
+		
+		System.out.println("dailyDiet 정보 : " + dailyDiet);
+		
 		System.out.println(dailyDiet);
 		System.out.println(totalNutrient);
-		
-//		List<Food> foodList = searchService.findFoodListByMemberInfo(user);
 		
 		model.addAttribute("dailyDiet", dailyDiet);
 		model.addAttribute("totalNutrient", totalNutrient);
 		
 		return "diet/dailyDiet";
+	}
+	
+	@PostMapping("/deleteDiet")
+	public String deleteDiet(Diet diet) {
+		int result = dietService.deleteDiet(diet);
+		
+		return "redirect:/diet/dailyDiet";
 	}
 }

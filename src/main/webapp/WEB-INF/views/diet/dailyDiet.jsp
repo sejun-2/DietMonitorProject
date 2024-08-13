@@ -91,7 +91,7 @@
 	                        <td>${diet.foodIntake}</td>
 	                        <td>${diet.kcal}</td>
 	                        <td>
-	                            <button class="board_td_btn wrap" type="button">
+	                            <button class="board_td_btn wrap" type="button" onclick="href:/deleteDiet?logNo=#{diet.logNo}">
 	                                <img src="../images/sub/icon/feather-x-box.svg" alt="">
 	                                <p>등록취소</p>
 	                            </button>

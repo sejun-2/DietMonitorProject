@@ -13,4 +13,6 @@ public interface DietDAO {
 
 	Diet findTotalNutrientFromDailyDietByMemberInfo(User user);
 
+	int deleteDiet(Diet diet);
+
 }
