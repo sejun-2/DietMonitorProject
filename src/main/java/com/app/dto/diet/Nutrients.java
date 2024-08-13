@@ -3,17 +3,8 @@ package com.app.dto.diet;
 import lombok.Data;
 
 @Data
-public class Diet {
+public class Nutrients {
 	
-	int logNo;
-	int accountNo;
-	int memberNo;
-	String saveDate;
-	String foodCode;
-	String foodName;
-	String mainCategoryName;
-	String midCategoryName;
-	int foodIntake;
 	double kcal;
     double water;
     double protein;
@@ -38,6 +29,5 @@ public class Diet {
     double cholesterol;
     double saturatedFat;
     double transFat;
-    int state;
-    
+	
 }

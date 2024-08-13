@@ -16,7 +16,7 @@
 		WHERE account_no = #{accountNo} AND member_no = #{memberNo}
 	</select>
 	
-	<insert id="addDailyDiet" parameterType="Diet">
+	<insert id="addFoodToDailyDiet" parameterType="Diet">
 		INSERT INTO daily_diet 
 		VALUES( log_no_seq.nextval, #{accountNo}, #{memberNo}, SYSDATE, #{foodCode},
 				#{foodIntake}, #{kcal}, #{water}, #{protein}, #{fat}, #{batch}, #{carbohydrate}
@@ -27,13 +27,27 @@
 	</insert>
 	
 	<select id="findFoodListByMemberInfo" parameterType="User" resultType="Diet">
-		SELECT food.*
+		SELECT diet.food_intake, food.*
 		FROM (SELECT * FROM daily_diet diet 
 			  WHERE account_no = #{accountNo} AND member_no = #{memberNo}) diet,
 			 food_union_table food
 		WHERE diet.food_code = food.food_code
 	</select>
 	
+	<select id="findTotalNutrientFromDailyDietByMemberInfo" parameterType="User" resultType="Nutrients">
+		SELECT SUM(kcal) kcal, SUM(water) water, SUM(protein) protein, SUM(fat) fat
+		    , SUM(carbohydrate) carbohydrate, SUM(sugars) sugars
+		    , SUM(dietary_fiber) dietary_fiber, SUM(calcium) calcium
+		    , SUM(iron_content) iron_content, SUM(phosphorus) phosphorus
+		    , SUM(potassium) potassium, SUM(sodium) sodium, SUM(vitamin_a) vitamin_a
+		    , SUM(retinol) retinol, SUM(beta_carotene) beta_carotene
+		    , SUM(thiamine) thiamine, SUM(riboflavin) riboflavin
+		    , SUM(niacin) niacin, SUM(vitamin_c) vitamin_c, SUM(vitamin_d) vitamin_d
+		    , SUM(cholesterol) cholesterol, SUM(saturated_fat) saturated_fat
+		    , SUM(trans_fat) trans_fat
+		FROM daily_diet
+		WHERE account_no = #{accountNo} AND member_no = #{memberNo}
+	</select>
 	
 	
 </mapper>
