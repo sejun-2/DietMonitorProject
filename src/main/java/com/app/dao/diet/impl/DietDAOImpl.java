@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.app.dao.diet.DietDAO;
 import com.app.dto.diet.Diet;
+import com.app.dto.diet.Nutrients;
 import com.app.dto.user.User;
 
 @Repository
@@ -25,12 +26,21 @@ public class DietDAOImpl implements DietDAO {
 	}
 
 	@Override
-	public List<Diet> findDailyDiet(User user) {
+	public List<Diet> findFoodListByMemberInfo(User user) {
 		// TODO Auto-generated method stub
 		List<Diet> dailyDiet = 
-				sqlSessionTemplate.selectList("diet_mapper.findDailyDiet", user);
+				sqlSessionTemplate.selectList("diet_mapper.findFoodListByMemberInfo", user);
 		
 		return dailyDiet;
+	}
+
+	@Override
+	public Nutrients findTotalNutrientFromDailyDietByMemberInfo(User user) {
+		// TODO Auto-generated method stub
+		Nutrients totalNutrient = sqlSessionTemplate.selectOne("diet_mapper."
+						+ "findTotalNutrientFromDailyDietByMemberInfo", user);
+		
+		return totalNutrient;
 	}
 
 }

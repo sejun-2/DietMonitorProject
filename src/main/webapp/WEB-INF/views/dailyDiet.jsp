@@ -76,179 +76,136 @@
                         <th scope="col">번호</th>
                         <th scope="col">식품명</th>
                         <th scope="col">식품대분류</th>
-                        <th scope="col">식품중분류</th>
+                        <th scope="col">섭취량(g)</th>
                         <th scope="col">에너지(Kcal)</th>
                         <th scope="col">하루 섭취<br>식품 등록</th>
                     </tr>
                 </thead>
                 
                 <tbody>
-                	<c:forEach var="item" items="${dailyDiet}" varStatus="status">
-                    <tr onclick="">
-                        <td>${status.count}</td>
-                        <td>햄버거</td>
-                        <td>빵 및 과자류</td>
-                        <td>해당없음</td>
-                        <td>225</td>
-                        <td>
-                            <button class="board_td_btn wrap" type="button">
-                                <img src="./images/sub/icon/feather-x-box.svg" alt="">
-                                <p>등록취소</p>
-                            </button>
-                        </td>
-
-                    </tr>
-
-                    <tr class="tr_event">
-                        <td class="more_information" colspan="6">
-                            <div class="wrap">
-                                <img  class="slider-left" data-target=".nutrient1" src="./images/sub/icon/slider/slider-left.svg" alt="">
-                                <div class="more_nutrient">
-                                    <ul class="nutrient nutrient1 wrap">
-
-                                        <li class="more_item wrap">
-                                            <p class="title">중량</p>
-                                            <p class="info">100g</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">에너지(kcal)</p>
-                                            <p class="info">63.0</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">탄수화물(g)</p>
-                                            <p class="info">8.5</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">당류(g)</p>
-                                            <p class="info">0.2</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">단백질(g)</p>
-                                            <p class="info">0.2</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">지방(g)</p>
-                                            <p class="info">0.2</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">포화지방(g)</p>
-                                            <p class="info">0.2</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">나트륨(mg)</p>
-                                            <p class="info">0.2</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">비타민 A(μg RA)</p>
-                                            <p class="info">0.2</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">레티놀(μg)</p>
-                                            <p class="info">0.2</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">레티놀(μg)</p>
-                                            <p class="info">0.2</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">레티놀(μg)</p>
-                                            <p class="info">0.2</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">레티놀(μg)</p>
-                                            <p class="info">0.2</p>
-                                        </li>
-                                    </ul>
-                                </div>
-
-
-                                <img  class="slider-right" data-target=".nutrient1" src="./images/sub/icon/slider/slider-right.svg" alt="">
-                            </div>
-                        </td>
-                    </tr>
+                	<c:forEach var="diet" items="${dailyDiet}" varStatus="status">
+	                    <tr onclick="">
+	                        <td>${status.count}</td>
+	                        <td>${diet.foodName}</td>
+	                        <td>${diet.mainCategoryName}</td>
+	                        <td>${diet.foodIntake}</td>
+	                        <td>${diet.kcal}</td>
+	                        <td>
+	                            <button class="board_td_btn wrap" type="button">
+	                                <img src="./images/sub/icon/feather-x-box.svg" alt="">
+	                                <p>등록취소</p>
+	                            </button>
+	                        </td>
+	
+	                    </tr>
+					
+	                    <tr class="tr_event">
+	                        <td class="more_information" colspan="6">
+	                            <div class="wrap">
+	                                <img  class="slider-left" data-target=".nutrient${status.count}" src="./images/sub/icon/slider/slider-left.svg" alt="">
+	                                <div class="more_nutrient">
+	                                    <ul class="nutrient nutrient${status.count} wrap">
+	                                        <li class="more_item wrap">
+	                                            <p class="title">에너지(kcal)</p>
+	                                            <p class="info">${diet.kcal}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">수분(g)</p>
+	                                            <p class="info">${diet.water}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">단백질(g)</p>
+	                                            <p class="info">${diet.protein}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">지방(g)</p>
+	                                            <p class="info">${diet.fat}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">탄수화물(g)</p>
+	                                            <p class="info">${diet.carbohydrate}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">당류(g)</p>
+	                                            <p class="info">${diet.sugars}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">식이섬유(g)</p>
+	                                            <p class="info">${diet.dietaryFiber}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">칼슘(mg)</p>
+	                                            <p class="info">${diet.calcium}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">철(mg)</p>
+	                                            <p class="info">${diet.ironContent}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">인(mg)</p>
+	                                            <p class="info">${diet.phosphorus}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">칼륨(mg)</p>
+	                                            <p class="info">${diet.potassium}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">나트륨(mg)</p>
+	                                            <p class="info">${diet.sodium}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">비타민A(μg RAE)</p>
+	                                            <p class="info">${diet.vitaminA}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">레티놀(μg)</p>
+	                                            <p class="info">${diet.retinol}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">베타카로틴(μg)</p>
+	                                            <p class="info">${diet.betaCarotene}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">티아민(mg)</p>
+	                                            <p class="info">${diet.thiamine}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">리보플라빈(mg)</p>
+	                                            <p class="info">${diet.riboflavin}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">니아신(mg)</p>
+	                                            <p class="info">${diet.niacin}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">비타민C(mg)</p>
+	                                            <p class="info">${diet.vitaminC}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">비타민D(μg)</p>
+	                                            <p class="info">${diet.vitaminD}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">콜레스테롤(mg)</p>
+	                                            <p class="info">${diet.cholesterol}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">포화지방산(g)</p>
+	                                            <p class="info">${diet.saturatedFat}</p>
+	                                        </li>
+	                                        <li class="more_item wrap">
+	                                            <p class="title">트랜스지방산(g)</p>
+	                                            <p class="info">${diet.transFat}</p>
+	                                        </li>
+	                                    </ul>
+	                                </div>
+	
+	
+	                                <img  class="slider-right" data-target=".nutrient${status.count}" src="./images/sub/icon/slider/slider-right.svg" alt="">
+	                            </div>
+	                        </td>
+	                    </tr>
 					</c:forEach>
-                    <tr onclick="">
-                        <td>2</td>
-                        <td>싸이버거</td>
-                        <td>즉석식품류</td>
-                        <td>해당없음</td>
-                        <td>225</td>
-                        <td>
-                            <button class="board_td_btn wrap" type="button">
-                                <img src="./images/sub/icon/feather-x-box.svg" alt="">
-                                <p>등록취소</p>
-                            </button>
-                        </td>
-                    </tr>
-
-                    <tr class="tr_event">
-                        <td class="more_information" colspan="6">
-                            <div class="wrap">
-                                <img  class="slider-left" data-target=".nutrient2" src="./images/sub/icon/slider/slider-left.svg" alt="">
-                                <div class="more_nutrient">
-                                    <ul class="nutrient nutrient2 wrap">
-
-                                        <li class="more_item wrap">
-                                            <p class="title">중량</p>
-                                            <p class="info">100g</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">에너지(kcal)</p>
-                                            <p class="info">63.0</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">탄수화물(g)</p>
-                                            <p class="info">8.5</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">당류(g)</p>
-                                            <p class="info">0.2</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">단백질(g)</p>
-                                            <p class="info">0.2</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">지방(g)</p>
-                                            <p class="info">0.2</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">포화지방(g)</p>
-                                            <p class="info">0.2</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">나트륨(mg)</p>
-                                            <p class="info">0.2</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">비타민 A(μg RA)</p>
-                                            <p class="info">0.2</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">레티놀(μg)</p>
-                                            <p class="info">0.2</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">레티놀(μg)</p>
-                                            <p class="info">0.2</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">레티놀(μg)</p>
-                                            <p class="info">0.2</p>
-                                        </li>
-                                        <li class="more_item wrap">
-                                            <p class="title">레티놀(μg)</p>
-                                            <p class="info">0.2</p>
-                                        </li>
-                                    </ul>
-                                </div>
-
-
-                                <img class="slider-right" data-target=".nutrient2" src="./images/sub/icon/slider/slider-right.svg" alt="">
-                            </div>
-                        </td>
-                    </tr>
-
                 </tbody>
             </table>
             <button class="common_btn mb80" type="submit">전체등록 취소</button>
@@ -286,39 +243,57 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            <th scope="col">중량</th>
                             <th scope="col">에너지(kcal)</th>
-                            <th scope="col">탄수화물(g)</th>
-                            <th scope="col">당류(g)</th>
+                            <th scope="col">수분(g)</th>
                             <th scope="col">단백질(g)</th>
                             <th scope="col">지방(g)</th>
-                            <th scope="col">단백질(g)</th>
-                            <th scope="col">포화지방(g)</th>
+                            <th scope="col">탄수화물(g)</th>
+                            <th scope="col">당류(g)</th>
+                            <th scope="col">식이섬유(g)</th>
+                            <th scope="col">칼슘(mg)</th>
+                            <th scope="col">철(mg)</th>
+                            <th scope="col">인(mg)</th>
+                            <th scope="col">칼륨(mg)</th>
                             <th scope="col">나트륨(mg)</th>
-                            <th scope="col">비타민 A(μg RA)</th>
+                            <th scope="col">비타민A(μg RAE)</th>
                             <th scope="col">레티놀(μg)</th>
-                            <th scope="col">레티놀(μg)</th>
-                            <th scope="col">레티놀(μg)</th>
-                            <th scope="col">레티놀(μg)</th>
+                            <th scope="col">베타카로틴(μg)</th>
+                            <th scope="col">티아민(mg)</th>
+                            <th scope="col">리보플라빈(mg)</th>
+                            <th scope="col">니아신(mg)</th>
+                            <th scope="col">비타민C(mg)</th>
+                            <th scope="col">비타민D(μg)</th>
+                            <th scope="col">콜레스테롤(mg)</th>
+                            <th scope="col">포화지방산(g)</th>
+                            <th scope="col">트랜스지방산(g)</th>
                         </tr>
                     </thead>
                     
                     <tbody>
                         <tr onclick="">
-                            <td>100</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
+                            <td>${totalNutrient.kcal}</td>
+                            <td>${totalNutrient.water}</td>
+                            <td>${totalNutrient.protein}</td>
+                            <td>${totalNutrient.fat}</td>
+                            <td>${totalNutrient.carbohydrate}</td>
+                            <td>${totalNutrient.sugars}</td>
+                            <td>${totalNutrient.dietaryFiber}</td>
+                            <td>${totalNutrient.calcium}</td>
+                            <td>${totalNutrient.ironContent}</td>
+                            <td>${totalNutrient.phosphorus}</td>
+                            <td>${totalNutrient.potassium}</td>
+                            <td>${totalNutrient.sodium}</td>
+                            <td>${totalNutrient.vitaminA}</td>
+                            <td>${totalNutrient.retinol}</td>
+                            <td>${totalNutrient.betaCarotene}</td>
+                            <td>${totalNutrient.thiamine}</td>
+                            <td>${totalNutrient.riboflavin}</td>
+                            <td>${totalNutrient.niacin}</td>
+                            <td>${totalNutrient.vitaminC}</td>
+                            <td>${totalNutrient.vitaminD}</td>
+                            <td>${totalNutrient.cholesterol}</td>
+                            <td>${totalNutrient.saturatedFat}</td>
+                            <td>${totalNutrient.transFat}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -355,20 +330,29 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            <th scope="col">중량</th>
                             <th scope="col">에너지(kcal)</th>
-                            <th scope="col">탄수화물(g)</th>
-                            <th scope="col">당류(g)</th>
+                            <th scope="col">수분(g)</th>
                             <th scope="col">단백질(g)</th>
                             <th scope="col">지방(g)</th>
-                            <th scope="col">단백질(g)</th>
-                            <th scope="col">포화지방(g)</th>
+                            <th scope="col">탄수화물(g)</th>
+                            <th scope="col">당류(g)</th>
+                            <th scope="col">식이섬유(g)</th>
+                            <th scope="col">칼슘(mg)</th>
+                            <th scope="col">철(mg)</th>
+                            <th scope="col">인(mg)</th>
+                            <th scope="col">칼륨(mg)</th>
                             <th scope="col">나트륨(mg)</th>
-                            <th scope="col">비타민 A(μg RA)</th>
+                            <th scope="col">비타민A(μg RAE)</th>
                             <th scope="col">레티놀(μg)</th>
-                            <th scope="col">레티놀(μg)</th>
-                            <th scope="col">레티놀(μg)</th>
-                            <th scope="col">레티놀(μg)</th>
+                            <th scope="col">베타카로틴(μg)</th>
+                            <th scope="col">티아민(mg)</th>
+                            <th scope="col">리보플라빈(mg)</th>
+                            <th scope="col">니아신(mg)</th>
+                            <th scope="col">비타민C(mg)</th>
+                            <th scope="col">비타민D(μg)</th>
+                            <th scope="col">콜레스테롤(mg)</th>
+                            <th scope="col">포화지방산(g)</th>
+                            <th scope="col">트랜스지방산(g)</th>
                         </tr>
                     </thead>
                     

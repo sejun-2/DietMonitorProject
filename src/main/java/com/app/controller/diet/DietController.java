@@ -8,11 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.app.dto.diet.Diet;
-import com.app.dto.search.Food;
+import com.app.dto.diet.Nutrients;
+import com.app.dto.search.Nutrient;
 import com.app.dto.user.User;
 import com.app.service.diet.DietService;
 import com.app.service.search.SearchService;
@@ -31,11 +32,6 @@ public class DietController {
 	@Autowired
 	SearchService searchService;
 	
-	@GetMapping("/myIntakeFood")
-	public String myIntakeFood() {
-		return "myIntakeFood";
-	}
-	
 	@PostMapping("/registerDiet")
 	public String registerDiet(Diet diet,HttpSession session) {
 		
@@ -49,30 +45,34 @@ public class DietController {
 		int result = dietService.addFoodToDailyDiet(diet);
 		
 		if(result > 0) {
-			return "redirect:/myIntakeFood";
+			return "redirect:/dailyDiet";
 		} else {
 			return "redirect:/foodDetail";
 		}
 	}
 	
-	
-	@PostMapping("/myIntakeFood")
-	public String myIntakeFoodAction(Diet diet,HttpSession session, Model model) {
-		
+	@RequestMapping("/dailyDiet")
+	public String dailyDiet(HttpSession session, Model model) {
+
 		int accountNo = SessionManager.getAccountNo(session);
 		int memberNo = SessionManager.getMemberNo(session);
+		System.out.println(accountNo);
 		
 		User user = new User();
 		
 		user.setAccountNo(accountNo);
 		user.setMemberNo(memberNo);
 		
+		Nutrients totalNutrient = dietService.findTotalNutrientFromDailyDietByMemberInfo(user);
 		List<Diet> dailyDiet = dietService.findFoodListByMemberInfo(user);
+		System.out.println(dailyDiet);
+		System.out.println(totalNutrient);
 		
 //		List<Food> foodList = searchService.findFoodListByMemberInfo(user);
 		
 		model.addAttribute("dailyDiet", dailyDiet);
+		model.addAttribute("totalNutrient", totalNutrient);
 		
-		return "myIntakeFood";
+		return "dailyDiet";
 	}
 }

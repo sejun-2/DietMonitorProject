@@ -26,7 +26,7 @@
             <div class="inner">
                 <div class="quick_inner">
                     <div class="box">
-                        <a href="">
+                        <a href="/foodSearchList">
                             <div class="pic center">
                                 <img src="./images/main/icon/quick_icon1.png" alt="식품으로 찾아보기  아이콘">
                             </div>
@@ -46,7 +46,7 @@
                         </a>
                     </div>
                     <div class="box">
-                        <a href="/myIntakeFood">
+                        <a href="/dailyDiet">
                             <div class="pic center">
                                 <img src="./images/main/icon/quick_icon3.png" alt="나의 하루 섭취 식품 아이콘">
                             </div>

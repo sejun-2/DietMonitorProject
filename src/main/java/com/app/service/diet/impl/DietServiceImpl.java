@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.dao.diet.DietDAO;
 import com.app.dto.diet.Diet;
+import com.app.dto.diet.Nutrients;
 import com.app.dto.user.User;
 import com.app.service.diet.DietService;
 
@@ -25,18 +26,19 @@ public class DietServiceImpl implements DietService{
 	}
 
 	@Override
-	public List<Diet> findDailyDiet(User user) {
+	public List<Diet> findFoodListByMemberInfo(User user) {
 		// TODO Auto-generated method stub
-		List<Diet> dailyDiet = dietDAO.findDailyDiet(user);
+		List<Diet> dailyDiet = dietDAO.findFoodListByMemberInfo(user);
 		
 		return dailyDiet;
 	}
 
 	@Override
-	public List<Diet> findFoodListByMemberInfo(User user) {
+	public Nutrients findTotalNutrientFromDailyDietByMemberInfo(User user) {
 		// TODO Auto-generated method stub
+		Nutrients totalNutrient = dietDAO.findTotalNutrientFromDailyDietByMemberInfo(user);
 		
-		return null;
+		return totalNutrient;
 	}
 
 }

@@ -20,6 +20,7 @@
 		<typeAlias type="com.app.dto.search.Nutrient" alias="Nutrient"/>
 		<typeAlias type="com.app.dto.user.User" alias="User"/>	
 		<typeAlias type="com.app.dto.diet.Diet" alias="Diet"/>
+		<typeAlias type="com.app.dto.diet.Nutrients" alias="Nutrients"/>
 		<typeAlias type="com.app.dto.mypage.TotalDiet" alias="TotalDiet"/>
 		<typeAlias type="com.app.dto.mypage.TotalDietSearchCondition" alias="TotalDietSearchCondition"/>					
 	</typeAliases>						
