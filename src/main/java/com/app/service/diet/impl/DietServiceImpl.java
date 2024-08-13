@@ -41,9 +41,9 @@ public class DietServiceImpl implements DietService{
 	}
 
 	@Override
-	public int deleteDiet(Diet diet) {
+	public int deleteDiet(int logNo) {
 		// TODO Auto-generated method stub
-		int result = dietDAO.deleteDiet(diet);
+		int result = dietDAO.deleteDiet(logNo);
 		
 		return result;
 	}

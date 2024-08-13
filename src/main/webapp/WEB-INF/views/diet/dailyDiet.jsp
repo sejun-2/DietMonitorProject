@@ -91,10 +91,13 @@
 	                        <td>${diet.foodIntake}</td>
 	                        <td>${diet.kcal}</td>
 	                        <td>
-	                            <button class="board_td_btn wrap" type="button" onclick="href:/deleteDiet?logNo=#{diet.logNo}">
-	                                <img src="../images/sub/icon/feather-x-box.svg" alt="">
-	                                <p>등록취소</p>
-	                            </button>
+	                        	<form action="/deleteDiet" method="POST">
+	                        		<input type="hidden" name="logNo" value="${diet.logNo}">
+		                            <button class="board_td_btn wrap" type="submit">
+		                                <img src="../images/sub/icon/feather-x-box.svg" alt="">
+		                                <p>등록취소</p>
+		                            </button>
+	                            </form>
 	                        </td>
 	
 	                    </tr>

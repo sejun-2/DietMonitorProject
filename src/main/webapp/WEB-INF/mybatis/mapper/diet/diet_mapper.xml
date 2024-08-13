@@ -277,7 +277,7 @@
 		#{accountNo} AND member_no = #{memberNo}
 	</select>
 	
-	<delete id="deleteDiet" parameterType="Diet">
+	<delete id="deleteDiet" parameterType="int">
 		DELETE FROM daily_diet
 		WHERE log_no = #{logNo}
 	</delete>

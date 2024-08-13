@@ -26,7 +26,7 @@
             <div class="inner">
                 <div class="quick_inner">
                     <div class="box">
-                        <a href="/foodSearchList">
+                        <a href="/foodSearch">
                             <div class="pic center">
                                 <img src="./images/main/icon/quick_icon1.png" alt="식품으로 찾아보기  아이콘">
                             </div>
