@@ -17,4 +17,6 @@ public interface MypageService {
 	
 	public List<Diet> findTotalDietByMonthSum(TotalDietSearchCondition totalDietSearchCondition);
 	
+	public List<Diet> findTotalDietByStandard(TotalDietSearchCondition totalDietSearchCondition);
+	
 }

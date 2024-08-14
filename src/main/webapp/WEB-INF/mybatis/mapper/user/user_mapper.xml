@@ -84,6 +84,7 @@
 				        WHERE account_no = #{accountNo} AND member_no = #{memberNo}) 
 		BETWEEN age_min AND age_max
 		AND gender_id = (SELECT gender_id FROM member WHERE account_no = #{accountNo} AND member_no = #{memberNo})
+		ORDER BY nutrient_id
     </select>
     
     <delete id="removeProfile" parameterType="map">

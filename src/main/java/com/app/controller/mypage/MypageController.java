@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.app.dto.diet.Diet;
 import com.app.dto.mypage.TotalDietSearchCondition;
+import com.app.dto.user.NutritionStandard;
 import com.app.dto.user.User;
 import com.app.dto.user.UserValidError;
 import com.app.service.mypage.MypageService;
@@ -37,32 +38,40 @@ public class MypageController {
 	UserService userService;
 
 	@GetMapping("/mypage/nutritionStandard")
-	public String nutritionStandard(Model model) {
-
-		TotalDietSearchCondition t1 = new TotalDietSearchCondition();
-
-		t1.setAccountNo(1);
-		t1.setMemberNo(2);
-
-		System.out.println(t1);
-		List<Diet> totalDietList = mypageService.findTotalDietByAvg(t1);
-
-		System.out.println(totalDietList);
-		model.addAttribute("totalDietList", totalDietList);
-
-		return "/mypage/accountInfo";
+	public String nutritionStandard(Model model, HttpSession session, TotalDietSearchCondition t1) {
+		
+		if (SessionManager.isLoginedAccount(session)) {
+			// 세션에서 로그인된 사용자의 accountNo와 memberNo를 조회
+			int accountNo = SessionManager.getAccountNo(session);
+			int memberNo = SessionManager.getMemberNo(session);
+			// 사용자 정보를 조회			
+			t1.setAccountNo(accountNo);
+			t1.setMemberNo(memberNo);
+	
+			System.out.println(t1);
+			List<Diet> totalDietList = mypageService.findTotalDietByAvg(t1);
+			List<Diet> findTotalDietByStandard = mypageService.findTotalDietByStandard(t1);
+			
+			System.out.println(totalDietList);
+			System.out.println(findTotalDietByStandard);
+			model.addAttribute("totalDietList", totalDietList);
+			model.addAttribute("findTotalDietByStandard", findTotalDietByStandard);
+			return "/mypage/nutritionStandard";
+		}	
+		return "/mypage/nutritionStandard";
 	}
 
 	@GetMapping("/mypage/dietProgress")
-	public String dietProgress(Model model) {
+	public String dietProgress(Model model, HttpSession session, TotalDietSearchCondition t1) {
 
-		TotalDietSearchCondition t2 = new TotalDietSearchCondition();
+		int accountNo = SessionManager.getAccountNo(session);
+		int memberNo = SessionManager.getMemberNo(session);
 
-		t2.setAccountNo(1);
-		t2.setMemberNo(2);
+		t1.setAccountNo(accountNo);
+		t1.setMemberNo(memberNo);
 
-		System.out.println(t2);
-		List<Diet> totalDietListMonthSum = mypageService.findTotalDietByMonthSum(t2);
+		System.out.println(t1);
+		List<Diet> totalDietListMonthSum = mypageService.findTotalDietByMonthSum(t1);
 
 		System.out.println(totalDietListMonthSum);
 		model.addAttribute("totalDietListMonthSum", totalDietListMonthSum);
@@ -76,10 +85,13 @@ public class MypageController {
 	}
 
 	@PostMapping("/mypage/dietHistory")
-	public String dietHistory(Model model, TotalDietSearchCondition t1) {
+	public String dietHistory(Model model, TotalDietSearchCondition t1, HttpSession session) {
+		
+		int accountNo = SessionManager.getAccountNo(session);
+		int memberNo = SessionManager.getMemberNo(session);
 
-		t1.setAccountNo(1);
-		t1.setMemberNo(2);
+		t1.setAccountNo(accountNo);
+		t1.setMemberNo(memberNo);
 
 		System.out.println(t1);
 		List<Diet> totalDietList = mypageService.findTotalDietBySaveHistory(t1);

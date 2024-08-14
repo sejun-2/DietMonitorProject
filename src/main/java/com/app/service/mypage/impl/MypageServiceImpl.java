@@ -51,6 +51,13 @@ public class MypageServiceImpl implements MypageService {
 		List<Diet> totalDietListMonthSum = mypageDAO.findTotalDietByMonthSum(totalDietSearchCondition);
 		return totalDietListMonthSum;
 	}
+
+	@Override
+	public List<Diet> findTotalDietByStandard(TotalDietSearchCondition totalDietSearchCondition) {
+		// TODO Auto-generated method stub
+		List<Diet> findTotalDietByStandard = mypageDAO.findTotalDietByStandard(totalDietSearchCondition);
+		return findTotalDietByStandard;
+	}
 	
 	
 

@@ -1,7 +1,7 @@
 
 
 
-function barChart(totalDietData) {
+function barChart(totalDietData, ns) {
 	var ctx = document.getElementById("barCanvas").getContext("2d");
 
 	var data = {
@@ -10,7 +10,7 @@ function barChart(totalDietData) {
 		datasets: [
 			{
 				label: "필수영양소",
-				data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+				data: [2200, 500, 400, 300, 200, 190, 180, 170, 160, 150, 140, 130, 120, 110, 100, 90, 80, 70, 60, 50, 40, 30, 20, 10],
 				backgroundColor: "rgba(255,0,0,0.5)",
 				borderColor: "rgba(255,0,0,0.8)",
 				borderWidth: 1
@@ -107,7 +107,7 @@ function lineChart(totalDietListMonthSum) {
 			datasets: [
 				{
 					label: nutrients[i]+" 필수영양소",
-					data: [100, 100, 100, 100, 100, 100, 100],
+					data: [2200, 500, 400, 300, 200, 190, 180, 170, 160, 150, 140, 130, 120, 110, 100, 90, 80, 70, 60, 50, 40, 30, 20, 10],
 					backgroundColor: "rgba(220,220,220,0.2)",
 					borderColor: "rgba(255,0,0,1)",
 					borderWidth: 1
