@@ -110,7 +110,7 @@
 	                                    <ul class="nutrient nutrient${status.count} wrap">
 	                                        <li class="more_item wrap">
 	                                            <p class="title">에너지(kcal)</p>
-	                                            <p class="info">${diet.kcal}</p>
+	                                            <p class="info nutrient-content">${diet.kcal}</p>
 	                                        </li>
 	                                        <li class="more_item wrap">
 	                                            <p class="title">수분(g)</p>
@@ -202,8 +202,6 @@
 	                                        </li>
 	                                    </ul>
 	                                </div>
-	
-	
 	                                <img  class="slider-right" data-target=".nutrient${status.count}" src="../images/sub/icon/slider/slider-right.svg" alt="">
 	                            </div>
 	                        </td>
@@ -246,29 +244,9 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            <th scope="col">에너지(kcal)</th>
-                            <th scope="col">수분(g)</th>
-                            <th scope="col">단백질(g)</th>
-                            <th scope="col">지방(g)</th>
-                            <th scope="col">탄수화물(g)</th>
-                            <th scope="col">당류(g)</th>
-                            <th scope="col">식이섬유(g)</th>
-                            <th scope="col">칼슘(mg)</th>
-                            <th scope="col">철(mg)</th>
-                            <th scope="col">인(mg)</th>
-                            <th scope="col">칼륨(mg)</th>
-                            <th scope="col">나트륨(mg)</th>
-                            <th scope="col">비타민A(μg RAE)</th>
-                            <th scope="col">레티놀(μg)</th>
-                            <th scope="col">베타카로틴(μg)</th>
-                            <th scope="col">티아민(mg)</th>
-                            <th scope="col">리보플라빈(mg)</th>
-                            <th scope="col">니아신(mg)</th>
-                            <th scope="col">비타민C(mg)</th>
-                            <th scope="col">비타민D(μg)</th>
-                            <th scope="col">콜레스테롤(mg)</th>
-                            <th scope="col">포화지방산(g)</th>
-                            <th scope="col">트랜스지방산(g)</th>
+                            <c:forEach var="unit" items="${unitList}" varStatus="status">
+                            	<th scope="col">${unit.nutrientName}(${unit.nutrientUnit})</th>
+                            </c:forEach>
                         </tr>
                     </thead>
                     
@@ -333,48 +311,17 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            <th scope="col">에너지(kcal)</th>
-                            <th scope="col">수분(g)</th>
-                            <th scope="col">단백질(g)</th>
-                            <th scope="col">지방(g)</th>
-                            <th scope="col">탄수화물(g)</th>
-                            <th scope="col">당류(g)</th>
-                            <th scope="col">식이섬유(g)</th>
-                            <th scope="col">칼슘(mg)</th>
-                            <th scope="col">철(mg)</th>
-                            <th scope="col">인(mg)</th>
-                            <th scope="col">칼륨(mg)</th>
-                            <th scope="col">나트륨(mg)</th>
-                            <th scope="col">비타민A(μg RAE)</th>
-                            <th scope="col">레티놀(μg)</th>
-                            <th scope="col">베타카로틴(μg)</th>
-                            <th scope="col">티아민(mg)</th>
-                            <th scope="col">리보플라빈(mg)</th>
-                            <th scope="col">니아신(mg)</th>
-                            <th scope="col">비타민C(mg)</th>
-                            <th scope="col">비타민D(μg)</th>
-                            <th scope="col">콜레스테롤(mg)</th>
-                            <th scope="col">포화지방산(g)</th>
-                            <th scope="col">트랜스지방산(g)</th>
+                        	<c:forEach var="unit" items="${unitList}" varStatus="status">
+                            	<th scope="col">${unit.nutrientName}(${unit.nutrientUnit})</th>
+                            </c:forEach>
                         </tr>
                     </thead>
                     
                     <tbody>
                         <tr onclick="">
-                            <td>100</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
+                       		<c:forEach var="cn" items="${calculatedNutrients}" varStatus="status">
+                        		<td>${cn}</td>
+                        	</c:forEach>
                         </tr>
                     </tbody>
                 </table>
@@ -488,5 +435,9 @@
 
 
    <jsp:include page="../common/footer.jsp" />
+   
+   <script type="text/javascript">
+    	
+    </script>
 </body>
 </html>
