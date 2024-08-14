@@ -41,6 +41,19 @@
 							</p>
 							<input type="text" name="nickname" placeholder="이름을 입력해주세요">
 						</div>
+						
+						<div class="sig_input wrap_s">
+							<p>프로필 선택<span class="red">*</span></p>
+							<div class="cc-selector">
+								<c:forEach var="i" begin="1" end="5" step="1">
+									<input style="display: none;" id="profile${i}" type="radio" name="iconId" value="${i}" /> 
+									<label class="drinkcard-cc profiles" for="profile${i}">
+										<img src="../images/header/profile/profile_${i}.png">
+									</label>
+								</c:forEach>
+							</div>
+						</div>						
+						
 						<div class="sig_input wrap_s">
 							<p>
 								생년월일<span class="red">*</span>
@@ -87,18 +100,21 @@
 							</tr>
 						</thead>
 						<tbody id="memberList">
-							<c:forEach var="profile" items="${profiles}">
+							<c:forEach var="profile" items="${profiles}" varStatus="status">
 								<tr onclick="">
-									<td>1</td>
+									<td>${status.count}</td>
 									<td>${profile.nickname}</td>
 									<td>${profile.age}</td>
 									<td>${profile.genderName}</td>
 									<td>
-										<form action="/removeProfile" method="post" onsubmit="return confirm('정말로 삭제하시겠습니까?');">
-			                                <input type="hidden" name="accountNo" value="${profile.accountNo}">
-			                                <input type="hidden" name="memberNo" value="${profile.memberNo}">
-			                                <button class="board_td_btn" type="submit">프로필삭제</button>
-			                            </form>
+										<c:if test="${status.count ne 1}">
+											<form action="/removeProfile" method="post" onsubmit="return confirm('정말로 삭제하시겠습니까?');">
+				                                <input type="hidden" name="accountNo" value="${profile.accountNo}">
+				                                <input type="hidden" name="memberNo" value="${profile.memberNo}">
+				                                <button class="board_td_btn" type="submit">프로필삭제</button>
+				                            </form>
+										</c:if>
+										
 									</td>
 								</tr>
 							</c:forEach>

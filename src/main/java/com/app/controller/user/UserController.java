@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.app.dto.api.ApiResponse;
 import com.app.dto.api.ApiResponseHeader;
@@ -113,25 +114,16 @@ public class UserController {
 	public String loginAction(User user, HttpSession session, Model model) {
 		
 		User loginUser = userService.isValidCustomerLogin(user);
-		System.out.println(loginUser);
+		System.out.println("loginUser : " + loginUser);
 		
 		if(loginUser == null) {
 			System.out.println("null : " + loginUser);
 			return "user/login";
-		}
-		session.setAttribute("user", loginUser);
+		}		
+		
 		SessionManager.setSessionAccount(loginUser.getAccountNo(), loginUser.getMemberNo(), session);
 		
-		List<NutritionStandard> nc = userService.getNutritionStandardByMemberInfo(session);
-		System.out.println(nc);
-		
-		int accountNo = SessionManager.getAccountNo(session);
-		int memberNo = SessionManager.getMemberNo(session);
-
-	    user.setAccountNo(accountNo);
-	    user.setMemberNo(memberNo);
-
-	    List<User> profiles = userService.findUserListByAccountNo(accountNo);
+	    List<User> profiles = userService.findUserListByAccountNo(loginUser.getAccountNo());
 
 	    for (User profile : profiles) {
 	        int age = userService.getAgeByMemberInfo(profile.getAccountNo(), profile.getMemberNo());
@@ -139,13 +131,52 @@ public class UserController {
 	        profile.setAge(age);
 	        profile.setGenderName(genderName);
 	    }
-
-//	    session.setAttribute("profiles", profiles);
-	    model.addAttribute("profiles", profiles);
+	    
+	    session.setAttribute("nickName", loginUser.getNickname());
+	    
+	    session.setAttribute("profiles", profiles);
+	    
+	    //model.addAttribute("profiles", profiles);
 
 		return "redirect:/mypage/accountInfo"; 
 	}
 
+	
+	/*
+	 * @PostMapping("/login") public String loginAction(User user, HttpSession
+	 * session, Model model) {
+	 * 
+	 * User loginUser = userService.isValidCustomerLogin(user);
+	 * System.out.println(loginUser);
+	 * 
+	 * if(loginUser == null) { System.out.println("null : " + loginUser); return
+	 * "user/login"; } session.setAttribute("user", loginUser);
+	 * SessionManager.setSessionAccount(loginUser.getAccountNo(),
+	 * loginUser.getMemberNo(), session);
+	 * 
+	 * List<NutritionStandard> nc =
+	 * userService.getNutritionStandardByMemberInfo(session);
+	 * System.out.println(nc);
+	 * 
+	 * int accountNo = SessionManager.getAccountNo(session); int memberNo =
+	 * SessionManager.getMemberNo(session);
+	 * 
+	 * user.setAccountNo(accountNo); user.setMemberNo(memberNo);
+	 * 
+	 * List<User> profiles = userService.findUserListByAccountNo(accountNo);
+	 * 
+	 * for (User profile : profiles) { int age =
+	 * userService.getAgeByMemberInfo(profile.getAccountNo(),
+	 * profile.getMemberNo()); String genderName =
+	 * userService.getGenderNameByGenderId(profile.getGenderId());
+	 * profile.setAge(age); profile.setGenderName(genderName); }
+	 * 
+	 * // session.setAttribute("profiles", profiles); model.addAttribute("profiles",
+	 * profiles);
+	 * 
+	 * return "redirect:/mypage/accountInfo"; }
+	 */
+	
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		//session.invalidate();
