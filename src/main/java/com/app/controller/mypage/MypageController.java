@@ -97,20 +97,18 @@ public class MypageController {
 			int memberNo = SessionManager.getMemberNo(session);
 			// 사용자 정보를 조회
 			User user = userService.findUserByMemberInfo(accountNo, memberNo);
-			// 사용자의 나이 계산
+			// 사용자의 나이 계산			
 			int age = userService.getAgeByMemberInfo(accountNo, memberNo);
-			System.out.println(age);
-			int genderId = user.getGenderId();
+			user.setAge(age);
 			
+			int genderId = user.getGenderId();
 			String genderName = userService.getGenderNameByGenderId(genderId);
-
-			// 모델에 사용자 정보와 나이 추가
+			user.setGenderName(genderName);
+			
+			System.out.println(user);
+			
 			model.addAttribute("user", user);
-			model.addAttribute("age", age);
-			model.addAttribute("genderName", genderName);
-			model.addAttribute("accountNo", accountNo);
-			model.addAttribute("memberNo", memberNo);
-
+			
 			return "mypage/accountInfo";
 		}
 
@@ -154,22 +152,8 @@ public class MypageController {
 
 	@RequestMapping("/mypage/manageProfile")
 	public String manageProfileAction(HttpSession session, Model model)  {
-		System.out.println("controller");
-		
-		/*
-		 * int accountNo = SessionManager.getAccountNo(session); int memberNo =
-		 * SessionManager.getMemberNo(session);
-		 */
 		
 		int accountNo = SessionManager.getAccountNo(session);
-		int memberNo = SessionManager.getMemberNo(session);
-		
-		User user = userService.findUserByMemberInfo(accountNo, memberNo);
-	    
-		System.out.println(user.getNickname());
-		
-	    user.setAccountNo(accountNo);
-	    user.setMemberNo(memberNo);
 	    
 	    List<User> profiles = userService.findUserListByAccountNo(accountNo);
 	    
@@ -180,10 +164,6 @@ public class MypageController {
 	        profile.setGenderName(genderName);
 	    }
 	    
-	    System.out.println("profiles");
-	    System.out.println(profiles);
-	    
-//	    session.setAttribute("profiles", profiles);
 	    model.addAttribute("profiles", profiles);
 	   
 			return "mypage/manageProfile";
@@ -191,23 +171,16 @@ public class MypageController {
 
 	
 	@PostMapping("/addProfile")
-	public String addProfile(User user, RedirectAttributes redirectAttributes, HttpSession session, HttpServletResponse response) throws IOException {
+	public String addProfile(User user, HttpSession session, HttpServletResponse response) throws IOException {
 		int accountNo = SessionManager.getAccountNo(session);
-		int memberNo = SessionManager.getMemberNo(session);
 		
-		User loginUser = userService.findUserByMemberInfo(accountNo, memberNo);
-		User newProfile = new User();
-		newProfile.setAccountNo(accountNo);
-		newProfile.setNickname(user.getNickname());
-		newProfile.setBirth(user.getBirth());
-		newProfile.setGenderId(user.getGenderId());
+		user.setAccountNo(accountNo);
 		
 		int profileCount = userService.getMemberCountByAccountNo(accountNo);
 		
 		if(profileCount < 5) {
-			System.out.println(loginUser);
-			int result = userService.addProfile(newProfile);
-			System.out.println(result);
+			
+			int result = userService.addProfile(user);
 			
 			if(result > 0) {
 				return "redirect:/mypage/manageProfile";
@@ -233,11 +206,9 @@ public class MypageController {
 	}
 	
 	@PostMapping("/removeProfile")
-	public String removeProfile(HttpSession session,HttpServletResponse response) throws IOException {
-		int accountNo = SessionManager.getAccountNo(session);
-		int memberNo = SessionManager.getMemberNo(session);
+	public String removeProfile(User user, HttpServletResponse response) throws IOException {
 		
-	    int result = userService.removeProfile(accountNo, memberNo);
+	    int result = userService.removeProfile(user.getAccountNo(), user.getMemberNo());
 	    if(result == 0) {
 	    	PrintWriter out = response.getWriter();
 			response.setCharacterEncoding("utf-8");
@@ -250,15 +221,10 @@ public class MypageController {
 	}
 	
 	@PostMapping("/switchProfile")
-	public String switchProfile(HttpSession session) {
-		int accountNo = SessionManager.getAccountNo(session);
-		int memberNo = SessionManager.getMemberNo(session);
-	    
-		User switchProfile = userService.findUserByMemberInfo(accountNo, memberNo);
-	    
-	    session.setAttribute("switchProfile", switchProfile);
-
-	    
+	public String switchProfile(User user, HttpSession session) {
+		
+		SessionManager.setSessionAccount(user.getAccountNo(), user.getMemberNo(), session);
+		
 	    return "redirect:/main";
 	}
 	

@@ -32,7 +32,7 @@
 					<div class="sig_input wrap_s">
                         <p>프로필</p>
                         <p class="information profiles">
-                        	<img src="../images/header/profile/profile_${user.iconId}.jpg">
+                        	<img src="../images/header/profile/profile_${user.iconId}.png">
                         </p>
                     </div>
                     <div class="sig_input active wrap_s">
@@ -57,11 +57,11 @@
                     </div>
                     <div class="sig_input wrap_s">
                         <p>나이</p>
-                        <p class="information">${age}</p>
+                        <p class="information">${user.age}</p>
                     </div>
                     <div class="sig_input wrap_s">
                         <p>성별</p>
-                        <p class="information">${genderName}</p>
+                        <p class="information">${user.genderName}</p>
                     </div>
                 </div>
                 

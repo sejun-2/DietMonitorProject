@@ -21,6 +21,7 @@
 		SELECT account_no, member_no, email, pw, name, nickname, tel, TO_CHAR(birth, 'YYMMDD') birth, gender_id, created_at, icon_id 
 		FROM member
 		WHERE account_no = #{accountNo}
+		ORDER BY member_no
 	</select>
 
 	<select id="findUserList" resultType="User">
@@ -52,7 +53,7 @@
 	
 	<insert id="addProfile" parameterType="User">
 		INSERT INTO member
-		VALUES ( #{accountNo}, (SELECT NVL(MAX(member_no), 0) + 1 FROM member WHERE account_no = #{accountNo}), NULL, NULL, NULL, #{nickname}, NULL, #{birth}, #{genderId}, #{iconId},  NULL )
+		VALUES ( #{accountNo}, (SELECT NVL(MAX(member_no), 1) + 1 FROM member WHERE account_no = #{accountNo}), NULL, NULL, NULL, #{nickname}, NULL, #{birth}, #{genderId}, #{iconId},  NULL )
 	</insert>
 	
 	<select id="getMemberCountByAccountNo" resultType="int" parameterType="int">
