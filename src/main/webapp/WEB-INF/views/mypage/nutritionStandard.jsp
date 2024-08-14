@@ -44,7 +44,7 @@
 		</div>
 	</section>
 
-	<!-- -------------------------------표-----------------------------------------  -->
+	<!-- -------------------------------표------------------------------------------->
 
 	<div class="inner">
 		<div class="sig_inner">
@@ -53,86 +53,47 @@
 				<thead>
 					<tr>
 						<th>구분</th>
-						<th>에너지</th>
-						<th>물</th>
-						<th>단백질</th>
-						<th>지방</th>
-						<th>화분</th>
-						<th>탄수화물</th>
-						<th>당류</th>
-						<th>식이섬유</th>
-						<th>칼슘</th>
-						<th>철</th>
-						<th>인</th>
-						<th>칼륨</th>
-						<th>나트륨</th>
-						<th>비타민A</th>
-						<th>레티놀</th>
-						<th>베타카로틴</th>
-						<th>티아민</th>
-						<th>리보플라빈</th>
-						<th>니아신</th>
-						<th>비타민C</th>
-						<th>비타민D</th>
-						<th>콜레스테롤</th>
-						<th>포화지방산</th>
-						<th>트랜스지방산</th>
+						<c:forEach var="Standard" items="${findTotalDietByStandard}">
+						<th>${Standard.foodName}</th>
+						</c:forEach>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td>기준</td>
-						<th>2200</th>
-						<th>500</th>
-						<th>400</th>
-						<th>300</th>
-						<th>2000</th>
-						<th>190</th>
-						<th>180</th>
-						<th>170</th>
-						<th>160</th>
-						<th>150</th>
-						<th>140</th>
-						<th>130</th>
-						<th>120</th>
-						<th>110</th>
-						<th>100</th>
-						<th>90</th>
-						<th>80</th>
-						<th>70</th>
-						<th>60</th>
-						<th>50</th>
-						<th>40</th>
-						<th>30</th>
-						<th>20</th>
-						<th>10</th>
+						<c:forEach var="Standard" items="${findTotalDietByStandard}">
+							<th>
+								<c:if test="${Standard.foodIntake == 9999}">-</c:if>
+								<c:if test="${Standard.foodIntake != 9999}">${Standard.foodIntake}</c:if>							
+							</th>
+						</c:forEach>
+											
 					</tr>
 					<tr>
-						<td>평균</td>
-						<th>${totalDietList[0].kcal}</th>
-						<th>${totalDietList[0].water}</th>
-						<th>${totalDietList[0].protein}</th>
-						<th>${totalDietList[0].fat}</th>
-						<th>${totalDietList[0].batch}</th>
-						<th>${totalDietList[0].carbohydrate}</th>
-						<th>${totalDietList[0].sugars}</th>
-						<th>${totalDietList[0].dietaryFiber}</th>
-						<th>${totalDietList[0].calcium}</th>
-						<th>${totalDietList[0].ironContent}</th>
-						<th>${totalDietList[0].phosphorus}</th>
-						<th>${totalDietList[0].potassium}</th>
-						<th>${totalDietList[0].sodium}</th>
-						<th>${totalDietList[0].vitaminA}</th>
-						<th>${totalDietList[0].retinol}</th>
-						<th>${totalDietList[0].betaCarotene}</th>
-						<th>${totalDietList[0].thiamine}</th>
-						<th>${totalDietList[0].riboflavin}</th>
-						<th>${totalDietList[0].niacin}</th>
-						<th>${totalDietList[0].vitaminC}</th>
-						<th>${totalDietList[0].vitaminD}</th>
-						<th>${totalDietList[0].cholesterol}</th>
-						<th>${totalDietList[0].saturatedFat}</th>
-						<th>${totalDietList[0].transFat}</th>
+						<td>평균</td>						
+						<th>${totalDietAvg.kcal}</th>
+						<th>${totalDietAvg.water}</th>
+						<th>${totalDietAvg.protein}</th>
+						<th>${totalDietAvg.fat}</th>						
+						<th>${totalDietAvg.carbohydrate}</th>
+						<th>${totalDietAvg.sugars}</th>
+						<th>${totalDietAvg.dietaryFiber}</th>
+						<th>${totalDietAvg.calcium}</th>
+						<th>${totalDietAvg.ironContent}</th>
+						<th>${totalDietAvg.phosphorus}</th>
+						<th>${totalDietAvg.potassium}</th>
+						<th>${totalDietAvg.sodium}</th>
+						<th>${totalDietAvg.vitaminA}</th>
+						<th>${totalDietAvg.retinol}</th>
+						<th>${totalDietAvg.betaCarotene}</th>
+						<th>${totalDietAvg.thiamine}</th>
+						<th>${totalDietAvg.riboflavin}</th>
+						<th>${totalDietAvg.niacin}</th>
+						<th>${totalDietAvg.vitaminC}</th>
+						<th>${totalDietAvg.vitaminD}</th>
+						<th>${totalDietAvg.cholesterol}</th>
+						<th>${totalDietAvg.saturatedFat}</th>
+						<th>${totalDietAvg.transFat}</th>
 					</tr>
 				</tbody>
 			</table>
@@ -158,81 +119,37 @@
 
 	<script type="text/javascript">
 		//JSP에서 값을 JavaScript 변수로 전달
-
-		var totalDietData = [];
-
-		<c:forEach var="item" items="${totalDietList}">
-
-		var totalDietDataItem = {
-			kcal : '${item.kcal}',
-			water : '${item.water}',
-			protein : '${item.protein}',
-			fat : '${item.fat}',
-			batch : '${item.batch}',
-			carbohydrate : '${item.carbohydrate}',
-			sugars : '${item.sugars}',
-			dietaryFiber : '${item.dietaryFiber}',
-			calcium : '${item.calcium}',
-			ironContent : '${item.ironContent}',
-			phosphorus : '${item.phosphorus}',
-			potassium : '${item.potassium}',
-			sodium : '${item.sodium}',
-			vitaminA : '${item.vitaminA}',
-			retinol : '${item.retinol}',
-			betaCarotene : '${item.betaCarotene}',
-			thiamine : '${item.thiamine}',
-			riboflavin : '${item.riboflavin}',
-			niacin : '${item.niacin}',
-			vitaminC : '${item.vitaminC}',
-			vitaminD : '${item.vitaminD}',
-			cholesterol : '${item.cholesterol}',
-			saturatedFat : '${item.saturatedFat}',
-			transFat : '${item.transFat}'
-		};
-
-		totalDietData.push(totalDietDataItem);
-
+		var grapeData = [];
+		
+		var nutrienStandard = [];		
+		<c:forEach var="Standard" items="${findTotalDietByStandard}">
+			<c:if test="${Standard.foodIntake == 9999}">
+				nutrienStandard.push(0);
+			</c:if>
+			<c:if test="${Standard.foodIntake != 9999}">
+				nutrienStandard.push('${Standard.foodIntake}');
+			</c:if>
 		</c:forEach>
-
-		/* var totalDietListMonthSum = [];
-
-		<c:forEach var="item" items="${totalDietListMonthSum}">
-
-		var totalDietListMonthSumItem = {
-			kcal : '${item.kcal}',
-			water : '${item.water}',
-			protein : '${item.protein}',
-			fat : '${item.fat}',
-			batch : '${item.batch}',
-			carbohydrate : '${item.carbohydrate}',
-			sugars : '${item.sugars}',
-			dietaryFiber : '${item.dietaryFiber}',
-			calcium : '${item.calcium}',
-			ironContent : '${item.ironContent}',
-			phosphorus : '${item.phosphorus}',
-			potassium : '${item.potassium}',
-			sodium : '${item.sodium}',
-			vitaminA : '${item.vitaminA}',
-			retinol : '${item.retinol}',
-			betaCarotene : '${item.betaCarotene}',
-			thiamine : '${item.thiamine}',
-			riboflavin : '${item.riboflavin}',
-			niacin : '${item.niacin}',
-			vitaminC : '${item.vitaminC}',
-			vitaminD : '${item.vitaminD}',
-			cholesterol : '${item.cholesterol}',
-			saturatedFat : '${item.saturatedFat}',
-			transFat : '${item.transFat}'
-		};
-
-		totalDietListMonthSum.push(totalDietListMonthSumItem);
-
-		</c:forEach> */
-
+		
+		grapeData.push(nutrienStandard);
+		
+		var totalDietAvg = [ '${totalDietAvg.kcal}', '${totalDietAvg.water}', '${totalDietAvg.protein}', '${totalDietAvg.fat}',
+			'${totalDietAvg.carbohydrate}', '${totalDietAvg.sugars}', '${totalDietAvg.dietaryFiber}', '${totalDietAvg.calcium}',
+			'${totalDietAvg.ironContent}', '${totalDietAvg.phosphorus}','${totalDietAvg.potassium}', '${totalDietAvg.sodium}',
+			'${totalDietAvg.vitaminA}', '${totalDietAvg.retinol}', '${totalDietAvg.betaCarotene}', '${totalDietAvg.thiamine}',
+			'${totalDietAvg.riboflavin}', '${totalDietAvg.niacin}', '${totalDietAvg.vitaminC}', '${totalDietAvg.vitaminD}',
+			'${totalDietAvg.cholesterol}', '${totalDietAvg.saturatedFat}', '${totalDietAvg.transFat}' ];
+		
+		grapeData.push(totalDietAvg);
+		
+		
+		
+		console.log(grapeData);
+		
 		document.addEventListener('DOMContentLoaded', function() {
 			// Chart.js가 로드된 후에 차트 생성
-			barChart(totalDietDataItem); //평균 DAO 
-			//lineChart(totalDietListMonthSumItem); //한달 추이
+			barChart(grapeData); //평균 DAO
+			
 		});
 	</script>
 

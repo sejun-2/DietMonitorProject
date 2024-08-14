@@ -58,348 +58,6 @@
 
 
 
-	<section class="table_menu">
-		<div class="inner">
-			<div class="wrap">
-				<p class="reference">※ 아래 표를 클릭하시면 해당 식품의 영양정보가 나와요</p>
-
-				<button class="board_btn wrap">
-					<img src="./images/sub/icon/material-install-desktop.svg" alt="">
-					<p class="ml10">나의 영양성분 기록 저장</p>
-				</button>
-
-			</div>
-
-
-			<table class="new_tbl_board tbl_boards tb01 mt20 mb20">
-				<colgroup>
-					<col style="width: 10%;">
-					<col style="width: 30%;">
-					<col style="width: 15%;">
-					<col style="width: 15%;">
-					<col style="width: 10%;">
-					<col style="width: 10%;">
-				</colgroup>
-				<thead>
-					<tr>
-						<th scope="col">번호</th>
-						<th scope="col">식품명</th>
-						<th scope="col">식품대분류</th>
-						<th scope="col">식품중분류</th>
-						<th scope="col">에너지(Kcal)</th>
-						<th scope="col">하루 섭취<br>식품 등록
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr onclick="">
-						<td>1</td>
-						<td>햄버거</td>
-						<td>빵 및 과자류</td>
-						<td>해당없음</td>
-						<td>225</td>
-						<td>
-							<button class="board_td_btn wrap" type="button">
-								<img src="./images/sub/icon/feather-x-box.svg" alt="">
-								<p>등록취소</p>
-							</button>
-						</td>
-
-					</tr>
-
-					<tr class="tr_event">
-						<td class="more_information" colspan="6">
-							<div class="wrap">
-								<img class="slider-left" data-target=".nutrient1"
-									src="./images/sub/icon/slider/slider-left.svg" alt="">
-								<div class="more_nutrient">
-									<ul class="nutrient nutrient1 wrap">
-
-										<li class="more_item wrap">
-											<p class="title">중량</p>
-											<p class="info">100g</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">에너지(kcal)</p>
-											<p class="info">63.0</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">탄수화물(g)</p>
-											<p class="info">8.5</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">당류(g)</p>
-											<p class="info">0.2</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">단백질(g)</p>
-											<p class="info">0.2</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">지방(g)</p>
-											<p class="info">0.2</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">포화지방(g)</p>
-											<p class="info">0.2</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">나트륨(mg)</p>
-											<p class="info">0.2</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">비타민 A(μg RA)</p>
-											<p class="info">0.2</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">레티놀(μg)</p>
-											<p class="info">0.2</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">레티놀(μg)</p>
-											<p class="info">0.2</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">레티놀(μg)</p>
-											<p class="info">0.2</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">레티놀(μg)</p>
-											<p class="info">0.2</p>
-										</li>
-									</ul>
-								</div>
-
-
-								<img class="slider-right" data-target=".nutrient1"
-									src="./images/sub/icon/slider/slider-right.svg" alt="">
-							</div>
-						</td>
-					</tr>
-
-					<tr onclick="">
-						<td>2</td>
-						<td>싸이버거</td>
-						<td>즉석식품류</td>
-						<td>해당없음</td>
-						<td>225</td>
-						<td>
-							<button class="board_td_btn wrap" type="button">
-								<img src="./images/sub/icon/feather-x-box.svg" alt="">
-								<p>등록취소</p>
-							</button>
-						</td>
-					</tr>
-
-					<tr class="tr_event">
-						<td class="more_information" colspan="6">
-							<div class="wrap">
-								<img class="slider-left" data-target=".nutrient2"
-									src="./images/sub/icon/slider/slider-left.svg" alt="">
-								<div class="more_nutrient">
-									<ul class="nutrient nutrient2 wrap">
-
-										<li class="more_item wrap">
-											<p class="title">중량</p>
-											<p class="info">100g</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">에너지(kcal)</p>
-											<p class="info">63.0</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">탄수화물(g)</p>
-											<p class="info">8.5</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">당류(g)</p>
-											<p class="info">0.2</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">단백질(g)</p>
-											<p class="info">0.2</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">지방(g)</p>
-											<p class="info">0.2</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">포화지방(g)</p>
-											<p class="info">0.2</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">나트륨(mg)</p>
-											<p class="info">0.2</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">비타민 A(μg RA)</p>
-											<p class="info">0.2</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">레티놀(μg)</p>
-											<p class="info">0.2</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">레티놀(μg)</p>
-											<p class="info">0.2</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">레티놀(μg)</p>
-											<p class="info">0.2</p>
-										</li>
-										<li class="more_item wrap">
-											<p class="title">레티놀(μg)</p>
-											<p class="info">0.2</p>
-										</li>
-									</ul>
-								</div>
-
-
-								<img class="slider-right" data-target=".nutrient2"
-									src="./images/sub/icon/slider/slider-right.svg" alt="">
-							</div>
-						</td>
-					</tr>
-
-				</tbody>
-			</table>
-			<button class="common_btn mb80" type="submit">전체등록 취소</button>
-	</section>
-
-
-	<section class="table_menu" id="section1">
-		<div class="inner">
-			<div class="wrap">
-				<p class="table_menu_sub">등록 식품 영양성분 함량 합계</p>
-
-				<div class="pagenation_btn wrap">
-					<div class="slider_prev">
-						<img src="./images/sub/icon/slider/slider-left.svg" alt="">
-					</div>
-					<div class="slider_next">
-						<img src="./images/sub/icon/slider/slider-right.svg" alt="">
-					</div>
-				</div>
-
-			</div>
-
-			<div class="table_inner">
-				<div class="linear_box"></div>
-				<table class="new_tbl_board tbl_boards tb01 mt20 mb60">
-					<colgroup>
-						<col style="width: 10%;">
-						<col style="width: 15%;">
-						<col style="width: 10%;">
-						<col style="width: 10%;">
-						<col style="width: 7%;">
-					</colgroup>
-					<thead>
-						<tr>
-							<th scope="col">중량</th>
-							<th scope="col">에너지(kcal)</th>
-							<th scope="col">탄수화물(g)</th>
-							<th scope="col">당류(g)</th>
-							<th scope="col">단백질(g)</th>
-							<th scope="col">지방(g)</th>
-							<th scope="col">단백질(g)</th>
-							<th scope="col">포화지방(g)</th>
-							<th scope="col">나트륨(mg)</th>
-							<th scope="col">비타민 A(μg RA)</th>
-							<th scope="col">레티놀(μg)</th>
-							<th scope="col">레티놀(μg)</th>
-							<th scope="col">레티놀(μg)</th>
-							<th scope="col">레티놀(μg)</th>
-						</tr>
-					</thead>
-
-					<tbody>
-						<tr onclick="">
-							<td>100</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-	</section>
-
-	<section class="table_menu" id="section2">
-		<div class="inner">
-			<div class="wrap">
-				<p class="table_menu_sub">일일 권장량 대비 비교</p>
-
-				<div class="pagenation_btn wrap">
-					<div class="slider_prev">
-						<img src="./images/sub/icon/slider/slider-left.svg" alt="">
-					</div>
-					<div class="slider_next">
-						<img src="./images/sub/icon/slider/slider-right.svg" alt="">
-					</div>
-				</div>
-
-			</div>
-
-			<div class="table_inner">
-				<div class="linear_box"></div>
-				<table class="new_tbl_board tb01 mt20 mb60">
-					<colgroup>
-						<col style="width: 10%;">
-						<col style="width: 15%;">
-						<col style="width: 10%;">
-						<col style="width: 10%;">
-						<col style="width: 7%;">
-					</colgroup>
-					<thead>
-						<tr>
-							<th scope="col">중량</th>
-							<th scope="col">에너지(kcal)</th>
-							<th scope="col">탄수화물(g)</th>
-							<th scope="col">당류(g)</th>
-							<th scope="col">단백질(g)</th>
-							<th scope="col">지방(g)</th>
-							<th scope="col">단백질(g)</th>
-							<th scope="col">포화지방(g)</th>
-							<th scope="col">나트륨(mg)</th>
-							<th scope="col">비타민 A(μg RA)</th>
-							<th scope="col">레티놀(μg)</th>
-							<th scope="col">레티놀(μg)</th>
-							<th scope="col">레티놀(μg)</th>
-							<th scope="col">레티놀(μg)</th>
-						</tr>
-					</thead>
-
-					<tbody>
-						<tr onclick="">
-							<td>100</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-							<td>0.2</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-	</section>
 
 	<section class="decibal_title mb80">
 		<div class="inner">
@@ -517,46 +175,57 @@
 	<script type="text/javascript">
 		//JSP에서 값을 JavaScript 변수로 전달
 
-		var totalDietMonthSum = [];
+		var grapeData = [];
 
-		<c:forEach var="item2" items="${totalDietListMonthSum}">
-
-		var totalDietMonthSumItem = {
-			saveDate : '${item2.saveDate}',
-			kcal : '${item2.kcal}',
-			water : '${item2.water}',
-			protein : '${item2.protein}',
-			fat : '${item2.fat}',
-			batch : '${item2.batch}',
-			carbohydrate : '${item2.carbohydrate}',
-			sugars : '${item2.sugars}',
-			dietaryFiber : '${item2.dietaryFiber}',
-			calcium : '${item2.calcium}',
-			ironContent : '${item2.ironContent}',
-			phosphorus : '${item2.phosphorus}',
-			potassium : '${item2.potassium}',
-			sodium : '${item2.sodium}',
-			vitaminA : '${item2.vitaminA}',
-			retinol : '${item2.retinol}',
-			betaCarotene : '${item2.betaCarotene}',
-			thiamine : '${item2.thiamine}',
-			riboflavin : '${item2.riboflavin}',
-			niacin : '${item2.niacin}',
-			vitaminC : '${item2.vitaminC}',
-			vitaminD : '${item2.vitaminD}',
-			cholesterol : '${item2.cholesterol}',
-			saturatedFat : '${item2.saturatedFat}',
-			transFat : '${item2.transFat}'
-		};
-
-		totalDietMonthSum.push(totalDietMonthSumItem);
-
+		var nutrienStandard = [];		
+		<c:forEach var="Standard" items="${findTotalDietByStandard}">
+			<c:if test="${Standard.foodIntake == 9999}">
+				nutrienStandard.push(0);
+			</c:if>
+			<c:if test="${Standard.foodIntake != 9999}">
+				nutrienStandard.push('${Standard.foodIntake}');
+			</c:if>
 		</c:forEach>
-
-		document.addEventListener('DOMContentLoaded', function() {
-			// Chart.js가 로드된 후에 차트 생성
-			//barChart(totalDietDataItem); //평균 DAO 
-			lineChart(totalDietMonthSum); //한달
+		
+		grapeData.push(nutrienStandard);
+		
+		nutrientIntakePrograss = [];
+		
+		<c:forEach var="item" items="${totalDietListMonthSum}">
+			var nutrientIntakeItem = {
+				saveDate : '${item.saveDate}',
+				kcal : '${item.kcal}',
+				water : '${item.water}',
+				protein : '${item.protein}',
+				fat : '${item.fat}',
+				batch : '${item.batch}',
+				carbohydrate : '${item.carbohydrate}',
+				sugars : '${item.sugars}',
+				dietaryFiber : '${item.dietaryFiber}',
+				calcium : '${item.calcium}',
+				ironContent : '${item.ironContent}',
+				phosphorus : '${item.phosphorus}',
+				potassium : '${item.potassium}',
+				sodium : '${item.sodium}',
+				vitaminA : '${item.vitaminA}',
+				retinol : '${item.retinol}',
+				betaCarotene : '${item.betaCarotene}',
+				thiamine : '${item.thiamine}',
+				riboflavin : '${item.riboflavin}',
+				niacin : '${item.niacin}',
+				vitaminC : '${item.vitaminC}',
+				vitaminD : '${item.vitaminD}',
+				cholesterol : '${item.cholesterol}',
+				saturatedFat : '${item.saturatedFat}',
+				transFat : '${item.transFat}'
+			};	
+			nutrientIntakePrograss.push(nutrientIntakeItem);
+		</c:forEach>
+		
+		grapeData.push(nutrientIntakePrograss);		
+		
+		document.addEventListener('DOMContentLoaded', function() {			
+			lineChart(grapeData); //한달
 		});
 	</script>
 

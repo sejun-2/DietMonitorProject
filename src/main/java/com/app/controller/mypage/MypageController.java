@@ -48,14 +48,15 @@ public class MypageController {
 			t1.setAccountNo(accountNo);
 			t1.setMemberNo(memberNo);
 	
-			System.out.println(t1);
-			List<Diet> totalDietList = mypageService.findTotalDietByAvg(t1);
+			//System.out.println(t1);
+			Diet totalDietAvg = mypageService.findTotalDietByAvg(t1);
 			List<Diet> findTotalDietByStandard = mypageService.findTotalDietByStandard(t1);
 			
-			System.out.println(totalDietList);
+			//System.out.println(totalDietList);
 			System.out.println(findTotalDietByStandard);
-			model.addAttribute("totalDietList", totalDietList);
-			model.addAttribute("findTotalDietByStandard", findTotalDietByStandard);
+			model.addAttribute("totalDietAvg", totalDietAvg);
+			model.addAttribute("findTotalDietByStandard", findTotalDietByStandard);			
+			
 			return "/mypage/nutritionStandard";
 		}	
 		return "/mypage/nutritionStandard";
@@ -71,10 +72,14 @@ public class MypageController {
 		t1.setMemberNo(memberNo);
 
 		System.out.println(t1);
+		
 		List<Diet> totalDietListMonthSum = mypageService.findTotalDietByMonthSum(t1);
+		List<Diet> findTotalDietByStandard = mypageService.findTotalDietByStandard(t1);
 
 		System.out.println(totalDietListMonthSum);
 		model.addAttribute("totalDietListMonthSum", totalDietListMonthSum);
+		model.addAttribute("findTotalDietByStandard", findTotalDietByStandard);			
+		
 
 		return "/mypage/dietProgress";
 	}

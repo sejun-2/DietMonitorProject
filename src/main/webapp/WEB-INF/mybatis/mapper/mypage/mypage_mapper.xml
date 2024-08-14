@@ -335,7 +335,8 @@
 	
 	<select id="findTotalDietByStandard" parameterType="TotalDietSearchCondition" resultType="Diet">
 		SELECT 
-		    s.intake_rec
+		    n.nutrient_name food_name,
+    		s.intake_rec food_intake
 		FROM nutrient n,                 
 		        (SELECT *
 				FROM nutrition_standard

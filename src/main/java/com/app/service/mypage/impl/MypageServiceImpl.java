@@ -25,10 +25,10 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public List<Diet> findTotalDietByAvg(TotalDietSearchCondition totalDietSearchCondition) {
+	public Diet findTotalDietByAvg(TotalDietSearchCondition totalDietSearchCondition) {
 		// TODO Auto-generated method stub
-		List<Diet> totalDietList = mypageDAO.findTotalDietByAvg(totalDietSearchCondition);
-		return totalDietList;
+		Diet totalDiet = mypageDAO.findTotalDietByAvg(totalDietSearchCondition);
+		return totalDiet;
 	}
 
 	@Override
