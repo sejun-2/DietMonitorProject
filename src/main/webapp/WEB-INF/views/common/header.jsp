@@ -38,7 +38,7 @@
 		<div class="profile">
 			<p class="title">프로필 전환</p>
 			<ul class="box_wrap wrap">
-				<c:forEach var="profile" items="${profiles}" varStatus="status">>
+				<c:forEach var="profile" items="${profiles}" varStatus="status">
 						<li class="box">
 							<form action="/switchProfile" method="post">
 								<input type="hidden" name="accountNo" value="${profile.accountNo}">
@@ -50,12 +50,6 @@
 							</form>
 						</li>
 						
-						<c:if test="${status.count eq 5}">
-							<li class="box"><a href="/mypage/manageProfile">
-									<img src="../images/header/profile/profile.png" alt="">
-									<p>멤버 관리</p>
-							</a></li>
-						</c:if>
 				</c:forEach>
 
 				<c:set var="profileCount" value="${fn:length(profiles)}" />

@@ -169,6 +169,62 @@
     </section>
 
 
+    <script>
+        $(function () {
+            /* 서비스 상세 설명 슬라이드 */
+            if ($('.service_detail .swiper-container').length) {
+                var serviceSwiper = new Swiper('.service_detail .swiper-container', {
+                	direction: 'horizontal',
+                	loop: true,
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    speed: 1000,
+                    spaceBetween: 50,
+                    navigation: {
+                        nextEl: '.service_detail .next',
+                        prevEl: '.service_detail .prev',
+                    },
+                    pagination: {
+                        el: '.service_detail .pn_num',
+                        clickable : true,
+                        type: 'custom',
+                        renderCustom: function (swiper, current, total) {
+                            var paginationHtml = '';
+                            for (var i = 1; i <= total; i++) {
+                                var idx = i < 10 ? '0' + i : i;
+                                if (i === current) {
+                                    paginationHtml += '<div class="num">' + idx + '</div><div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="현재 위치 아이콘"></div>';
+                                } else {
+                                    paginationHtml += '<div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="페이지네이션 아이콘"></div>';
+                                }
+                            }
+                            return paginationHtml;
+                        },
+                    },
+                });
+
+                // Swiper 초기화
+                serviceSwiper.init();
+
+                // 재생 및 정지 버튼
+                $('.service_detail .stop').click(function () {
+                    var isRunning = serviceSwiper.autoplay.running;
+
+                    if (isRunning) {
+                        serviceSwiper.autoplay.stop();
+                        $(this).find('img').attr('src', './images/main/icon/akar-ion-play.svg'); // 아이콘을 '재생'으로 변경
+                    } else {
+                        serviceSwiper.autoplay.start();
+                        $(this).find('img').attr('src', './images/main/icon/akar-two-line-vertical.svg'); // 아이콘을 '멈춤'으로 변경
+                    }
+                });
+            }
+        });
+
+
+    </script>
 
     <jsp:include page="./common/footer.jsp" />
 </body>
