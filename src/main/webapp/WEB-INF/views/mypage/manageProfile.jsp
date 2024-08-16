@@ -19,7 +19,7 @@
 <link href="../css/common.css" rel="stylesheet">
 <script type="text/javascript" src="../script/header.js"></script>
 
-<title>회원가입</title>
+<title>프로필 관리</title>
 </head>
 <body>
 	<header id="header">

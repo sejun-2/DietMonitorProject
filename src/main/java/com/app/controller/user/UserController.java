@@ -20,6 +20,7 @@ import com.app.dto.api.ApiResponseHeader;
 import com.app.dto.user.CustomerDupEmailCheckRequest;
 import com.app.dto.user.User;
 import com.app.dto.user.UserValidError;
+import com.app.service.diet.DietService;
 import com.app.service.user.UserService;
 import com.app.util.SessionManager;
 import com.app.validator.UserValidator;
@@ -29,6 +30,9 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	DietService dietService;
 
 	@GetMapping("/signup")
 	public String signup() {
@@ -114,10 +118,13 @@ public class UserController {
 		
 		SessionManager.setSessionAccount(loginUser.getAccountNo(), loginUser.getMemberNo(), session);
 		
+		int result = dietService.deleteAllExpectedDiet(loginUser);
+		System.out.println("삭제된 예상 식단 데이터 개수 : " + result);
+		
 	    List<User> profiles = userService.findUserListByAccountNo(loginUser.getAccountNo());
 
 	    for (User profile : profiles) {
-	        int age = userService.getAgeByMemberInfo(profile.getAccountNo(), profile.getMemberNo());
+	        int age = userService.getMonthsByMemberInfo(profile.getAccountNo(), profile.getMemberNo());
 	        String genderName = userService.getGenderNameByGenderId(profile.getGenderId());
 	        profile.setAge(age);
 	        profile.setGenderName(genderName);
