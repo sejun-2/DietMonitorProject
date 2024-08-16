@@ -141,8 +141,8 @@ public class MypageController {
 			// 사용자 정보를 조회
 			User user = userService.findUserByMemberInfo(accountNo, memberNo);
 			// 사용자의 나이 계산			
-			int userAge = userService.getAgeByMemberInfo(accountNo, memberNo);
-			user.setAge(userAge);
+			int months = userService.getMonthsByMemberInfo(accountNo, memberNo);
+			user.setAge(months);
 			
 			int genderId = user.getGenderId();
 			String userGenderName = userService.getGenderNameByGenderId(genderId);
@@ -153,7 +153,7 @@ public class MypageController {
 			List<User> profiles = userService.findUserListByAccountNo(accountNo);
 		    
 		    for (User profile : profiles) {
-		        int age = userService.getAgeByMemberInfo(profile.getAccountNo(), profile.getMemberNo());
+		        int age = userService.getMonthsByMemberInfo(profile.getAccountNo(), profile.getMemberNo());
 		        String genderName = userService.getGenderNameByGenderId(profile.getGenderId());
 		        profile.setAge(age);
 		        profile.setGenderName(genderName);
@@ -228,7 +228,7 @@ public class MypageController {
 	    List<User> profiles = userService.findUserListByAccountNo(accountNo);
 	    
 	    for (User profile : profiles) {
-	        int age = userService.getAgeByMemberInfo(profile.getAccountNo(), profile.getMemberNo());
+	        int age = userService.getMonthsByMemberInfo(profile.getAccountNo(), profile.getMemberNo());
 	        String genderName = userService.getGenderNameByGenderId(profile.getGenderId());
 	        profile.setAge(age);
 	        profile.setGenderName(genderName);
@@ -243,6 +243,8 @@ public class MypageController {
 	@PostMapping("/addProfile")
 	public String addProfile(@Valid @ModelAttribute User user, HttpSession session, HttpServletResponse response, BindingResult br, Model model) throws IOException {
 		
+		int genderId = userService.getGenderIdByAge(user.getBirth());
+		user.setGenderId(genderId);
 		
 		UserValidError userValidError = new UserValidError();
 		
