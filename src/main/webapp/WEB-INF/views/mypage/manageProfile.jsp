@@ -106,11 +106,19 @@
 						<div class="sig_input wrap_s">
 							<p>프로필 선택<span class="red">*</span></p>
 							<div class="cc-selector">
-								<c:forEach var="i" begin="1" end="5" step="1">
-									<input style="display: none;" id="profile${i}" type="radio" name="iconId" value="${i}" /> 
-									<label class="drinkcard-cc profiles" for="profile${i}">
-										<img src="../images/header/profile/profile_${i}.png">
-									</label>
+								<c:forEach var="i" begin="1" end="5" step="1"  varStatus="status">
+	    							<c:if test="${status.count == 1}">
+										<input style="display: none;" id="profile${i}" type="radio" name="iconId" value="${i}" checked/> 
+										<label class="drinkcard-cc profiles" for="profile${i}">
+											<img src="../images/header/profile/profile_${i}.png">
+										</label>
+									</c:if>
+									<c:if test="${status.count != 1}">
+										<input style="display: none;" id="profile${i}" type="radio" name="iconId" value="${i}"/> 
+										<label class="drinkcard-cc profiles" for="profile${i}">
+											<img src="../images/header/profile/profile_${i}.png">
+										</label>
+									</c:if>
 								</c:forEach>
 							</div>
 						</div>						

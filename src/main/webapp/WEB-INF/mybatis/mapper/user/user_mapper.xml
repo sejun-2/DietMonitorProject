@@ -37,13 +37,28 @@
 	
 	<update id="modifyUser"  parameterType="User">
 		UPDATE member
-		SET pw = #{pw},
-			name = #{name},
-			nickname = #{nickname},
-			tel = #{tel},
-			birth = #{birth},
-			gender_id = #{genderId},
-			icon_id = #{iconId}
+		SET
+		<if test="pw != null and pw != '' ">
+				pw = #{pw},
+		</if>
+		<if test="name != null and name != '' ">
+				name = #{name},
+		</if>
+		<if test="nickname != null and nickname != '' ">
+				nickname = #{nickname},
+		</if>
+		<if test="tel != null and tel != '' ">
+				tel = #{tel},
+		</if>
+		<if test="birth != null and birth != '' ">
+				birth = #{birth},
+		</if>
+		<if test="genderId != null and genderId != '' ">
+				gender_id = #{genderId},
+		</if>
+		<if test="iconId != null and iconId != '' ">
+				icon_id = #{iconId}
+		</if>
 		WHERE account_no = #{accountNo} and member_no = #{memberNo}
 	</update>
 	
@@ -89,6 +104,7 @@
 				        WHERE account_no = #{accountNo} AND member_no = #{memberNo}) 
 		BETWEEN age_min AND age_max
 		AND gender_id = (SELECT gender_id FROM member WHERE account_no = #{accountNo} AND member_no = #{memberNo})
+		ORDER BY nutrient_id
     </select>
     
     <delete id="removeProfile" parameterType="map">

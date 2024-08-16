@@ -1,28 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link href="../css/base.css" rel="stylesheet">
-    <link href="../css/common.css" rel="stylesheet">
-    <script type="text/javascript" src="../script/header.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+<link rel="stylesheet"
+	href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<link href="../css/base.css" rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"
+	integrity="sha512-ZwR1/gSZM3ai6vCdI+LVF1zSq/5HznD3ZSTk7kajkaj4D292NLuduDCO1c/NT8Id+jE58KYLKT7hXnbtryGmMg=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" src="../script/header.js"></script>
+<script type="text/javascript" src="../script/graph.js"></script>
 
-    <title>foodIngredients</title>
+<title>foodIngredients</title>
 </head>
 <body>
 	<header id="header">
-        <div class="header_inner header_sub">
-            <jsp:include page="../common/header.jsp" />
-        </div>
-    </header>
+		<div class="header_inner header_sub">
+			<jsp:include page="../common/header.jsp" />
+		</div>
+	</header>
 
-<section id="container" class="content">
+    <section id="container" class="content">
         <div class="inner">
             <div class="wrap">
                 <div class="left">
@@ -96,22 +105,27 @@
                         	<img src="../images/header/profile/profile_${user.iconId}.png">
                         </p>
                     </div>
-                    <div class="sig_input active wrap_s">
-                        <p>아이디</p>
-                        <p class="information">${user.email}</p>
-                    </div>
-                    <div class="sig_input wrap_s">
-                        <p>이름</p>
-                        <p class="information">${user.name}</p>
-                    </div>
+                    
+                    <c:if test="${user.memberNo eq 1}">
+	                    <div class="sig_input active wrap_s">
+	                        <p>이메일</p>
+	                        <p class="information">${user.email}</p>
+	                    </div>
+	                    <div class="sig_input wrap_s">
+	                        <p>이름</p>
+	                        <p class="information">${user.name}</p>
+	                    </div>
+                    </c:if>
                     <div class="sig_input wrap_s">
                         <p>닉네임</p>
                         <p class="information">${user.nickname}</p>
                     </div>
-                    <div class="sig_input wrap_s">
-                        <p>전화번호</p>
-                        <p class="information">${user.tel}</p>
-                    </div>
+                    <c:if test="${user.memberNo eq 1}">
+	                    <div class="sig_input wrap_s">
+	                        <p>전화번호</p>
+	                        <p class="information">${user.tel}</p>
+	                    </div>
+                    </c:if>
                     <div class="sig_input wrap_s">
                         <p>생년월일</p>
                         <p class="information">${user.birth}</p>
@@ -135,10 +149,14 @@
             </div>
         </div>
     </section>
-    
+</div>
+</div>
+</div>
+</div>
+</section>
 
 	
 
-    <jsp:include page="../common/footer.jsp" />
+		<jsp:include page="../common/footer.jsp" />
 </body>
 </html>

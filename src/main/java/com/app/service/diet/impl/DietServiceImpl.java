@@ -33,9 +33,9 @@ public class DietServiceImpl implements DietService{
 	}
 
 	@Override
-	public Diet findTotalNutrientFromDailyDietByMemberInfo(User user) {
+	public Diet getTotalNutrientFromDailyDietByMemberInfo(User user) {
 		// TODO Auto-generated method stub
-		Diet totalNutrient = dietDAO.findTotalNutrientFromDailyDietByMemberInfo(user);
+		Diet totalNutrient = dietDAO.getTotalNutrientFromDailyDietByMemberInfo(user);
 		
 		return totalNutrient;
 	}
@@ -44,6 +44,22 @@ public class DietServiceImpl implements DietService{
 	public int deleteDiet(int logNo) {
 		// TODO Auto-generated method stub
 		int result = dietDAO.deleteDiet(logNo);
+		
+		return result;
+	}
+
+	@Override
+	public int saveDailyDietToTotalDiet() {
+		// TODO Auto-generated method stub
+		int result = dietDAO.saveDailyDietToTotalDiet();
+		
+		return result;
+	}
+
+	@Override
+	public List<Double> getRecommendedIntakeByMemberInfo(User user) {
+		// TODO Auto-generated method stub
+		List<Double> result = dietDAO.getRecommendedIntakeByMemberInfo(user);
 		
 		return result;
 	}
