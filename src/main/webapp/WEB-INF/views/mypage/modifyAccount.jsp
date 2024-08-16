@@ -159,7 +159,7 @@
 					<div class="sig_input wrap_s">
 						<p>프로필 선택<span class="red">*</span></p>
 						<div class="cc-selector">
-							<c:forEach var="i" begin="1" end="5" step="1">
+							<c:forEach var="i" begin="1" end="9" step="1">
 								<c:if test="${user.iconId == i}">
 									<input style="display: none;" id="profile${i}" type="radio" name="iconId" value="${i}" checked/> 
 									<label class="drinkcard-cc profiles" for="profile${i}">
@@ -249,21 +249,20 @@
 			
 			$('input[type="checkbox"][class="otherCondition"]').change( function(){
 				
-				console.log('aa');
-				
 				if( $(this).prop('checked') ){
 					$('input[type="checkbox"][class="otherCondition"]').prop('checked',false);
 					$(this).prop('checked',true);
 				}
 				
 				if( $('input[type="checkbox"][id="pregnant"]').prop("checked") ){
-					$('input:radio[name="genderId"]').val(5);
-					console.log('bb');
+					$('input:radio[name="genderId"]').val(5);					
+					$('input[type="radio"][id="female"]').prop('checked',true);
+					
 				}
 				
 				if( $('input[type="checkbox"][id="lactation"]').prop("checked") ){
 					$('input:radio[name="genderId"]').val(6);
-					console.log('cc');
+					$('input[type="radio"][id="female"]').prop('checked',true);
 				}
 				
 			});
