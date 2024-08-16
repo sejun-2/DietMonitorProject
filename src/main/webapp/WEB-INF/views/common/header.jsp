@@ -41,7 +41,7 @@
 		<div class="profile">
 			<p class="title">프로필 전환</p>
 			<ul class="box_wrap wrap">
-				<c:forEach var="profile" items="${profiles}" varStatus="status">>
+				<c:forEach var="profile" items="${profiles}" varStatus="status">
 						<li class="box">
 							<form action="/switchProfile" method="post">
 								<input type="hidden" name="accountNo" value="${profile.accountNo}">

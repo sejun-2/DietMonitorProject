@@ -96,7 +96,9 @@
 				<div class="sig_inputs">
 					<div class="sig_title">회원정보수정</div>
 					
-					<div class="sig_input wrap_s readonly">
+					<c:if test="${user.memberNo eq 1}">
+					
+					<div class="sig_input active wrap_s readonly">
 						<p>
 							이메일<span class="red">*</span>
 						</p>

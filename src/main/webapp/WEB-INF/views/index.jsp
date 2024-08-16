@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link href="./css/base.css" rel="stylesheet">
     <link href="./css/common.css" rel="stylesheet">
@@ -120,19 +121,16 @@
                                 <div class="slide_title_inner wrap">
                                     <p class="slide_title">식품으로 찾아보기</p>
                                     <div class="pagenation">
-                                        <div class="pn_num wrap">
-                                        </div>
+                                        <div class="pn_num wrap swiper-pagination-custom"><div class="num">01</div><div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="현재 위치 아이콘"></div><div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="페이지네이션 아이콘"></div><div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="페이지네이션 아이콘"></div></div>
                                         <div class="pn_inner wrap">
-                                            <div class="prev">
-                                                <img src="./images/main/icon/akar-chevron-left-small.svg"
-                                                    alt="이전 이동 아이콘">
+                                            <div class="prev" tabindex="0" role="button" aria-label="Previous slide">
+                                                <img src="./images/main/icon/akar-chevron-left-small.svg" alt="이전 이동 아이콘">
                                             </div>
                                             <div class="stop">
                                                 <img src="./images/main/icon/akar-two-line-vertical.svg" alt="멈춤 아이콘">
                                             </div>
-                                            <div class="next">
-                                                <img src="./images/main/icon/akar-chevron-right-small.svg"
-                                                    alt="다음 이동 아이콘">
+                                            <div class="next" tabindex="0" role="button" aria-label="Next slide">
+                                                <img src="./images/main/icon/akar-chevron-right-small.svg" alt="다음 이동 아이콘">
                                             </div>
                                         </div>
                                     </div>
@@ -153,20 +151,16 @@
                                 <div class="slide_title_inner wrap">
                                     <p class="slide_title">영양성분으로 찾아보기</p>
                                     <div class="pagenation">
-                                        <div class="pn_num wrap">
-
-                                        </div>
+                                        <div class="pn_num wrap swiper-pagination-custom"><div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="현재 위치 아이콘"></div><div class="num">02</div><div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="페이지네이션 아이콘"></div><div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="페이지네이션 아이콘"></div></div>
                                         <div class="pn_inner wrap">
-                                            <div class="prev">
-                                                <img src="./images/main/icon/akar-chevron-left-small.svg"
-                                                    alt="이전 이동 아이콘">
+                                            <div class="prev" tabindex="0" role="button" aria-label="Previous slide">
+                                                <img src="./images/main/icon/akar-chevron-left-small.svg" alt="이전 이동 아이콘">
                                             </div>
                                             <div class="stop">
                                                 <img src="./images/main/icon/akar-two-line-vertical.svg" alt="멈춤 아이콘">
                                             </div>
-                                            <div class="next">
-                                                <img src="./images/main/icon/akar-chevron-right-small.svg"
-                                                    alt="다음 이동 아이콘">
+                                            <div class="next" tabindex="0" role="button" aria-label="Next slide">
+                                                <img src="./images/main/icon/akar-chevron-right-small.svg" alt="다음 이동 아이콘">
                                             </div>
                                         </div>
                                     </div>
@@ -185,21 +179,18 @@
                         <div class="info">
                             <div class="info_inner">
                                 <div class="slide_title_inner wrap">
-                                    <p class="slide_title">3333333영양성분으로 찾아보기</p>
+                                    <p class="slide_title">3333333</p>
                                     <div class="pagenation">
-                                        <div class="pn_num wrap">
-                                        </div>
+                                        <div class="pn_num wrap swiper-pagination-custom"><div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="현재 위치 아이콘"></div><div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="페이지네이션 아이콘"></div><div class="num">03</div><div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="페이지네이션 아이콘"></div></div>
                                         <div class="pn_inner wrap">
-                                            <div class="prev">
-                                                <img src="./images/main/icon/akar-chevron-left-small.svg"
-                                                    alt="이전 이동 아이콘">
+                                            <div class="prev" tabindex="0" role="button" aria-label="Previous slide">
+                                                <img src="./images/main/icon/akar-chevron-left-small.svg" alt="이전 이동 아이콘">
                                             </div>
                                             <div class="stop">
                                                 <img src="./images/main/icon/akar-two-line-vertical.svg" alt="멈춤 아이콘">
                                             </div>
-                                            <div class="next">
-                                                <img src="./images/main/icon/akar-chevron-right-small.svg"
-                                                    alt="다음 이동 아이콘">
+                                            <div class="next" tabindex="0" role="button" aria-label="Next slide">
+                                                <img src="./images/main/icon/akar-chevron-right-small.svg" alt="다음 이동 아이콘">
                                             </div>
                                         </div>
                                     </div>
