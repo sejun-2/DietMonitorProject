@@ -42,4 +42,12 @@ public class DietDAOImpl implements DietDAO {
 		return totalNutrient;
 	}
 
+	@Override
+	public int deleteDiet(int logNo) {
+		// TODO Auto-generated method stub
+		int result = sqlSessionTemplate.delete("diet_mapper.deleteDiet", logNo);
+		
+		return result;
+	}
+
 }

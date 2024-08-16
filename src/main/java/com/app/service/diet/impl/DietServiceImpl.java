@@ -40,4 +40,12 @@ public class DietServiceImpl implements DietService{
 		return totalNutrient;
 	}
 
+	@Override
+	public int deleteDiet(int logNo) {
+		// TODO Auto-generated method stub
+		int result = dietDAO.deleteDiet(logNo);
+		
+		return result;
+	}
+
 }
