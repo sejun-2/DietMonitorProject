@@ -41,11 +41,29 @@
 							</p>
 							<input type="text" name="nickname" placeholder="이름을 입력해주세요">
 						</div>
+						
+						<div class="sig_input wrap_s">
+							<p>프로필 선택<span class="red">*</span></p>
+							<div class="cc-selector">
+								<c:forEach var="i" begin="1" end="5" step="1">
+									<input style="display: none;" id="profile${i}" type="radio" name="iconId" value="${i}" /> 
+									<label class="drinkcard-cc profiles" for="profile${i}">
+										<img src="../images/header/profile/profile_${i}.png">
+									</label>
+								</c:forEach>
+							</div>
+						</div>						
+						
 						<div class="sig_input wrap_s">
 							<p>
 								생년월일<span class="red">*</span>
 							</p>
 							<input type="text" name="birth" placeholder="이름을 입력해주세요">
+							<c:if test="${ not empty userValidError.birth }">
+									<br/>
+										<span class="red">${userValidError.birth}</span>
+									<br/>
+							</c:if>
 						</div>
 						<div class="sig_input wrap_s">
 							<p>
@@ -87,18 +105,21 @@
 							</tr>
 						</thead>
 						<tbody id="memberList">
-							<c:forEach var="profile" items="${profiles}">
+							<c:forEach var="profile" items="${profiles}" varStatus="status">
 								<tr onclick="">
-									<td>1</td>
+									<td>${status.count}</td>
 									<td>${profile.nickname}</td>
 									<td>${profile.age}</td>
 									<td>${profile.genderName}</td>
 									<td>
-										<form action="/removeProfile" method="post" onsubmit="return confirm('정말로 삭제하시겠습니까?');">
-			                                <input type="hidden" name="accountNo" value="${profile.accountNo}">
-			                                <input type="hidden" name="memberNo" value="${profile.memberNo}">
-			                                <button class="board_td_btn" type="submit">프로필삭제</button>
-			                            </form>
+										<c:if test="${status.count ne 1}">
+											<form action="/removeProfile" method="post" onsubmit="return confirm('정말로 삭제하시겠습니까?');">
+				                                <input type="hidden" name="accountNo" value="${profile.accountNo}">
+				                                <input type="hidden" name="memberNo" value="${profile.memberNo}">
+				                                <button class="board_td_btn" type="submit">프로필삭제</button>
+				                            </form>
+										</c:if>
+										
 									</td>
 								</tr>
 							</c:forEach>
@@ -112,73 +133,7 @@
 
 	</section>
 
-
-
 	<jsp:include page="../common/footer.jsp" />
-	
-	<!-- <script>
-	$(document).ready(function(){
-		memberListShow();
-		
-	});
-	
-		function memberListShow(){
-			let requestJsonData = {
-				
-			}
-			let requestJsonDataString = JSON.stringify(requestJsonData);
-			
-			$.ajax({
-				type: "POST",
-				url: "http://localhost:8080/findMemberList",
-				headers:{
-				"Content-type":"application/json;charset:UTF-8"
-			},		
-			dataType: 'json', 
-			data: requestJsonDataString, 
-			success: function(userList){
-				
-			let data = "";
-			
-			console.log(userList);
-				
-						/* for(item in userList){
-							
-							data += "	<tr onclick="">";
-							data += "	<td>1</td>";
-							data += "	<td>" + profiles[item].nickname + "</td>";
-							data += "	<td>" + profiles[item].age + "</td>";
-							data += "	<td>" + profiles[item].genderName + "</td>";
-							data += "	<td>";
-							data += "		<form action=\"/removeProfile\" method=\"post\" onsubmit=\"return confirm('정말로 삭제하시겠습니까?');\">";
-							data += "         <input type=\"hidden\" name=\"accountNo\" value=" + userList.accountNo + ">";
-							data += "	            <input type=\"hidden\" name=\"memberNo\" value=" + userList.memberNo + ">";
-							data += "	            <button class=\"board_td_btn\" type=\"submit\">프로필삭제</button>";
-							data += "	        </form>";
-							data += "		</td>";
-							data += "	</tr>";
-					
-						} */
-							$('#memberList').html(data);
-			
-						},
-						error: function(error){
-							console.log('통신에러');
-						}
-					});
-				});
-		}	
-		
-
-	
-	 	
-	 	
-	 	
-	
-	
-
-	
-	</script> -->
 	
 	
 </body>

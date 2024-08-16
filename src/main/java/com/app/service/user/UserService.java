@@ -9,10 +9,6 @@ import com.app.dto.user.NutritionStandard;
 import com.app.dto.user.User;
 
 public interface UserService {
-
-	public List<User> findUserList();
-	
-	public User findUserByEmail(String email);
 	
 	public int modifyUser(User user);
 	

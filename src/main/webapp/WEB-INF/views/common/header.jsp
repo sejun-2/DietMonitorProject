@@ -13,54 +13,57 @@
             <div class="top_nav">
                 <div class="inner">
                     <ul class="gnb wrap_s">
-	                    <c:choose>
-	                        <c:when test="${not empty switchProfile}">
-	                            <li class="lnb mr20">${switchProfile.nickname} 님 환영합니다!</li>
-	                            <li class="lnb main_profile">
-	                                <img src="../images/header/profile/profile_${switchProfile.iconId}.jpg">
-	                            </li>
-	                            <li class="lnb"><a href="/logout" class="logout">로그아웃</a></li>
-	                        </c:when>
-	                        <c:otherwise>
-	                            <c:if test="${not empty user}">
-	                                <li class="lnb mr20">${user.nickname} 님 환영합니다!</li>
-	                                <li class="lnb main_profile">
-	                                    <img src="../images/header/profile/profile_${user.iconId}.jpg">
-	                                </li>
-	                                <li class="lnb"><a href="/logout" class="logout">로그아웃</a></li>
-	                            </c:if>
-	                            <c:if test="${empty user}">
-	                                <li class="lnb"><a href="/login" class="login">로그인</a></li>
-	                                <li class="lnb"><a href="/signup" class="signup">회원가입</a></li>
-	                                <li class="lnb"><a href="" class="admin">관리자</a></li>
-	                            </c:if>
-	                        </c:otherwise>
-	                    </c:choose>
+                    	
+                    	<c:if test="${empty profiles}">
+                             <li class="lnb"><a href="/login" class="login">로그인</a></li>
+                             <li class="lnb"><a href="/signup" class="signup">회원가입</a></li>
+                             <li class="lnb"><a href="" class="admin">관리자</a></li>
+                        </c:if>
+                    	
+                    	<c:if test="${not empty profiles}">                    	
+                    		<c:forEach var="profile" items="${profiles}">
+                    			<c:if test="${profile.memberNo eq memberNo}">
+		                             <li class="lnb mr20">${profile.nickname} 님 환영합니다!</li>
+		                             <li class="lnb main_profile">
+		                                 <img src="../images/header/profile/profile_${profile.iconId}.png">
+		                             </li>
+		                             <li class="lnb"><a href="/logout" class="logout">로그아웃</a></li>
+	                             </c:if>
+                             </c:forEach>
+                         </c:if>
+                         
                     </ul>
                 </div>
             </div>
 		<div class="profile">
 			<p class="title">프로필 전환</p>
 			<ul class="box_wrap wrap">
-				<c:forEach var="profile" items="${profiles}">
+				<c:forEach var="profile" items="${profiles}" varStatus="status">>
 						<li class="box">
 							<form action="/switchProfile" method="post">
 								<input type="hidden" name="accountNo" value="${profile.accountNo}">
 			                    <input type="hidden" name="memberNo" value="${profile.memberNo}">
 			                    <button type="submit">
-			                        <img src=".../images/header/ocean.jpg" alt="">
+			                    	<img src="../images/header/profile/profile_${profile.iconId}.png">
 			                        <p>${profile.nickname}</p>
 			                    </button>
 							</form>
 						</li>
+						
+						<c:if test="${status.count eq 5}">
+							<li class="box"><a href="/mypage/manageProfile">
+									<img src="../images/header/profile/profile.png" alt="">
+									<p>멤버 관리</p>
+							</a></li>
+						</c:if>
 				</c:forEach>
 
 				<c:set var="profileCount" value="${fn:length(profiles)}" />
-
+				
 				<c:if test="${profileCount < 5}">
 					<c:forEach var="i" begin="1" end="${5 - profileCount}">
-						<li class="box"><a href="/manageProfile"> <img
-								src="../images/header/propile_add.svg" alt="">
+						<li class="box"><a href="/mypage/manageProfile">
+								<img src="../images/header/propile_add.svg" alt="">
 								<p>추가</p>
 						</a></li>
 					</c:forEach>

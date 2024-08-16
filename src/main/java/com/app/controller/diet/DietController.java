@@ -1,6 +1,7 @@
 package com.app.controller.diet;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.List; 
 
 import javax.servlet.http.HttpSession;
 
@@ -11,10 +12,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.app.dto.diet.Diet;
+import com.app.dto.search.Nutrient;
+import com.app.dto.user.NutritionStandard;
 import com.app.dto.user.User;
 import com.app.service.diet.DietService;
 import com.app.service.search.SearchService;
 import com.app.service.user.UserService;
+import com.app.util.NutritionCalculator;
 import com.app.util.SessionManager;
 
 @Controller
@@ -49,26 +53,39 @@ public class DietController {
 	}
 	
 	@RequestMapping("/diet/dailyDiet")
-	public String dailyDiet(HttpSession session, Model model, User user) {
+	public String dailyDiet(HttpSession session, Model model, User user, Diet diet) {
 
 		int accountNo = SessionManager.getAccountNo(session);
 		int memberNo = SessionManager.getMemberNo(session);
-		System.out.println(accountNo);
-		System.out.println(memberNo);
 		
 		user.setAccountNo(accountNo);
 		user.setMemberNo(memberNo);
 		
-		Diet totalNutrient = dietService.findTotalNutrientFromDailyDietByMemberInfo(user);
 		List<Diet> dailyDiet = dietService.findFoodListByMemberInfo(user);
-		System.out.println(dailyDiet);
-		System.out.println(totalNutrient);
+		Diet totalNutrient = dietService.getTotalNutrientFromDailyDietByMemberInfo(user);
+		List<Nutrient> unitList = searchService.findNutrientList();
+		List<Double> recommendedIntake = dietService.getRecommendedIntakeByMemberInfo(user);
+		List<Double> calculatedNutrients = NutritionCalculator.calculateStandardMinusTotalIntake(recommendedIntake, totalNutrient);
 		
-//		List<Food> foodList = searchService.findFoodListByMemberInfo(user);
+		System.out.println("나의 영양 일일 권장량 : " + recommendedIntake);
+		System.out.println("나의 하루 섭취 식품 : " + dailyDiet);
+		System.out.println("등록 식품 영양성분 함량 합계 : " + totalNutrient);
 		
 		model.addAttribute("dailyDiet", dailyDiet);
 		model.addAttribute("totalNutrient", totalNutrient);
+		model.addAttribute("unitList", unitList);
+		model.addAttribute("calculatedNutrients", calculatedNutrients);
 		
 		return "diet/dailyDiet";
+	}
+	
+	@PostMapping("/deleteDiet")
+	public String deleteDiet(int logNo) {
+		
+		System.out.println("dailyDiet 페이지에서 deleteDiet로 넘어온 logNo = " + logNo);
+		int result = dietService.deleteDiet(logNo);
+		System.out.println("deleteDiet 실행 결과 : " + result);
+		
+		return "redirect:/diet/dailyDiet";
 	}
 }

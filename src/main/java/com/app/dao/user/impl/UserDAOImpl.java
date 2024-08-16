@@ -19,20 +19,6 @@ public class UserDAOImpl implements UserDAO {
 	@Autowired				
 	SqlSessionTemplate sqlSessionTemplate;	
 	
-	
-	@Override
-	public List<User> findUserList() {
-		// TODO Auto-generated method stub
-		List<User> userList = sqlSessionTemplate.selectList("user_mapper.findUserList");		
-		return userList;
-	}
-	
-	public List<User> findUserListByUserType(String userType){
-		
-		List<User> userList = sqlSessionTemplate.selectList("user_mapper.findUserListByUserType", userType);
-		
-		return userList;
-	}
 
 	@Override
 	public User findUserByEmail(String email) {
@@ -59,7 +45,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User findLoginUser(User user) {
-		// TODO Auto-generated method stub
+		
 		User loginUser = sqlSessionTemplate.selectOne("user_mapper.findLoginUser", user);
 		
 		return loginUser;
@@ -67,7 +53,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public int getAgeByMemberInfo(int accountNo, int memberNo) {
-		// TODO Auto-generated method stub
+		
 		Map<String, Object> params = new HashMap<>();
 	    params.put("accountNo", accountNo);
 	    params.put("memberNo", memberNo);
@@ -79,7 +65,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public String getGenderNameByGenderId(int genderId) {
-		// TODO Auto-generated method stub
+		
 		String result = sqlSessionTemplate.selectOne("user_mapper.getGenderNameByGenderId", genderId);
 		
 		return result;
@@ -87,7 +73,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User findUserByMemberInfo(int accountNo, int memberNo) {
-		// TODO Auto-generated method stub
+		
 		Map<String, Object> params = new HashMap<>();
 	    params.put("accountNo", accountNo);
 	    params.put("memberNo", memberNo);
@@ -99,7 +85,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<NutritionStandard> getNutritionStandardByMemberInfo(Map<String, String> memberInfo) {
-		// TODO Auto-generated method stub
+		
 		List<NutritionStandard> nutritionStandard = sqlSessionTemplate.selectList("user_mapper.getNutritionStandardByMemberInfo", memberInfo);
 		
 		return nutritionStandard;
@@ -107,7 +93,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public int addProfile(User user) {
-		// TODO Auto-generated method stub
+		
 		int result = sqlSessionTemplate.insert("user_mapper.addProfile", user);
 
 		return result;
@@ -115,7 +101,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<User> findUserListByAccountNo(int accountNo) {
-		// TODO Auto-generated method stub
+		
 		List<User> userList = sqlSessionTemplate.selectList("user_mapper.findUserListByAccountNo", accountNo);
 		
 		return userList;
@@ -123,7 +109,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public int removeProfile(int accountNo, int memberNo) {
-		// TODO Auto-generated method stub
+		
 		Map<String, Object> params = new HashMap<>();
 	    params.put("accountNo", accountNo);
 	    params.put("memberNo", memberNo);
@@ -134,8 +120,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<User> findMemberList(User user) {
-		// TODO Auto-generated method stub
-		
+				
 		List<User> userList = sqlSessionTemplate.selectList("user_mapper.findMemberList", user);
 		
 		return userList;
@@ -143,7 +128,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public int getMemberCountByAccountNo(int accountNo) {
-		// TODO Auto-generated method stub
+		
 		int result = sqlSessionTemplate.selectOne("user_mapper.getMemberCountByAccountNo", accountNo);
 		
 		return result;

@@ -7,27 +7,31 @@
 <mapper namespace="user_mapper">
 
 	<select id="findLoginUser" parameterType="User" resultType="User">
-		SELECT * FROM member WHERE email=#{email} and pw=#{pw}
+		SELECT account_no, member_no, email, pw, name, nickname, tel, TO_CHAR(birth, 'YYMMDD') birth, gender_id, created_at, icon_id 
+		FROM member WHERE email=#{email} and pw=#{pw}
 	</select>
 	
 	<select id="findUserByMemberInfo" parameterType="map" resultType="User">
-		SELECT *
+		SELECT account_no, member_no, email, pw, name, nickname, tel, TO_CHAR(birth, 'YYMMDD') birth, gender_id, created_at, icon_id
 		FROM member
 		WHERE account_no = #{accountNo} and member_no = #{memberNo}
 	</select>
 	
 	<select id="findUserListByAccountNo" parameterType="int" resultType="User">
-		SELECT *
+		SELECT account_no, member_no, email, pw, name, nickname, tel, TO_CHAR(birth, 'YYMMDD') birth, gender_id, created_at, icon_id 
 		FROM member
 		WHERE account_no = #{accountNo}
+		ORDER BY member_no
 	</select>
 
 	<select id="findUserList" resultType="User">
-		SELECT * FROM member
+		SELECT account_no, member_no, email, pw, name, nickname, tel, TO_CHAR(birth, 'YYMMDD') birth, gender_id, created_at, icon_id 
+		FROM member
 	</select>
 	
 	<select id="findUserByEmail" resultType="User" parameterType="String">
-		SELECT * FROM member
+		SELECT account_no, member_no, email, pw, name, nickname, tel, TO_CHAR(birth, 'YYMMDD') birth, gender_id, created_at, icon_id 
+		FROM member
 		WHERE email = #{email}
 	</select>
 	
@@ -38,18 +42,19 @@
 			nickname = #{nickname},
 			tel = #{tel},
 			birth = #{birth},
-			gender_id = #{genderId}
+			gender_id = #{genderId},
+			icon_id = #{iconId}
 		WHERE account_no = #{accountNo} and member_no = #{memberNo}
 	</update>
 	
 	<insert id="saveUser" parameterType="User">
 		INSERT INTO member
-		VALUES ( account_no_seq.nextval, 1, #{email}, #{pw}, #{name}, #{nickname}, #{tel}, #{birth}, #{genderId}, #{iconId}, SYSDATE )
+		VALUES ( account_no_seq.nextval, 1, #{email}, #{pw}, #{name}, #{nickname}, #{tel}, #{birth}, #{genderId}, 1, SYSDATE )
 	</insert>
 	
 	<insert id="addProfile" parameterType="User">
 		INSERT INTO member
-		VALUES ( #{accountNo}, (SELECT NVL(MAX(member_no), 0) + 1 FROM member WHERE account_no = #{accountNo}), NULL, NULL, NULL, #{nickname}, NULL, #{birth}, #{genderId}, #{iconId},  NULL )
+		VALUES ( #{accountNo}, (SELECT NVL(MAX(member_no), 1) + 1 FROM member WHERE account_no = #{accountNo}), NULL, NULL, NULL, #{nickname}, NULL, #{birth}, #{genderId}, #{iconId},  NULL )
 	</insert>
 	
 	<select id="getMemberCountByAccountNo" resultType="int" parameterType="int">

@@ -6,18 +6,16 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.app.dto.diet.Diet;
 import com.app.dto.mypage.TotalDietSearchCondition;
 import com.app.dto.user.NutritionStandard;
@@ -123,20 +121,16 @@ public class MypageController {
 			int memberNo = SessionManager.getMemberNo(session);
 			// 사용자 정보를 조회
 			User user = userService.findUserByMemberInfo(accountNo, memberNo);
-			// 사용자의 나이 계산
+			// 사용자의 나이 계산			
 			int age = userService.getAgeByMemberInfo(accountNo, memberNo);
-			System.out.println(age);
+			user.setAge(age);
+			
 			int genderId = user.getGenderId();
-
 			String genderName = userService.getGenderNameByGenderId(genderId);
-
-			// 모델에 사용자 정보와 나이 추가
+			user.setGenderName(genderName);
+			
 			model.addAttribute("user", user);
-			model.addAttribute("age", age);
-			model.addAttribute("genderName", genderName);
-			model.addAttribute("accountNo", accountNo);
-			model.addAttribute("memberNo", memberNo);
-
+			
 			return "mypage/accountInfo";
 		}
 
@@ -144,20 +138,24 @@ public class MypageController {
 	}
 
 	@GetMapping("/mypage/modifyAccount")
-	public String modifyAccount() {
-
+	public String modifyAccount(HttpSession session, Model model) {
+		
+		int accountNo = SessionManager.getAccountNo(session);
+		int memberNo = SessionManager.getMemberNo(session);
+		
+		User user = userService.findUserByMemberInfo(accountNo, memberNo);
+		
+		model.addAttribute("user", user);
+		
 		return "mypage/modifyAccount";
 	}
 
 	@PostMapping("/modifyAccount")
 	public String modifyAccountAction(HttpSession session, User user, BindingResult br, Model model) {
-		user.setAccountNo((int) session.getAttribute("accountNo"));
-		user.setMemberNo((int) session.getAttribute("memberNo"));
-		user.setGenderId((int) user.getGenderId());
-
-		System.out.println(user);
-		System.out.println(user.getGenderId());
-
+		user.setAccountNo((int)session.getAttribute("accountNo"));
+		user.setMemberNo((int)session.getAttribute("memberNo"));
+		user.setGenderId((int)user.getGenderId());
+		
 		UserValidError userValidError = new UserValidError();
 		boolean isValid = UserValidator.validate(user, userValidError);
 		model.addAttribute("userValidError", userValidError);
@@ -177,93 +175,81 @@ public class MypageController {
 	}
 
 	@RequestMapping("/mypage/manageProfile")
-	public String manageProfileAction(HttpSession session, Model model) {
-		System.out.println("controller");
-
-		/*
-		 * int accountNo = SessionManager.getAccountNo(session); int memberNo =
-		 * SessionManager.getMemberNo(session);
-		 */
-
+	public String manageProfileAction(HttpSession session, Model model)  {
+		
 		int accountNo = SessionManager.getAccountNo(session);
-		int memberNo = SessionManager.getMemberNo(session);
-
-		User user = userService.findUserByMemberInfo(accountNo, memberNo);
-
-		System.out.println(user.getNickname());
-
-		user.setAccountNo(accountNo);
-		user.setMemberNo(memberNo);
-
-		List<User> profiles = userService.findUserListByAccountNo(accountNo);
-
-		for (User profile : profiles) {
-			int age = userService.getAgeByMemberInfo(profile.getAccountNo(), profile.getMemberNo());
-			String genderName = userService.getGenderNameByGenderId(profile.getGenderId());
-			profile.setAge(age);
-			profile.setGenderName(genderName);
+	    
+	    List<User> profiles = userService.findUserListByAccountNo(accountNo);
+	    
+	    for (User profile : profiles) {
+	        int age = userService.getAgeByMemberInfo(profile.getAccountNo(), profile.getMemberNo());
+	        String genderName = userService.getGenderNameByGenderId(profile.getGenderId());
+	        profile.setAge(age);
+	        profile.setGenderName(genderName);
+	    }
+	    
+	    session.setAttribute("profiles", profiles);
+	   
+			return "mypage/manageProfile";
 		}
 
-		System.out.println("profiles");
-		System.out.println(profiles);
-
-//	    session.setAttribute("profiles", profiles);
-		model.addAttribute("profiles", profiles);
-
-		return "mypage/manageProfile";
-	}
-
+	
 	@PostMapping("/addProfile")
-	public String addProfile(User user, RedirectAttributes redirectAttributes, HttpSession session,
-			HttpServletResponse response) throws IOException {
-		int accountNo = SessionManager.getAccountNo(session);
-		int memberNo = SessionManager.getMemberNo(session);
-
-		User loginUser = userService.findUserByMemberInfo(accountNo, memberNo);
-		User newProfile = new User();
-		newProfile.setAccountNo(accountNo);
-		newProfile.setNickname(user.getNickname());
-		newProfile.setBirth(user.getBirth());
-		newProfile.setGenderId(user.getGenderId());
-
-		int profileCount = userService.getMemberCountByAccountNo(accountNo);
-
-		if (profileCount < 5) {
-			System.out.println(loginUser);
-			int result = userService.addProfile(newProfile);
-			System.out.println(result);
-
-			if (result > 0) {
-				return "redirect:/mypage/manageProfile";
-			} else {
+	public String addProfile(@Valid @ModelAttribute User user, HttpSession session, HttpServletResponse response, BindingResult br, Model model) throws IOException {
+		
+		
+		UserValidError userValidError = new UserValidError();
+		
+		boolean isValid = UserValidator.validateProfile(user, userValidError);
+		
+		model.addAttribute("userValidError", userValidError);		
+		
+		if(isValid) {
+			
+			int accountNo = SessionManager.getAccountNo(session);
+			
+			user.setAccountNo(accountNo);
+			
+			int profileCount = userService.getMemberCountByAccountNo(accountNo);
+			
+			if(profileCount < 5) {
+				
+				int result = userService.addProfile(user);
+				
+				if(result > 0) {					
+					return "redirect:/mypage/manageProfile";
+				} else {
+					PrintWriter out = response.getWriter();
+					response.setCharacterEncoding("utf-8");
+					response.setContentType("text/html; charset=utf-8");
+					out.println("<script> alert('프로필 추가 중 오류가 발생했습니다.');");
+					out.println("history.go(-1); </script>"); 
+					out.close();
+				}
+			}else {
+				System.out.println("5개 초과");
 				PrintWriter out = response.getWriter();
 				response.setCharacterEncoding("utf-8");
 				response.setContentType("text/html; charset=utf-8");
-				out.println("<script> alert('프로필 추가 중 오류가 발생했습니다.');");
-				out.println("history.go(-1); </script>");
+				out.println("<script> alert('프로필 추가 개수는 5개까지입니다.');");
+				out.println("history.go(-1); </script>"); 
 				out.close();
 			}
+			
 		} else {
-			System.out.println("5개 초과");
-			PrintWriter out = response.getWriter();
-			response.setCharacterEncoding("utf-8");
-			response.setContentType("text/html; charset=utf-8");
-			out.println("<script> alert('프로필 추가 개수는 5개까지입니다.');");
-			out.println("history.go(-1); </script>");
-			out.close();
+			System.out.println("양식 오류  수정 요망");
+			return "mypage/manageProfile";
 		}
 
 		return "redirect:/mypage/manageProfile";
 	}
 
 	@PostMapping("/removeProfile")
-	public String removeProfile(HttpSession session, HttpServletResponse response) throws IOException {
-		int accountNo = SessionManager.getAccountNo(session);
-		int memberNo = SessionManager.getMemberNo(session);
-
-		int result = userService.removeProfile(accountNo, memberNo);
-		if (result == 0) {
-			PrintWriter out = response.getWriter();
+	public String removeProfile(User user, HttpServletResponse response) throws IOException {
+		
+	    int result = userService.removeProfile(user.getAccountNo(), user.getMemberNo());
+	    if(result == 0) {
+	    	PrintWriter out = response.getWriter();
 			response.setCharacterEncoding("utf-8");
 			response.setContentType("text/html; charset=utf-8");
 			out.println("<script> alert('해당 계정은 삭제할 수 없는 계정입니다.');");
@@ -274,15 +260,11 @@ public class MypageController {
 	}
 
 	@PostMapping("/switchProfile")
-	public String switchProfile(HttpSession session) {
-		int accountNo = SessionManager.getAccountNo(session);
-		int memberNo = SessionManager.getMemberNo(session);
-
-		User switchProfile = userService.findUserByMemberInfo(accountNo, memberNo);
-
-		session.setAttribute("switchProfile", switchProfile);
-
-		return "redirect:/main";
+	public String switchProfile(User user, HttpSession session) {
+		
+		SessionManager.setSessionAccount(user.getAccountNo(), user.getMemberNo(), session);
+		
+	    return "redirect:/main";
 	}
 
 }

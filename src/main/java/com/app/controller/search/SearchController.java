@@ -34,7 +34,9 @@ public class SearchController {
 	UserService userService;	
 	
 	@GetMapping("/foodSearch")
-	public String foodSearch(Model model) {
+	public String foodSearch(Model model, SearchInfo searchInfo) {
+		
+		model.addAttribute("searchInfo", searchInfo);
 		
 		List<SearchCategory> dataSortList = searchService.findDataSortList();		
 		model.addAttribute("dataSortList", dataSortList);
