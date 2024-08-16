@@ -42,13 +42,14 @@
 			nickname = #{nickname},
 			tel = #{tel},
 			birth = #{birth},
-			gender_id = #{genderId}
+			gender_id = #{genderId},
+			icon_id = #{iconId}
 		WHERE account_no = #{accountNo} and member_no = #{memberNo}
 	</update>
 	
 	<insert id="saveUser" parameterType="User">
 		INSERT INTO member
-		VALUES ( account_no_seq.nextval, 1, #{email}, #{pw}, #{name}, #{nickname}, #{tel}, #{birth}, #{genderId}, #{iconId}, SYSDATE )
+		VALUES ( account_no_seq.nextval, 1, #{email}, #{pw}, #{name}, #{nickname}, #{tel}, #{birth}, #{genderId}, 1, SYSDATE )
 	</insert>
 	
 	<insert id="addProfile" parameterType="User">

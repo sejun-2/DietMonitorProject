@@ -89,14 +89,16 @@
         <div class="inner">
             <div class="search_inner">
                 <p class="search_info">검색창에 영양정보가 궁금한 식품을 검색해서 손쉽게 영양성분을 알아보세요</p>
-
+				<form action="/foodSearch" method="get"> 
                 <div class="search_input wrap">
-                    <p class="title">식품명</p>
-                    <input type="search" value="" placeholder="영양정보가 궁금한 식품을 입력해주세요">
-                    <button class="search_icon center" type="submit">
-                        <img src="./images/main/icon/akar-search.svg" alt="">
-                    </button>
+	                    <p class="title">식품명</p>
+	                    <input type="search" value="" name="searchKeyword" placeholder="영양정보가 궁금한 식품을 입력해주세요">
+	                    <button class="search_icon center" type="submit">
+	                        <img src="./images/main/icon/akar-search.svg" alt="">
+	                    </button>
+                    
                 </div>
+                </form>
             </div>
 
         </div>
