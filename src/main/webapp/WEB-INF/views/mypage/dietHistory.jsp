@@ -123,7 +123,7 @@
 												<img class="slider-left" data-target=".nutrient${status.count}"
 													src="../images/sub/icon/slider/slider-left.svg" alt="">
 												<div class="more_nutrient">
-													<ul class="nutrient nutrient1 wrap">
+													<ul class="nutrient nutrient${status.count} wrap">
 
 														<li class="more_item wrap">
 															<p class="title">수분(g)</p>
@@ -224,7 +224,7 @@
 										<img class="slider-left" data-target=".nutrient${status.count}"
 											src="../images/sub/icon/slider/slider-left.svg" alt="">
 										<div class="more_nutrient">
-											<ul class="nutrient nutrient1 wrap">
+											<ul class="nutrient nutrient${status.count} wrap">
 
 												<li class="more_item wrap">
 													<p class="title">수분(g)</p>
