@@ -11,6 +11,12 @@ public interface DietService {
 
 	List<Diet> findFoodListByMemberInfo(User user);
 
-	Diet findTotalNutrientFromDailyDietByMemberInfo(User user);
+	int deleteDiet(int logNo);
+
+	int saveDailyDietToTotalDiet();
+
+	List<Double> getRecommendedIntakeByMemberInfo(User user);
+
+	Diet getTotalNutrientFromDailyDietByMemberInfo(User user);
 
 }

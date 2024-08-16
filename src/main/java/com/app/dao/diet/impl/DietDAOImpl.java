@@ -34,12 +34,37 @@ public class DietDAOImpl implements DietDAO {
 	}
 
 	@Override
-	public Diet findTotalNutrientFromDailyDietByMemberInfo(User user) {
+	public Diet getTotalNutrientFromDailyDietByMemberInfo(User user) {
 		// TODO Auto-generated method stub
 		Diet totalNutrient = sqlSessionTemplate.selectOne("diet_mapper."
-						+ "findTotalNutrientFromDailyDietByMemberInfo", user);
+						+ "getTotalNutrientFromDailyDietByMemberInfo", user);
 		
 		return totalNutrient;
+	}
+
+	@Override
+	public int deleteDiet(int logNo) {
+		// TODO Auto-generated method stub
+		int result = sqlSessionTemplate.delete("diet_mapper.deleteDiet", logNo);
+		
+		return result;
+	}
+
+	@Override
+	public int saveDailyDietToTotalDiet() {
+		// TODO Auto-generated method stub
+		int result = sqlSessionTemplate.update("diet_mapper.saveDailyDietToTotalDiet");
+		
+		return result;
+	}
+
+	@Override
+	public List<Double> getRecommendedIntakeByMemberInfo(User user) {
+		// TODO Auto-generated method stub
+		List<Double> result = sqlSessionTemplate.selectList("diet_mapper."
+				+ "getRecommendedIntakeByMemberInfo", user);
+		
+		return result;
 	}
 
 }

@@ -91,10 +91,13 @@
 	                        <td>${diet.foodIntake}</td>
 	                        <td>${diet.kcal}</td>
 	                        <td>
-	                            <button class="board_td_btn wrap" type="button">
-	                                <img src="../images/sub/icon/feather-x-box.svg" alt="">
-	                                <p>등록취소</p>
-	                            </button>
+	                        	<form action="/deleteDiet" method="POST">
+	                        		<input type="hidden" name="logNo" value="${diet.logNo}">
+		                            <button class="board_td_btn wrap" type="submit">
+		                                <img src="../images/sub/icon/feather-x-box.svg" alt="">
+		                                <p>등록취소</p>
+		                            </button>
+	                            </form>
 	                        </td>
 	
 	                    </tr>
@@ -107,7 +110,7 @@
 	                                    <ul class="nutrient nutrient${status.count} wrap">
 	                                        <li class="more_item wrap">
 	                                            <p class="title">에너지(kcal)</p>
-	                                            <p class="info">${diet.kcal}</p>
+	                                            <p class="info nutrient-content">${diet.kcal}</p>
 	                                        </li>
 	                                        <li class="more_item wrap">
 	                                            <p class="title">수분(g)</p>
@@ -199,8 +202,6 @@
 	                                        </li>
 	                                    </ul>
 	                                </div>
-	
-	
 	                                <img  class="slider-right" data-target=".nutrient${status.count}" src="../images/sub/icon/slider/slider-right.svg" alt="">
 	                            </div>
 	                        </td>
@@ -243,29 +244,9 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            <th scope="col">에너지(kcal)</th>
-                            <th scope="col">수분(g)</th>
-                            <th scope="col">단백질(g)</th>
-                            <th scope="col">지방(g)</th>
-                            <th scope="col">탄수화물(g)</th>
-                            <th scope="col">당류(g)</th>
-                            <th scope="col">식이섬유(g)</th>
-                            <th scope="col">칼슘(mg)</th>
-                            <th scope="col">철(mg)</th>
-                            <th scope="col">인(mg)</th>
-                            <th scope="col">칼륨(mg)</th>
-                            <th scope="col">나트륨(mg)</th>
-                            <th scope="col">비타민A(μg RAE)</th>
-                            <th scope="col">레티놀(μg)</th>
-                            <th scope="col">베타카로틴(μg)</th>
-                            <th scope="col">티아민(mg)</th>
-                            <th scope="col">리보플라빈(mg)</th>
-                            <th scope="col">니아신(mg)</th>
-                            <th scope="col">비타민C(mg)</th>
-                            <th scope="col">비타민D(μg)</th>
-                            <th scope="col">콜레스테롤(mg)</th>
-                            <th scope="col">포화지방산(g)</th>
-                            <th scope="col">트랜스지방산(g)</th>
+                            <c:forEach var="unit" items="${unitList}" varStatus="status">
+                            	<th scope="col">${unit.nutrientName}(${unit.nutrientUnit})</th>
+                            </c:forEach>
                         </tr>
                     </thead>
                     
@@ -330,160 +311,27 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            <th scope="col">에너지(kcal)</th>
-                            <th scope="col">수분(g)</th>
-                            <th scope="col">단백질(g)</th>
-                            <th scope="col">지방(g)</th>
-                            <th scope="col">탄수화물(g)</th>
-                            <th scope="col">당류(g)</th>
-                            <th scope="col">식이섬유(g)</th>
-                            <th scope="col">칼슘(mg)</th>
-                            <th scope="col">철(mg)</th>
-                            <th scope="col">인(mg)</th>
-                            <th scope="col">칼륨(mg)</th>
-                            <th scope="col">나트륨(mg)</th>
-                            <th scope="col">비타민A(μg RAE)</th>
-                            <th scope="col">레티놀(μg)</th>
-                            <th scope="col">베타카로틴(μg)</th>
-                            <th scope="col">티아민(mg)</th>
-                            <th scope="col">리보플라빈(mg)</th>
-                            <th scope="col">니아신(mg)</th>
-                            <th scope="col">비타민C(mg)</th>
-                            <th scope="col">비타민D(μg)</th>
-                            <th scope="col">콜레스테롤(mg)</th>
-                            <th scope="col">포화지방산(g)</th>
-                            <th scope="col">트랜스지방산(g)</th>
+                        	<c:forEach var="unit" items="${unitList}" varStatus="status">
+                            	<th scope="col">${unit.nutrientName}(${unit.nutrientUnit})</th>
+                            </c:forEach>
                         </tr>
                     </thead>
                     
                     <tbody>
                         <tr onclick="">
-                            <td>100</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
+                       		<c:forEach var="cn" items="${calculatedNutrients}" varStatus="status">
+                        		<td>${String.format("%.2f",cn)}</td>
+                        	</c:forEach>
                         </tr>
                     </tbody>
                 </table>
             </div>
     </section>
 
-    <section class="decibal_title mb80">
-        <div class="inner">
-            <div class="info">
-                <span class="blue_style">에너지(kcal),</span>
-                <span class="blue_style">탄수화물(g),</span>
-                <span class="blue_style">지방(g)</span>
-                <span class="text">섭취가 너무 적어요.</span>
-            </div>
-            <div class="wrap mb50">
-                <p class="text">부족한 영양성분의 상세 설명과 추천 식품이 궁금하시다면 해당 영양성분의 상세보기를 눌러주세요.</p>
-                <div class="page_nation wrap">
-                    <div class="slide_prev">
-                        <img src="../images/sub/icon/slider/akar-chevron-left-small.svg" alt="">
-                    </div>
-                    <div class="slide_stop">
-                        <img src="../images/sub/icon/slider/akar-two-line-vertical.svg" alt="">
-                    </div>
-                    <div class="slide_next">
-                        <img src="../images/sub/icon/slider/akar-chevron-right-small.svg" alt="">
-                    </div>
-                </div>
-            </div>
-
-            <div class="slide_cont_box wrap">
-                <div class="linear_box"></div>
-                <div class="slide_box wrap">
-                    <div class="box">
-                        <div class="title_food">에너지(kcal)</div>
-                        <div class="info">
-                            <div class="info_title">에너지가 부족할 경우</div>
-                            <div class="info_detail">
-                                하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 
-                                활동하는데 필요한 에너지이다. 하루 섭취 칼로리
-                                가 너무 적다는 것은 기름 없는 자동차나 마찬가...
-                            </div>
-                        </div>
-                        <div class="more">상세보기</div>
-                    </div>
-                </div>
-    
-                <div class="slide_box wrap">
-                    <div class="box">
-                        <div class="title_food">에너지(kcal)</div>
-                        <div class="info">
-                            <div class="info_title">에너지가 부족할 경우</div>
-                            <div class="info_detail">
-                                하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 
-                                활동하는데 필요한 에너지이다. 하루 섭취 칼로리
-                                가 너무 적다는 것은 기름 없는 자동차나 마찬가...
-                            </div>
-                        </div>
-                        <div class="more">상세보기</div>
-                    </div>
-                </div>
-    
-                <div class="slide_box wrap">
-                    <div class="box">
-                        <div class="title_food">에너지(kcal)</div>
-                        <div class="info">
-                            <div class="info_title">에너지가 부족할 경우</div>
-                            <div class="info_detail">
-                                하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 
-                                활동하는데 필요한 에너지이다. 하루 섭취 칼로리
-                                가 너무 적다는 것은 기름 없는 자동차나 마찬가...
-                            </div>
-                        </div>
-                        <div class="more">상세보기</div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </section>
-
-    <div class="popup">
-        <div class="box">
-            <div class="close">
-                <img src="../images/sub/icon/close-x.svg" alt="">
-            </div>
-            <div class="title">에너지가 부족할 경우 나타나는 현상</div>
-            <div class="info">
-                하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 하루 섭취 칼로리가 너무 적다는 것은
-                기름 없는 자동차나 마찬가지 하루종일 힘이없다. 
-                칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 하루 섭취 칼로리가 너무 적다는 것은 기름 없는 자동차나
-                마찬가지 하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 하루 섭취 칼로리가 너무 적
-                다는 것은 기름 없는 자동차나 마찬가지 하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다.
-                칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 하루 섭취 칼로리가 너무 적다는 것은 기름 없는 자동차나
-                마찬가지 하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 다다다다다다다다
-            </div>
-
-            <div class="wrap_s mt40 mb30">
-                <img src="../images/sub/icon/Icon fa-solid-star.svg" alt="">
-                <p class="popup_title">일일 권장량 대비 부족 영양소 별 추천 검색</p>
-            </div>
-            <ul class="tag_inner wrap_s">
-                <li class="tag">#햄버거</li>
-                <li class="tag">#아이스크림</li>
-                <li class="tag">#햄버거</li>
-                <li class="tag">#아이스크림</li>
-                <li class="tag">#아이스크림</li>
-                <li class="tag">#햄버거</li>
-            </ul>
-        </div>
-    </div>
-
-
    <jsp:include page="../common/footer.jsp" />
+   
+   <script type="text/javascript">
+    	
+    </script>
 </body>
 </html>

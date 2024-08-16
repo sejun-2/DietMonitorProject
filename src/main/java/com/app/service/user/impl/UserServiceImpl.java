@@ -23,21 +23,6 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	UserDAO userDAO;
 
-	@Override
-	public List<User> findUserList() {
-		// TODO Auto-generated method stub
-		List<User> userList = userDAO.findUserList();
-		
-		return userList;
-	}
-
-	@Override
-	public User findUserByEmail(String email) {
-		// TODO Auto-generated method stub
-		User user = userDAO.findUserByEmail(email);
-		
-		return user;
-	}
 
 	@Override
 	public int modifyUser(User user) {
