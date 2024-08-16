@@ -9,7 +9,7 @@ function barChart(grapeData) {
 			"베타카로틴", "티아민", "리보플라빈", "니아신", "비타민C", "비타민D", "콜레스테롤", "포화지방", "트랜스지방"],
 		datasets: [
 			{
-				label: "필수영양소",
+				label: "필요영양소",
 				data: grapeData[0],
 				backgroundColor: "rgba(255,0,0,0.5)",
 				borderColor: "rgba(255,0,0,0.8)",
@@ -103,7 +103,7 @@ function lineChart(grapeData) {
 
 			datasets: [
 				{
-					label: nutrients[i]+" 필수영양소",
+					label: nutrients[i]+" 필요영양소",
 					data: nutrienStandard,
 					backgroundColor: "rgba(220,220,220,0.2)",
 					borderColor: "rgba(255,0,0,1)",

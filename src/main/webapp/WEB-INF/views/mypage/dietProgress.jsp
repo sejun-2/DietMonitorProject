@@ -91,9 +91,9 @@
 					<div class="box">
 						<div class="title_food">에너지(kcal)</div>
 						<div class="info">
-							<div class="info_title">에너지가 부족할 경우</div>
-							<div class="info_detail">하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 활동하는데
-								필요한 에너지이다. 하루 섭취 칼로리 가 너무 적다는 것은 기름 없는 자동차나 마찬가...</div>
+							<div class="info_title">칼로리 섭취가 부족할 경우</div>
+							<div class="info_detail">허기가 지고 신진대사가 늦어짐. 지방대신 근육을 태움
+								근육이 제대로 회복되질 못함 몸이 무겁고 피곤함이 계속됨...</div>
 						</div>
 						<div class="more">상세보기</div>
 					</div>
@@ -101,11 +101,11 @@
 
 				<div class="slide_box wrap">
 					<div class="box">
-						<div class="title_food">에너지(kcal)</div>
+						<div class="title_food">탄수화물(g)</div>
 						<div class="info">
-							<div class="info_title">에너지가 부족할 경우</div>
-							<div class="info_detail">하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 활동하는데
-								필요한 에너지이다. 하루 섭취 칼로리 가 너무 적다는 것은 기름 없는 자동차나 마찬가...</div>
+							<div class="info_title">탄수화물 섭취가 부족할 경우</div>
+							<div class="info_detail">탄수화물 섭취가 부족하면 저혈당 증상이 나타나고, 피로감, 무기력감, 활력 저하, 정신 기능 지체, 수면 부족 등의 증상이 나타날 수 있습니다. 
+								또한 탄수화물이 부족하면 지방뿐만 아니라 근육을 에너지원으로 활용하여 근손실이 일어나고, 심각할 경우 일상생활에서 어려움을 겪을 수 있습니다...</div>
 						</div>
 						<div class="more">상세보기</div>
 					</div>
@@ -113,11 +113,11 @@
 
 				<div class="slide_box wrap">
 					<div class="box">
-						<div class="title_food">에너지(kcal)</div>
+						<div class="title_food">당류(g)</div>
 						<div class="info">
-							<div class="info_title">에너지가 부족할 경우</div>
-							<div class="info_detail">하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 활동하는데
-								필요한 에너지이다. 하루 섭취 칼로리 가 너무 적다는 것은 기름 없는 자동차나 마찬가...</div>
+							<div class="info_title">당 섭취가 부족할 경우</div>
+							<div class="info_detail">당류 부족으로 인해 저혈당증이 발생할 수 있습니다. 저혈당증은 혈액 속 포도당 농도가 필요량보다 부족한 상태를 말하며, 
+								혈당이 70mg/dL 이하로 떨어지면 에너지가 부족하다는 신호로 증상이 나타납니다....</div>
 						</div>
 						<div class="more">상세보기</div>
 					</div>
@@ -132,26 +132,46 @@
 			<div class="close">
 				<img src="./images/sub/icon/close-x.svg" alt="">
 			</div>
-			<div class="title">에너지가 부족할 경우 나타나는 현상</div>
-			<div class="info">하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다.
-				하루 섭취 칼로리가 너무 적다는 것은 기름 없는 자동차나 마찬가지 하루종일 힘이없다. 칼로리는 우리 몸이 움직이고
-				활동하는데 필요한 에너지이다. 하루 섭취 칼로리가 너무 적다는 것은 기름 없는 자동차나 마찬가지 하루종일 힘이없다.
-				칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 하루 섭취 칼로리가 너무 적 다는 것은 기름 없는 자동차나
-				마찬가지 하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 칼로리는 우리 몸이 움직이고
-				활동하는데 필요한 에너지이다. 하루 섭취 칼로리가 너무 적다는 것은 기름 없는 자동차나 마찬가지 하루종일 힘이없다.
-				칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 다다다다다다다다</div>
+			<div class="title">칼로리 섭취가 부족할 경우 나타나는 현상</div>
+			<div class="info">신체가 기능하려면 단백질이 필요하며 근육은 이 단백질의 주요 공급원입니다. 근육 이화작용이 발생하여 신체가 근육 단백질을 동원하여 칼로리로 전환하게 됩니다. 
+								결과적으로 근육이 작아집니다. 칼로리가 부족한 식단과 규칙적인 운동을 하면 지방이 많이 줄어들더라도 근육량도 감소하게 됩니다. 그로인해
+								허기가 지고 신진대사가 늦어지며, 지방대신 근육을 태우기 시작합니다. 근육이 제대로 회복되질 못하며 몸이 무겁고 피곤함이 계속됩니다. 
+								면역력이 강해지지 않고 아프거나 부상을 입을 확률이 높아집니다. 비타민B군, 비타민D 결핍이 발생할 수 있습니다.</div>
 
 			<div class="wrap_s mt40 mb30">
 				<img src="./images/sub/icon/Icon fa-solid-star.svg" alt="">
 				<p class="popup_title">일일 권장량 대비 부족 영양소 별 추천 검색</p>
 			</div>
 			<ul class="tag_inner wrap_s">
-				<li class="tag">#햄버거</li>
-				<li class="tag">#아이스크림</li>
-				<li class="tag">#햄버거</li>
-				<li class="tag">#아이스크림</li>
-				<li class="tag">#아이스크림</li>
-				<li class="tag">#햄버거</li>
+				<li class="tag">#건강한 식단</li>
+				<li class="tag">#풍부한 채소</li>
+				<li class="tag">#단백질</li>
+				<li class="tag">#불포화 지방산</li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="popup">
+		<div class="box">
+			<div class="close">
+				<img src="./images/sub/icon/close-x.svg" alt="">
+			</div>
+			<div class="title">탄수화물 섭취가 부족할 경우 나타나는 현상</div>
+			<div class="info">탄수화물 섭취가 부족하면 저혈당 증상이 나타나고, 피로감, 무기력감, 활력 저하, 정신 기능 지체, 수면 부족 등의 증상이 나타날 수 있습니다. 
+				또한 탄수화물이 부족하면 지방뿐만 아니라 근육을 에너지원으로 활용하여 근손실이 일어나고, 심각할 경우 일상생활에서 어려움을 겪을 수 있습니다. 
+				탄수화물은 근육을 움직이는 연료로, 근육을 움직여야 근육이 만들어집니다. 탄수화물이 부족하면 우리 몸은 당을 만들기 위해 근육을 분해하여 근육이 줄어들 수 있습니다. 
+				또한 탄수화물 섭취가 부족하면 몸에서는 포도당을 대신할 다른 에너지원을 만들어내기 위해 지방을 분해하여 케톤체가 합성되기도 합니다.</div>
+
+			<div class="wrap_s mt40 mb30">
+				<img src="./images/sub/icon/Icon fa-solid-star.svg" alt="">
+				<p class="popup_title">일일 권장량 대비 부족 영양소 별 추천 검색</p>
+			</div>
+			<ul class="tag_inner wrap_s">
+				<li class="tag">#현미</li>
+				<li class="tag">#보리</li>
+				<li class="tag">#귀리</li>
+				<li class="tag">#통곡물</li>
+				<li class="tag">#과일</li>
 			</ul>
 		</div>
 	</div>
