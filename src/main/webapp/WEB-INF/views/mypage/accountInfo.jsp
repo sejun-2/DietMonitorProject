@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -35,22 +36,27 @@
                         	<img src="../images/header/profile/profile_${user.iconId}.png">
                         </p>
                     </div>
-                    <div class="sig_input active wrap_s">
-                        <p>아이디</p>
-                        <p class="information">${user.email}</p>
-                    </div>
-                    <div class="sig_input wrap_s">
-                        <p>이름</p>
-                        <p class="information">${user.name}</p>
-                    </div>
+                    
+                    <c:if test="${user.memberNo eq 1}">
+	                    <div class="sig_input active wrap_s">
+	                        <p>이메일</p>
+	                        <p class="information">${user.email}</p>
+	                    </div>
+	                    <div class="sig_input wrap_s">
+	                        <p>이름</p>
+	                        <p class="information">${user.name}</p>
+	                    </div>
+                    </c:if>
                     <div class="sig_input wrap_s">
                         <p>닉네임</p>
                         <p class="information">${user.nickname}</p>
                     </div>
-                    <div class="sig_input wrap_s">
-                        <p>전화번호</p>
-                        <p class="information">${user.tel}</p>
-                    </div>
+                    <c:if test="${user.memberNo eq 1}">
+	                    <div class="sig_input wrap_s">
+	                        <p>전화번호</p>
+	                        <p class="information">${user.tel}</p>
+	                    </div>
+                    </c:if>
                     <div class="sig_input wrap_s">
                         <p>생년월일</p>
                         <p class="information">${user.birth}</p>

@@ -31,15 +31,17 @@
 	<section class="signup sig_modify">
 		<div class="inner">
 			<div class="sig_inner">
-				<form action="/myInfoModify" method="post">
+				<form action="/mypage/modifyAccount" method="post">
 				<div class="sig_inputs">
 					<div class="sig_title">회원정보수정</div>
+					
+					<c:if test="${user.memberNo eq 1}">
 					
 					<div class="sig_input wrap_s readonly">
 						<p>
 							이메일<span class="red">*</span>
 						</p>
-						<input type="text" name="email" placeholder="${user.email}"
+						<input type="text" name="email" 
 							value="${user.email}" readonly>
 					</div>
 					<div class="sig_input wrap_s">
@@ -78,6 +80,9 @@
 							<br />
 						</c:if>
 					</div>
+					</c:if>
+					
+					
 					<div class="sig_input wrap_s">
 						<p>
 							프로필 닉네임<span class="red">*</span>
@@ -91,28 +96,39 @@
 						</c:if>
 					</div>
 					<div class="sig_input wrap_s">
-							<p>프로필 선택<span class="red">*</span></p>
-							<div class="cc-selector">
-								<c:forEach var="i" begin="1" end="5" step="1">
-									<input style="display: none;" id="propile${i}" type="radio" name="iconId" value="${i }" /> 
+						<p>프로필 선택<span class="red">*</span></p>
+						<div class="cc-selector">
+							<c:forEach var="i" begin="1" end="5" step="1">
+								<c:if test="${user.iconId == i}">
+									<input style="display: none;" id="profile${i}" type="radio" name="iconId" value="${i}" checked/> 
 									<label class="drinkcard-cc profiles" for="profile${i}">
 										<img src="../images/header/profile/profile_${i}.png">
 									</label>
-								</c:forEach>
-							</div>
+								</c:if>
+								<c:if test="${user.iconId != i}">
+									<input style="display: none;" id="profile${i}" type="radio" name="iconId" value="${i}"/> 
+									<label class="drinkcard-cc profiles" for="profile${i}">
+										<img src="../images/header/profile/profile_${i}.png">
+									</label>
+								</c:if>
+							</c:forEach>
 						</div>
-					<div class="sig_input wrap_s">
-						<p>
-							전화번호<span class="red">*</span>
-						</p>
-						<input type="tel" name="tel" placeholder="전화번호를 입력해주세요"
-							value="${user.tel}">
-						<c:if test="${ not empty userValidError.tel }">
-							<br />
-							<span class="red">${userValidError.tel}</span>
-							<br />
-						</c:if>
 					</div>
+					
+					<c:if test="${user.memberNo eq 1}">
+						<div class="sig_input wrap_s">
+							<p>
+								전화번호<span class="red">*</span>
+							</p>
+							<input type="tel" name="tel" placeholder="전화번호를 입력해주세요"
+								value="${user.tel}">
+							<c:if test="${ not empty userValidError.tel }">
+								<br />
+								<span class="red">${userValidError.tel}</span>
+								<br />
+							</c:if>
+						</div>
+					</c:if>
 					<div class="sig_input wrap_s">
 						<p>
 							생년월일<span class="red">*</span>
@@ -137,6 +153,17 @@
 							</span>
 						</div>
 					</div>
+					
+					<div class="sig_input wrap_s">
+						<p>
+							임신/수유 유무<span class="red">*</span>
+						</p>
+						<div class="wrap_s">							
+							<span class="mr20"> <input type="checkbox" id="pregnant" class="otherCondition"> <label for="pregnant">임신</label></span>
+							<span class="mr20"> <input type="checkbox" id="lactation" class="otherCondition"> <label for="lactation">수유</label></span>
+						</div>
+					</div>
+					
 				</div>
 
 				<button class="common_btn" type="submit">회원정보수정</button>
@@ -149,8 +176,32 @@
 
 	</section>
 
-
-
 	<jsp:include page="../common/footer.jsp" />
+	
+	<script>
+		$(document).ready( function(){
+			
+			$('input[type="checkbox"][class="otherCondition"]').change( function(){
+				
+				console.log('aa');
+				
+				if( $(this).prop('checked') ){
+					$('input[type="checkbox"][class="otherCondition"]').prop('checked',false);
+					$(this).prop('checked',true);
+				}
+				
+				if( $('input[type="checkbox"][id="pregnant"]').prop("checked") ){
+					$('input:radio[name="genderId"]').val(5);
+					console.log('bb');
+				}
+				
+				if( $('input[type="checkbox"][id="lactation"]').prop("checked") ){
+					$('input:radio[name="genderId"]').val(6);
+					console.log('cc');
+				}
+				
+			});
+		});
+	</script>
 </body>
 </html>

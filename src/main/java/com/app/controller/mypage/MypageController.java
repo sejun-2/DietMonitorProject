@@ -78,7 +78,6 @@ public class MypageController {
 		model.addAttribute("totalDietList", totalDietList);
 		model.addAttribute("totalDietListAvg", totalDietListAvg);
 		
-		//return "/mypage/mySaveHistory";
 		return "/mypage/test";
 	}
 	
@@ -96,14 +95,26 @@ public class MypageController {
 			// 사용자 정보를 조회
 			User user = userService.findUserByMemberInfo(accountNo, memberNo);
 			// 사용자의 나이 계산			
-			int age = userService.getAgeByMemberInfo(accountNo, memberNo);
-			user.setAge(age);
+			int userAge = userService.getAgeByMemberInfo(accountNo, memberNo);
+			user.setAge(userAge);
 			
 			int genderId = user.getGenderId();
-			String genderName = userService.getGenderNameByGenderId(genderId);
-			user.setGenderName(genderName);
+			String userGenderName = userService.getGenderNameByGenderId(genderId);
+			user.setGenderName(userGenderName);
 			
 			model.addAttribute("user", user);
+			
+			List<User> profiles = userService.findUserListByAccountNo(accountNo);
+		    
+		    for (User profile : profiles) {
+		        int age = userService.getAgeByMemberInfo(profile.getAccountNo(), profile.getMemberNo());
+		        String genderName = userService.getGenderNameByGenderId(profile.getGenderId());
+		        profile.setAge(age);
+		        profile.setGenderName(genderName);
+		    }
+		    
+		    session.setAttribute("profiles", profiles);
+			
 			
 			return "mypage/accountInfo";
 		}
@@ -124,17 +135,29 @@ public class MypageController {
 		return "mypage/modifyAccount";
 	}
 	
-	@PostMapping("/modifyAccount")
+	@PostMapping("/mypage/modifyAccount")
 	public String modifyAccountAction(HttpSession session, User user, BindingResult br, Model model) {
+		
+		System.out.println("정보수정컨트롤러");
+		
 		user.setAccountNo((int)session.getAttribute("accountNo"));
 		user.setMemberNo((int)session.getAttribute("memberNo"));
-		user.setGenderId((int)user.getGenderId());
+		
+		
+		//user.setGenderId((int)user.getGenderId());
+		
+		boolean isValid;
 		
 		UserValidError userValidError = new UserValidError();
-		boolean isValid = UserValidator.validate(user, userValidError);
+		if(user.getMemberNo() == 1) {
+			isValid = UserValidator.validate(user, userValidError);	
+		} else {
+			isValid = UserValidator.validateProfile(user, userValidError);
+		}
+		
 		model.addAttribute("userValidError", userValidError);
 		
-		if(user.getPw().equals(user.getChkPw()) &&UserValidator.isBirth(user.getBirth())) {
+		if(isValid) {
 			int result = userService.modifyUser(user);
 			
 			if(result > 0) {
@@ -143,11 +166,13 @@ public class MypageController {
 				System.out.println("쿼리문 작동 안됨");
 				return "mypage/modifyAccount";
 			}
+			
+		} else {
+			System.out.println("양식 오류 수정 요망");
+			return "mypage/modifyAccount";
 		}
-		
-		
-	    return "redirect:/mypage/accountInfo";
 	}
+	
 
 	@RequestMapping("/mypage/manageProfile")
 	public String manageProfileAction(HttpSession session, Model model)  {
