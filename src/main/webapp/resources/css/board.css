@@ -69,6 +69,7 @@ h4.comm {padding-left:20px; margin-bottom:10px; border-bottom:0}
 .new_tbl_board th:last-child,
 .new_tbl_board td:last-child {border-right:0;}
 .new_tbl_board td         {color:#666; padding:18px 12px;border:1px solid #cdcdcd; border-left:0; text-align:center; font-size:18px; line-height: 1.5;}
+.new_tbl_board td p{font-size:18px;}
 .new_tbl_board td .score{margin-left: 7px;}
 .new_tbl_board td.stats   {color:#666; padding:12px 3px;border:1px solid #cdcdcd; border-left:0; text-align:center;}
 .new_tbl_board td.end     {border-right:0;} 

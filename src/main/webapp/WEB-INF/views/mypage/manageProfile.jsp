@@ -159,10 +159,10 @@
 						class="new_tbl_board tb01 mt20 mb60">
 						<colgroup>
 							<col style="width: 2%;">
-							<col style="width: 50%;">
+							<col style="width: 45%;">
 							<col style="width: 15%;">
 							<col style="width: 15%;">
-							<col style="width: auto;">
+							<col style="width: 30%;">
 						</colgroup>
 						<thead>
 							<tr>
