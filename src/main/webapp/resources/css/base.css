@@ -96,7 +96,9 @@ select {border: none;}
     margin-right: 10px;
     display:inline-block;
     width:70px;height:70px;
-    border: 2px solid #1565A2;}
+    border: 2px solid #1565A2;
+    cursor: pointer;
+    }
 
 .cc-selector input:active +.drinkcard-cc{opacity: .5;}
 .cc-selector input:checked +.drinkcard-cc{

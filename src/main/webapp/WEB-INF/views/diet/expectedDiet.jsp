@@ -34,13 +34,13 @@
 	<section class="sub_title">
 		<div class="inner">
 			<div class="wrap">
-				<h1 class="title">나의 하루 섭취 식품</h1>
+				<h1 class="title">나의 하루 예상 식단</h1>
 				<div class="route wrap">
 					<a href="./index.html"><img class="home center"
 						src="../images/sub/icon/material-home.svg" alt="홈 아이콘"></a>
 					<div class="route_info wrap">
 						<a href="./foodSearchList"><span class="dap1">마이페이지</span></a> <a
-							href="./myIntakeFood"><span class="dap2">나의 하루 섭취 식품</span></a>
+							href="./myIntakeFood"><span class="dap2">나의 하루 예상 식단</span></a>
 					</div>
 				</div>
 			</div>
@@ -50,7 +50,7 @@
 	</section>
 
 	<c:choose>
-		<c:when test="${empty dailyDiet}">
+		<c:when test="${empty expectedDiet}">
 		
 			<h1>아직 등록된 데이터가 없어요.</h1>
 			
@@ -83,7 +83,7 @@
 								<th scope="col">식품대분류</th>
 								<th scope="col">섭취량(g)</th>
 								<th scope="col">에너지(Kcal)</th>
-								<th scope="col">하루 섭취<br>식품 등록
+								<th scope="col">하루 예상<br>식단 등록
 								</th>
 							</tr>
 						</thead>
@@ -226,13 +226,13 @@
 								<th scope="col">식품대분류</th>
 								<th scope="col">섭취량(g)</th>
 								<th scope="col">에너지(Kcal)</th>
-								<th scope="col">하루 섭취<br>식품 등록
+								<th scope="col">하루 예상<br>식단 등록
 								</th>
 							</tr>
 						</thead>
 
 						<tbody>
-							<c:forEach var="diet" items="${dailyDiet}" varStatus="status">
+							<c:forEach var="diet" items="${expectedDiet}" varStatus="status">
 								<tr onclick="">
 									<td>${status.count}</td>
 									<td>${diet.foodName}</td>
@@ -240,12 +240,17 @@
 									<td>${diet.foodIntake}</td>
 									<td>${diet.kcal}</td>
 									<td>
-										<form action="/deleteSelectedDailyDiet" method="POST">
+										<form action="/deleteSelectedExpectedDiet" method="POST">
 											<input type="hidden" name="logNo" value="${diet.logNo}">
-											<button class="board_td_btn wrap" type="submit">
-												<img src="../images/sub/icon/feather-x-box.svg" alt="">
-												<p>등록취소</p>
-											</button>
+											<c:if test="${diet.state == 1}">
+												<p>-</p>
+											</c:if>
+											<c:if test="${diet.state == 3 }">
+												<button class="board_td_btn wrap" type="submit">
+													<img src="../images/sub/icon/feather-x-box.svg" alt="">
+													<p>등록취소</p>
+												</button>
+											</c:if>
 										</form>
 									</td>
 
@@ -362,7 +367,7 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					<form action="/deleteAllDailyDiet" method="POST">
+					<form action="/deleteAllExpectedDiet" method="POST">
 						<button class="common_btn mb80" type="submit">전체등록 취소</button>
 					</form>
 				</div>
@@ -405,29 +410,29 @@
 
 							<tbody>
 								<tr onclick="">
-									<td>${totalNutrient.kcal}</td>
-									<td>${totalNutrient.water}</td>
-									<td>${totalNutrient.protein}</td>
-									<td>${totalNutrient.fat}</td>
-									<td>${totalNutrient.carbohydrate}</td>
-									<td>${totalNutrient.sugars}</td>
-									<td>${totalNutrient.dietaryFiber}</td>
-									<td>${totalNutrient.calcium}</td>
-									<td>${totalNutrient.ironContent}</td>
-									<td>${totalNutrient.phosphorus}</td>
-									<td>${totalNutrient.potassium}</td>
-									<td>${totalNutrient.sodium}</td>
-									<td>${totalNutrient.vitaminA}</td>
-									<td>${totalNutrient.retinol}</td>
-									<td>${totalNutrient.betaCarotene}</td>
-									<td>${totalNutrient.thiamine}</td>
-									<td>${totalNutrient.riboflavin}</td>
-									<td>${totalNutrient.niacin}</td>
-									<td>${totalNutrient.vitaminC}</td>
-									<td>${totalNutrient.vitaminD}</td>
-									<td>${totalNutrient.cholesterol}</td>
-									<td>${totalNutrient.saturatedFat}</td>
-									<td>${totalNutrient.transFat}</td>
+									<td>${expectedTotalNutrient.kcal}</td>
+									<td>${expectedTotalNutrient.water}</td>
+									<td>${expectedTotalNutrient.protein}</td>
+									<td>${expectedTotalNutrient.fat}</td>
+									<td>${expectedTotalNutrient.carbohydrate}</td>
+									<td>${expectedTotalNutrient.sugars}</td>
+									<td>${expectedTotalNutrient.dietaryFiber}</td>
+									<td>${expectedTotalNutrient.calcium}</td>
+									<td>${expectedTotalNutrient.ironContent}</td>
+									<td>${expectedTotalNutrient.phosphorus}</td>
+									<td>${expectedTotalNutrient.potassium}</td>
+									<td>${expectedTotalNutrient.sodium}</td>
+									<td>${expectedTotalNutrient.vitaminA}</td>
+									<td>${expectedTotalNutrient.retinol}</td>
+									<td>${expectedTotalNutrient.betaCarotene}</td>
+									<td>${expectedTotalNutrient.thiamine}</td>
+									<td>${expectedTotalNutrient.riboflavin}</td>
+									<td>${expectedTotalNutrient.niacin}</td>
+									<td>${expectedTotalNutrient.vitaminC}</td>
+									<td>${expectedTotalNutrient.vitaminD}</td>
+									<td>${expectedTotalNutrient.cholesterol}</td>
+									<td>${expectedTotalNutrient.saturatedFat}</td>
+									<td>${expectedTotalNutrient.transFat}</td>
 								</tr>
 							</tbody>
 						</table>

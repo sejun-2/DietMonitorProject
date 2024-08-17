@@ -25,10 +25,10 @@ public class DietDAOImpl implements DietDAO {
 	}
 
 	@Override
-	public List<Diet> findFoodListByMemberInfo(User user) {
+	public List<Diet> findDailyDietListByMemberInfo(User user) {
 		// TODO Auto-generated method stub
 		List<Diet> dailyDiet = 
-				sqlSessionTemplate.selectList("diet_mapper.findFoodListByMemberInfo", user);
+				sqlSessionTemplate.selectList("diet_mapper.findDailyDietListByMemberInfo", user);
 		
 		return dailyDiet;
 	}
@@ -43,9 +43,33 @@ public class DietDAOImpl implements DietDAO {
 	}
 
 	@Override
-	public int deleteDiet(int logNo) {
+	public int deleteSelectedDailyDiet(int logNo) {
 		// TODO Auto-generated method stub
-		int result = sqlSessionTemplate.delete("diet_mapper.deleteDiet", logNo);
+		int result = sqlSessionTemplate.delete("diet_mapper.deleteSelectedDailyDiet", logNo);
+		
+		return result;
+	}
+	
+	@Override
+	public int deleteAllDailyDiet(User user) {
+		// TODO Auto-generated method stub
+		int result = sqlSessionTemplate.delete("diet_mapper.deleteAllDailyDiet", user);
+		
+		return result;
+	}
+	
+	@Override
+	public int deleteSelectedExpectedDiet(int logNo) {
+		// TODO Auto-generated method stub
+		int result = sqlSessionTemplate.delete("diet_mapper.deleteSelectedExpectedDiet", logNo);
+		
+		return result;
+	}
+	
+	@Override
+	public int deleteAllExpectedDiet(User user) {
+		// TODO Auto-generated method stub
+		int result = sqlSessionTemplate.delete("diet_mapper.deleteAllExpectedDiet", user);
 		
 		return result;
 	}
@@ -66,5 +90,35 @@ public class DietDAOImpl implements DietDAO {
 		
 		return result;
 	}
+
+	@Override
+	public int addFoodToExpectedDiet(Diet diet) {
+		// TODO Auto-generated method stub
+		int result = sqlSessionTemplate.insert("diet_mapper.addFoodToExpectedDiet", diet);
+		
+		return result;
+	}
+
+	@Override
+	public List<Diet> findExpectedDietListByMemberInfo(User user) {
+		// TODO Auto-generated method stub
+		List<Diet> expectedDiet = 
+				sqlSessionTemplate.selectList("diet_mapper.findExpectedDietListByMemberInfo", user);
+		
+		return expectedDiet;
+	}
+
+	@Override
+	public Diet getExpectedTotalNutrientFromDailyDietByMemberInfo(User user) {
+		// TODO Auto-generated method stub
+		Diet expectedTotalNutrient = sqlSessionTemplate.selectOne("diet_mapper."
+				+ "getExpectedTotalNutrientFromDailyDietByMemberInfo", user);
+
+		return expectedTotalNutrient;
+	}
+
+	
+
+	
 
 }

@@ -18,4 +18,3 @@ public class User {
 	String genderName;
 	int iconId;
 }
-

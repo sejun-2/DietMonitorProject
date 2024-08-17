@@ -37,18 +37,34 @@
 	
 	<update id="modifyUser"  parameterType="User">
 		UPDATE member
-		SET pw = #{pw},
-			name = #{name},
-			nickname = #{nickname},
-			tel = #{tel},
-			birth = #{birth},
-			gender_id = #{genderId}
+		SET
+		<if test="pw != null and pw != '' ">
+				pw = #{pw},
+		</if>
+		<if test="name != null and name != '' ">
+				name = #{name},
+		</if>
+		<if test="nickname != null and nickname != '' ">
+				nickname = #{nickname},
+		</if>
+		<if test="tel != null and tel != '' ">
+				tel = #{tel},
+		</if>
+		<if test="birth != null and birth != '' ">
+				birth = #{birth},
+		</if>
+		<if test="genderId != null and genderId != '' ">
+				gender_id = #{genderId},
+		</if>
+		<if test="iconId != null and iconId != '' ">
+				icon_id = #{iconId}
+		</if>
 		WHERE account_no = #{accountNo} and member_no = #{memberNo}
 	</update>
 	
 	<insert id="saveUser" parameterType="User">
 		INSERT INTO member
-		VALUES ( account_no_seq.nextval, 1, #{email}, #{pw}, #{name}, #{nickname}, #{tel}, #{birth}, #{genderId}, #{iconId}, SYSDATE )
+		VALUES ( account_no_seq.nextval, 1, #{email}, #{pw}, #{name}, #{nickname}, #{tel}, #{birth}, #{genderId}, 1, SYSDATE )
 	</insert>
 	
 	<insert id="addProfile" parameterType="User">
@@ -62,8 +78,8 @@
 		WHERE account_no = #{accountNo}
     </select>
 	
-	<select id="getAgeByMemberInfo" parameterType="map" resultType="int">
-        SELECT CEIL(MONTHS_BETWEEN(SYSDATE, birth) / 12) AS age
+	<select id="getMonthsByMemberInfo" parameterType="map" resultType="int">
+        SELECT CEIL(MONTHS_BETWEEN(SYSDATE, birth) / 12)
         FROM member
         WHERE account_no = #{accountNo} and member_no = #{memberNo}
     </select>
@@ -88,6 +104,7 @@
 				        WHERE account_no = #{accountNo} AND member_no = #{memberNo}) 
 		BETWEEN age_min AND age_max
 		AND gender_id = (SELECT gender_id FROM member WHERE account_no = #{accountNo} AND member_no = #{memberNo})
+		ORDER BY nutrient_id
     </select>
     
     <delete id="removeProfile" parameterType="map">
@@ -97,6 +114,13 @@
 	
 	<select id="findMemberList" parameterType="User" resultType="User">
 		SELECT * FROM member WHERE account_no = #{accountNo} and member_no = #{memberNo}
+	</select>
+	
+	<select id="getGenderIdByAge" parameterType="String" resultType="int">
+		SELECT DISTINCT(gender_id)
+        FROM nutrition_standard
+        WHERE CEIL(MONTHS_BETWEEN(SYSDATE, #{birth}) / 12) BETWEEN age_min AND age_max
+        	AND gender_id BETWEEN 1 AND 4
 	</select>
 	
 	

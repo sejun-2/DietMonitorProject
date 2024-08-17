@@ -21,30 +21,30 @@
 	
 	<select id="findTotalDietByAvg" parameterType="TotalDietSearchCondition" resultType="Diet">
 		select 
-        AVG(kcal) kcal,
-		AVG(water) water,
-		AVG(protein) protein,
-		AVG(fat) fat,
-		AVG(batch) batch,
-		AVG(carbohydrate) carbohydrate,
-		AVG(sugars) sugars,
-		AVG(dietary_fiber) dietary_fiber,
-		AVG(calcium) calcium,
-		AVG(iron_content) iron_content,
-		AVG(phosphorus) phosphorus,
-		AVG(potassium) potassium,
-		AVG(sodium) sodium,
-		AVG(vitamin_a) vitamin_a,
-		AVG(retinol) retinol,
-		AVG(beta_carotene) beta_carotene,
-		AVG(thiamine) thiamine,
-		AVG(riboflavin) riboflavin,
-		AVG(niacin) niacin,
-		AVG(vitamin_c) vitamin_c,
-		AVG(vitamin_d) vitamin_d,
-		AVG(cholesterol) cholesterol,
-		AVG(saturated_fat) saturated_fat,
-		AVG(trans_fat) trans_fat 
+        TRUNC(AVG(kcal),1) kcal,
+		TRUNC(AVG(water),1) water,
+		TRUNC(AVG(protein),1) protein,
+		TRUNC(AVG(fat),1) fat,
+		TRUNC(AVG(batch),1) batch,
+		TRUNC(AVG(carbohydrate),1) carbohydrate,
+		TRUNC(AVG(sugars),1) sugars,
+		TRUNC(AVG(dietary_fiber),1) dietary_fiber,
+		TRUNC(AVG(calcium),1) calcium,
+		TRUNC(AVG(iron_content),1) iron_content,
+		TRUNC(AVG(phosphorus),1) phosphorus,
+		TRUNC(AVG(potassium),1) potassium,
+		TRUNC(AVG(sodium),1) sodium,
+		TRUNC(AVG(vitamin_a),1) vitamin_a,
+		TRUNC(AVG(retinol),1) retinol,
+		TRUNC(AVG(beta_carotene),1) beta_carotene,
+		TRUNC(AVG(thiamine),1) thiamine,
+		TRUNC(AVG(riboflavin),1) riboflavin,
+		TRUNC(AVG(niacin),1) niacin,
+		TRUNC(AVG(vitamin_c),1) vitamin_c,
+		TRUNC(AVG(vitamin_d),1) vitamin_d,
+		TRUNC(AVG(cholesterol),1) cholesterol,
+		TRUNC(AVG(saturated_fat),1) saturated_fat,
+		TRUNC(AVG(trans_fat),1) trans_fat 
         from
         (SELECT 
 		SUM(kcal) kcal,
@@ -85,33 +85,8 @@
 	</select>
 	
 	<select id="findTotalDietByMonthSum" parameterType="TotalDietSearchCondition" resultType="Diet">
-		select 
-        AVG(kcal) kcal,
-		AVG(water) water,
-		AVG(protein) protein,
-		AVG(fat) fat,
-		AVG(batch) batch,
-		AVG(carbohydrate) carbohydrate,
-		AVG(sugars) sugars,
-		AVG(dietary_fiber) dietary_fiber,
-		AVG(calcium) calcium,
-		AVG(iron_content) iron_content,
-		AVG(phosphorus) phosphorus,
-		AVG(potassium) potassium,
-		AVG(sodium) sodium,
-		AVG(vitamin_a) vitamin_a,
-		AVG(retinol) retinol,
-		AVG(beta_carotene) beta_carotene,
-		AVG(thiamine) thiamine,
-		AVG(riboflavin) riboflavin,
-		AVG(niacin) niacin,
-		AVG(vitamin_c) vitamin_c,
-		AVG(vitamin_d) vitamin_d,
-		AVG(cholesterol) cholesterol,
-		AVG(saturated_fat) saturated_fat,
-		AVG(trans_fat) trans_fat 
-        from
-        (SELECT 
+		SELECT 
+		TO_CHAR(save_date, 'YYYY-MM-DD') save_date,  
 		SUM(kcal) kcal,
 		SUM(water) water,
 		SUM(protein) protein,
@@ -145,8 +120,10 @@
 				AND member_no = #{memberNo}				
 			</if>		
 				AND save_date BETWEEN SYSDATE-30 and SYSDATE
-				GROUP BY save_date)							
-		</where>				
+				GROUP BY save_date
+				ORDER BY save_date ASC							
+		</where>
+					
 	</select>
 	
 	<select id="findTotalDietBySaveHistory" parameterType="TotalDietSearchCondition" resultType="Diet">
@@ -354,6 +331,22 @@
 		</where>
 		GROUP BY save_date
 		ORDER BY save_date DESC				
+	</select>
+	
+	<select id="findTotalDietByStandard" parameterType="TotalDietSearchCondition" resultType="Diet">
+		SELECT 
+		    n.nutrient_name food_name,
+    		s.intake_rec food_intake
+		FROM nutrient n,                 
+		        (SELECT *
+				FROM nutrition_standard
+				WHERE (SELECT CEIL(MONTHS_BETWEEN(SYSDATE, birth)) 
+		        FROM member
+		        WHERE account_no = #{accountNo} AND member_no = #{memberNo}) 
+				BETWEEN age_min AND age_max
+				AND gender_id = (SELECT gender_id FROM member WHERE account_no = #{accountNo} AND member_no = #{memberNo})
+				ORDER BY nutrient_id) s
+		WHERE n.nutrient_id = s.nutrient_id			
 	</select>
 	
 	
