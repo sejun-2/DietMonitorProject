@@ -347,28 +347,6 @@
 				AND gender_id = (SELECT gender_id FROM member WHERE account_no = #{accountNo} AND member_no = #{memberNo})
 				ORDER BY nutrient_id) s
 		WHERE n.nutrient_id = s.nutrient_id			
-	</select>
-	
-	
-	
-	<!-- <select id="findTotalDietBysearchCondition" parameterType="TotalDietSearchCondition" resultType="Diet">
-		SELECT * FROM total_diet
-		<where>
-			<if test="accountNo != null and accountNo != '' ">
-				account_no = #{accountNo}				
-			</if>
-			<if test="memberNo != null and memberNo != '' ">
-				AND member_no = #{memberNo}				
-			</if>		
-			<if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
-				AND save_date BETWEEN TO_DATE(#{startDate}, 'YYYY-MM-DD') AND TO_DATE(#{endDate}, 'YYYY-MM-DD')								
-			</if>
-				GROUP BY save_date
-		</where>				
-	</select> -->
-	
-	
-	
-	
+	</select>	
 	
 </mapper>
