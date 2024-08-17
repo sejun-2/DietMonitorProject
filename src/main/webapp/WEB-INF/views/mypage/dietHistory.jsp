@@ -45,11 +45,13 @@
 				
     </section>
 
-		<div>
+	<div class="inner">
+		<div class="search_day">
 		검색 날짜: <input type="date" id="start">&emsp;&emsp;~&emsp;&emsp;<input type="date" id="end">&emsp;&emsp;<button type="button">확인</button>
 		</div><br/>
+	</div>
 
-<c:forEach var="Avg" items="${totalDietListAvg}" varStatus="status">  
+		<c:forEach var="Avg" items="${totalDietListAvg}" varStatus="status">  
 
     <section class="table_menu">
         <div class="inner">
