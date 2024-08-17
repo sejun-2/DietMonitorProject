@@ -1,6 +1,5 @@
 package com.app.service.user.impl;
 
-import java.util.ArrayList; 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,9 +59,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int getAgeByMemberInfo(int accountNo, int memberNo) {
+	public int getMonthsByMemberInfo(int accountNo, int memberNo) {
 		// TODO Auto-generated method stub
-		int result = userDAO.getAgeByMemberInfo(accountNo, memberNo);
+		int result = userDAO.getMonthsByMemberInfo(accountNo, memberNo);
 			
 		return result;
 	}
@@ -136,6 +135,14 @@ public class UserServiceImpl implements UserService {
 	public int getMemberCountByAccountNo(int accountNo) {
 		// TODO Auto-generated method stub
 		int result = userDAO.getMemberCountByAccountNo(accountNo);
+		
+		return result;
+	}
+
+	@Override
+	public int getGenderIdByAge(String birth) {
+		// TODO Auto-generated method stub
+		int result = userDAO.getGenderIdByAge(birth);
 		
 		return result;
 	}
