@@ -37,7 +37,7 @@
 				<h1 class="title">식품으로 찾아보기</h1>
 				<div class="route wrap">
 					<a href="./index.html"><img class="home center"
-						src="./images/sub/icon/material-home.svg" alt="홈 아이콘"></a>
+						src="../images/sub/icon/material-home.svg" alt="홈 아이콘"></a>
 					<div class="route_info wrap">
 						<a href="./foodSearchList.html"><span class="dap1">영양정보
 								찾아보기</span></a> <a href="./foodSearchList.html"><span class="dap2">식품으로
@@ -63,14 +63,14 @@
 
 	<section class="table_menu">
 		<div class="inner">
-			<c:forEach var="dailySumItem" items="${totalDietListAvg}">
+			<c:forEach var="dailySumItem" items="${totalDietListAvg}" varStatus="status">
 				<div class="today_inner wrap">
 					<div class="wrap">
-						<img src="./images/sub/icon/material-today.svg" alt="">
+						<img src="../images/sub/icon/material-today.svg" alt="">
 						<p class="today ml20">${dailySumItem.saveDate}</p>
 					</div>
 					<div class="down_icon">
-						<img src="./images/sub/icon/akar-chevron-down-small.svg" alt="">
+						<img src="../images/sub/icon/akar-chevron-down-small.svg" alt="">
 					</div>
 
 				</div>
@@ -102,7 +102,7 @@
 
 						<tbody>
 							<c:set var="number" value="1" />
-							<c:forEach var="item" items="${totalDietList}" begin="1"
+							<c:forEach var="item" items="${totalDietList}"
 								varStatus="status">
 								<c:if test="${dailySumItem.saveDate == item.saveDate}">
 									<tr onclick="">
@@ -120,10 +120,10 @@
 									<tr class="tr_event">
 										<td class="more_information" colspan="6">
 											<div class="wrap">
-												<img class="slider-left" data-target=".nutrient1"
-													src="./images/sub/icon/slider/slider-left.svg" alt="">
+												<img class="slider-left" data-target=".nutrient${status.count}"
+													src="../images/sub/icon/slider/slider-left.svg" alt="">
 												<div class="more_nutrient">
-													<ul class="nutrient nutrient1 wrap">
+													<ul class="nutrient nutrient${status.count} wrap">
 
 														<li class="more_item wrap">
 															<p class="title">수분(g)</p>
@@ -197,8 +197,8 @@
 												</div>
 
 
-												<img class="slider-right" data-target=".nutrient1"
-													src="./images/sub/icon/slider/slider-right.svg" alt="">
+												<img class="slider-right" data-target=".nutrient${status.count}"
+													src="../images/sub/icon/slider/slider-right.svg" alt="">
 											</div>
 										</td>
 									</tr>
@@ -221,10 +221,10 @@
 							<tr class="tr_event">
 								<td class="more_information" colspan="6">
 									<div class="wrap">
-										<img class="slider-left" data-target=".nutrient1"
-											src="./images/sub/icon/slider/slider-left.svg" alt="">
+										<img class="slider-left" data-target=".nutrient${status.count}"
+											src="../images/sub/icon/slider/slider-left.svg" alt="">
 										<div class="more_nutrient">
-											<ul class="nutrient nutrient1 wrap">
+											<ul class="nutrient nutrient${status.count} wrap">
 
 												<li class="more_item wrap">
 													<p class="title">수분(g)</p>
@@ -298,8 +298,8 @@
 										</div>
 
 
-										<img class="slider-right" data-target=".nutrient1"
-											src="./images/sub/icon/slider/slider-right.svg" alt="">
+										<img class="slider-right" data-target=".nutrient${status.count}"
+											src="../images/sub/icon/slider/slider-right.svg" alt="">
 									</div>
 								</td>
 							</tr>

@@ -1,7 +1,10 @@
 package com.app.controller.user;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -43,7 +46,7 @@ public class UserController {
 	}
 
 	@PostMapping("/signup")
-	public String signupAction(@Valid @ModelAttribute User user, BindingResult br, Model model) {
+	public String signupAction(@Valid @ModelAttribute User user, BindingResult br, HttpServletResponse response, Model model) throws IOException {
 		
 		UserValidError userValidError = new UserValidError();
 		
@@ -55,6 +58,12 @@ public class UserController {
 			int result = userService.saveUser(user);
 			
 			if(result > 0) {
+				PrintWriter out = response.getWriter();
+				response.setCharacterEncoding("utf-8");
+				response.setContentType("text/html; charset=utf-8");
+				out.println("<script> alert('회원가입 완료되었습니다.');");
+				out.println("location.href='login'; </script>"); 
+				out.close();
 				return "redirect:/login";
 			} else {
 				System.out.println("쿼리문 작동 안됨");
@@ -67,6 +76,7 @@ public class UserController {
 		}
 		
 	}
+	
 
 	@ResponseBody
 	@RequestMapping("/user/isDuplicatedEmail")

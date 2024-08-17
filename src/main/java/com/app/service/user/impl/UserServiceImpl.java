@@ -88,7 +88,7 @@ public class UserServiceImpl implements UserService {
 	    Map<String, String> memberInfo = new HashMap<>();
 	    memberInfo.put("accountNo", session.getAttribute("accountNo").toString());
 	    memberInfo.put("memberNo", session.getAttribute("memberNo").toString());
-
+	    
 	    List<NutritionStandard> nutritionStandard = userDAO.getNutritionStandardByMemberInfo(memberInfo);
 
 	    return nutritionStandard;
