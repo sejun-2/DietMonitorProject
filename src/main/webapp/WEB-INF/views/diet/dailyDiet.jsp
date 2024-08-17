@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link href="../css/base.css" rel="stylesheet">
     <link href="../css/common.css" rel="stylesheet">
     <link href="../css/board.css" rel="stylesheet">
@@ -231,9 +232,6 @@
             </div>
 
             <div class="table_inner">
-                <div class="linear_box">
-
-                </div>
                 <table class="new_tbl_board tbl_boards tb01 mt20 mb60">
                     <colgroup>
                         <col style="width: 10%;">
@@ -298,9 +296,6 @@
             </div>
 
             <div class="table_inner">
-                <div class="linear_box">
-
-                </div>
                 <table class="new_tbl_board tb01 mt20 mb60">
                     <colgroup>
                         <col style="width: 10%;">
@@ -322,11 +317,124 @@
                        		<c:forEach var="cn" items="${calculatedNutrients}" varStatus="status">
                         		<td>${String.format("%.2f",cn)}</td>
                         	</c:forEach>
+
+                            <td>
+                            	<div class="wrap_jc">
+		                                    <img src="../images/sub/icon/data_up_down/akar-arrow-up.svg" alt="">
+		                                    <p class="ml10 blue">0.2</p>
+	                            </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
     </section>
+
+    <section class="decibal_title mb80">
+        <div class="inner">
+            <div class="info">
+                <span class="blue_style">에너지(kcal),</span>
+                <span class="blue_style">탄수화물(g),</span>
+                <span class="blue_style">지방(g)</span>
+                <span class="text">섭취가 너무 적어요.</span>
+            </div>
+            <div class="wrap mb50">
+                <p class="text">부족한 영양성분의 상세 설명과 추천 식품이 궁금하시다면 해당 영양성분의 상세보기를 눌러주세요.</p>
+                <div class="page_nation wrap">
+                    <div class="slide_prev">
+                        <img src="../images/sub/icon/slider/akar-chevron-left-small.svg" alt="">
+                    </div>
+                    <div class="slide_stop">
+                        <img src="../images/sub/icon/slider/akar-two-line-vertical.svg" alt="">
+                    </div>
+                    <div class="slide_next">
+                        <img src="../images/sub/icon/slider/akar-chevron-right-small.svg" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide_cont_box swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="slide_box wrap">
+                        <div class="box swiper-slide">
+                            <div class="title_food">에너지(kcal)</div>
+                            <div class="info">
+                                <div class="info_title">에너지가 부족할 경우</div>
+                                <div class="info_detail">
+                                    하루종일 힘이없다. 칼로리는 우리 몸이 움직이고
+                                    활동하는데 필요한 에너지이다. 하루 섭취 칼로리
+                                    가 너무 적다는 것은 기름 없는 자동차나 마찬가...
+                                </div>
+                            </div>
+                            <div class="more">상세보기</div>
+                        </div>
+                    </div>
+
+                    <div class="slide_box wrap">
+                        <div class="box swiper-slide">
+                            <div class="title_food">에너지(kcal)</div>
+                            <div class="info">
+                                <div class="info_title">에너지가 부족할 경우</div>
+                                <div class="info_detail">
+                                    하루종일 힘이없다. 칼로리는 우리 몸이 움직이고
+                                    활동하는데 필요한 에너지이다. 하루 섭취 칼로리
+                                    가 너무 적다는 것은 기름 없는 자동차나 마찬가...
+                                </div>
+                            </div>
+                            <div class="more">상세보기</div>
+                        </div>
+                    </div>
+
+                    <div class="slide_box wrap">
+                        <div class="box swiper-slide">
+                            <div class="title_food">에너지(kcal)</div>
+                            <div class="info">
+                                <div class="info_title">에너지가 부족할 경우</div>
+                                <div class="info_detail">
+                                    하루종일 힘이없다. 칼로리는 우리 몸이 움직이고
+                                    활동하는데 필요한 에너지이다. 하루 섭취 칼로리
+                                    가 너무 적다는 것은 기름 없는 자동차나 마찬가...
+                                </div>
+                            </div>
+                            <div class="more">상세보기</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <div class="popup">
+        <div class="box">
+            <div class="close">
+                <img src="../images/sub/icon/close-x.svg" alt="">
+            </div>
+            <div class="title">에너지가 부족할 경우 나타나는 현상</div>
+            <div class="info">
+                하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 하루 섭취 칼로리가 너무 적다는 것은
+                기름 없는 자동차나 마찬가지 하루종일 힘이없다. 
+                칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 하루 섭취 칼로리가 너무 적다는 것은 기름 없는 자동차나
+                마찬가지 하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 하루 섭취 칼로리가 너무 적
+                다는 것은 기름 없는 자동차나 마찬가지 하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다.
+                칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 하루 섭취 칼로리가 너무 적다는 것은 기름 없는 자동차나
+                마찬가지 하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 활동하는데 필요한 에너지이다. 다다다다다다다다
+            </div>
+
+            <div class="wrap_s mt40 mb30">
+                <img src="../images/sub/icon/Icon fa-solid-star.svg" alt="">
+                <p class="popup_title">일일 권장량 대비 부족 영양소 별 추천 검색</p>
+            </div>
+            <ul class="tag_inner wrap_s">
+                <li class="tag">#햄버거</li>
+                <li class="tag">#아이스크림</li>
+                <li class="tag">#햄버거</li>
+                <li class="tag">#아이스크림</li>
+                <li class="tag">#아이스크림</li>
+                <li class="tag">#햄버거</li>
+            </ul>
+        </div>
+    </div>
 
    <jsp:include page="../common/footer.jsp" />
    
