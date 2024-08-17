@@ -19,7 +19,7 @@
 <link href="../css/common.css" rel="stylesheet">
 <script type="text/javascript" src="../script/header.js"></script>
 
-<title>회원가입</title>
+<title>프로필 관리</title>
 </head>
 <body>
 	<header id="header">
@@ -28,7 +28,68 @@
 		</div>
 	</header>
 
-
+<section id="container" class="content">
+        <div class="inner">
+            <div class="wrap">
+                <div class="left">
+                    <div class="snb_wrap web">
+                        <div class="snb_tit">
+                            <div class="title">
+                                <h2></h2>
+                            </div>
+                        </div>
+                        <nav>
+                            <ul class="snb">
+                                <li>
+                                    <a href="/foodSearch" class="arrow docs-creator">영양정보 찾아보기</a>
+                                    <ul>
+                                        <li>
+                                            <a href="/foodSearch" class="on docs-creator">식품으로 찾아보기</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="snb">
+                                <li>
+                                    <a href="/registerDiet" class="arrow">섭취식품 등록</a>
+                                    <ul>
+                                        <li>
+                                            <a href="/registerDiet" class="on">하루섭취 식품 등록</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="snb">
+                                <li>
+                                    <a href="/mypage/accountInfo" class="on arrow">마이페이지</a>
+                                    <ul>
+                                        <li>
+                                            <a href="/mypage/accountInfo" >내 정보</a>
+                                        </li> 
+                                        <li>
+                                            <a href="/mypage/modifyAccount" >내 정보 수정</a>
+                                        </li>
+                                        <li>
+                                            <a href="/mypage/dietProgress" >나의 하루 섭취 식품</a>
+                                        </li>
+                                        <li>
+                                            <a href="/mypage/dietHistory" >나의 영양성분 저장 기록</a>
+                                        </li>
+                                        <li>
+                                            <a href="/diet/dailyDiet" >나의 영양성분 일일 권장량</a>
+                                        </li>
+                                        <li>
+                                            <a href="/mypage/nutritionStandard">나의 영양성분 비교분석</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            
+                        </nav>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="container_box">
 	<section class="signup">
 		<div class="inner">
 			<div class="sig_inner">
@@ -45,11 +106,19 @@
 						<div class="sig_input wrap_s">
 							<p>프로필 선택<span class="red">*</span></p>
 							<div class="cc-selector">
-								<c:forEach var="i" begin="1" end="5" step="1">
-									<input style="display: none;" id="profile${i}" type="radio" name="iconId" value="${i}" /> 
-									<label class="drinkcard-cc profiles" for="profile${i}">
-										<img src="../images/header/profile/profile_${i}.png">
-									</label>
+								<c:forEach var="i" begin="1" end="9" step="1"  varStatus="status">
+	    							<c:if test="${status.count == 1}">
+										<input style="display: none;" id="profile${i}" type="radio" name="iconId" value="${i}" checked/> 
+										<label class="drinkcard-cc profiles" for="profile${i}">
+											<img src="../images/header/profile/profile_${i}.png">
+										</label>
+									</c:if>
+									<c:if test="${status.count != 1}">
+										<input style="display: none;" id="profile${i}" type="radio" name="iconId" value="${i}"/> 
+										<label class="drinkcard-cc profiles" for="profile${i}">
+											<img src="../images/header/profile/profile_${i}.png">
+										</label>
+									</c:if>
 								</c:forEach>
 							</div>
 						</div>						
@@ -59,6 +128,11 @@
 								생년월일<span class="red">*</span>
 							</p>
 							<input type="text" name="birth" placeholder="이름을 입력해주세요">
+							<c:if test="${ not empty userValidError.birth }">
+									<br/>
+										<span class="red">${userValidError.birth}</span>
+									<br/>
+							</c:if>
 						</div>
 						<div class="sig_input wrap_s">
 							<p>
@@ -84,8 +158,8 @@
 					<table id="find_business_table"
 						class="new_tbl_board tb01 mt20 mb60">
 						<colgroup>
-							<col style="width: 2%;">
-							<col style="width: 50%;">
+							<col style="width: 5%;">
+							<col style="width: 40%;">
 							<col style="width: 15%;">
 							<col style="width: 15%;">
 							<col style="width: auto;">
@@ -127,74 +201,13 @@
 		</div>
 
 	</section>
-
-
+	</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 	<jsp:include page="../common/footer.jsp" />
-	
-	<!-- <script>
-	$(document).ready(function(){
-		memberListShow();
-		
-	});
-	
-		function memberListShow(){
-			let requestJsonData = {
-				
-			}
-			let requestJsonDataString = JSON.stringify(requestJsonData);
-			
-			$.ajax({
-				type: "POST",
-				url: "http://localhost:8080/findMemberList",
-				headers:{
-				"Content-type":"application/json;charset:UTF-8"
-			},		
-			dataType: 'json', 
-			data: requestJsonDataString, 
-			success: function(userList){
-				
-			let data = "";
-			
-			console.log(userList);
-				
-						/* for(item in userList){
-							
-							data += "	<tr onclick="">";
-							data += "	<td>1</td>";
-							data += "	<td>" + profiles[item].nickname + "</td>";
-							data += "	<td>" + profiles[item].age + "</td>";
-							data += "	<td>" + profiles[item].genderName + "</td>";
-							data += "	<td>";
-							data += "		<form action=\"/removeProfile\" method=\"post\" onsubmit=\"return confirm('정말로 삭제하시겠습니까?');\">";
-							data += "         <input type=\"hidden\" name=\"accountNo\" value=" + userList.accountNo + ">";
-							data += "	            <input type=\"hidden\" name=\"memberNo\" value=" + userList.memberNo + ">";
-							data += "	            <button class=\"board_td_btn\" type=\"submit\">프로필삭제</button>";
-							data += "	        </form>";
-							data += "		</td>";
-							data += "	</tr>";
-					
-						} */
-							$('#memberList').html(data);
-			
-						},
-						error: function(error){
-							console.log('통신에러');
-						}
-					});
-				});
-		}	
-		
-
-	
-	 	
-	 	
-	 	
-	
-	
-
-	
-	</script> -->
 	
 	
 </body>

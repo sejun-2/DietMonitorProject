@@ -75,5 +75,16 @@ public class UserValidator {
 
 		return result;
 	}
+	
+	public static boolean validateProfile(User user, UserValidError userValidError) {
+		boolean result = true;
+		
+		if(!isBirth(user.getBirth())) {
+			userValidError.setBirth("정확한 생년월일 6자리를 입력해주세요.");
+			result = false;
+		}
+
+		return result;
+	}
 
 }

@@ -9,12 +9,14 @@ public interface MypageService {
 	
 	public List<Diet> findTotalDietBySearchCondition(TotalDietSearchCondition totalDietSearchCondition);
 	
-	public List<Diet> findTotalDietByAvg(TotalDietSearchCondition totalDietSearchCondition);
+	public Diet findTotalDietByAvg(TotalDietSearchCondition totalDietSearchCondition);
 	
 	public List<Diet> findTotalDietBySaveHistory(TotalDietSearchCondition totalDietSearchCondition);
 	
 	public List<Diet> findTotalDietBySaveHistoryAvg(TotalDietSearchCondition totalDietSearchCondition);
 	
 	public List<Diet> findTotalDietByMonthSum(TotalDietSearchCondition totalDietSearchCondition);
+	
+	public List<Diet> findTotalDietByStandard(TotalDietSearchCondition totalDietSearchCondition);
 	
 }

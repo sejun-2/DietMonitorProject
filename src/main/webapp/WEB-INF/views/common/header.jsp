@@ -17,7 +17,8 @@
                     	<c:if test="${empty profiles}">
                              <li class="lnb"><a href="/login" class="login">로그인</a></li>
                              <li class="lnb"><a href="/signup" class="signup">회원가입</a></li>
-                             <li class="lnb"><a href="" class="admin">관리자</a></li>
+                             <li class="lnb"><a href="/login" class="admin">프로필관리</a></li>
+                             <i class="fas fa-times"></i>
                         </c:if>
                     	
                     	<c:if test="${not empty profiles}">                    	
@@ -28,6 +29,8 @@
 		                                 <img src="../images/header/profile/profile_${profile.iconId}.png">
 		                             </li>
 		                             <li class="lnb"><a href="/logout" class="logout">로그아웃</a></li>
+		                             <li class="lnb"><a href="/mypage/manageProfile" class="admin">프로필관리</a></li>
+		                             <i class="fas fa-times"></i>
 	                             </c:if>
                              </c:forEach>
                          </c:if>
@@ -38,7 +41,7 @@
 		<div class="profile">
 			<p class="title">프로필 전환</p>
 			<ul class="box_wrap wrap">
-				<c:forEach var="profile" items="${profiles}" varStatus="status">>
+				<c:forEach var="profile" items="${profiles}" varStatus="status">
 						<li class="box">
 							<form action="/switchProfile" method="post">
 								<input type="hidden" name="accountNo" value="${profile.accountNo}">
@@ -50,12 +53,6 @@
 							</form>
 						</li>
 						
-						<c:if test="${status.count eq 5}">
-							<li class="box"><a href="/mypage/manageProfile">
-									<img src="../images/header/profile/profile.png" alt="">
-									<p>멤버 관리</p>
-							</a></li>
-						</c:if>
 				</c:forEach>
 
 				<c:set var="profileCount" value="${fn:length(profiles)}" />
@@ -70,6 +67,42 @@
 				</c:if>
 			</ul>
 		</div>
+		<!-- 모바일 햄버거-->
+    <div class="h_moblie">
+        <div class="bg">
+
+            <ul class="main_menu">
+                <li><a href="/foodSearch"><span>영양정보 찾아보기</span><span class="f_rigth">+</span></a>
+                    <ul class="snd_menu">
+                        <li><a href="/foodSearch"><span>식품으로 찾아보기</span><span class="f_rigth">+</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="/diet/dailyDiet"><span>섭취식품 등록</span><span class="f_rigth">+</span></a>
+                    <ul class="snd_menu">
+                        <li><a href="/diet/dailyDiet"><span>하루섭취 식품 등록</span><span class="f_rigth">+</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="/mypage/accountInfo"><span>마이페이지</span><span class="f_rigth">+</span></a>
+                    <ul class="snd_menu">
+                        <li><a href="/mypage/accountInfo"><span>내 정보</span><span class="f_rigth">+</span></a>
+                        </li>
+                        <li><a href="/mypage/modifyAccount"><span>내 정보 수정</span><span class="f_rigth">+</span></a>
+                        </li>
+                        <li><a href="/mypage/dietProgress"><span>나의 하루 섭취 식품</span><span class="f_rigth">+</span></a>
+                        </li>
+                        <li><a href="/mypage/dietHistory"><span>나의 영양성분 저장 기록</span><span class="f_rigth">+</span></a>
+                        </li>
+                        <li><a href="/diet/dailyDiet"><span>나의 영양성분 일일 권장량</span><span class="f_rigth">+</span></a>
+                        </li>
+                        <li><a href="/mypage/nutritionStandard"><span>나의 영양성분 비교분석</span><span class="f_rigth">+</span></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
 		<div class="nav">
                 <div class="inner">
                     <div class="menu_inner wrap">
@@ -78,10 +111,16 @@
                                 <img src="../images/header/logo/header_logo.png" alt="로고이미지">
                             </a>
                         </h1>
-    
+    					
+    					<div class="top_menu">
+                            <div class="wrap">
+                                <a href="#"><i class="fas fa-bars"></i></a>
+                            </div>
+                        </div>
+    					
                         <div class="menu">
                             <ul class="gnb dap1 wrap">
-                                <li class="lnb"><a href="#">영양정보 찾아보기</a>
+                                <li class="lnb"><a href="/foodSearch">영양정보 찾아보기</a>
                                     <ul class="gnb dap2">
                                         <li class="lnb lnb_tit">
                                             <p>영양정보 찾아보기</p>
@@ -89,7 +128,7 @@
                                         <li class="lnb lnb_cont menu-placeholder"></li>
                                     </ul>
                                 </li>
-                                <li class="lnb"><a href="#">섭취 식품 등록</a>
+                                <li class="lnb"><a href="/diet/dailyDiet">섭취 식품 등록</a>
                                     <ul class="gnb dap2">
                                         <li class="lnb lnb_tit">
                                             <p>섭취 식품 등록</p>
@@ -97,7 +136,7 @@
                                         <li class="lnb lnb_cont menu-placeholder"></li>
                                     </ul>
                                 </li>
-                                <li class="lnb"><a href="#">마이페이지</a>
+                                <li class="lnb"><a href="/mypage/accountInfo">마이페이지</a>
                                     <ul class="gnb dap2">
                                         <li class="lnb lnb_tit">
                                             <p>마이페이지</p>
