@@ -72,7 +72,14 @@ public class SearchController {
 		List<Nutrient> nutrientList = searchService.findNutrientList();
 		model.addAttribute("nutrientList", nutrientList);
 		
-		List<NutritionStandard> nc = userService.getNutritionStandardByMemberInfo(session);
+		List<NutritionStandard> nc = null;
+		
+		try {
+			nc = userService.getNutritionStandardByMemberInfo(session);
+			System.out.println(nc);
+		} catch(NullPointerException e) {
+			System.out.println("섹션 오류");	
+		}
 		model.addAttribute("nc", nc);
 		
 		return "search/foodDetail";

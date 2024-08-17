@@ -241,8 +241,13 @@
 .signup .sig_inner{margin-top: 70px;margin-bottom: 160px;}
 .signup .sig_inputs{border-bottom: 1px solid #E3E3E3; margin-bottom: 30px; padding-bottom: 30px;}
 .signup .sig_inputs .sig_title{font-size: 25px; font-weight: bold; padding-bottom: 50px; border-bottom: 4px solid #E3E3E3;text-align: center;}
-.signup .sig_inputs .sig_input{padding: 20px 30px 0 30px;}
-.signup .sig_inputs .sig_input {}
+.signup .sig_inputs .sig_input{padding: 25px 30px 0 110px;}
+.signup .sig_inputs .sig_input .sig_check_box .sig_check{width: 100px;}
+.signup .sig_inputs .sig_input .sig_check_box .sig_check>input{width: auto;}
+.signup .sig_inputs .sig_input .sig_check_box .sig_check_data{background: #eee; padding: 10px; border-radius: 5px;}
+.signup .sig_inputs .sig_input .sig_check_box .sig_check_data p{font-size: 14px; margin-left:5px; margin-bottom: 10px;}
+.signup .sig_inputs .sig_input .sig_check_box .sig_check_data{margin-top: 10px;}
+.signup .sig_inputs .sig_input .sig_check_box .sig_check_data input{width:100%;}
 .signup .sig_inputs .sig_input p{width: 150px; font-size: 19px; color: #373737;}
 .signup .sig_inputs .sig_input .information{color: #9a9a9a;}
 .signup .sig_inputs .sig_input.active input{background: #eee;}

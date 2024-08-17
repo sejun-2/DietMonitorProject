@@ -1,6 +1,6 @@
 package com.app.interceptor;
 
-import javax.servlet.http.HttpServletRequest; 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -18,8 +18,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		
 		if(SessionManager.isLoginedAccount(request) == false) {
 			response.sendRedirect("/login");
-			//return "redirect:/customer/login";
-			return false; //인터셉터 cut.. 더이상 진행 X
+			return false;
 		}
 		
 		return HandlerInterceptor.super.preHandle(request, response, handler);
