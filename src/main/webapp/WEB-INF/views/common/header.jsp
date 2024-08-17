@@ -38,8 +38,9 @@
                     </ul>
                 </div>
             </div>
+            <div class="profile_inner">
 		<div class="profile">
-			<p class="title">프로필 전환</p>
+			<p class="title ml5">프로필 전환</p>
 			<ul class="box_wrap wrap">
 				<c:forEach var="profile" items="${profiles}" varStatus="status">
 						<li class="box">
@@ -72,6 +73,12 @@
 					</c:forEach>
 				</c:if>
 			</ul>
+			
+			<div class="profile_btn mt20 wrap_s">
+				<i class="fas fa-cog mr10"></i>
+				<a href="/mypage/manageProfile">프로필관리</a>
+			</div>
+		</div>
 		</div>
 		<!-- 모바일 햄버거-->
     <div class="h_moblie">

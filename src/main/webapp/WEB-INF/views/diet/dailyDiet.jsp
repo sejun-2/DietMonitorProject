@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link href="../css/base.css" rel="stylesheet">
     <link href="../css/common.css" rel="stylesheet">
     <link href="../css/board.css" rel="stylesheet">
@@ -233,9 +234,6 @@
             </div>
 
             <div class="table_inner">
-                <div class="linear_box">
-
-                </div>
                 <table class="new_tbl_board tbl_boards tb01 mt20 mb60">
                     <colgroup>
                         <col style="width: 10%;">
@@ -320,9 +318,6 @@
             </div>
 
             <div class="table_inner">
-                <div class="linear_box">
-
-                </div>
                 <table class="new_tbl_board tb01 mt20 mb60">
                     <colgroup>
                         <col style="width: 10%;">
@@ -365,10 +360,20 @@
                             <td>0.2</td>
                             <td>0.2</td>
                             <td>0.2</td>
+                            <td>
+                            	<div class="wrap_jc">
+		                                    <img src="../images/sub/icon/data_up_down/akar-arrow-up.svg" alt="">
+		                                    <p class="ml10 blue">0.2</p>
+	                            </div>
+                            </td>
                             <td>0.2</td>
                             <td>0.2</td>
-                            <td>0.2</td>
-                            <td>0.2</td>
+                            <td>
+	                            <div class="wrap_jc">
+	                                    <img src="../images/sub/icon/data_up_down/akar-arrow-down.svg" alt="">
+	                                    <p class="ml10 red">0.2</p>
+	                            </div>
+                            </td>
                             <td>0.2</td>
                             <td>0.2</td>
                             <td>0.2</td>
@@ -404,50 +409,51 @@
                 </div>
             </div>
 
-            <div class="slide_cont_box wrap">
-                <div class="linear_box"></div>
-                <div class="slide_box wrap">
-                    <div class="box">
-                        <div class="title_food">에너지(kcal)</div>
-                        <div class="info">
-                            <div class="info_title">에너지가 부족할 경우</div>
-                            <div class="info_detail">
-                                하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 
-                                활동하는데 필요한 에너지이다. 하루 섭취 칼로리
-                                가 너무 적다는 것은 기름 없는 자동차나 마찬가...
+            <div class="slide_cont_box swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="slide_box wrap">
+                        <div class="box swiper-slide">
+                            <div class="title_food">에너지(kcal)</div>
+                            <div class="info">
+                                <div class="info_title">에너지가 부족할 경우</div>
+                                <div class="info_detail">
+                                    하루종일 힘이없다. 칼로리는 우리 몸이 움직이고
+                                    활동하는데 필요한 에너지이다. 하루 섭취 칼로리
+                                    가 너무 적다는 것은 기름 없는 자동차나 마찬가...
+                                </div>
                             </div>
+                            <div class="more">상세보기</div>
                         </div>
-                        <div class="more">상세보기</div>
                     </div>
-                </div>
-    
-                <div class="slide_box wrap">
-                    <div class="box">
-                        <div class="title_food">에너지(kcal)</div>
-                        <div class="info">
-                            <div class="info_title">에너지가 부족할 경우</div>
-                            <div class="info_detail">
-                                하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 
-                                활동하는데 필요한 에너지이다. 하루 섭취 칼로리
-                                가 너무 적다는 것은 기름 없는 자동차나 마찬가...
+
+                    <div class="slide_box wrap">
+                        <div class="box swiper-slide">
+                            <div class="title_food">에너지(kcal)</div>
+                            <div class="info">
+                                <div class="info_title">에너지가 부족할 경우</div>
+                                <div class="info_detail">
+                                    하루종일 힘이없다. 칼로리는 우리 몸이 움직이고
+                                    활동하는데 필요한 에너지이다. 하루 섭취 칼로리
+                                    가 너무 적다는 것은 기름 없는 자동차나 마찬가...
+                                </div>
                             </div>
+                            <div class="more">상세보기</div>
                         </div>
-                        <div class="more">상세보기</div>
                     </div>
-                </div>
-    
-                <div class="slide_box wrap">
-                    <div class="box">
-                        <div class="title_food">에너지(kcal)</div>
-                        <div class="info">
-                            <div class="info_title">에너지가 부족할 경우</div>
-                            <div class="info_detail">
-                                하루종일 힘이없다. 칼로리는 우리 몸이 움직이고 
-                                활동하는데 필요한 에너지이다. 하루 섭취 칼로리
-                                가 너무 적다는 것은 기름 없는 자동차나 마찬가...
+
+                    <div class="slide_box wrap">
+                        <div class="box swiper-slide">
+                            <div class="title_food">에너지(kcal)</div>
+                            <div class="info">
+                                <div class="info_title">에너지가 부족할 경우</div>
+                                <div class="info_detail">
+                                    하루종일 힘이없다. 칼로리는 우리 몸이 움직이고
+                                    활동하는데 필요한 에너지이다. 하루 섭취 칼로리
+                                    가 너무 적다는 것은 기름 없는 자동차나 마찬가...
+                                </div>
                             </div>
+                            <div class="more">상세보기</div>
                         </div>
-                        <div class="more">상세보기</div>
                     </div>
                 </div>
             </div>
