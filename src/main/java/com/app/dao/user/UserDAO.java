@@ -37,7 +37,7 @@ public interface UserDAO {
 
 	public int getMemberCountByAccountNo(int accountNo);
 
-	public int getGenderIdByAge(String birth);
+	public int getGenderIdByMemberInfo(User user);
 
 	
 

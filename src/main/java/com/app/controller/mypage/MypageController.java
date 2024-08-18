@@ -144,7 +144,7 @@ public class MypageController {
 			int months = userService.getMonthsByMemberInfo(accountNo, memberNo);
 			user.setAge(months);
 			
-			int genderId = user.getGenderId();
+			int genderId = userService.getGenderIdByMemberInfo(user);
 			String userGenderName = userService.getGenderNameByGenderId(genderId);
 			user.setGenderName(userGenderName);
 			
@@ -243,7 +243,7 @@ public class MypageController {
 	@PostMapping("/addProfile")
 	public String addProfile(@Valid @ModelAttribute User user, HttpSession session, HttpServletResponse response, BindingResult br, Model model) throws IOException {
 		
-		int genderId = userService.getGenderIdByAge(user.getBirth());
+		int genderId = userService.getGenderIdByMemberInfo(user);
 		user.setGenderId(genderId);
 		
 		UserValidError userValidError = new UserValidError();

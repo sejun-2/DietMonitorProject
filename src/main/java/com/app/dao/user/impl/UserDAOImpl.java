@@ -136,10 +136,10 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public int getGenderIdByAge(String birth) {
+	public int getGenderIdByMemberInfo(User user) {
 		// TODO Auto-generated method stub
 		
-		int result = sqlSessionTemplate.selectOne("user_mapper.getGenderIdByAge", birth);
+		int result = sqlSessionTemplate.selectOne("user_mapper.getGenderIdByMemberInfo", user);
 		
 		return result;
 	}
