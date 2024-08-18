@@ -143,7 +143,7 @@
 						
 							<div class="sig_input wrap_s">
 		                        <p>전화번호<span class="red">*</span></p>
-		                        <input type="tel" name="tel" placeholder="전화번호를 입력해주세요" value="${user.tel}">
+		                        <input type="tel" name="tel" placeholder="-를 제외한 전화번호 11자리를 입력해주세요" value="${user.tel}">
 		                        <c:if test="${ not empty userValidError.tel }">
 									<br/>
 										<span class="red">${userValidError.tel}</span>

@@ -478,7 +478,27 @@
 								<tr onclick="">
 									<c:forEach var="cn" items="${calculatedNutrients}"
 										varStatus="status">
-										<td>${String.format("%.2f",cn)}</td>
+										<c:choose>
+											<c:when test="${cn > 0}">
+												<td>
+													<div class="wrap_jc">
+														<img src="../images/sub/icon/data_up_down/akar-arrow-up.svg" alt="">
+														<p class="ml10 blue">${String.format("%.2f",cn)}</p>
+													</div>
+												</td>
+											</c:when>
+											<c:when test="${cn < 0}">
+												<td>
+													<div class="wrap_jc">
+														<img src="../images/sub/icon/data_up_down/akar-arrow-down.svg" alt="">
+														<p class="ml10 red">${String.format("%.2f",cn)}</p>
+													</div>
+												</td>
+											</c:when>
+											<c:otherwise>
+												<td>${String.format("%.2f",cn)}</td>
+											</c:otherwise>
+										</c:choose>
 									</c:forEach>
 								</tr>
 							</tbody>

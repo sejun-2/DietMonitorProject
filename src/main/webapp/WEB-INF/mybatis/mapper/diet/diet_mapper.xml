@@ -259,6 +259,7 @@
 		data_base_date
 		FROM food_list_fisheries) food
 		WHERE daily_diet.food_code = food.food_code
+		ORDER BY log_no
 	</select>
 
 	<select id="getTotalNutrientFromDailyDietByMemberInfo"
@@ -280,6 +281,7 @@
 		WHERE account_no =#{accountNo} 
 		AND member_no = #{memberNo}
 		AND state = 1
+		ORDER BY log_no
 	</select>
 	
 	<select id="getRecommendedIntakeByMemberInfo" parameterType="User" resultType="double">
@@ -560,6 +562,7 @@
 		data_base_date
 		FROM food_list_fisheries) food
 		WHERE expected_diet.food_code = food.food_code
+		ORDER BY log_no
 	</select>
 	
 	<select id="getExpectedTotalNutrientFromDailyDietByMemberInfo"
@@ -582,6 +585,7 @@
 		AND member_no = #{memberNo}
 		AND state = 1
 		OR state = 3
+		ORDER BY log_no
 	</select>
 
 </mapper>

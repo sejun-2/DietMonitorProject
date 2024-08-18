@@ -176,6 +176,10 @@
 	    		nutrientShow();
 	    	});
 	    	
+	    	$('input[name=foodIntake]').keyup(function(){
+	    		nutrientShow();
+	    	});
+	    	
 	    	$('#submit1').click(function(){    		
 	    		$('#frm_diet').attr("action", "/addExpectedDiet");
 				$('#frm_diet').submit();
