@@ -140,18 +140,8 @@
 									<br/>
 								</c:if>
 		                    </div>
-						<div class="sig_input wrap_s">
-							<p>프로필 선택<span class="red">*</span></p>
-							<div class="cc-selector">
-								<c:forEach var="i" begin="1" end="5" step="1">
-									<input style="display: none;" id="profile${i}" type="radio" name="iconId" value="${i}" /> 
-									<label class="drinkcard-cc profiles" for="profile${i}">
-										<img src="../images/header/profile/profile_${i}.png">
-									</label>
-								</c:forEach>
-							</div>
-						</div>
-						<div class="sig_input wrap_s">
+						
+							<div class="sig_input wrap_s">
 		                        <p>전화번호<span class="red">*</span></p>
 		                        <input type="tel" name="tel" placeholder="전화번호를 입력해주세요" value="${user.tel}">
 		                        <c:if test="${ not empty userValidError.tel }">
@@ -200,6 +190,7 @@
 			
 			let emailDupChk;
 			
+			
 			$('#inputEmail').change(function(){
 				emailDupChk = false;
 			});
@@ -209,7 +200,8 @@
 					$('#commentForm').submit();
 				} else {
 					alert("중복 확인 해주세요");
-					$('#inputEmail').focus();
+					event.preventDefault();
+					$('#inputEmail').focus();					
 				}
 			});
 			

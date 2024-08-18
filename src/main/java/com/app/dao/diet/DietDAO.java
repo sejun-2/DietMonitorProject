@@ -9,10 +9,30 @@ public interface DietDAO {
 
 	int addFoodToDailyDiet(Diet diet);
 
-	List<Diet> findFoodListByMemberInfo(User user);
+	List<Diet> findDailyDietListByMemberInfo(User user);
 
-	Diet findTotalNutrientFromDailyDietByMemberInfo(User user);
+	int deleteSelectedDailyDiet(int logNo);
+	
+	int deleteAllDailyDiet(User user);
+	
+	int deleteSelectedExpectedDiet(int logNo);
+	
+	int deleteAllExpectedDiet(User user);
 
-	int deleteDiet(int logNo);
+	int saveDailyDietToTotalDiet();
+
+	List<Double> getRecommendedIntakeByMemberInfo(User user);
+
+	Diet getTotalNutrientFromDailyDietByMemberInfo(User user);
+
+	int addFoodToExpectedDiet(Diet diet);
+
+	List<Diet> findExpectedDietListByMemberInfo(User user);
+
+	Diet getExpectedTotalNutrientFromDailyDietByMemberInfo(User user);
+
+	
+
+	
 
 }

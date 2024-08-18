@@ -54,8 +54,10 @@
             <div class="big_search">
                 <div class="wrap">
                     <div class="search_input wrap">
-                        <p class="title">식품명</p>
-                        <input id="searchKeyword" type="search" value="" placeholder="영양정보가 궁금한 식품을 입력해주세요">
+                        <p class="title">식품명</p>                        
+                        <input id="searchKeyword" type="search" value="${searchInfo.searchKeyword}" placeholder="영양정보가 궁금한 식품을 입력해주세요">
+                        
+                        
                         <button class="search_icon center" type="submit">
                             <img src="../images/sub/icon/akar-search2.svg" alt="">
                         </button>

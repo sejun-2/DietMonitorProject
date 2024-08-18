@@ -173,12 +173,12 @@
 	    	});
 	    	
 	    	$('#submit1').click(function(){    		
-	    		$('#frm_diet').attr("action", "/preIntakeFood");
+	    		$('#frm_diet').attr("action", "/addExpectedDiet");
 				$('#frm_diet').submit();
 			});
 	    	
 	    	$('#submit2').click(function(){    		
-	    		$('#frm_diet').attr("action", "/registerDiet");
+	    		$('#frm_diet').attr("action", "/addDailyDiet");
 				$('#frm_diet').submit();
 			});
 	    });

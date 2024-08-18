@@ -27,11 +27,11 @@ public class MypageDAOImpl implements MypageDAO {
 
 
 	@Override
-	public List<Diet> findTotalDietByAvg(TotalDietSearchCondition totalDietSearchCondition) {
+	public Diet findTotalDietByAvg(TotalDietSearchCondition totalDietSearchCondition) {
 		// TODO Auto-generated method stub
-		List<Diet> totalDietList = sqlSessionTemplate.selectList("mypage_mapper.findTotalDietByAvg", totalDietSearchCondition);
+		Diet totalDiet = sqlSessionTemplate.selectOne("mypage_mapper.findTotalDietByAvg", totalDietSearchCondition);
 		
-		return totalDietList;
+		return totalDiet;
 	}
 
 
@@ -55,7 +55,15 @@ public class MypageDAOImpl implements MypageDAO {
 	public List<Diet> findTotalDietByMonthSum(TotalDietSearchCondition totalDietSearchCondition) {
 		// TODO Auto-generated method stub
 		List<Diet> totalDietListMonthSum = sqlSessionTemplate.selectList("mypage_mapper.findTotalDietByMonthSum", totalDietSearchCondition);
-		return null;
+		return totalDietListMonthSum;
+	}
+
+
+	@Override
+	public List<Diet> findTotalDietByStandard(TotalDietSearchCondition totalDietSearchCondition) {
+		// TODO Auto-generated method stub
+		List<Diet> findTotalDietByStandard = sqlSessionTemplate.selectList("mypage_mapper.findTotalDietByStandard", totalDietSearchCondition);
+		return findTotalDietByStandard;
 	}
 	
 	

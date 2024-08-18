@@ -19,7 +19,7 @@ public interface UserDAO {
 	
 	public User findLoginUser(User user);
 
-	public int getAgeByMemberInfo(int accountNo, int memberNo);
+	public int getMonthsByMemberInfo(int accountNo, int memberNo);
 
 	public String getGenderNameByGenderId(int genderId);
 
@@ -36,6 +36,8 @@ public interface UserDAO {
 	public List<User> findMemberList(User user);
 
 	public int getMemberCountByAccountNo(int accountNo);
+
+	public int getGenderIdByAge(String birth);
 
 	
 
