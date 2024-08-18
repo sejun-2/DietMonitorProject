@@ -79,19 +79,19 @@
         <div class="bg">
 
             <ul class="main_menu">
-                <li><a href="/foodSearch"><span>영양정보 찾아보기</span><span class="f_rigth">+</span></a>
+                <li><a href="#"><span>영양정보 찾아보기</span><span class="f_rigth">+</span></a>
                     <ul class="snd_menu">
                         <li><a href="/foodSearch"><span>식품으로 찾아보기</span><span class="f_rigth">+</span></a>
                         </li>
                     </ul>
                 </li>
-                <li><a href="/diet/dailyDiet"><span>섭취식품 등록</span><span class="f_rigth">+</span></a>
+                <li><a href="#"><span>섭취식품 등록</span><span class="f_rigth">+</span></a>
                     <ul class="snd_menu">
                         <li><a href="/diet/dailyDiet"><span>하루섭취 식품 등록</span><span class="f_rigth">+</span></a>
                         </li>
                     </ul>
                 </li>
-                <li><a href="/mypage/accountInfo"><span>마이페이지</span><span class="f_rigth">+</span></a>
+                <li><a href="#"><span>마이페이지</span><span class="f_rigth">+</span></a>
                     <ul class="snd_menu">
                         <li><a href="/mypage/accountInfo"><span>내 정보</span><span class="f_rigth">+</span></a>
                         </li>

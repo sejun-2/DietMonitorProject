@@ -407,7 +407,7 @@
 .decibal_title .slide_box .box{width: 500px; padding: 45px 55px;box-shadow: 0px 2px 10px 1px rgb(0 0 0 / 15%); border-radius: 20px;margin-right: 60px;}
 .decibal_title .slide_box .box .title_food{display: inline-block; background: #FFA100; padding: 10px 30px; border-radius: 50px; color: white; font-size: 18px;margin-bottom: 25px;}
 .decibal_title .slide_box .box .info_title{font-size: 18px; color: #474747; margin-bottom: 20px;}
-.decibal_title .slide_box .box .info_detail{font-size: 17px; color: #727272;line-height: 30px; margin-bottom: 30px;}
+.decibal_title .slide_box .box .info_detail{font-size: 17px; color: #727272;line-height: 30px; margin-bottom: 30px;height: 160px;}
 .decibal_title .slide_box .box .more{border: 1px solid #D5D5D5; padding: 10px 40px; display: inline-block; border-radius: 5px;float: right; cursor: pointer;}
 
 
@@ -552,6 +552,7 @@
 @media screen and (max-width: 500px){
     #container .right .cont_title .btn3 a{margin: 10px 0;}
 }
+
 
 #footer{background: #31343D;}
 #footer a, #footer p, #footer .copy{color: #949494;}
