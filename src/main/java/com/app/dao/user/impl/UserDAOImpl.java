@@ -30,6 +30,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public int modifyUser(User user) {
+		System.out.println(user);
 		int result = sqlSessionTemplate.update("user_mapper.modifyUser", user);
 		
 		return result;
@@ -52,13 +53,13 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public int getAgeByMemberInfo(int accountNo, int memberNo) {
+	public int getMonthsByMemberInfo(int accountNo, int memberNo) {
 		
 		Map<String, Object> params = new HashMap<>();
 	    params.put("accountNo", accountNo);
 	    params.put("memberNo", memberNo);
 	    
-	    int result = sqlSessionTemplate.selectOne("user_mapper.getAgeByMemberInfo", params);
+	    int result = sqlSessionTemplate.selectOne("user_mapper.getMonthsByMemberInfo", params);
 	    
 		return result;
 	}
@@ -130,6 +131,15 @@ public class UserDAOImpl implements UserDAO {
 	public int getMemberCountByAccountNo(int accountNo) {
 		
 		int result = sqlSessionTemplate.selectOne("user_mapper.getMemberCountByAccountNo", accountNo);
+		
+		return result;
+	}
+
+	@Override
+	public int getGenderIdByAge(String birth) {
+		// TODO Auto-generated method stub
+		
+		int result = sqlSessionTemplate.selectOne("user_mapper.getGenderIdByAge", birth);
 		
 		return result;
 	}

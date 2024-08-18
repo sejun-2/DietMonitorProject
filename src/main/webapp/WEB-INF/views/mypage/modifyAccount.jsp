@@ -164,20 +164,7 @@
 					<div class="sig_input wrap_s">
 						<p>프로필 선택<span class="red">*</span></p>
 						<div class="cc-selector">
-							<c:forEach var="i" begin="1" end="5" step="1">
-								<c:if test="${user.iconId == i}">
-									<input style="display: none;" id="profile${i}" type="radio" name="iconId" value="${i}" checked/> 
-									<label class="drinkcard-cc profiles" for="profile${i}">
-										<img src="../images/header/profile/profile_${i}.png">
-									</label>
-								</c:if>
-								<c:if test="${user.iconId != i}">
-									<input style="display: none;" id="profile${i}" type="radio" name="iconId" value="${i}"/> 
-									<label class="drinkcard-cc profiles" for="profile${i}">
-										<img src="../images/header/profile/profile_${i}.png">
-						<p>프로필 선택<span class="red">*</span></p>
-						<div class="cc-selector">
-							<c:forEach var="i" begin="1" end="5" step="1">
+							<c:forEach var="i" begin="1" end="9" step="1">
 								<c:if test="${user.iconId == i}">
 									<input style="display: none;" id="profile${i}" type="radio" name="iconId" value="${i}" checked/> 
 									<label class="drinkcard-cc profiles" for="profile${i}">
@@ -245,7 +232,7 @@
 						</p>
 						<div class="wrap_s">
 							<span class="mr20"> <input type="radio" name="genderId"
-								value="3" id="male" checked="checked"> <label for="male">남자</label>
+								value="3" id="male"> <label for="male">남자</label>
 							</span> <span> <input type="radio" name="genderId" value="4"
 								id="female"> <label for="female">여자</label>
 							</span>
@@ -256,27 +243,16 @@
 						<p>
 							임신/수유 유무<span class="red">*</span>
 						</p>
-						<div class="wrap_s">							
-							<span class="mr20"> <input type="checkbox" id="pregnant" class="otherCondition"> <label for="pregnant">임신</label></span>
-							<span class="mr20"> <input type="checkbox" id="lactation" class="otherCondition"> <label for="lactation">수유</label></span>
+						<div class="sig_check_box wrap_s">
+							<div>
+								<span class="mr20 sig_check"> <input type="checkbox" id="pregnant" class="otherCondition"> <label for="pregnant">임신</label></span>
+								<span class="mr20 sig_check"> <input type="checkbox" id="lactation" class="otherCondition"> <label for="lactation">수유</label></span>
+								<span class="mr20 sig_check_data" id="pregnantDate" style="display:none;">임신시작일 <input type="text" name="pregnantDate"> </span>
+							</div>
 						</div>
 					</div>
-					
-					
-					<div class="sig_input wrap_s">
-						<p>
-							임신/수유 유무<span class="red">*</span>
-						</p>
-						<div class="wrap_s">							
-							<span class="mr20"> <input type="checkbox" id="pregnant" class="otherCondition"> <label for="pregnant">임신</label></span>
-							<span class="mr20"> <input type="checkbox" id="lactation" class="otherCondition"> <label for="lactation">수유</label></span>
-						</div>
-					</div>
-					
 				</div>
-
 				<button class="common_btn" type="submit">회원정보수정</button>
-				
 				</form>
 			</div>
 
@@ -292,53 +268,107 @@
 
 	<jsp:include page="../common/footer.jsp" />
 	
-	<script>
+	<script type="text/javascript">
 		$(document).ready( function(){
 			
+			<c:if test="${user.genderId == 3}">
+				$('input[type="radio"][id="male"]').prop('checked',true);				
+			</c:if>
+			
+			<c:if test="${user.genderId >= 4}">
+				$('input[type="radio"][id="female"]').prop('checked',true);
+			</c:if>
+			
+			<c:if test="${user.genderId == 5}">
+				$('input[type="checkbox"][id="pregnant"]').prop('checked',true);
+				$('#pregnantDate').css('display', 'block');
+				let pregnantDate = '${user.pregnantDate}';
+				console.log(pregnantDate);
+				$('input[type="text"][name="pregnantDate"]').val(pregnantDate);
+			</c:if>
+			
+			<c:if test="${user.genderId == 6}">
+				$('input[type="checkbox"][id="lactation"]').prop('checked',true);
+			</c:if>			
+			
+			$('input[type="radio"][id="male"]').click( function(){
+				$('input[type="checkbox"][class="otherCondition"]').prop('checked',false);
+			});
+			
 			$('input[type="checkbox"][class="otherCondition"]').change( function(){
-				
-				console.log('aa');
 				
 				if( $(this).prop('checked') ){
 					$('input[type="checkbox"][class="otherCondition"]').prop('checked',false);
 					$(this).prop('checked',true);
+					$('input[type="radio"][id="female"]').prop('checked',true);
 				}
 				
 				if( $('input[type="checkbox"][id="pregnant"]').prop("checked") ){
 					$('input:radio[name="genderId"]').val(5);
-					console.log('bb');
+					$('#pregnantDate').css('display', 'block');
+				} else {
+					$('#pregnantDate').css('display', 'none');
+					$('input[type="text"][name="pregnantDate"]').val("");
 				}
 				
 				if( $('input[type="checkbox"][id="lactation"]').prop("checked") ){
 					$('input:radio[name="genderId"]').val(6);
-					console.log('cc');
 				}
+				
+				
 				
 			});
 		});
 	</script>
 	
-	<script>
+	<script type="text/javascript">
 		$(document).ready( function(){
 			
+			<c:if test="${user.genderId == 3}">
+				$('input[type="radio"][id="male"]').prop('checked',true);				
+			</c:if>
+			
+			<c:if test="${user.genderId >= 4}">
+				$('input[type="radio"][id="female"]').prop('checked',true);
+			</c:if>
+			
+			<c:if test="${user.genderId == 5}">
+				$('input[type="checkbox"][id="pregnant"]').prop('checked',true);
+				$('#pregnantDate').css('display', 'block');
+				let pregnantDate = '${user.pregnantDate}';
+				console.log(pregnantDate);
+				$('input[type="text"][name="pregnantDate"]').val(pregnantDate);
+			</c:if>
+			
+			<c:if test="${user.genderId == 6}">
+				$('input[type="checkbox"][id="lactation"]').prop('checked',true);
+			</c:if>			
+			
+			$('input[type="radio"][id="male"]').click( function(){
+				$('input[type="checkbox"][class="otherCondition"]').prop('checked',false);
+			});
+			
 			$('input[type="checkbox"][class="otherCondition"]').change( function(){
-				
-				console.log('aa');
 				
 				if( $(this).prop('checked') ){
 					$('input[type="checkbox"][class="otherCondition"]').prop('checked',false);
 					$(this).prop('checked',true);
+					$('input[type="radio"][id="female"]').prop('checked',true);
 				}
 				
 				if( $('input[type="checkbox"][id="pregnant"]').prop("checked") ){
 					$('input:radio[name="genderId"]').val(5);
-					console.log('bb');
+					$('#pregnantDate').css('display', 'block');
+				} else {
+					$('#pregnantDate').css('display', 'none');
+					$('input[type="text"][name="pregnantDate"]').val("");
 				}
 				
 				if( $('input[type="checkbox"][id="lactation"]').prop("checked") ){
 					$('input:radio[name="genderId"]').val(6);
-					console.log('cc');
 				}
+				
+				
 				
 			});
 		});

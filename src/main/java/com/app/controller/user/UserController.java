@@ -1,7 +1,10 @@
 package com.app.controller.user;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -20,6 +23,7 @@ import com.app.dto.api.ApiResponseHeader;
 import com.app.dto.user.CustomerDupEmailCheckRequest;
 import com.app.dto.user.User;
 import com.app.dto.user.UserValidError;
+import com.app.service.diet.DietService;
 import com.app.service.user.UserService;
 import com.app.util.SessionManager;
 import com.app.validator.UserValidator;
@@ -29,6 +33,9 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	DietService dietService;
 
 	@GetMapping("/signup")
 	public String signup() {
@@ -39,7 +46,7 @@ public class UserController {
 	}
 
 	@PostMapping("/signup")
-	public String signupAction(@Valid @ModelAttribute User user, BindingResult br, Model model) {
+	public String signupAction(@Valid @ModelAttribute User user, BindingResult br, HttpServletResponse response, Model model) throws IOException {
 		
 		UserValidError userValidError = new UserValidError();
 		
@@ -51,6 +58,12 @@ public class UserController {
 			int result = userService.saveUser(user);
 			
 			if(result > 0) {
+				PrintWriter out = response.getWriter();
+				response.setCharacterEncoding("utf-8");
+				response.setContentType("text/html; charset=utf-8");
+				out.println("<script> alert('회원가입 완료되었습니다.');");
+				out.println("location.href='login'; </script>"); 
+				out.close();
 				return "redirect:/login";
 			} else {
 				System.out.println("쿼리문 작동 안됨");
@@ -63,6 +76,7 @@ public class UserController {
 		}
 		
 	}
+	
 
 	@ResponseBody
 	@RequestMapping("/user/isDuplicatedEmail")
@@ -114,10 +128,13 @@ public class UserController {
 		
 		SessionManager.setSessionAccount(loginUser.getAccountNo(), loginUser.getMemberNo(), session);
 		
+		int result = dietService.deleteAllExpectedDiet(loginUser);
+		System.out.println("삭제된 예상 식단 데이터 개수 : " + result);
+		
 	    List<User> profiles = userService.findUserListByAccountNo(loginUser.getAccountNo());
 
 	    for (User profile : profiles) {
-	        int age = userService.getAgeByMemberInfo(profile.getAccountNo(), profile.getMemberNo());
+	        int age = userService.getMonthsByMemberInfo(profile.getAccountNo(), profile.getMemberNo());
 	        String genderName = userService.getGenderNameByGenderId(profile.getGenderId());
 	        profile.setAge(age);
 	        profile.setGenderName(genderName);

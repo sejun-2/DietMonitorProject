@@ -54,12 +54,6 @@
 							</form>
 						</li>
 						
-						<c:if test="${status.count eq 5}">
-							<li class="box"><a href="/mypage/manageProfile">
-									<img src="../images/header/profile/profile.png" alt="">
-									<p>멤버 관리</p>
-							</a></li>
-						</c:if>
 				</c:forEach>
 
 				<c:set var="profileCount" value="${fn:length(profiles)}" />

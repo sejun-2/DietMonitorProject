@@ -173,12 +173,12 @@
 	    	});
 	    	
 	    	$('#submit1').click(function(){    		
-	    		$('#frm_diet').attr("action", "/preIntakeFood");
+	    		$('#frm_diet').attr("action", "/addExpectedDiet");
 				$('#frm_diet').submit();
 			});
 	    	
 	    	$('#submit2').click(function(){    		
-	    		$('#frm_diet').attr("action", "/registerDiet");
+	    		$('#frm_diet').attr("action", "/addDailyDiet");
 				$('#frm_diet').submit();
 			});
 	    });
@@ -202,21 +202,40 @@
 	        let nutrientValue;
 	        let nutrientContent;
 	        let nutrientRecPer;
-	         
-	        <c:forEach var="item" items="${nc}" varStatus="status">
-	       	
-	        	nutrientValue = food[${status.index}];
-	        	nutrientContent = nutrientValue * foodAmountPer;
 	        
-	        	$('.nutrient-content').eq(${status.index}).text(nutrientValue.toFixed(2));
-	        	$('.nutrient-result').eq(${status.index}).text(nutrientContent.toFixed(2));
-	       	 	$('.nutrient-id').eq(${status.index}).attr("name", nutrients[${status.index}]);            
-	        	$('.nutrient-id').eq(${status.index}).val(nutrientContent.toFixed(2));
-	        
-	        	nutrientRecPer = ${item.intakeRec} == 0 ? '-' : (nutrientContent / ${item.intakeRec} * 100).toFixed(2) + '%';
-	        	$('.nutrient-rec-per').eq(${status.index}).text(nutrientRecPer);
-	        
-	    	</c:forEach>
+	        <c:if test="${not empty nc}">
+		        <c:forEach var="item" items="${nc}" varStatus="status">
+		       	
+		        	nutrientValue = food[${status.index}];
+		        	nutrientContent = nutrientValue * foodAmountPer;
+		        
+		        	$('.nutrient-content').eq(${status.index}).text(nutrientValue.toFixed(2));
+		        	$('.nutrient-result').eq(${status.index}).text(nutrientContent.toFixed(2));
+		       	 	$('.nutrient-id').eq(${status.index}).attr("name", nutrients[${status.index}]);            
+		        	$('.nutrient-id').eq(${status.index}).val(nutrientContent.toFixed(2));
+		        
+		        	nutrientRecPer = ${item.intakeRec} == 0 ? '-' : (nutrientContent / ${item.intakeRec} * 100).toFixed(2) + '%';
+		        	$('.nutrient-rec-per').eq(${status.index}).text(nutrientRecPer);
+		        
+		    	</c:forEach>
+		    </c:if>
+		    
+		    <c:if test="${empty nc}">
+		        <c:forEach var="item" begin="1" end="23" step="1" varStatus="status">
+		       	
+		        	nutrientValue = food[${status.index}];
+		        	nutrientContent = nutrientValue * foodAmountPer;
+		        
+		        	$('.nutrient-content').eq(${status.index}).text(nutrientValue.toFixed(2));
+		        	$('.nutrient-result').eq(${status.index}).text(nutrientContent.toFixed(2));
+		       	 	$('.nutrient-id').eq(${status.index}).attr("name", nutrients[${status.index}]);            
+		        	$('.nutrient-id').eq(${status.index}).val(nutrientContent.toFixed(2));
+		        
+		        	nutrientRecPer = '-';
+		        	$('.nutrient-rec-per').eq(${status.index}).text(nutrientRecPer);
+		        
+		    	</c:forEach>
+		    </c:if>
 	    }    
     </script>
 </body>

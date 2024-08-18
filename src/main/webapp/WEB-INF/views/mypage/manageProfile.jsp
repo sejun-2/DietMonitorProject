@@ -19,7 +19,7 @@
 <link href="../css/common.css" rel="stylesheet">
 <script type="text/javascript" src="../script/header.js"></script>
 
-<title>회원가입</title>
+<title>프로필 관리</title>
 </head>
 <body>
 	<header id="header">
@@ -106,7 +106,7 @@
 						<div class="sig_input wrap_s">
 							<p>프로필 선택<span class="red">*</span></p>
 							<div class="cc-selector">
-								<c:forEach var="i" begin="1" end="5" step="1"  varStatus="status">
+								<c:forEach var="i" begin="1" end="9" step="1"  varStatus="status">
 	    							<c:if test="${status.count == 1}">
 										<input style="display: none;" id="profile${i}" type="radio" name="iconId" value="${i}" checked/> 
 										<label class="drinkcard-cc profiles" for="profile${i}">
