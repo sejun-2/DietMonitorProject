@@ -114,6 +114,9 @@
 
     <section class="table_menu">
         <div class="inner">
+        	<div class="wrap mb20 label" style="color: #d34040; font-size: 20px; font-weight: 600;" id="searchResult">
+        		
+        	</div>
             <div class="wrap">
 
                 <div class="menu_list">
@@ -272,7 +275,16 @@
 				},
     			dataType: 'json',
     			data:requestJsonDataString,
-    			success: function(result){    				
+    			success: function(result){ 
+    				
+    				let searchResult;
+    				if(result.page.totalItems != 0){
+    					searchResult = "검색결과 총 " + result.page.totalItems + "건";
+    				} else {
+    					searchResult = "해당하는 식품을 찾을 수 없어요";
+    				}
+    				
+    				$('#searchResult').text(searchResult);    				
     				
     				let data = "";
     				

@@ -41,7 +41,17 @@ public class UserValidator {
 		} else if(!isEmail(user.getEmail())) {
 			userValidError.setEmail("올바르지 않은 이메일 형식입니다.");
 			result = false;
-		} 
+		}
+		
+		if (user.getEmail().length() > 40) {
+			userValidError.setEmail("40자리 이하로 입력해주세요.");
+			result = false;
+		}
+		
+		if (user.getPw().length() > 16) {
+			userValidError.setPw("16자리 이하로 입력해주세요.");
+			result = false;
+		}
 
 		if (user.getPw().length() > 16) {
 			userValidError.setPw("16자리 이하로 입력해주세요.");
@@ -58,12 +68,17 @@ public class UserValidator {
 			result = false;
 		}
 
-		if(!isKorean(user.getName()) || user.getName().length() < 2 || user.getName().length() > 4) {
+		if(!isKorean(user.getName()) || user.getName().length() < 2 || user.getName().length() > 10) {
 			userValidError.setName("올바르지 않은 이름입니다.");
 			result = false;
 		}
+		
+		if (user.getNickname().length() > 20) {
+			userValidError.setNickname("10자리 이하로 입력해주세요.");
+			result = false;
+		}
 
-		if(!isPhone(user.getTel())) {
+		if(!isPhone(user.getTel()) || user.getTel().length() > 11) {
 			userValidError.setTel("-를 제외한 전화번호 11자리를 입력해주세요");
 			result = false;
 		}

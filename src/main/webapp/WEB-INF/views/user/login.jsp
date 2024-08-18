@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -38,6 +39,9 @@
                     <div class="login_input">
                         <input type="password" name="pw" placeholder="비밀번호를 입력해 주세요" required>
                     </div>
+                    <c:if test="${ not empty logErrorMsg}">
+						<span class="check_info red">${logErrorMsg}</span>
+					</c:if>
 
                     <button class="common_btn" type="submit">로그인</button>
                     <button class="common_opposite_btn" type="button" onclick="location.href='/signup'">회원가입</button>

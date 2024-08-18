@@ -152,10 +152,10 @@
 						</p>
 						<input type="text" name="nickname" placeholder="비밀번호를 입력해 주세요"
 							value="${user.nickname}">
-						<c:if test="">
-							<br />
-							<span class="red"></span>
-							<br />
+						<c:if test="${ not empty userValidError.nickname }">
+							<br/>
+								<span class="red">${userValidError.nickname}</span>
+							<br/>
 						</c:if>
 					</div>
 					<div class="sig_input wrap_s">

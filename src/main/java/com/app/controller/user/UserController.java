@@ -123,6 +123,7 @@ public class UserController {
 		
 		if(loginUser == null) {
 			System.out.println("null : " + loginUser);
+			model.addAttribute("logErrorMsg", "아이디 또는 패스워드가 일치하지 않습니다");
 			return "user/login";
 		}		
 		
