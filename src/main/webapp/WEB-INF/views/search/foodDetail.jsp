@@ -224,16 +224,18 @@
 		    	</c:forEach>
 		    </c:if>
 		    
+		    console.log('aa');
+		    
 		    <c:if test="${empty nc}">
-		        <c:forEach var="item" begin="1" end="23" step="1" varStatus="status">
+		        <c:forEach var="item" begin="0" end="22" step="1" varStatus="status">
 		       	
 		        	nutrientValue = food[${status.index}];
 		        	nutrientContent = nutrientValue * foodAmountPer;
+		        	
+		        	console.log(nutrientContent);
 		        
 		        	$('.nutrient-content').eq(${status.index}).text(nutrientValue.toFixed(2));
 		        	$('.nutrient-result').eq(${status.index}).text(nutrientContent.toFixed(2));
-		       	 	$('.nutrient-id').eq(${status.index}).attr("name", nutrients[${status.index}]);            
-		        	$('.nutrient-id').eq(${status.index}).val(nutrientContent.toFixed(2));
 		        
 		        	nutrientRecPer = '-';
 		        	$('.nutrient-rec-per').eq(${status.index}).text(nutrientRecPer);

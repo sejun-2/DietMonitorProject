@@ -133,10 +133,10 @@
 		                    </div>
 		                    <div class="sig_input wrap_s">
 		                        <p>프로필 닉네임<span class="red">*</span></p>
-		                        <input type="text" name="nickname" placeholder="비밀번호를 입력해 주세요" value="${user.nickname}">
-		                        <c:if test="">
+		                        <input type="text" name="nickname" placeholder="닉네임을 입력해 주세요" value="${user.nickname}">
+		                        <c:if test="${ not empty userValidError.nickname }">
 									<br/>
-										<span class="red"></span>
+										<span class="red">${userValidError.nickname}</span>
 									<br/>
 								</c:if>
 		                    </div>
