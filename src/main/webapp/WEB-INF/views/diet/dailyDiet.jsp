@@ -13,6 +13,7 @@
 	href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <link href="../css/base.css" rel="stylesheet">
 <link href="../css/common.css" rel="stylesheet">
 <link href="../css/board.css" rel="stylesheet">
@@ -474,6 +475,12 @@
 									<c:forEach var="cn" items="${calculatedNutrients}"
 										varStatus="status">
 										<td>${String.format("%.2f",cn)}</td>
+										<td>
+											<div class="wrap_jc">
+														<img src="../images/sub/icon/data_up_down/akar-arrow-up.svg" alt="">
+														<p class="ml10 blue">0.2</p>
+											</div>
+										</td>
 									</c:forEach>
 								</tr>
 							</tbody>

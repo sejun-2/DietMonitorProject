@@ -50,13 +50,16 @@ $(document).ready(function () {
 
     generateMenuItems();
     
+     $("#header .profile_inner").hide();
+     
+    $('#header .profile_inner').on('click', function(event) {
+	    if ($(event.target).is('#header .profile_inner')) {
+	       $('#header .profile_inner').hide();
+	    }
+	 });
     
-    
-    
-    
-    $("#header .profile").hide();
     $("#header .top_nav .gnb .lnb.main_profile").on('click', function(){
-        $("#header .profile").toggle();
+        $("#header .profile_inner").toggle();
     }); 
 
 
