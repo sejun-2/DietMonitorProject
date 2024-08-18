@@ -177,7 +177,6 @@
 							</c:forEach>
 						</div>
 					</div>
-					
 					<c:if test="${user.memberNo eq 1}">
 						<div class="sig_input wrap_s">
 							<p>
