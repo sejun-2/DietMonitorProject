@@ -40,7 +40,7 @@
 	<section class="sub_title">
 		<div class="inner">
 			<div class="wrap">
-				<h1 class="title">식품으로 찾아보기</h1>
+				<h1 class="title">나의 영양성분 비교분석</h1>
 				<div class="route wrap">
 					<a href="../index.html"><img class="home center"
 						src="../images/sub/icon/material-home.svg" alt="홈 아이콘"></a>
