@@ -7,30 +7,30 @@
 <mapper namespace="user_mapper">
 
 	<select id="findLoginUser" parameterType="User" resultType="User">
-		SELECT account_no, member_no, email, pw, name, nickname, tel, TO_CHAR(birth, 'YYMMDD') birth, gender_id, created_at, icon_id 
+		SELECT account_no, member_no, email, pw, name, nickname, tel, TO_CHAR(birth, 'YYYYMMDD') birth, gender_id, created_at, icon_id 
 		FROM member WHERE email=#{email} and pw=#{pw}
 	</select>
 	
 	<select id="findUserByMemberInfo" parameterType="map" resultType="User">
-		SELECT account_no, member_no, email, pw, name, nickname, tel, TO_CHAR(birth, 'YYMMDD') birth, gender_id, created_at, icon_id, TO_CHAR(pregnant_date, 'YYMMDD') pregnant_date
+		SELECT account_no, member_no, email, pw, name, nickname, tel, TO_CHAR(birth, 'YYYYMMDD') birth, gender_id, created_at, icon_id, TO_CHAR(pregnant_date, 'YYYYMMDD') pregnant_date
 		FROM member
 		WHERE account_no = #{accountNo} and member_no = #{memberNo}
 	</select>
 	
 	<select id="findUserListByAccountNo" parameterType="int" resultType="User">
-		SELECT account_no, member_no, email, pw, name, nickname, tel, TO_CHAR(birth, 'YYMMDD') birth, gender_id, created_at, icon_id, TO_CHAR(pregnant_date, 'YYMMDD') pregnant_date 
+		SELECT account_no, member_no, email, pw, name, nickname, tel, TO_CHAR(birth, 'YYYYMMDD') birth, gender_id, created_at, icon_id, TO_CHAR(pregnant_date, 'YYYYMMDD') pregnant_date 
 		FROM member
 		WHERE account_no = #{accountNo}
 		ORDER BY member_no
 	</select>
 
 	<select id="findUserList" resultType="User">
-		SELECT account_no, member_no, email, pw, name, nickname, tel, TO_CHAR(birth, 'YYMMDD') birth, gender_id, created_at, icon_id, TO_CHAR(pregnant_date, 'YYMMDD') pregnant_date 
+		SELECT account_no, member_no, email, pw, name, nickname, tel, TO_CHAR(birth, 'YYYYMMDD') birth, gender_id, created_at, icon_id, TO_CHAR(pregnant_date, 'YYYYMMDD') pregnant_date 
 		FROM member
 	</select>
 	
 	<select id="findUserByEmail" resultType="User" parameterType="String">
-		SELECT account_no, member_no, email, pw, name, nickname, tel, TO_CHAR(birth, 'YYMMDD') birth, gender_id, created_at, icon_id, TO_CHAR(pregnant_date, 'YYMMDD') pregnant_date 
+		SELECT account_no, member_no, email, pw, name, nickname, tel, TO_CHAR(birth, 'YYYYMMDD') birth, gender_id, created_at, icon_id, TO_CHAR(pregnant_date, 'YYYYMMDD') pregnant_date 
 		FROM member
 		WHERE email = #{email}
 	</select>
@@ -146,7 +146,7 @@
 		(
 		    SELECT 
 		        nutrient_id,
-		        DECODE(2, 5, intake_rec, 6, intake_rec, 0) intake_rec
+		        DECODE((SELECT gender_id FROM member WHERE account_no = #{accountNo} AND member_no = #{memberNo}), 5, intake_rec, 6, intake_rec, 0) intake_rec
 		    FROM nutrition_standard
 		    WHERE
 	        	(
