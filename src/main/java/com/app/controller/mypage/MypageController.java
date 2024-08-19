@@ -124,11 +124,11 @@ public class MypageController {
 
 		System.out.println(t1);
 		List<Diet> totalDietList = mypageService.findTotalDietBySaveHistory(t1);
-		List<Diet> totalDietListAvg = mypageService.findTotalDietBySaveHistoryAvg(t1);
+		List<Diet> totalDietListSum = mypageService.findTotalDietBySaveHistorySum(t1);
 
 		System.out.println(totalDietList);
 		model.addAttribute("totalDietList", totalDietList);
-		model.addAttribute("totalDietListAvg", totalDietListAvg);
+		model.addAttribute("totalDietListSum", totalDietListSum);
 		return "mypage/test";
 	}
 
