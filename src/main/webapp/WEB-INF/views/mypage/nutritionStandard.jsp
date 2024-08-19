@@ -110,8 +110,8 @@
 			<div class="graph">
 				<div class="inner">
 
-					<div class="graphBox" style="width: 1200px; height: 600px;">
-						<canvas id="barCanvas"></canvas>
+					<div class="graphBox" >
+						<canvas id="barCanvas" style="width: 100%; height: 600px;"></canvas>
 					</div>
 
 				</div>
