@@ -107,30 +107,6 @@ public class MypageController {
 
 		return "/mypage/dietHistory";
 	}
-	
-	@GetMapping("/test")
-	public String test() {
-		return "mypage/test";
-	}
-	
-	@PostMapping("/test")
-	public String test(Model model, TotalDietSearchCondition t1, HttpSession session) {
-		
-		int accountNo = SessionManager.getAccountNo(session);
-		int memberNo = SessionManager.getMemberNo(session);
-
-		t1.setAccountNo(accountNo);
-		t1.setMemberNo(memberNo);
-
-		System.out.println(t1);
-		List<Diet> totalDietList = mypageService.findTotalDietBySaveHistory(t1);
-		List<Diet> totalDietListAvg = mypageService.findTotalDietBySaveHistoryAvg(t1);
-
-		System.out.println(totalDietList);
-		model.addAttribute("totalDietList", totalDietList);
-		model.addAttribute("totalDietListAvg", totalDietListAvg);
-		return "mypage/test";
-	}
 
 	@GetMapping("/mypage/accountInfo")
 	public String accountInfo(HttpSession session, Model model) {

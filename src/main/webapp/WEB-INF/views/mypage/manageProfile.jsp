@@ -19,7 +19,7 @@
 <link href="../css/common.css" rel="stylesheet">
 <script type="text/javascript" src="../script/header.js"></script>
 
-<title>프로필 관리</title>
+<title>프로필 관리 - 식품영양성분</title>
 </head>
 <body>
 	<header id="header">
@@ -41,20 +41,23 @@
                         <nav>
                             <ul class="snb">
                                 <li>
-                                    <a href="/foodSearch" class="arrow docs-creator">영양정보 찾아보기</a>
+                                    <a href="/foodSearch" class="arrow">영양정보 찾아보기</a>
                                     <ul>
                                         <li>
-                                            <a href="/foodSearch" class="on docs-creator">식품으로 찾아보기</a>
+                                            <a href="/foodSearch" class="on">식품으로 찾아보기</a>
                                         </li>
                                     </ul>
                                 </li>
                             </ul>
                             <ul class="snb">
                                 <li>
-                                    <a href="/registerDiet" class="arrow">섭취식품 등록</a>
+                                    <a href="/diet/dailyDiet" class="arrow">섭취식품</a>
                                     <ul>
                                         <li>
-                                            <a href="/registerDiet" class="on">하루섭취 식품 등록</a>
+                                            <a href="/diet/dailyDiet" class="on">하루섭취 금일식단</a>
+                                        </li>
+                                        <li>
+                                            <a href="/diet/expectedDiet" class="arrow">하루섭취 예상식단</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -67,19 +70,13 @@
                                             <a href="/mypage/accountInfo" >내 정보</a>
                                         </li> 
                                         <li>
-                                            <a href="/mypage/modifyAccount" >내 정보 수정</a>
-                                        </li>
-                                        <li>
-                                            <a href="/mypage/dietProgress" >나의 하루 섭취 식품</a>
-                                        </li>
-                                        <li>
                                             <a href="/mypage/dietHistory" >나의 영양성분 저장 기록</a>
                                         </li>
                                         <li>
-                                            <a href="/diet/dailyDiet" >나의 영양성분 일일 권장량</a>
+                                            <a href="/mypage/nutritionStandard" >나의 영양성분 일일 권장량</a>
                                         </li>
                                         <li>
-                                            <a href="/mypage/nutritionStandard">나의 영양성분 비교분석</a>
+                                            <a href="/mypage/dietProgress">나의 영양성분 비교분석</a>
                                         </li>
                                     </ul>
                                 </li>

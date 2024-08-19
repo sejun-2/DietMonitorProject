@@ -176,15 +176,18 @@
 		SELECT DISTINCT(gender_id)
 		FROM nutrition_standard
 		WHERE CEIL(MONTHS_BETWEEN(SYSDATE, #{birth})) BETWEEN age_min AND age_max
-		AND gender_id = 
+		AND gender_id =
 		    CASE 
-		        WHEN CEIL(MONTHS_BETWEEN(SYSDATE, #{birth})) &lt; 61 THEN 
+		        WHEN CEIL(MONTHS_BETWEEN(SYSDATE, #{birth})) &lt; 61 
+		        THEN 
 		            (SELECT DISTINCT(gender_id) 
 		             FROM nutrition_standard 
 		             WHERE CEIL(MONTHS_BETWEEN(SYSDATE, #{birth})) BETWEEN age_min AND age_max 
 		             AND gender_id BETWEEN 1 AND 2)
+		         WHEN CEIL(MONTHS_BETWEEN(SYSDATE, #{pregnantDate})) &lt; 11 AND gender_id = #{genderId}
+                 THEN 5
 		        ELSE 
-		            #{genderId}
+		           #{genderId} 
 		    END
 	</select>
 	

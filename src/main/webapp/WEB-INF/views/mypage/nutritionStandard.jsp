@@ -22,7 +22,7 @@
 <script type="text/javascript" src="../script/header.js"></script>
 <script type="text/javascript" src="../script/graph.js"></script>
 
-<title>foodIngredients</title>
+<title>영양 일일 권장량 - 식품영양성분</title>
 </head>
 <body>
 	<header id="header">
@@ -31,17 +31,23 @@
 		</div>
 	</header>
 
-
-	<section class="signup sig_modify">
+	<div class="sub_content"></div>
+	<section class="sub_title">
 		<div class="inner">
-			<div class="sig_inner">
-				<div class="sig_inputs">
-					<div class="sig_title">나의 영양 섭취 기준</div>
-
+			<div class="wrap">
+				<h1 class="title">나의 영양성분 일일 권장량</h1>
+				<div class="route wrap">
+					<a href="../index.html"><img class="home center"
+						src="../images/sub/icon/material-home.svg" alt="홈 아이콘"></a>
+					<div class="route_info wrap">
+						<a href="/mypage/accountInfo"><span class="dap1">마이페이지</span></a>
+						 <a href="/mypage/nutritionStandard"><span class="dap2">나의 영양성분 일일 권장량</span></a>
+					</div>
 				</div>
-
 			</div>
+
 		</div>
+
 	</section>
 
 	<!-- -------------------------------표------------------------------------------->

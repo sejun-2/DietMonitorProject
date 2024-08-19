@@ -19,7 +19,7 @@
 <script type="text/javascript" src="../script/header.js"></script>
 <script type="text/javascript" src="../script/common.js"></script>
 
-<title>foodIngredients</title>
+<title>하루섭취 예상식단 - 식품영양성분</title>
 </head>
 <body>
 	<header id="header">
@@ -34,13 +34,13 @@
 	<section class="sub_title">
 		<div class="inner">
 			<div class="wrap">
-				<h1 class="title">나의 하루 예상 식단</h1>
+				<h1 class="title">나의 하루 섭취 예상 식단</h1>
 				<div class="route wrap">
 					<a href="./index.html"><img class="home center"
 						src="../images/sub/icon/material-home.svg" alt="홈 아이콘"></a>
 					<div class="route_info wrap">
-						<a href="./foodSearchList"><span class="dap1">마이페이지</span></a> <a
-							href="./myIntakeFood"><span class="dap2">나의 하루 예상 식단</span></a>
+						<a href="/diet/dailyDiet"><span class="dap1">섭취식품</span></a> 
+						<a href="/diet/expectedDiet"><span class="dap2">나의 하루 섭취 예상 식단</span></a>
 					</div>
 				</div>
 			</div>
