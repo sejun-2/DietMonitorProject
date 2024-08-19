@@ -29,7 +29,7 @@
                     <div class="box">
                         <a href="/foodSearch">
                             <div class="pic center">
-                                <img src="./images/main/icon/quick_icon1.png" alt="식품으로 찾아보기  아이콘">
+                                <img src="./images/main/icon/quick_icon6.svg" alt="식품으로 찾아보기  아이콘">
                             </div>
                             <div class="info">
                                 식품으로<br>찾아보기
@@ -39,17 +39,17 @@
                     <div class="box">
                         <a href="/diet/dailyDiet">
                             <div class="pic center">
-                                <img src="./images/main/icon/quick_icon2.png" alt="하루섭취 식품등록  아이콘">
+                                <img src="./images/main/icon/quick_icon5.svg" alt="하루섭취 식품등록  아이콘">
                             </div>
                             <div class="info">
-                                하루섭취<br>금일식단
+                                하루섭취<br>금일 식단
                             </div>
                         </a>
                     </div>
                     <div class="box">
                     	<a href="/diet/expectedDiet">
                             <div class="pic center">
-                                <img src="./images/main/icon/quick_icon5.png" alt="나의 영양성분 일일 권장량 아이콘">
+                                <img src="./images/main/icon/quick_icon1.svg" alt="나의 영양성분 일일 권장량 아이콘">
                             </div>
                             <div class="info">
                                 하루 섭취<br>예상 식단
@@ -59,7 +59,7 @@
                     <div class="box">
                         <a href="/mypage/dietProgress">
                             <div class="pic center">
-                                <img src="./images/main/icon/quick_icon3.png" alt="나의 하루 섭취 식품 아이콘">
+                                <img src="./images/main/icon/quick_icon4.svg" alt="나의 하루 섭취 식품 아이콘">
                             </div>
                             <div class="info">
                                 나의 영양성분<br>비교 분석
@@ -69,7 +69,7 @@
                     <div class="box">
                         <a href="/mypage/dietHistory">
                             <div class="pic center">
-                                <img src="./images/main/icon/quick_icon4.png" alt="나의 영양성분 저장 기록 아이콘">
+                                <img src="./images/main/icon/quick_icon2.svg" alt="나의 영양성분 저장 기록 아이콘">
                             </div>
                             <div class="info">
                                 나의 영양성분<br>저장 기록
@@ -79,7 +79,7 @@
                     <div class="box">
                         <a href="/mypage/nutritionStandard">
                             <div class="pic center">
-                                <img src="./images/main/icon/quick_icon5.png" alt="나의 영양성분 일일 권장량 아이콘">
+                                <img src="./images/main/icon/quick_icon3.svg" alt="나의 영양성분 일일 권장량 아이콘">
                             </div>
                             <div class="info">
                                 나의 영양성분<br>일일 권장량
