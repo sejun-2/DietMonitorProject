@@ -1,13 +1,13 @@
 package com.app.validator;
 
+import java.time.LocalDate;
 import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.Errors;
-
 import com.app.dto.user.User;
 import com.app.dto.user.UserValidError;
 import com.app.service.user.UserService;
+import com.app.util.ConvertDateUtil;
 
 public class UserValidator {
 	
@@ -30,6 +30,13 @@ public class UserValidator {
 	
 	public static boolean isBirth(String str) {
         return Pattern.matches("^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))", str);
+    }
+	
+	public static boolean isBirthDateCondition(String str) {
+		
+		LocalDate today = LocalDate.now();
+		LocalDate BirthDate = ConvertDateUtil.convertStringToLocalDateTime(str);
+        return BirthDate.isBefore(today);
     }
 
 	public static boolean validate(User user, UserValidError userValidError) {
@@ -86,6 +93,9 @@ public class UserValidator {
 		if(!isBirth(user.getBirth())) {
 			userValidError.setBirth("정확한 생년월일 6자리를 입력해주세요.");
 			result = false;
+		} else if(!isBirthDateCondition(user.getBirth())) {
+			userValidError.setBirth("생년월일은 금일 이전 날짜로 입력해주세요");
+			result = false;
 		}
 
 		return result;
@@ -96,6 +106,9 @@ public class UserValidator {
 		
 		if(!isBirth(user.getBirth())) {
 			userValidError.setBirth("정확한 생년월일 6자리를 입력해주세요.");
+			result = false;
+		} else if(!isBirthDateCondition(user.getBirth())) {
+			userValidError.setBirth("생년월일은 금일 이전 날짜로 입력해주세요");
 			result = false;
 		}
 
