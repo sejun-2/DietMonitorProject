@@ -8,19 +8,19 @@ $(document).ready(function () {
                 subItems: []
             },
             {
-                text: '하루섭취 식품 등록',
+                text: '하루섭취 금일식단',
                 href: '/diet/dailyDiet',
-                subItems: []
+                subItems: [
+                    { text: '하루섭취 예상식단', href: '/diet/expectedDiet' }
+				]
             },
             {
                 text: '내 정보',
                 href: '/mypage/accountInfo',
                 subItems: [
-                    { text: '내 정보 수정', href: '/mypage/modifyAccount' },
-                    { text: '나의 하루 섭취 식품', href: '/mypage/dietProgress' },
                     { text: '나의 영양성분 저장 기록', href: '/mypage/dietHistory' },
-                    { text: '나의 영양성분 일일 권장량', href: '/diet/dailyDiet' },
-                    { text: '나의 영양성분 비교분석', href: '/mypage/nutritionStandard' }
+                    { text: '나의 영양성분 일일 권장량', href: '/mypage/nutritionStandard' },
+                    { text: '나의 영양성분 비교분석', href: '/mypage/dietProgress' }
                 ]
             }
         ];

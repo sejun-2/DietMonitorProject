@@ -16,7 +16,7 @@
     <script type="text/javascript" src="../script/header.js"></script>
     <script type="text/javascript" src="../script/common.js"></script>
 
-    <title>foodIngredients</title>
+    <title>식품영양성분</title>
 </head>
 <body>
    <header id="header">

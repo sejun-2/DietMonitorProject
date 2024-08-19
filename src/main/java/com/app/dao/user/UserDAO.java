@@ -36,11 +36,5 @@ public interface UserDAO {
 	public List<User> findMemberList(User user);
 
 	public int getMemberCountByAccountNo(int accountNo);
-
-	public int getGenderIdByMemberInfo(User user);
-
 	
-
-	
-
 }

@@ -85,9 +85,11 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="#"><span>섭취식품 등록</span><span class="f_rigth">+</span></a>
+                <li><a href="#"><span>섭취식품</span><span class="f_rigth">+</span></a>
                     <ul class="snd_menu">
-                        <li><a href="/diet/dailyDiet"><span>하루섭취 식품 등록</span><span class="f_rigth">+</span></a>
+                        <li><a href="/diet/dailyDiet"><span>하루섭취 금일식단</span><span class="f_rigth">+</span></a>
+                        </li>
+                        <li><a href="/diet/expectedDiet"><span>하루섭취 예상식단</span><span class="f_rigth">+</span></a>
                         </li>
                     </ul>
                 </li>
@@ -95,15 +97,11 @@
                     <ul class="snd_menu">
                         <li><a href="/mypage/accountInfo"><span>내 정보</span><span class="f_rigth">+</span></a>
                         </li>
-                        <li><a href="/mypage/modifyAccount"><span>내 정보 수정</span><span class="f_rigth">+</span></a>
-                        </li>
-                        <li><a href="/mypage/dietProgress"><span>나의 하루 섭취 식품</span><span class="f_rigth">+</span></a>
-                        </li>
                         <li><a href="/mypage/dietHistory"><span>나의 영양성분 저장 기록</span><span class="f_rigth">+</span></a>
                         </li>
-                        <li><a href="/diet/dailyDiet"><span>나의 영양성분 일일 권장량</span><span class="f_rigth">+</span></a>
+                        <li><a href="/mypage/nutritionStandard"><span>나의 영양성분 일일 권장량</span><span class="f_rigth">+</span></a>
                         </li>
-                        <li><a href="/mypage/nutritionStandard"><span>나의 영양성분 비교분석</span><span class="f_rigth">+</span></a>
+                        <li><a href="/mypage/dietProgress"><span>나의 영양성분 비교분석</span><span class="f_rigth">+</span></a>
                         </li>
                     </ul>
                 </li>
@@ -135,10 +133,10 @@
                                         <li class="lnb lnb_cont menu-placeholder"></li>
                                     </ul>
                                 </li>
-                                <li class="lnb"><a href="/diet/dailyDiet">섭취 식품 등록</a>
+                                <li class="lnb"><a href="/diet/dailyDiet">섭취 식품</a>
                                     <ul class="gnb dap2">
                                         <li class="lnb lnb_tit">
-                                            <p>섭취 식품 등록</p>
+                                            <p>섭취 식품</p>
                                         </li>
                                         <li class="lnb lnb_cont menu-placeholder"></li>
                                     </ul>

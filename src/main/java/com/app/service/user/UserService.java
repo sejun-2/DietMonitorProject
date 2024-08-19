@@ -35,14 +35,5 @@ public interface UserService {
 	public List<User> findMemberList(User user);
 
 	public int getMemberCountByAccountNo(int accountNo);
-
-	public int getGenderIdByMemberInfo(User user);
-
-
-
-
-
-	
-	//public User findLoginUser(User user);
 	
 }

@@ -12,5 +12,6 @@ public class UserValidError {
 	String nickname;
 	String tel;
 	String birth;
+	String pregnantDate;
 	int genderCode;
 }

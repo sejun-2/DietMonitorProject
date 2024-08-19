@@ -19,7 +19,7 @@
 <script type="text/javascript" src="../script/header.js"></script>
 <script type="text/javascript" src="../script/common.js"></script>
 
-<title>foodIngredients</title>
+<title>나의 영양성분 저장 기록 - 식품영양성분</title>
 </head>
 <body>
 	<header id="header">
@@ -34,14 +34,13 @@
 	<section class="sub_title">
 		<div class="inner">
 			<div class="wrap">
-				<h1 class="title">식품으로 찾아보기</h1>
+				<h1 class="title">나의 영양성분 저장 기록</h1>
 				<div class="route wrap">
 					<a href="./index.html"><img class="home center"
 						src="../images/sub/icon/material-home.svg" alt="홈 아이콘"></a>
 					<div class="route_info wrap">
-						<a href="./foodSearchList.html"><span class="dap1">영양정보
-								찾아보기</span></a> <a href="./foodSearchList.html"><span class="dap2">식품으로
-								찾아보기</span></a>
+						<a href="/mypage/accountInfo"><span class="dap1">마이페이지</span></a> 
+						<a href="/mypage/dietHistory"><span class="dap2">나의 영양성분 저장 기록</span></a>
 					</div>
 				</div>
 			</div>

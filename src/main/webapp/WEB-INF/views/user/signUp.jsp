@@ -15,7 +15,7 @@
     <link href="../css/common.css" rel="stylesheet">
     <script type="text/javascript" src="../script/header.js"></script>
 
-    <title>회원가입</title>
+    <title>회원가입 - 식품영양성분</title>
 </head>
 <body>
 	<header id="header">
@@ -47,35 +47,32 @@
                             </ul>
                             <ul class="snb">
                                 <li>
-                                    <a href="/diet/dailyDiet" class="arrow">섭취식품 등록</a>
+                                    <a href="/diet/dailyDiet" class="arrow">섭취식품</a>
                                     <ul>
                                         <li>
-                                            <a href="/diet/dailyDiet" class="on">하루섭취 식품 등록</a>
+                                            <a href="/diet/dailyDiet" class="on">하루섭취 금일식단</a>
+                                        </li>
+                                        <li>
+                                            <a href="/diet/expectedDiet" class="arrow">하루섭취 예상식단</a>
                                         </li>
                                     </ul>
                                 </li>
                             </ul>
                             <ul class="snb">
                                 <li>
-                                    <a href="/mypage/accountInfo" class="on arrow">마이페이지</a>
+                                   <a href="/mypage/accountInfo" class="on arrow">마이페이지</a>
                                     <ul>
                                         <li>
-                                            <a href="/mypage/accountInfo" >내 정보</a>
+                                            <a href="/mypage/accountInfo">내 정보</a>
                                         </li> 
-                                        <li>
-                                            <a href="/mypage/modifyAccount" >내 정보 수정</a>
-                                        </li>
-                                        <li>
-                                            <a href="/mypage/dietProgress" >나의 하루 섭취 식품</a>
-                                        </li>
                                         <li>
                                             <a href="/mypage/dietHistory" >나의 영양성분 저장 기록</a>
                                         </li>
                                         <li>
-                                            <a href="/diet/dailyDiet" >나의 영양성분 일일 권장량</a>
+                                            <a href="/mypage/nutritionStandard" >나의 영양성분 일일 권장량</a>
                                         </li>
                                         <li>
-                                            <a href="/mypage/nutritionStandard">나의 영양성분 비교분석</a>
+                                            <a href="/mypage/dietProgress">나의 영양성분 비교분석</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -152,7 +149,7 @@
 		                    </div>
 		                    <div class="sig_input wrap_s">
 		                        <p>생년월일<span class="red">*</span></p>
-		                        <input type="text" name="birth" placeholder="생년월일 6자리를 입력해주세요" value="${user.birth}">
+		                        <input type="text" name="birth" placeholder="생년월일 8자리를 입력해주세요" value="${user.birth}">
 		                        <c:if test="${ not empty userValidError.birth }">
 									<br/>
 										<span class="red">${userValidError.birth}</span>

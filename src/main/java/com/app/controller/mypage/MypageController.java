@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.app.dto.diet.Diet;
 import com.app.dto.mypage.TotalDietSearchCondition;
-import com.app.dto.user.NutritionStandard;
 import com.app.dto.user.User;
 import com.app.dto.user.UserValidError;
 import com.app.service.mypage.MypageService;
@@ -107,30 +106,6 @@ public class MypageController {
 
 		return "/mypage/dietHistory";
 	}
-	
-	@GetMapping("/test")
-	public String test() {
-		return "mypage/test";
-	}
-	
-	@PostMapping("/test")
-	public String test(Model model, TotalDietSearchCondition t1, HttpSession session) {
-		
-		int accountNo = SessionManager.getAccountNo(session);
-		int memberNo = SessionManager.getMemberNo(session);
-
-		t1.setAccountNo(accountNo);
-		t1.setMemberNo(memberNo);
-
-		System.out.println(t1);
-		List<Diet> totalDietList = mypageService.findTotalDietBySaveHistory(t1);
-		List<Diet> totalDietListSum = mypageService.findTotalDietBySaveHistorySum(t1);
-
-		System.out.println(totalDietList);
-		model.addAttribute("totalDietList", totalDietList);
-		model.addAttribute("totalDietListSum", totalDietListSum);
-		return "mypage/test";
-	}
 
 	@GetMapping("/mypage/accountInfo")
 	public String accountInfo(HttpSession session, Model model) {
@@ -144,8 +119,7 @@ public class MypageController {
 			int months = userService.getMonthsByMemberInfo(accountNo, memberNo);
 			user.setAge(months);
 			
-			int genderId = userService.getGenderIdByMemberInfo(user);
-			String userGenderName = userService.getGenderNameByGenderId(genderId);
+			String userGenderName = userService.getGenderNameByGenderId(user.getGenderId());
 			user.setGenderName(userGenderName);
 			
 			model.addAttribute("user", user);
@@ -189,14 +163,11 @@ public class MypageController {
 		user.setAccountNo((int)session.getAttribute("accountNo"));
 		user.setMemberNo((int)session.getAttribute("memberNo"));
 		
-		
-		//user.setGenderId((int)user.getGenderId());
-		
 		boolean isValid;
 		
 		UserValidError userValidError = new UserValidError();
 		if(user.getMemberNo() == 1) {
-			isValid = UserValidator.validate(user, userValidError);	
+			isValid = UserValidator.validate(user, userValidError);
 		} else {
 			isValid = UserValidator.validateProfile(user, userValidError);
 		}
@@ -242,9 +213,6 @@ public class MypageController {
 	
 	@PostMapping("/addProfile")
 	public String addProfile(@Valid @ModelAttribute User user, HttpSession session, HttpServletResponse response, BindingResult br, Model model) throws IOException {
-		
-		int genderId = userService.getGenderIdByMemberInfo(user);
-		user.setGenderId(genderId);
 		
 		UserValidError userValidError = new UserValidError();
 		
