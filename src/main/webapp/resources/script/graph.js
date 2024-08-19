@@ -74,6 +74,12 @@ function lineChart(grapeData) {
 		            'cholesterol', 'saturatedFat', 'transFat'
 	];
 	
+	const nutrientsKorean = [
+			            'kcal', '물', '단백질', '지방', '탄수화물', '당류', '식이섬유', '칼슘', 
+						'철분함량', '인', '칼륨', '나트륨', '비타민A', '레티놀', '베타카로틴', '티아민', 
+						'리보플라빈', '니아신', '비타민C', '비타민D', '콜레스테롤', '포화지방', '트랜스지방'
+		];
+	
 	
 	
 	let ctx = [];
@@ -103,14 +109,14 @@ function lineChart(grapeData) {
 
 			datasets: [
 				{
-					label: nutrients[i]+" 필요영양소",
+					label: nutrientsKorean[i]+" 필요영양소",
 					data: nutrienStandard,
 					backgroundColor: "rgba(220,220,220,0.2)",
 					borderColor: "rgba(255,0,0,1)",
 					borderWidth: 1
 				},
 				{
-					label: nutrients[i]+" 섭취영양소",
+					label: nutrientsKorean[i]+" 섭취영양소",
 					data: nutrientData,
 					backgroundColor: "rgba(151,187,205,0.2)",
 					borderColor: "rgba(0,0,255,1)",

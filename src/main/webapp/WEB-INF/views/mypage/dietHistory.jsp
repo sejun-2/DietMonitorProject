@@ -63,7 +63,7 @@
 
 	<section class="table_menu">
 		<div class="inner">
-			<c:forEach var="dailySumItem" items="${totalDietListAvg}" varStatus="status">
+			<c:forEach var="dailySumItem" items="${totalDietListSum}" varStatus="status">
 				<div class="today_inner wrap">
 					<div class="wrap">
 						<img src="../images/sub/icon/material-today.svg" alt="">

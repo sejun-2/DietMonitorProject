@@ -14,7 +14,7 @@ public interface MypageDAO {
 	
 	public List<Diet> findTotalDietBySaveHistory(TotalDietSearchCondition totalDietSearchCondition);
 	
-	public List<Diet> findTotalDietBySaveHistoryAvg(TotalDietSearchCondition totalDietSearchCondition);
+	public List<Diet> findTotalDietBySaveHistorySum(TotalDietSearchCondition totalDietSearchCondition);
 	
 	public List<Diet> findTotalDietByMonthSum(TotalDietSearchCondition totalDietSearchCondition);
 	

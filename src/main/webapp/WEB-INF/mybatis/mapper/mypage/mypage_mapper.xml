@@ -16,6 +16,7 @@
 				AND member_no = #{memberNo}				
 			</if>		
 				AND save_date BETWEEN SYSDATE-7 and SYSDATE
+				AND state !=3
 		</where>				
 	</select>
 	
@@ -80,6 +81,7 @@
 				AND member_no = #{memberNo}				
 			</if>		
 				AND save_date BETWEEN SYSDATE-7 and SYSDATE
+				AND state !=3
 				GROUP BY save_date)							
 		</where>				
 	</select>
@@ -146,7 +148,8 @@
 			<if test="memberNo != null and memberNo != '' ">
 				AND member_no = #{memberNo}				
 			</if>		
-				AND save_date BETWEEN SYSDATE-30 and SYSDATE )
+				AND save_date BETWEEN SYSDATE-30 and SYSDATE 
+				AND state !=3 )
 				GROUP BY save_date
 				ORDER BY save_date ASC							
 		</where>
@@ -198,7 +201,7 @@
 				AND member_no = #{memberNo}				
 			</if>		
 			<if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
-				AND save_date BETWEEN TO_DATE(#{startDate}, 'YYYY-MM-DD') AND TO_DATE(#{endDate}, 'YYYY-MM-DD')								
+				AND save_date BETWEEN TO_DATE(#{startDate}, 'YYYY-MM-DD') AND TO_DATE(#{endDate}, 'YYYY-MM-DD')	+ INTERVAL '1' DAY							
 			</if>								
 		</where>
 			) td,
@@ -312,11 +315,12 @@
 		        ) ft
 		<where>
 				td.food_code = ft.food_code
+				AND state !=3
 		</where>
 		ORDER BY td.save_date DESC		
 	</select>
 	
-	<select id="findTotalDietBySaveHistoryAvg" parameterType="TotalDietSearchCondition" resultType="Diet">
+	<select id="findTotalDietBySaveHistorySum" parameterType="TotalDietSearchCondition" resultType="Diet">
 		SELECT
 		    COUNT(*) foodName,
 		    save_date,
@@ -372,16 +376,17 @@
 		    trans_fat
 		    FROM diet
 		<where>
+				state != 3
 			<if test="accountNo != null and accountNo != '' ">
-				account_no = #{accountNo}				
+				AND account_no = #{accountNo}				
 			</if>
 			<if test="memberNo != null and memberNo != '' ">
 				AND member_no = #{memberNo}				
 			</if>		
 			<if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
-				AND save_date BETWEEN TO_DATE(#{startDate}, 'YYYY-MM-DD') AND TO_DATE(#{endDate}, 'YYYY-MM-DD') 							
+				AND save_date BETWEEN TO_DATE(#{startDate}, 'YYYY-MM-DD') AND TO_DATE(#{endDate}, 'YYYY-MM-DD')	+ INTERVAL '1' DAY
 			</if>
-				)
+				 )
 		</where>		
 		GROUP BY save_date
 		ORDER BY save_date DESC				

@@ -39,10 +39,10 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public List<Diet> findTotalDietBySaveHistoryAvg(TotalDietSearchCondition totalDietSearchCondition) {
+	public List<Diet> findTotalDietBySaveHistorySum(TotalDietSearchCondition totalDietSearchCondition) {
 		// TODO Auto-generated method stub
-		List<Diet> totalDietListAvg = mypageDAO.findTotalDietBySaveHistoryAvg(totalDietSearchCondition);
-		return totalDietListAvg;
+		List<Diet> totalDietListSum = mypageDAO.findTotalDietBySaveHistorySum(totalDietSearchCondition);
+		return totalDietListSum;
 	}
 
 	@Override
