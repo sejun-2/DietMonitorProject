@@ -90,13 +90,16 @@
                     	<dd>${food.dataBaseDate}</dd>
                 </dl>
             </div>
-    
-            <div class="box_flex mt10">
-                <div class="btn">
-                    <a href="javascript:;" id="excelButton" onclick="history.back();"
-                        class="button white docs-creator"><span>이전 화면으로</span></a>
-                </div>
-            </div>
+    		<div class="area_btn wrap">
+                    <a href="javascript:;" onclick="history.back();"
+                        class="button lg black docs-creator" ><span>이전화면으로</span></a>
+                   <div class="">
+		                    <a href="javascript:;" id="submit1"
+		                        class="button lg black docs-creator mr10" ><span>예상식단 추가</span></a>
+		                    <a href="javascript:;" id="submit2"
+		                        class="button lg black docs-creator" ><span>금일식단 추가</span></a>
+                   </div>
+              </div>
     		<form id="frm_diet" action="" method="POST">
     		<input type="hidden" name="foodCode" value="${food.foodCode}">
             <div data-skin-food="simple" class="mt20">
@@ -143,14 +146,7 @@
                     </div>
                 </div>
     
-                <div class="area_btn">
-                    <a href="javascript:;" onclick="history.back();"
-                        class="button lg black docs-creator" style="margin: 0 20px 30px 20px"><span>이전화면으로</span></a>
-                    <a href="javascript:;" id="submit1"
-                        class="button lg black docs-creator" style="margin: 0 20px 30px 20px"><span>예상식단 추가</span></a>
-                    <a href="javascript:;" id="submit2"
-                        class="button lg black docs-creator" style="margin: 0 20px 30px 20px"><span>금일식단 추가</span></a>
-                </div>
+                
                 
             </div>
             </form>
@@ -176,13 +172,17 @@
 	    		nutrientShow();
 	    	});
 	    	
+	    	$('input[name=foodIntake]').keyup(function(){
+	    		nutrientShow();
+	    	});
+	    	
 	    	$('#submit1').click(function(){    		
-	    		$('#frm_diet').attr("action", "/preIntakeFood");
+	    		$('#frm_diet').attr("action", "/addExpectedDiet");
 				$('#frm_diet').submit();
 			});
 	    	
 	    	$('#submit2').click(function(){    		
-	    		$('#frm_diet').attr("action", "/registerDiet");
+	    		$('#frm_diet').attr("action", "/addDailyDiet");
 				$('#frm_diet').submit();
 			});
 	    });
@@ -206,21 +206,42 @@
 	        let nutrientValue;
 	        let nutrientContent;
 	        let nutrientRecPer;
-	         
-	        <c:forEach var="item" items="${nc}" varStatus="status">
-	       	
-	        	nutrientValue = food[${status.index}];
-	        	nutrientContent = nutrientValue * foodAmountPer;
 	        
-	        	$('.nutrient-content').eq(${status.index}).text(nutrientValue.toFixed(2));
-	        	$('.nutrient-result').eq(${status.index}).text(nutrientContent.toFixed(2));
-	       	 	$('.nutrient-id').eq(${status.index}).attr("name", nutrients[${status.index}]);            
-	        	$('.nutrient-id').eq(${status.index}).val(nutrientContent.toFixed(2));
-	        
-	        	nutrientRecPer = ${item.intakeRec} == 0 ? '-' : (nutrientContent / ${item.intakeRec} * 100).toFixed(2) + '%';
-	        	$('.nutrient-rec-per').eq(${status.index}).text(nutrientRecPer);
-	        
-	    	</c:forEach>
+	        <c:if test="${not empty nc}">
+		        <c:forEach var="item" items="${nc}" varStatus="status">
+		       	
+		        	nutrientValue = food[${status.index}];
+		        	nutrientContent = nutrientValue * foodAmountPer;
+		        
+		        	$('.nutrient-content').eq(${status.index}).text(nutrientValue.toFixed(2));
+		        	$('.nutrient-result').eq(${status.index}).text(nutrientContent.toFixed(2));
+		       	 	$('.nutrient-id').eq(${status.index}).attr("name", nutrients[${status.index}]);            
+		        	$('.nutrient-id').eq(${status.index}).val(nutrientContent.toFixed(2));
+		        
+		        	nutrientRecPer = ${item.intakeRec} == 0 ? '-' : (nutrientContent / ${item.intakeRec} * 100).toFixed(2) + '%';
+		        	$('.nutrient-rec-per').eq(${status.index}).text(nutrientRecPer);
+		        
+		    	</c:forEach>
+		    </c:if>
+		    
+		    console.log('aa');
+		    
+		    <c:if test="${empty nc}">
+		        <c:forEach var="item" begin="0" end="22" step="1" varStatus="status">
+		       	
+		        	nutrientValue = food[${status.index}];
+		        	nutrientContent = nutrientValue * foodAmountPer;
+		        	
+		        	console.log(nutrientContent);
+		        
+		        	$('.nutrient-content').eq(${status.index}).text(nutrientValue.toFixed(2));
+		        	$('.nutrient-result').eq(${status.index}).text(nutrientContent.toFixed(2));
+		        
+		        	nutrientRecPer = '-';
+		        	$('.nutrient-rec-per').eq(${status.index}).text(nutrientRecPer);
+		        
+		    	</c:forEach>
+		    </c:if>
 	    }    
     </script>
 </body>

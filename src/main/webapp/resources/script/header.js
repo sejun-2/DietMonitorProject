@@ -4,23 +4,23 @@ $(document).ready(function () {
         const items = [
             {
                 text: '식품으로 찾아보기',
-                href: 'foodSearchList.html',
+                href: '/foodSearch',
                 subItems: []
             },
             {
                 text: '하루섭취 식품 등록',
-                href: 'foodRegister.html',
+                href: '/diet/dailyDiet',
                 subItems: []
             },
             {
                 text: '내 정보',
-                href: 'myInfo.html',
+                href: '/mypage/accountInfo',
                 subItems: [
-                    { text: '내 정보 수정', href: 'myInfoModify.html' },
-                    { text: '나의 하루 섭취 식품', href: 'myIntakeFood.html' },
-                    { text: '나의 영양성분 저장 기록', href: 'mySaveHistory.html' },
-                    { text: '나의 영양성분 일일 권장량', href: 'myRecommend.html' },
-                    { text: '나의 영양성분 비교분석', href: 'myAnalyze.html' }
+                    { text: '내 정보 수정', href: '/mypage/modifyAccount' },
+                    { text: '나의 하루 섭취 식품', href: '/mypage/dietProgress' },
+                    { text: '나의 영양성분 저장 기록', href: '/mypage/dietHistory' },
+                    { text: '나의 영양성분 일일 권장량', href: '/diet/dailyDiet' },
+                    { text: '나의 영양성분 비교분석', href: '/mypage/nutritionStandard' }
                 ]
             }
         ];
@@ -50,13 +50,16 @@ $(document).ready(function () {
 
     generateMenuItems();
     
+     $("#header .profile_inner").hide();
+     
+    $('#header .profile_inner').on('click', function(event) {
+	    if ($(event.target).is('#header .profile_inner')) {
+	       $('#header .profile_inner').hide();
+	    }
+	 });
     
-    
-    
-    
-    $("#header .profile").hide();
     $("#header .top_nav .gnb .lnb.main_profile").on('click', function(){
-        $("#header .profile").toggle();
+        $("#header .profile_inner").toggle();
     }); 
 
 
@@ -140,12 +143,14 @@ $(document).ready(function () {
         $('#header .h_moblie').addClass('active');
         $('#header .fa-times').addClass('active');
         $('#header .fa-bars').addClass('active');
+        $('#header .top_nav').show();
     });
 
     $('#header .fa-times').click(function () {
         $('#header .h_moblie').removeClass('active');
         $('#header .fa-times').removeClass('active');
         $('#header .fa-bars').removeClass('active');
+        $('#header .top_nav').hide();
     });
 
     //모바일 메뉴 아코디언
@@ -157,7 +162,24 @@ $(document).ready(function () {
         $(this).next($('.trd_menu')).slideToggle('fast');
     })
     
-    
+    var activeText = $('.snb > li > a.on').text();
+    $('.snb_tit h2').text(activeText);
+    $('.snb > li > ul').hide();
+    $('.snb > li > a.on').siblings('ul').show();
+
+    $('.snb > li > a').click(function(event) {
+        event.preventDefault();
+
+        $('.snb > li > a').removeClass('on');
+
+        $(this).addClass('on');
+        $(this).siblings('ul').slideToggle(200);
+
+        $('.snb > li > ul').not($(this).siblings('ul')).slideUp(200); 
+
+        var clickedText = $(this).text();
+        $('.snb_tit h2').text(clickedText);
+    });
     
 
 });

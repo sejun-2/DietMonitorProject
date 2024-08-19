@@ -24,7 +24,68 @@
         </div>
     </header>
 
-
+<section id="container" class="content">
+        <div class="inner">
+            <div class="wrap">
+                <div class="left">
+                    <div class="snb_wrap web">
+                        <div class="snb_tit">
+                            <div class="title">
+                                <h2></h2>
+                            </div>
+                        </div>
+                        <nav>
+                            <ul class="snb">
+                                <li>
+                                    <a href="/foodSearchList" class="arrow docs-creator">영양정보 찾아보기</a>
+                                    <ul>
+                                        <li>
+                                            <a href="/foodSearchList" class="on docs-creator">식품으로 찾아보기</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="snb">
+                                <li>
+                                    <a href="/diet/dailyDiet" class="arrow">섭취식품 등록</a>
+                                    <ul>
+                                        <li>
+                                            <a href="/diet/dailyDiet" class="on">하루섭취 식품 등록</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="snb">
+                                <li>
+                                    <a href="/mypage/accountInfo" class="on arrow">마이페이지</a>
+                                    <ul>
+                                        <li>
+                                            <a href="/mypage/accountInfo" >내 정보</a>
+                                        </li> 
+                                        <li>
+                                            <a href="/mypage/modifyAccount" >내 정보 수정</a>
+                                        </li>
+                                        <li>
+                                            <a href="/mypage/dietProgress" >나의 하루 섭취 식품</a>
+                                        </li>
+                                        <li>
+                                            <a href="/mypage/dietHistory" >나의 영양성분 저장 기록</a>
+                                        </li>
+                                        <li>
+                                            <a href="/diet/dailyDiet" >나의 영양성분 일일 권장량</a>
+                                        </li>
+                                        <li>
+                                            <a href="/mypage/nutritionStandard">나의 영양성분 비교분석</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            
+                        </nav>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="container_box">
     <section class="signup">
         <div class="inner">
             <div class="sig_inner">
@@ -72,17 +133,17 @@
 		                    </div>
 		                    <div class="sig_input wrap_s">
 		                        <p>프로필 닉네임<span class="red">*</span></p>
-		                        <input type="text" name="nickname" placeholder="비밀번호를 입력해 주세요" value="${user.nickname}">
-		                        <c:if test="">
+		                        <input type="text" name="nickname" placeholder="닉네임을 입력해 주세요" value="${user.nickname}">
+		                        <c:if test="${ not empty userValidError.nickname }">
 									<br/>
-										<span class="red"></span>
+										<span class="red">${userValidError.nickname}</span>
 									<br/>
 								</c:if>
 		                    </div>
 						
 							<div class="sig_input wrap_s">
 		                        <p>전화번호<span class="red">*</span></p>
-		                        <input type="tel" name="tel" placeholder="전화번호를 입력해주세요" value="${user.tel}">
+		                        <input type="tel" name="tel" placeholder="-를 제외한 전화번호 11자리를 입력해주세요" value="${user.tel}">
 		                        <c:if test="${ not empty userValidError.tel }">
 									<br/>
 										<span class="red">${userValidError.tel}</span>
@@ -114,6 +175,11 @@
 		                </div>
                 		<button class="common_btn" type="submit">가입하기</button>
                 </form>
+            </div>
+        </div>
+    </section>
+                      </div>
+                </div>
             </div>
         </div>
     </section>

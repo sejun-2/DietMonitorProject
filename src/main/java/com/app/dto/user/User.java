@@ -17,5 +17,5 @@ public class User {
 	int age;
 	String genderName;
 	int iconId;
+	String pregnantDate;
 }
-

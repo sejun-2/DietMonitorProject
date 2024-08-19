@@ -9,6 +9,7 @@ public class UserValidError {
 	String pw;
 	String chkPw;
 	String name;
+	String nickname;
 	String tel;
 	String birth;
 	int genderCode;

@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link href="./css/base.css" rel="stylesheet">
     <link href="./css/common.css" rel="stylesheet">
@@ -112,6 +113,7 @@
             <p class="title_exp">서비스 메뉴들의 상세설명을 확인하세요</p>
             <div class="swiper-container service_list">
                 <div class="swiper-wrapper">
+                    <!-- 슬라이드 1 -->
                     <div class="swiper-slide wrap">
                         <div class="pic">
                             <img src="./images/main/service_img01.jpg" alt="서비스 상세설명 이미지">
@@ -121,43 +123,82 @@
                                 <div class="slide_title_inner wrap">
                                     <p class="slide_title">식품으로 찾아보기</p>
                                     <div class="pagenation">
-                                        <div class="pn_num wrap">
-                                            <div class="num">01</div>
-                                            <div class="num_icon">
-                                                <img src="./images/main/icon/akar-circle-alert-fill.svg"
-                                                    alt="페이지네이션 아이콘">
+                                        <div class="pn_num wrap swiper-pagination-custom"><div class="num">01</div><div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="현재 위치 아이콘"></div><div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="페이지네이션 아이콘"></div><div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="페이지네이션 아이콘"></div></div>
+                                        <div class="pn_inner wrap">
+                                            <div class="prev" tabindex="0" role="button" aria-label="Previous slide">
+                                                <img src="./images/main/icon/akar-chevron-left-small.svg" alt="이전 이동 아이콘">
                                             </div>
-                                            <div class="num_icon">
-                                                <img src="./images/main/icon/akar-circle-alert-fill.svg"
-                                                    alt="페이지네이션 아이콘">
+                                            <div class="stop">
+                                                <img src="./images/main/icon/akar-two-line-vertical.svg" alt="멈춤 아이콘">
                                             </div>
-                                            <div class="num_icon">
-                                                <img src="./images/main/icon/akar-circle-alert-fill.svg"
-                                                    alt="페이지네이션 아이콘">
-                                            </div>
-                                            <div class="pn_inner wrap">
-                                                <div class="prev">
-                                                    <img src="./images/main/icon/akar-chevron-left-small.svg"
-                                                        alt="이전 이동 아이콘">
-                                                </div>
-                                                <div class="stop">
-                                                    <img src="./images/main/icon/akar-two-line-vertical.svg"
-                                                        alt="멈춤 아이콘">
-                                                </div>
-                                                <!-- <div class="start">
-                                                    <img src="./images/main/icon/akar-ion-play.svg" alt="재생 아이콘">
-                                                </div> -->
-                                                <div class="next">
-                                                    <img src="./images/main/icon/akar-chevron-right-small.svg"
-                                                        alt="다음 이동 아이콘">
-                                                </div>
+                                            <div class="next" tabindex="0" role="button" aria-label="Next slide">
+                                                <img src="./images/main/icon/akar-chevron-right-small.svg" alt="다음 이동 아이콘">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 <p class="explanation">
                                     '영양성분으로 찾아보기' 메뉴를 이용하면 영양성분별 함량이 높은 식품을 확인할 수 있어요<br> 궁금한 영양성분명을 검색해보세요
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 추가된 슬라이드들 -->
+                    <div class="swiper-slide wrap">
+                        <div class="pic">
+                            <img src="./images/main/service_img01.jpg" alt="서비스 상세설명 이미지">
+                        </div>
+                        <div class="info">
+                            <div class="info_inner">
+                                <div class="slide_title_inner wrap">
+                                    <p class="slide_title">영양성분으로 찾아보기</p>
+                                    <div class="pagenation">
+                                        <div class="pn_num wrap swiper-pagination-custom"><div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="현재 위치 아이콘"></div><div class="num">02</div><div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="페이지네이션 아이콘"></div><div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="페이지네이션 아이콘"></div></div>
+                                        <div class="pn_inner wrap">
+                                            <div class="prev" tabindex="0" role="button" aria-label="Previous slide">
+                                                <img src="./images/main/icon/akar-chevron-left-small.svg" alt="이전 이동 아이콘">
+                                            </div>
+                                            <div class="stop">
+                                                <img src="./images/main/icon/akar-two-line-vertical.svg" alt="멈춤 아이콘">
+                                            </div>
+                                            <div class="next" tabindex="0" role="button" aria-label="Next slide">
+                                                <img src="./images/main/icon/akar-chevron-right-small.svg" alt="다음 이동 아이콘">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="explanation">
+                                    원하는 영양성분별로 식품을 찾아보세요.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 추가된 슬라이드 3 -->
+                    <div class="swiper-slide wrap">
+                        <div class="pic">
+                            <img src="./images/main/service_img01.jpg" alt="서비스 상세설명 이미지">
+                        </div>
+                        <div class="info">
+                            <div class="info_inner">
+                                <div class="slide_title_inner wrap">
+                                    <p class="slide_title">3333333</p>
+                                    <div class="pagenation">
+                                        <div class="pn_num wrap swiper-pagination-custom"><div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="현재 위치 아이콘"></div><div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="페이지네이션 아이콘"></div><div class="num">03</div><div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="페이지네이션 아이콘"></div></div>
+                                        <div class="pn_inner wrap">
+                                            <div class="prev" tabindex="0" role="button" aria-label="Previous slide">
+                                                <img src="./images/main/icon/akar-chevron-left-small.svg" alt="이전 이동 아이콘">
+                                            </div>
+                                            <div class="stop">
+                                                <img src="./images/main/icon/akar-two-line-vertical.svg" alt="멈춤 아이콘">
+                                            </div>
+                                            <div class="next" tabindex="0" role="button" aria-label="Next slide">
+                                                <img src="./images/main/icon/akar-chevron-right-small.svg" alt="다음 이동 아이콘">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="explanation">
+                                    22233333333333333333원하는 영양성분별로 식품을 찾아보세요.
                                 </p>
                             </div>
                         </div>
@@ -165,10 +206,63 @@
                 </div>
             </div>
         </div>
-
     </section>
 
 
+    <script>
+        $(function () {
+            /* 서비스 상세 설명 슬라이드 */
+            if ($('.service_detail .swiper-container').length) {
+                var serviceSwiper = new Swiper('.service_detail .swiper-container', {
+                    loop: true,
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    speed: 1000,
+                    spaceBetween: 50,
+                    navigation: {
+                        nextEl: '.service_detail .next',
+                        prevEl: '.service_detail .prev',
+                    },
+                    pagination: {
+                        el: '.service_detail .pn_num',
+                        type: 'custom',
+                        renderCustom: function (swiper, current, total) {
+                            var paginationHtml = '';
+                            for (var i = 1; i <= total; i++) {
+                                var idx = i < 10 ? '0' + i : i;
+                                if (i === current) {
+                                    paginationHtml += '<div class="num">' + idx + '</div><div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="현재 위치 아이콘"></div>';
+                                } else {
+                                    paginationHtml += '<div class="num_icon"><img src="./images/main/icon/akar-circle-alert-fill.svg" alt="페이지네이션 아이콘"></div>';
+                                }
+                            }
+                            return paginationHtml;
+                        },
+                    },
+                });
+
+                // Swiper 초기화
+                serviceSwiper.init();
+
+                // 재생 및 정지 버튼
+                $('.service_detail .stop').click(function () {
+                    var isRunning = serviceSwiper.autoplay.running;
+
+                    if (isRunning) {
+                        serviceSwiper.autoplay.stop();
+                        $(this).find('img').attr('src', './images/main/icon/akar-ion-play.svg'); // 아이콘을 '재생'으로 변경
+                    } else {
+                        serviceSwiper.autoplay.start();
+                        $(this).find('img').attr('src', './images/main/icon/akar-two-line-vertical.svg'); // 아이콘을 '멈춤'으로 변경
+                    }
+                });
+            }
+        });
+
+
+    </script>
 
     <jsp:include page="./common/footer.jsp" />
 </body>

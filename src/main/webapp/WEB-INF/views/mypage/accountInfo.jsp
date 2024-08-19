@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -31,35 +31,101 @@
 		</div>
 	</header>
 
+    <section id="container" class="content">
+        <div class="inner">
+            <div class="wrap">
+                <div class="left">
+                    <div class="snb_wrap web">
+                        <div class="snb_tit">
+                            <div class="title">
+                                <h2></h2>
+                            </div>
+                        </div>
+                        <nav>
+                            <ul class="snb">
+                                <li>
+                                    <a href="/foodSearch" class="arrow">영양정보 찾아보기</a>
+                                    <ul>
+                                        <li>
+                                            <a href="/foodSearch" class="on">식품으로 찾아보기</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="snb">
+                                <li>
+                                    <a href="/diet/dailyDiet" class="arrow">섭취식품 등록</a>
+                                    <ul>
+                                        <li>
+                                            <a href="/diet/dailyDiet" class="on">하루섭취 식품 등록</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="snb">
+                                <li>
+                                    <a href="/mypage/accountInfo" class="on arrow">마이페이지</a>
+                                    <ul>
+                                        <li>
+                                            <a href="/mypage/accountInfo" class="on">내 정보</a>
+                                        </li> 
+                                        <li>
+                                            <a href="/mypage/modifyAccount" >내 정보 수정</a>
+                                        </li>
+                                        <li>
+                                            <a href="/mypage/dietProgress" >나의 하루 섭취 식품</a>
+                                        </li>
+                                        <li>
+                                            <a href="/mypage/dietHistory" >나의 영양성분 저장 기록</a>
+                                        </li>
+                                        <li>
+                                            <a href="/diet/dailyDiet" >나의 영양성분 일일 권장량</a>
+                                        </li>
+                                        <li>
+                                            <a href="/mypage/nutritionStandard">나의 영양성분 비교분석</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            
+                        </nav>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="container_box">
+    <section class="signup sig_modify">
+        <div class="inner">
+            <div class="sig_inner">
+                <div class="sig_inputs">
+                    <div class="sig_title">내 정보</div>
 
-	<section class="signup sig_modify">
-		<div class="inner">
-			<div class="sig_inner">
-				<div class="sig_inputs">
-					<div class="sig_title">내 정보</div>
-
-					<div class="sig_input wrap_s">
+					<div class="sig_input wrap_s mt20">
                         <p>프로필</p>
                         <p class="information profiles">
                         	<img src="../images/header/profile/profile_${user.iconId}.png">
                         </p>
                     </div>
-                    <div class="sig_input active wrap_s">
-                        <p>아이디</p>
-                        <p class="information">${user.email}</p>
-                    </div>
-                    <div class="sig_input wrap_s">
-                        <p>이름</p>
-                        <p class="information">${user.name}</p>
-                    </div>
+                    
+                    <c:if test="${user.memberNo eq 1}">
+	                    <div class="sig_input active wrap_s">
+	                        <p>이메일</p>
+	                        <p class="information">${user.email}</p>
+	                    </div>
+	                    <div class="sig_input wrap_s">
+	                        <p>이름</p>
+	                        <p class="information">${user.name}</p>
+	                    </div>
+                    </c:if>
                     <div class="sig_input wrap_s">
                         <p>닉네임</p>
                         <p class="information">${user.nickname}</p>
                     </div>
-                    <div class="sig_input wrap_s">
-                        <p>전화번호</p>
-                        <p class="information">${user.tel}</p>
-                    </div>
+                    <c:if test="${user.memberNo eq 1}">
+	                    <div class="sig_input wrap_s">
+	                        <p>전화번호</p>
+	                        <p class="information">${user.tel}</p>
+	                    </div>
+                    </c:if>
                     <div class="sig_input wrap_s">
                         <p>생년월일</p>
                         <p class="information">${user.birth}</p>
@@ -78,6 +144,16 @@
             </div>
         </div>
     </section>
+                       </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</div>
+</div>
+</div>
+</section>
 
 	
 

@@ -71,6 +71,7 @@ input::placeholder {
     flex: auto;
     min-height: 500px;
     margin: 0 auto;
+    margin-bottom: 150px;
 }
 
 .area_system_snb ~ #content {
@@ -2896,7 +2897,7 @@ input.button:focus{opacity:0.8; color:#fff !important; box-shadow:2px 5px 10px r
 .button.white:before{background-color:#41464e;}
 .button.white:hover,
 .button.white:focus{border-color:#25282d; color:#fff !important;}
-.button.lg{min-width:150px; min-height:45px; font-size:17px; font-weight:400; letter-spacing:-0.5px; background: white; margin-bottom: 80px;}
+.button.lg{min-width:150px; min-height:45px; font-size:17px; font-weight:400; letter-spacing:-0.5px; background: white; margin-top: 20px;}
 .button.sm{min-width:60px; min-height:23px; padding:0 10px; font-size:13px;}
 
 /* 그리드 버튼 */

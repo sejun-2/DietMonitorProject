@@ -19,7 +19,7 @@
 <link href="../css/common.css" rel="stylesheet">
 <script type="text/javascript" src="../script/header.js"></script>
 
-<title>회원가입</title>
+<title>프로필 관리</title>
 </head>
 <body>
 	<header id="header">
@@ -28,7 +28,68 @@
 		</div>
 	</header>
 
-
+<section id="container" class="content">
+        <div class="inner">
+            <div class="wrap">
+                <div class="left">
+                    <div class="snb_wrap web">
+                        <div class="snb_tit">
+                            <div class="title">
+                                <h2></h2>
+                            </div>
+                        </div>
+                        <nav>
+                            <ul class="snb">
+                                <li>
+                                    <a href="/foodSearch" class="arrow docs-creator">영양정보 찾아보기</a>
+                                    <ul>
+                                        <li>
+                                            <a href="/foodSearch" class="on docs-creator">식품으로 찾아보기</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="snb">
+                                <li>
+                                    <a href="/registerDiet" class="arrow">섭취식품 등록</a>
+                                    <ul>
+                                        <li>
+                                            <a href="/registerDiet" class="on">하루섭취 식품 등록</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="snb">
+                                <li>
+                                    <a href="/mypage/accountInfo" class="on arrow">마이페이지</a>
+                                    <ul>
+                                        <li>
+                                            <a href="/mypage/accountInfo" >내 정보</a>
+                                        </li> 
+                                        <li>
+                                            <a href="/mypage/modifyAccount" >내 정보 수정</a>
+                                        </li>
+                                        <li>
+                                            <a href="/mypage/dietProgress" >나의 하루 섭취 식품</a>
+                                        </li>
+                                        <li>
+                                            <a href="/mypage/dietHistory" >나의 영양성분 저장 기록</a>
+                                        </li>
+                                        <li>
+                                            <a href="/diet/dailyDiet" >나의 영양성분 일일 권장량</a>
+                                        </li>
+                                        <li>
+                                            <a href="/mypage/nutritionStandard">나의 영양성분 비교분석</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            
+                        </nav>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="container_box">
 	<section class="signup">
 		<div class="inner">
 			<div class="sig_inner">
@@ -45,11 +106,19 @@
 						<div class="sig_input wrap_s">
 							<p>프로필 선택<span class="red">*</span></p>
 							<div class="cc-selector">
-								<c:forEach var="i" begin="1" end="5" step="1">
-									<input style="display: none;" id="profile${i}" type="radio" name="iconId" value="${i}" /> 
-									<label class="drinkcard-cc profiles" for="profile${i}">
-										<img src="../images/header/profile/profile_${i}.png">
-									</label>
+								<c:forEach var="i" begin="1" end="9" step="1"  varStatus="status">
+	    							<c:if test="${status.count == 1}">
+										<input style="display: none;" id="profile${i}" type="radio" name="iconId" value="${i}" checked/> 
+										<label class="drinkcard-cc profiles" for="profile${i}">
+											<img src="../images/header/profile/profile_${i}.png">
+										</label>
+									</c:if>
+									<c:if test="${status.count != 1}">
+										<input style="display: none;" id="profile${i}" type="radio" name="iconId" value="${i}"/> 
+										<label class="drinkcard-cc profiles" for="profile${i}">
+											<img src="../images/header/profile/profile_${i}.png">
+										</label>
+									</c:if>
 								</c:forEach>
 							</div>
 						</div>						
@@ -90,10 +159,10 @@
 						class="new_tbl_board tb01 mt20 mb60">
 						<colgroup>
 							<col style="width: 2%;">
-							<col style="width: 50%;">
+							<col style="width: 45%;">
 							<col style="width: 15%;">
 							<col style="width: 15%;">
-							<col style="width: auto;">
+							<col style="width: 30%;">
 						</colgroup>
 						<thead>
 							<tr>
@@ -132,6 +201,11 @@
 		</div>
 
 	</section>
+	</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 	<jsp:include page="../common/footer.jsp" />
 	

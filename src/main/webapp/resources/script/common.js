@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	
     $(".search_cont ul.tab li.lnb").on('click', function() {
         let index = $(".search_cont ul.tab li.lnb").index(this);
       
@@ -142,7 +143,27 @@ $(document).ready(function() {
         updateLinearBoxPosition();
     });
 
+	const slideContainer = document.querySelector('.swiper-wrapper');
+    const slideBoxes = document.querySelectorAll('.swiper-slide');
+    const slidePrev = document.querySelector('.slide_prev img');
+    const slideNext = document.querySelector('.slide_next img');
 
+    let currentSlide = 0;
+    const slideWidth = slideBoxes[0].clientWidth + 60; // 박스 너비 + margin-right
+
+    slideNext.addEventListener('click', () => {
+        if (currentSlide < slideBoxes.length - 1) {
+            currentSlide++;
+            slideContainer.style.transform = `translateX(-${slideWidth * currentSlide}px)`;
+        }
+    });
+
+    slidePrev.addEventListener('click', () => {
+        if (currentSlide > 0) {
+            currentSlide--;
+            slideContainer.style.transform = `translateX(-${slideWidth * currentSlide}px)`;
+        }
+    });
 
     
 });

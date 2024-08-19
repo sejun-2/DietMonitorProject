@@ -85,10 +85,10 @@
 				</div>
 			</div>
 
-			<div class="slide_cont_box wrap">
-				<div class="linear_box"></div>
-				<div class="slide_box wrap">
-					<div class="box">
+			<div class="slide_cont_box swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="slide_box wrap">
+                        <div class="box swiper-slide">
 						<div class="title_food">에너지(kcal)</div>
 						<div class="info">
 							<div class="info_title">칼로리 섭취가 부족할 경우</div>
@@ -100,7 +100,7 @@
 				</div>
 
 				<div class="slide_box wrap">
-					<div class="box">
+					<div class="box swiper-slide">
 						<div class="title_food">탄수화물(g)</div>
 						<div class="info">
 							<div class="info_title">탄수화물 섭취가 부족할 경우</div>
@@ -110,20 +110,7 @@
 						<div class="more">상세보기</div>
 					</div>
 				</div>
-
-				<div class="slide_box wrap">
-					<div class="box">
-						<div class="title_food">당류(g)</div>
-						<div class="info">
-							<div class="info_title">당 섭취가 부족할 경우</div>
-							<div class="info_detail">당류 부족으로 인해 저혈당증이 발생할 수 있습니다. 저혈당증은 혈액 속 포도당 농도가 필요량보다 부족한 상태를 말하며, 
-								혈당이 70mg/dL 이하로 떨어지면 에너지가 부족하다는 신호로 증상이 나타납니다....</div>
-						</div>
-						<div class="more">상세보기</div>
-					</div>
-				</div>
 			</div>
-
 		</div>
 	</section>
 
@@ -183,6 +170,79 @@
 			<div class="wrap_s">
 				<c:forEach var="i" begin="1" end="23">
 					<div class="graphBox" style="width: 600px; height: 400px;">
+						<canvas class="lineCanvas"></canvas>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+	</div>
+
+	<!-- ---------------------DB그래프-------------------------- -->
+
+	<script type="text/javascript">
+		//JSP에서 값을 JavaScript 변수로 전달
+
+		var grapeData = [];
+
+		var nutrienStandard = [];		
+		<c:forEach var="Standard" items="${findTotalDietByStandard}">
+			<c:if test="${Standard.foodIntake == 9999}">
+				nutrienStandard.push(0);
+			</c:if>
+			<c:if test="${Standard.foodIntake != 9999}">
+				nutrienStandard.push('${Standard.foodIntake}');
+			</c:if>
+		</c:forEach>
+		
+		grapeData.push(nutrienStandard);
+		
+		nutrientIntakePrograss = [];
+		
+		<c:forEach var="item" items="${totalDietListMonthSum}">
+			var nutrientIntakeItem = {
+				saveDate : '${item.saveDate}',
+				kcal : '${item.kcal}',
+				water : '${item.water}',
+				protein : '${item.protein}',
+				fat : '${item.fat}',
+				batch : '${item.batch}',
+				carbohydrate : '${item.carbohydrate}',
+				sugars : '${item.sugars}',
+				dietaryFiber : '${item.dietaryFiber}',
+				calcium : '${item.calcium}',
+				ironContent : '${item.ironContent}',
+				phosphorus : '${item.phosphorus}',
+				potassium : '${item.potassium}',
+				sodium : '${item.sodium}',
+				vitaminA : '${item.vitaminA}',
+				retinol : '${item.retinol}',
+				betaCarotene : '${item.betaCarotene}',
+				thiamine : '${item.thiamine}',
+				riboflavin : '${item.riboflavin}',
+				niacin : '${item.niacin}',
+				vitaminC : '${item.vitaminC}',
+				vitaminD : '${item.vitaminD}',
+				cholesterol : '${item.cholesterol}',
+				saturatedFat : '${item.saturatedFat}',
+				transFat : '${item.transFat}'
+			};	
+			nutrientIntakePrograss.push(nutrientIntakeItem);
+		</c:forEach>
+		
+		grapeData.push(nutrientIntakePrograss);		
+		
+		document.addEventListener('DOMContentLoaded', function() {			
+			lineChart(grapeData); //한달
+		});
+	</script>
+
+	<!-- ---------------------그래프-------------------------- -->
+
+	<div class="graph">
+		<div class="inner">
+			<div class="wrap">
+				<c:forEach var="i" begin="1" end="23">
+					<div class="graphBox" style="width: 48%; height: 400px;">
 						<canvas class="lineCanvas"></canvas>
 					</div>
 				</c:forEach>
