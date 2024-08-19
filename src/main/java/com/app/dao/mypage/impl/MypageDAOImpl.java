@@ -44,10 +44,10 @@ public class MypageDAOImpl implements MypageDAO {
 
 
 	@Override
-	public List<Diet> findTotalDietBySaveHistoryAvg(TotalDietSearchCondition totalDietSearchCondition) {
+	public List<Diet> findTotalDietBySaveHistorySum(TotalDietSearchCondition totalDietSearchCondition) {
 		// TODO Auto-generated method stub
-		List<Diet> totalDietListAvg = sqlSessionTemplate.selectList("mypage_mapper.findTotalDietBySaveHistoryAvg", totalDietSearchCondition);
-		return totalDietListAvg;
+		List<Diet> totalDietListSum = sqlSessionTemplate.selectList("mypage_mapper.findTotalDietBySaveHistorySum", totalDietSearchCondition);
+		return totalDietListSum;
 	}
 
 
