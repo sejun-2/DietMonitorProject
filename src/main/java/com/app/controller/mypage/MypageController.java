@@ -140,6 +140,7 @@ public class MypageController {
 			int memberNo = SessionManager.getMemberNo(session);
 			// 사용자 정보를 조회
 			User user = userService.findUserByMemberInfo(accountNo, memberNo);
+			System.out.println(user);
 			// 사용자의 나이 계산			
 			int months = userService.getMonthsByMemberInfo(accountNo, memberNo);
 			user.setAge(months);
@@ -147,6 +148,8 @@ public class MypageController {
 			int genderId = user.getGenderId();
 			String userGenderName = userService.getGenderNameByGenderId(genderId);
 			user.setGenderName(userGenderName);
+			
+			
 			
 			model.addAttribute("user", user);
 			
@@ -189,14 +192,11 @@ public class MypageController {
 		user.setAccountNo((int)session.getAttribute("accountNo"));
 		user.setMemberNo((int)session.getAttribute("memberNo"));
 		
-		
-		//user.setGenderId((int)user.getGenderId());
-		
 		boolean isValid;
 		
 		UserValidError userValidError = new UserValidError();
 		if(user.getMemberNo() == 1) {
-			isValid = UserValidator.validate(user, userValidError);	
+			isValid = UserValidator.validate(user, userValidError);
 		} else {
 			isValid = UserValidator.validateProfile(user, userValidError);
 		}

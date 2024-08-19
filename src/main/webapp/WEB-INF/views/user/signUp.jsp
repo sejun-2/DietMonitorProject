@@ -152,7 +152,7 @@
 		                    </div>
 		                    <div class="sig_input wrap_s">
 		                        <p>생년월일<span class="red">*</span></p>
-		                        <input type="text" name="birth" placeholder="생년월일 6자리를 입력해주세요" value="${user.birth}">
+		                        <input type="text" name="birth" placeholder="생년월일 8자리를 입력해주세요" value="${user.birth}">
 		                        <c:if test="${ not empty userValidError.birth }">
 									<br/>
 										<span class="red">${userValidError.birth}</span>

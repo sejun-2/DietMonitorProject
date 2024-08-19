@@ -256,6 +256,7 @@
 			</c:if>
 			
 			<c:if test="${user.genderId == 5}">
+				$('input:radio[name="genderId"]').val(5);
 				$('input[type="checkbox"][id="pregnant"]').prop('checked',true);
 				$('#pregnantDate').css('display', 'block');
 				let pregnantDate = '${user.pregnantDate}';
