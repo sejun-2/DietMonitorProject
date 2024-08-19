@@ -125,7 +125,22 @@
 		            WHERE
 		                account_no = #{accountNo} AND member_no = #{memberNo}
 		        ) BETWEEN age_min AND age_max
-	         	AND gender_id = DECODE((SELECT gender_id FROM member WHERE account_no = #{accountNo} AND member_no = #{memberNo}), 1, 1, 2, 2, 3, 3, 4)
+	         	AND gender_id = DECODE (
+		         							(
+                                                CASE 
+                                                    WHEN
+                                                        CEIL (MONTHS_BETWEEN( SYSDATE, (SELECT birth FROM member WHERE account_no = #{accountNo} AND member_no = #{memberNo}) ) ) &lt; 61
+                                                        THEN 
+                                                            (
+                                                                SELECT DISTINCT(gender_id) 
+                                                                FROM nutrition_standard 
+                                                                WHERE CEIL(MONTHS_BETWEEN( SYSDATE, (SELECT birth FROM member WHERE account_no = #{accountNo} AND member_no = #{memberNo}) ) ) BETWEEN age_min AND age_max
+                                                            )
+                                                    ELSE 
+                                                        (SELECT gender_id FROM member WHERE account_no = #{accountNo} AND member_no = #{memberNo})
+                                                END
+                                            ), 1, 1, 2, 2, 3, 3, 4
+	         						   )
 		) a, 
 	
 		(
