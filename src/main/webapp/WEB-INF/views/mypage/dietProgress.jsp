@@ -70,15 +70,15 @@
 					눌러주세요.</p>
 				<div class="page_nation wrap">
 					<div class="slide_prev">
-						<img src="./images/sub/icon/slider/akar-chevron-left-small.svg"
+						<img src="../images/sub/icon/slider/akar-chevron-left-small.svg"
 							alt="">
 					</div>
 					<div class="slide_stop">
-						<img src="./images/sub/icon/slider/akar-two-line-vertical.svg"
+						<img src="../images/sub/icon/slider/akar-two-line-vertical.svg"
 							alt="">
 					</div>
 					<div class="slide_next">
-						<img src="./images/sub/icon/slider/akar-chevron-right-small.svg"
+						<img src="../images/sub/icon/slider/akar-chevron-right-small.svg"
 							alt="">
 					</div>
 				</div>
@@ -116,7 +116,7 @@
 	<div class="popup">
 		<div class="box">
 			<div class="close">
-				<img src="./images/sub/icon/close-x.svg" alt="">
+				<img src="../images/sub/icon/close-x.svg" alt="">
 			</div>
 			<div class="title">칼로리 섭취가 부족할 경우 나타나는 현상</div>
 			<div class="info">신체가 기능하려면 단백질이 필요하며 근육은 이 단백질의 주요 공급원입니다. 근육 이화작용이 발생하여 신체가 근육 단백질을 동원하여 칼로리로 전환하게 됩니다. 
@@ -125,7 +125,7 @@
 								면역력이 강해지지 않고 아프거나 부상을 입을 확률이 높아집니다. 비타민B군, 비타민D 결핍이 발생할 수 있습니다.</div>
 
 			<div class="wrap_s mt40 mb30">
-				<img src="./images/sub/icon/Icon fa-solid-star.svg" alt="">
+				<img src="../images/sub/icon/Icon fa-solid-star.svg" alt="">
 				<p class="popup_title">일일 권장량 대비 부족 영양소 별 추천 검색</p>
 			</div>
 			<ul class="tag_inner wrap_s">
@@ -140,7 +140,7 @@
 	<div class="popup">
 		<div class="box">
 			<div class="close">
-				<img src="./images/sub/icon/close-x.svg" alt="">
+				<img src="../images/sub/icon/close-x.svg" alt="">
 			</div>
 			<div class="title">탄수화물 섭취가 부족할 경우 나타나는 현상</div>
 			<div class="info">탄수화물 섭취가 부족하면 저혈당 증상이 나타나고, 피로감, 무기력감, 활력 저하, 정신 기능 지체, 수면 부족 등의 증상이 나타날 수 있습니다. 
@@ -149,7 +149,7 @@
 				또한 탄수화물 섭취가 부족하면 몸에서는 포도당을 대신할 다른 에너지원을 만들어내기 위해 지방을 분해하여 케톤체가 합성되기도 합니다.</div>
 
 			<div class="wrap_s mt40 mb30">
-				<img src="./images/sub/icon/Icon fa-solid-star.svg" alt="">
+				<img src="../images/sub/icon/Icon fa-solid-star.svg" alt="">
 				<p class="popup_title">일일 권장량 대비 부족 영양소 별 추천 검색</p>
 			</div>
 			<ul class="tag_inner wrap_s">
@@ -161,79 +161,6 @@
 			</ul>
 		</div>
 	</div>
-
-	<!-- ---------------------그래프-------------------------- -->
-
-	<div class="graph">
-		<div class="inner">
-			<div class="wrap_s">
-				<c:forEach var="i" begin="1" end="23">
-					<div class="graphBox" style="width: 600px; height: 400px;">
-						<canvas class="lineCanvas"></canvas>
-					</div>
-				</c:forEach>
-			</div>
-		</div>
-	</div>
-
-	<!-- ---------------------DB그래프-------------------------- -->
-
-	<script type="text/javascript">
-		//JSP에서 값을 JavaScript 변수로 전달
-
-		var grapeData = [];
-
-		var nutrienStandard = [];		
-		<c:forEach var="Standard" items="${findTotalDietByStandard}">
-			<c:if test="${Standard.foodIntake == 9999}">
-				nutrienStandard.push(0);
-			</c:if>
-			<c:if test="${Standard.foodIntake != 9999}">
-				nutrienStandard.push('${Standard.foodIntake}');
-			</c:if>
-		</c:forEach>
-		
-		grapeData.push(nutrienStandard);
-		
-		nutrientIntakePrograss = [];
-		
-		<c:forEach var="item" items="${totalDietListMonthSum}">
-			var nutrientIntakeItem = {
-				saveDate : '${item.saveDate}',
-				kcal : '${item.kcal}',
-				water : '${item.water}',
-				protein : '${item.protein}',
-				fat : '${item.fat}',
-				batch : '${item.batch}',
-				carbohydrate : '${item.carbohydrate}',
-				sugars : '${item.sugars}',
-				dietaryFiber : '${item.dietaryFiber}',
-				calcium : '${item.calcium}',
-				ironContent : '${item.ironContent}',
-				phosphorus : '${item.phosphorus}',
-				potassium : '${item.potassium}',
-				sodium : '${item.sodium}',
-				vitaminA : '${item.vitaminA}',
-				retinol : '${item.retinol}',
-				betaCarotene : '${item.betaCarotene}',
-				thiamine : '${item.thiamine}',
-				riboflavin : '${item.riboflavin}',
-				niacin : '${item.niacin}',
-				vitaminC : '${item.vitaminC}',
-				vitaminD : '${item.vitaminD}',
-				cholesterol : '${item.cholesterol}',
-				saturatedFat : '${item.saturatedFat}',
-				transFat : '${item.transFat}'
-			};	
-			nutrientIntakePrograss.push(nutrientIntakeItem);
-		</c:forEach>
-		
-		grapeData.push(nutrientIntakePrograss);		
-		
-		document.addEventListener('DOMContentLoaded', function() {			
-			lineChart(grapeData); //한달
-		});
-	</script>
 
 	<!-- ---------------------그래프-------------------------- -->
 
@@ -307,7 +234,6 @@
 			lineChart(grapeData); //한달
 		});
 	</script>
-
 
 	<jsp:include page="../common/footer.jsp" />
 </body>

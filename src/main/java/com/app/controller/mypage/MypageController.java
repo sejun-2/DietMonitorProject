@@ -120,8 +120,7 @@ public class MypageController {
 			int months = userService.getMonthsByMemberInfo(accountNo, memberNo);
 			user.setAge(months);
 			
-			int genderId = userService.getGenderIdByMemberInfo(user);
-			String userGenderName = userService.getGenderNameByGenderId(genderId);
+			String userGenderName = userService.getGenderNameByGenderId(user.getGenderId());
 			user.setGenderName(userGenderName);
 			
 			model.addAttribute("user", user);

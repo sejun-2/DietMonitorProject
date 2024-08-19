@@ -74,6 +74,21 @@ $(document).ready(function() {
         
         $nutrient.animate({ scrollLeft: newScroll }, 300);
     }
+    
+    function updateScroll(button, direction) {
+        var target = $(button).data('target');
+        var $nutrients = $(target);
+        var currentScroll = $nutrients.scrollLeft();
+        var maxScroll = $nutrients[0].scrollWidth - $nutrients.width();
+        
+        if (direction === 'left') {
+            var newScroll = Math.max(currentScroll - slideDistance, 0);
+        } else {
+            var newScroll = Math.min(currentScroll + slideDistance, maxScroll);
+        }
+        
+        $nutrients.animate({ scrollLeft: newScroll }, 300);
+    }
 
     $('.slider-left').click(function() {
         updateScroll(this, 'left');
