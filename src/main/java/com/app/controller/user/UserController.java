@@ -52,6 +52,8 @@ public class UserController {
 		
 		boolean isValid = UserValidator.validate(user, userValidError);
 		
+		System.out.println("isValid" + isValid);
+		
 		model.addAttribute("userValidError", userValidError);		
 		
 		if(isValid) {

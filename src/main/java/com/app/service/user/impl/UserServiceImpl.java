@@ -139,17 +139,4 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
-	@Override
-	public int getGenderIdByAge(String birth) {
-		// TODO Auto-generated method stub
-		int result = userDAO.getGenderIdByAge(birth);
-		
-		return result;
-	}
-
-	
-
-
-
-
 }

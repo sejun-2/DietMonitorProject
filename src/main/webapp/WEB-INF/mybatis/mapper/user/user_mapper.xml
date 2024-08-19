@@ -172,15 +172,6 @@
 		SELECT * FROM member WHERE account_no = #{accountNo} and member_no = #{memberNo}
 	</select>
 	
-	<select id="getGenderIdByAge" parameterType="String" resultType="int">
-		SELECT DISTINCT(gender_id)
-        FROM nutrition_standard
-        WHERE CEIL(MONTHS_BETWEEN(SYSDATE, #{birth}) / 12) BETWEEN age_min AND age_max
-        	AND gender_id BETWEEN 1 AND 4
-	</select>
-	
-	
-	
 </mapper>					
 
 

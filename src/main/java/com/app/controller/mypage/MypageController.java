@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.app.dto.diet.Diet;
 import com.app.dto.mypage.TotalDietSearchCondition;
-import com.app.dto.user.NutritionStandard;
 import com.app.dto.user.User;
 import com.app.dto.user.UserValidError;
 import com.app.service.mypage.MypageService;
@@ -98,38 +97,14 @@ public class MypageController {
 
 		System.out.println(t1);
 		List<Diet> totalDietList = mypageService.findTotalDietBySaveHistory(t1);
-		List<Diet> totalDietListAvg = mypageService.findTotalDietBySaveHistoryAvg(t1);
+		List<Diet> totalDietListSum = mypageService.findTotalDietBySaveHistorySum(t1);
 
 		System.out.println(totalDietList);
-		System.out.println(totalDietListAvg);
+		System.out.println(totalDietListSum);
 		model.addAttribute("totalDietList", totalDietList);
-		model.addAttribute("totalDietListAvg", totalDietListAvg);
+		model.addAttribute("totalDietListSum", totalDietListSum);
 
 		return "/mypage/dietHistory";
-	}
-	
-	@GetMapping("/test")
-	public String test() {
-		return "mypage/test";
-	}
-	
-	@PostMapping("/test")
-	public String test(Model model, TotalDietSearchCondition t1, HttpSession session) {
-		
-		int accountNo = SessionManager.getAccountNo(session);
-		int memberNo = SessionManager.getMemberNo(session);
-
-		t1.setAccountNo(accountNo);
-		t1.setMemberNo(memberNo);
-
-		System.out.println(t1);
-		List<Diet> totalDietList = mypageService.findTotalDietBySaveHistory(t1);
-		List<Diet> totalDietListAvg = mypageService.findTotalDietBySaveHistoryAvg(t1);
-
-		System.out.println(totalDietList);
-		model.addAttribute("totalDietList", totalDietList);
-		model.addAttribute("totalDietListAvg", totalDietListAvg);
-		return "mypage/test";
 	}
 
 	@GetMapping("/mypage/accountInfo")
@@ -140,7 +115,6 @@ public class MypageController {
 			int memberNo = SessionManager.getMemberNo(session);
 			// 사용자 정보를 조회
 			User user = userService.findUserByMemberInfo(accountNo, memberNo);
-			System.out.println(user);
 			// 사용자의 나이 계산			
 			int months = userService.getMonthsByMemberInfo(accountNo, memberNo);
 			user.setAge(months);
@@ -148,8 +122,6 @@ public class MypageController {
 			int genderId = user.getGenderId();
 			String userGenderName = userService.getGenderNameByGenderId(genderId);
 			user.setGenderName(userGenderName);
-			
-			
 			
 			model.addAttribute("user", user);
 			
@@ -242,9 +214,6 @@ public class MypageController {
 	
 	@PostMapping("/addProfile")
 	public String addProfile(@Valid @ModelAttribute User user, HttpSession session, HttpServletResponse response, BindingResult br, Model model) throws IOException {
-		
-		int genderId = userService.getGenderIdByAge(user.getBirth());
-		user.setGenderId(genderId);
 		
 		UserValidError userValidError = new UserValidError();
 		

@@ -97,7 +97,7 @@ public class UserValidator {
 			result = false;
 		}
 		
-		if(user.getPregnantDate() != null || user.getPregnantDate() != "") {
+		if(user.getPregnantDate() != null) {
 			if(!isBirth(user.getPregnantDate())) {
 				userValidError.setPregnantDate("정확한 임신시작일 8자리를 입력해주세요.");
 				result = false;
@@ -121,7 +121,7 @@ public class UserValidator {
 			result = false;
 		}
 		
-		if(user.getPregnantDate() != null || user.getPregnantDate() != "") {
+		if(user.getPregnantDate() != null) {
 			if(!isBirth(user.getPregnantDate())) {
 				userValidError.setPregnantDate("정확한 임신시작일 8자리를 입력해주세요.");
 				result = false;
