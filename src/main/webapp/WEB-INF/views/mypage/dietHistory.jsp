@@ -74,7 +74,7 @@
 
 				</div>
 
-				<div class="table_inner">
+				<div class="new_tbl_inner">
 					<table class="new_tbl_board tb01 mb20">
 						<colgroup>
 							<col style="width: 10%;">
@@ -117,7 +117,7 @@
 									</tr>
 
 									<tr class="tr_event">
-										<td class="more_information" colspan="6">
+										<td class="more_information" colspan="8">
 											<div class="wrap">
 												<img class="slider-left" data-target=".nutrient${status.count}"
 													src="../images/sub/icon/slider/slider-left.svg" alt="">
@@ -218,12 +218,12 @@
 							</tr>
 
 							<tr class="tr_event">
-								<td class="more_information" colspan="6">
+								<td class="more_information" colspan="8">
 									<div class="wrap">
-										<img class="slider-left" data-target=".nutrient${status.count}"
+										<img class="slider-left" data-target=".nutrients${status.count}"
 											src="../images/sub/icon/slider/slider-left.svg" alt="">
 										<div class="more_nutrient">
-											<ul class="nutrient nutrient${status.count} wrap">
+											<ul class="nutrient nutrients${status.count} wrap">
 
 												<li class="more_item wrap">
 													<p class="title">수분(g)</p>
@@ -297,7 +297,7 @@
 										</div>
 
 
-										<img class="slider-right" data-target=".nutrient${status.count}"
+										<img class="slider-right" data-target=".nutrients${status.count}"
 											src="../images/sub/icon/slider/slider-right.svg" alt="">
 									</div>
 								</td>

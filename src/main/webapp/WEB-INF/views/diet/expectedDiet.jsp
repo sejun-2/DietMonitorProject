@@ -67,7 +67,7 @@
 					</div>
 
 
-					<table class="new_tbl_board tbl_boards tb01 mt20 mb20">
+					<table class="new_tbl_board tb01 mt20 mb20">
 						<colgroup>
 							<col style="width: 10%;">
 							<col style="width: 30%;">
@@ -120,8 +120,7 @@
 					</div>
 
 					<div class="table_inner">
-						<div class="linear_box"></div>
-						<table class="new_tbl_board tbl_boards tb01 mt20 mb60">
+						<table class="new_tbl_board tb01 mt20 mb60">
 							<colgroup>
 								<col style="width: 10%;">
 								<col style="width: 15%;">
@@ -166,7 +165,6 @@
 					</div>
 
 					<div class="table_inner">
-						<div class="linear_box"></div>
 						<table class="new_tbl_board tb01 mt20 mb60">
 							<colgroup>
 								<col style="width: 10%;">
@@ -210,7 +208,7 @@
 					</div>
 
 
-					<table class="new_tbl_board tbl_boards tb01 mt20 mb20">
+					<table class="new_tbl_board tb01 mt20 mb20">
 						<colgroup>
 							<col style="width: 10%;">
 							<col style="width: 30%;">
@@ -391,8 +389,7 @@
 					</div>
 
 					<div class="table_inner">
-						<div class="linear_box"></div>
-						<table class="new_tbl_board tbl_boards tb01 mt20 mb60">
+						<table class="new_tbl_board tb01 mt20 mb60">
 							<colgroup>
 								<col style="width: 10%;">
 								<col style="width: 15%;">
@@ -457,14 +454,13 @@
 					</div>
 
 					<div class="table_inner">
-						<div class="linear_box"></div>
 						<table class="new_tbl_board tb01 mt20 mb60">
 							<colgroup>
 								<col style="width: 10%;">
-								<col style="width: 15%;">
+								<col style="width: 20%;">
 								<col style="width: 10%;">
 								<col style="width: 10%;">
-								<col style="width: 7%;">
+								<col style="width: 20%;">
 							</colgroup>
 							<thead>
 								<tr>

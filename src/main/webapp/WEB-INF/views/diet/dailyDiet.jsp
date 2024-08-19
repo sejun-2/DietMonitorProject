@@ -66,7 +66,7 @@
 					</div>
 
 					<div class="new_tbl_inner">
-					<table class="new_tbl_board tbl_boards tb01 mt20 mb20">
+					<table class="new_tbl_board tb01 mt20 mb20">
 						<colgroup>
 							<col style="width: 10%;">
 							<col style="width: 30%;">
@@ -120,8 +120,7 @@
 					</div>
 
 					<div class="table_inner">
-						<div class="linear_box"></div>
-						<table class="new_tbl_board tbl_boards tb01 mt20 mb60">
+						<table class="new_tbl_board tb01 mt20 mb60">
 							<colgroup>
 								<col style="width: 10%;">
 								<col style="width: 15%;">
@@ -166,7 +165,6 @@
 					</div>
 
 					<div class="table_inner">
-						<div class="linear_box"></div>
 						<table class="new_tbl_board tb01 mt20 mb60">
 							<colgroup>
 								<col style="width: 10%;">
@@ -210,7 +208,7 @@
 					</div>
 
 					<div class="new_tbl_inner">
-					<table class="new_tbl_board tbl_boards tb01 mt20 mb20">
+					<table class="new_tbl_board tb01 mt20 mb20">
 						<colgroup>
 							<col style="width: 10%;">
 							<col style="width: 30%;">
@@ -233,7 +231,7 @@
 
 						<tbody>
 							<c:forEach var="diet" items="${dailyDiet}" varStatus="status">
-								<tr onclick="">
+								<tr>
 									<td>${status.count}</td>
 									<td>${diet.foodName}</td>
 									<td>${diet.mainCategoryName}</td>
@@ -387,8 +385,7 @@
 					</div>
 
 					<div class="table_inner">
-						<div class="linear_box"></div>
-						<table class="new_tbl_board tbl_boards tb01 mt20 mb60">
+						<table class="new_tbl_board tb01 mt20 mb60">
 							<colgroup>
 								<col style="width: 10%;">
 								<col style="width: 15%;">
@@ -405,7 +402,7 @@
 							</thead>
 
 							<tbody>
-								<tr onclick="">
+								<tr>
 									<td>${totalNutrient.kcal}</td>
 									<td>${totalNutrient.water}</td>
 									<td>${totalNutrient.protein}</td>
@@ -453,7 +450,6 @@
 					</div>
 
 					<div class="table_inner">
-						<div class="linear_box"></div>
 						<table class="new_tbl_board tb01 mt20 mb60">
 							<colgroup>
 								<col style="width: 10%;">
