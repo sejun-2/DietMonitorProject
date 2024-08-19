@@ -59,7 +59,7 @@
 h4.comm {padding-left:20px; margin-bottom:10px; border-bottom:0}
 
 
-
+.new_tbl_inner{overflow: scroll;}
 .new_tbl_board            {clear:both;position:relative;width:100%;border-collapse:collapse;border-top:2px solid #00B9FF;border-bottom:1px solid #cdcdcd;background:#fff;font-size:14px;line-height:18px;color:#555; overflow: hidden; table-layout: auto;}
 .new_tbl_board tr:hover{background: #edf7ff; cursor: pointer;}
 .new_tbl_board thead tr:hover{background: none;}

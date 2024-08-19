@@ -385,6 +385,10 @@
 .more_information .more_nutrient .nutrient .more_item .title{background: #EAEFF5; border: 1px solid #D5D5D5; padding: 3px 8px; border-radius: 6px; color: #1565A2; white-space: nowrap;}
 .more_information .more_nutrient .nutrient .more_item .info{color: #515151; margin-left: 10px;}
 
+@media screen and (max-width: 1500px){
+    .more_information .more_nutrient{width: 1230px;}
+    
+}
 
 /* pagenation_btn */
 .pagenation_btn img{cursor: pointer;}

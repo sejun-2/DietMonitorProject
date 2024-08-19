@@ -24,7 +24,7 @@
 <script type="text/javascript" src="../script/common.js"></script>
 <script type="text/javascript" src="../script/graph.js"></script>
 
-<title>foodIngredients</title>
+<title>영양성분 비교분석 - 식품영양성분</title>
 </head>
 <body>
 	<header id="header">
@@ -45,9 +45,8 @@
 					<a href="../index.html"><img class="home center"
 						src="../images/sub/icon/material-home.svg" alt="홈 아이콘"></a>
 					<div class="route_info wrap">
-						<a href="./foodSearchList.html"><span class="dap1">영양정보
-								찾아보기</span></a> <a href="./foodSearchList.html"><span class="dap2">식품으로
-								찾아보기</span></a>
+						<a href="/mypage/accountInfo"><span class="dap1">마이페이지</span></a>
+						 <a href="/mypage/dietProgress"><span class="dap2">나의 영양성분 비교분석</span></a>
 					</div>
 				</div>
 			</div>

@@ -20,7 +20,7 @@
 <script type="text/javascript" src="../script/header.js"></script>
 <script type="text/javascript" src="../script/common.js"></script>
 
-<title>foodIngredients</title>
+<title>식품영양성분 - 하루섭취 금일식단</title>
 </head>
 <body>
 	<header id="header">
@@ -35,13 +35,13 @@
 	<section class="sub_title">
 		<div class="inner">
 			<div class="wrap">
-				<h1 class="title">나의 하루 섭취 식품</h1>
+				<h1 class="title">나의 하루 섭취 금일식단</h1>
 				<div class="route wrap">
 					<a href="./index.html"><img class="home center"
 						src="../images/sub/icon/material-home.svg" alt="홈 아이콘"></a>
 					<div class="route_info wrap">
-						<a href="./foodSearchList"><span class="dap1">마이페이지</span></a> <a
-							href="./myIntakeFood"><span class="dap2">나의 하루 섭취 식품</span></a>
+						<a href="/diet/dailyDiet"><span class="dap1">섭취식품</span></a>
+						<a href="/diet/dailyDiet"><span class="dap2">나의 하루섭취 금일식단</span></a>
 					</div>
 				</div>
 			</div>
@@ -65,7 +65,7 @@
 
 					</div>
 
-
+					<div class="new_tbl_inner">
 					<table class="new_tbl_board tbl_boards tb01 mt20 mb20">
 						<colgroup>
 							<col style="width: 10%;">
@@ -99,8 +99,9 @@
 						</tbody>
 					</table>
 				</div>
+				</div>
 			</section>
-
+			
 
 			<section class="table_menu" id="section1">
 				<div class="inner">
@@ -208,7 +209,7 @@
 
 					</div>
 
-
+					<div class="new_tbl_inner">
 					<table class="new_tbl_board tbl_boards tb01 mt20 mb20">
 						<colgroup>
 							<col style="width: 10%;">
@@ -361,6 +362,7 @@
 							</c:forEach>
 						</tbody>
 					</table>
+					</div>
 					<form action="/deleteAllDailyDiet" method="POST">
 						<button class="common_btn mb80" type="submit">전체등록 취소</button>
 					</form>
