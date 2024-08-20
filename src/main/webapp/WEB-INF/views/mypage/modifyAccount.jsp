@@ -260,8 +260,18 @@
 				$('input[type="checkbox"][id="lactation"]').prop('checked',true);
 			</c:if>			
 			
-			$('input[type="radio"][id="male"]').click( function(){
+			$('input[type="radio"][id="female"]').click( function(){
+				$('input:radio[name="genderId"]').val(4);
 				$('input[type="checkbox"][class="otherCondition"]').prop('checked',false);
+				$('#pregnantDate').css('display', 'none');
+				$('input[type="text"][name="pregnantDate"]').val("");
+			});
+			
+			$('input[type="radio"][id="male"]').click( function(){
+				$('input:radio[name="genderId"]').val(3);
+				$('input[type="checkbox"][class="otherCondition"]').prop('checked',false);
+				$('#pregnantDate').css('display', 'none');
+				$('input[type="text"][name="pregnantDate"]').val("");
 			});
 			
 			$('input[type="checkbox"][class="otherCondition"]').change( function(){
