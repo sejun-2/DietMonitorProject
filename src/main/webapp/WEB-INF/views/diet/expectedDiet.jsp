@@ -19,7 +19,7 @@
 <script type="text/javascript" src="../script/header.js"></script>
 <script type="text/javascript" src="../script/common.js"></script>
 
-<title>foodIngredients</title>
+<title>하루섭취 예상식단 - 식품영양성분</title>
 </head>
 <body>
 	<header id="header">
@@ -34,13 +34,13 @@
 	<section class="sub_title">
 		<div class="inner">
 			<div class="wrap">
-				<h1 class="title">나의 하루 예상 식단</h1>
+				<h1 class="title">나의 하루 섭취 예상 식단</h1>
 				<div class="route wrap">
 					<a href="./index.html"><img class="home center"
 						src="../images/sub/icon/material-home.svg" alt="홈 아이콘"></a>
 					<div class="route_info wrap">
-						<a href="./foodSearchList"><span class="dap1">마이페이지</span></a> <a
-							href="./myIntakeFood"><span class="dap2">나의 하루 예상 식단</span></a>
+						<a href="/diet/dailyDiet"><span class="dap1">섭취식품</span></a> 
+						<a href="/diet/expectedDiet"><span class="dap2">나의 하루 섭취 예상 식단</span></a>
 					</div>
 				</div>
 			</div>
@@ -51,13 +51,11 @@
 
 	<c:choose>
 		<c:when test="${empty expectedDiet}">
-		
-			<h1>아직 등록된 데이터가 없어요.</h1>
 			
 			<section class="table_menu">
 				<div class="inner">
 					<div class="wrap">
-						<p class="reference">※ 아래 표를 클릭하시면 해당 식품의 영양정보가 나와요</p>
+						<p class="reference">※ 아직 등록된 데이터가 없어요.</p>
 
 						<button class="board_btn wrap">
 							<img src="../images/sub/icon/material-install-desktop.svg" alt="">
@@ -67,7 +65,7 @@
 					</div>
 
 
-					<table class="new_tbl_board tbl_boards tb01 mt20 mb20">
+					<table class="new_tbl_board tb01 mt20 mb20">
 						<colgroup>
 							<col style="width: 10%;">
 							<col style="width: 30%;">
@@ -120,8 +118,7 @@
 					</div>
 
 					<div class="table_inner">
-						<div class="linear_box"></div>
-						<table class="new_tbl_board tbl_boards tb01 mt20 mb60">
+						<table class="new_tbl_board tb01 mt20 mb60">
 							<colgroup>
 								<col style="width: 10%;">
 								<col style="width: 15%;">
@@ -166,7 +163,6 @@
 					</div>
 
 					<div class="table_inner">
-						<div class="linear_box"></div>
 						<table class="new_tbl_board tb01 mt20 mb60">
 							<colgroup>
 								<col style="width: 10%;">
@@ -210,7 +206,7 @@
 					</div>
 
 
-					<table class="new_tbl_board tbl_boards tb01 mt20 mb20">
+					<table class="new_tbl_board tb01 mt20 mb20">
 						<colgroup>
 							<col style="width: 10%;">
 							<col style="width: 30%;">
@@ -391,8 +387,7 @@
 					</div>
 
 					<div class="table_inner">
-						<div class="linear_box"></div>
-						<table class="new_tbl_board tbl_boards tb01 mt20 mb60">
+						<table class="new_tbl_board tb01 mt20 mb60">
 							<colgroup>
 								<col style="width: 10%;">
 								<col style="width: 15%;">
@@ -457,14 +452,13 @@
 					</div>
 
 					<div class="table_inner">
-						<div class="linear_box"></div>
 						<table class="new_tbl_board tb01 mt20 mb60">
 							<colgroup>
 								<col style="width: 10%;">
-								<col style="width: 15%;">
+								<col style="width: 20%;">
 								<col style="width: 10%;">
 								<col style="width: 10%;">
-								<col style="width: 7%;">
+								<col style="width: 20%;">
 							</colgroup>
 							<thead>
 								<tr>

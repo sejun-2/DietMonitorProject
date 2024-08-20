@@ -19,7 +19,7 @@
 <script type="text/javascript" src="../script/header.js"></script>
 <script type="text/javascript" src="../script/common.js"></script>
 
-<title>foodIngredients</title>
+<title>나의 영양성분 저장 기록 - 식품영양성분</title>
 </head>
 <body>
 	<header id="header">
@@ -34,14 +34,13 @@
 	<section class="sub_title">
 		<div class="inner">
 			<div class="wrap">
-				<h1 class="title">식품으로 찾아보기</h1>
+				<h1 class="title">나의 영양성분 저장 기록</h1>
 				<div class="route wrap">
 					<a href="./index.html"><img class="home center"
 						src="../images/sub/icon/material-home.svg" alt="홈 아이콘"></a>
 					<div class="route_info wrap">
-						<a href="./foodSearchList.html"><span class="dap1">영양정보
-								찾아보기</span></a> <a href="./foodSearchList.html"><span class="dap2">식품으로
-								찾아보기</span></a>
+						<a href="/mypage/accountInfo"><span class="dap1">마이페이지</span></a> 
+						<a href="/mypage/dietHistory"><span class="dap2">나의 영양성분 저장 기록</span></a>
 					</div>
 				</div>
 			</div>
@@ -75,7 +74,7 @@
 
 				</div>
 
-				<div class="table_inner">
+				<div class="new_tbl_inner">
 					<table class="new_tbl_board tb01 mb20">
 						<colgroup>
 							<col style="width: 10%;">
@@ -118,7 +117,7 @@
 									</tr>
 
 									<tr class="tr_event">
-										<td class="more_information" colspan="6">
+										<td class="more_information" colspan="8">
 											<div class="wrap">
 												<img class="slider-left" data-target=".nutrient${status.count}"
 													src="../images/sub/icon/slider/slider-left.svg" alt="">
@@ -219,12 +218,12 @@
 							</tr>
 
 							<tr class="tr_event">
-								<td class="more_information" colspan="6">
+								<td class="more_information" colspan="8">
 									<div class="wrap">
-										<img class="slider-left" data-target=".nutrient${status.count}"
+										<img class="slider-left" data-target=".nutrients${status.count}"
 											src="../images/sub/icon/slider/slider-left.svg" alt="">
 										<div class="more_nutrient">
-											<ul class="nutrient nutrient${status.count} wrap">
+											<ul class="nutrient nutrients${status.count} wrap">
 
 												<li class="more_item wrap">
 													<p class="title">수분(g)</p>
@@ -298,7 +297,7 @@
 										</div>
 
 
-										<img class="slider-right" data-target=".nutrient${status.count}"
+										<img class="slider-right" data-target=".nutrients${status.count}"
 											src="../images/sub/icon/slider/slider-right.svg" alt="">
 									</div>
 								</td>

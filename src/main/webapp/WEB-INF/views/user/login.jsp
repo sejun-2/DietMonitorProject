@@ -16,7 +16,7 @@
     <script type="text/javascript" src="../script/header.js"></script>
     <script type="text/javascript" src="../script/commen.js"></script>
 
-    <title>로그인</title>
+    <title>식품영양성분 - 로그인</title>
 </head>
 <body>
 	<header id="header">
