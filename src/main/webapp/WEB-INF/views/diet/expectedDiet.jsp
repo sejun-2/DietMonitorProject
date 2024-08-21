@@ -51,13 +51,11 @@
 
 	<c:choose>
 		<c:when test="${empty expectedDiet}">
-		
-			<h1>아직 등록된 데이터가 없어요.</h1>
 			
 			<section class="table_menu">
 				<div class="inner">
 					<div class="wrap">
-						<p class="reference">※ 아래 표를 클릭하시면 해당 식품의 영양정보가 나와요</p>
+						<p class="reference">※ 아직 등록된 데이터가 없어요.</p>
 
 						<button class="board_btn wrap">
 							<img src="../images/sub/icon/material-install-desktop.svg" alt="">

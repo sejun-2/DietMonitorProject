@@ -169,7 +169,7 @@ public class MypageController {
 		if(user.getMemberNo() == 1) {
 			isValid = UserValidator.validate(user, userValidError);
 		} else {
-			isValid = UserValidator.validateProfile(user, userValidError);
+			isValid = UserValidator.validateProfile(user, userValidError);			
 		}
 		
 		model.addAttribute("userValidError", userValidError);
