@@ -54,6 +54,7 @@
 	</section>
 
 	<!-- -------------------------------표------------------------------------------->
+	
 	<section class="table_menu">
 				<div class="inner">
 					<div class="wrap">
@@ -69,7 +70,7 @@
 						</div>
 					</div>
 					<div class="table_inner">
-					<table class="new_tbl_board tb01 mt20 mb60">
+					<table border="1" class="new_tbl_board tb01 mt20 mb60">
 	                    <colgroup>
 	                        <col style="width: 4%;">
 	                        <col style="width: 15%;">
@@ -130,19 +131,11 @@
 
 				<div class="graph">
 						<div class="graphBox">
-							<canvas id="barCanvas"  style="width: 100%; height: 600px;"></canvas>
+							<canvas id="barCanvas" style="width: 100%; height: 600px;"></canvas>
 						</div>
 				</div>
              </div>
          </section>
-                
-                
-                
-                
-	
-
-
-			
 
 			<!-- ---------------------DB그래프-------------------------- -->
 

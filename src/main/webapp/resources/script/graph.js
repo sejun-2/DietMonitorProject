@@ -1,7 +1,7 @@
 
 
-
 function barChart(grapeData) {
+	
 	var ctx = document.getElementById("barCanvas").getContext("2d");
 
 	var data = {
