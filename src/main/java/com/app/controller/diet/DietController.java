@@ -117,7 +117,7 @@ public class DietController {
 		
 		System.out.println("나의 영양 일일 권장량 : " + recommendedIntake);
 		System.out.println("나의 하루 섭취 식품,예상 섭취 식품 : " + expectedDiet);
-		System.out.println("등록 식품 영양성분 함량 합계 : " + expectedTotalNutrient);
+		System.out.println("등록 식품 영양성분 합계 : " + expectedTotalNutrient);
 		
 		model.addAttribute("expectedDiet", expectedDiet);
 		model.addAttribute("expectedTotalNutrient", expectedTotalNutrient);
