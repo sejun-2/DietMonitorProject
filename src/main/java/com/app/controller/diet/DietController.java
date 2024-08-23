@@ -50,7 +50,7 @@ public class DietController {
 			log.info("일일 식단 등록 성공");
 			return "redirect:/diet/dailyDiet";
 		} else {
-			log.warn("일일 식단 등록 실패");
+			log.error("일일 식단 등록 실패");
 			return "redirect:/search/foodDetail";
 		}
 	}
@@ -73,7 +73,7 @@ public class DietController {
 			log.info("예상 식단 등록 성공");
 			return "redirect:/diet/expectedDiet";
 		} else {
-			log.warn("예상 식단 등록 실패");
+			log.error("예상 식단 등록 실패");
 			return "redirect:/search/foodDetail";
 		}
 	}
