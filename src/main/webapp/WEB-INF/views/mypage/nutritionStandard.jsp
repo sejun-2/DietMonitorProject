@@ -127,19 +127,11 @@
 	                </table>
                 </div>
                 
-                <!-- ---------------------그래프-------------------------- -->
+                <!-- ---------------------막대 그래프-------------------------- -->
 
-				<div class="graph">
-						<div class="graphBox">
-							<canvas id="barCanvas" style="width: 100%; height: 600px;"></canvas>
-						</div>
-				</div>
-             </div>
+							<canvas id="barCanvas"></canvas>
+
          </section>
-
-			<!-- ---------------------DB그래프-------------------------- -->
-
-
 
 	<script type="text/javascript">
 		//JSP에서 값을 JavaScript 변수로 전달
@@ -164,20 +156,17 @@
 			'${totalDietAvg.riboflavin}', '${totalDietAvg.niacin}', '${totalDietAvg.vitaminC}', '${totalDietAvg.vitaminD}',
 			'${totalDietAvg.cholesterol}', '${totalDietAvg.saturatedFat}', '${totalDietAvg.transFat}' ];
 		
-		grapeData.push(totalDietAvg);
-		
-		
+		grapeData.push(totalDietAvg);	
 		
 		console.log(grapeData);
 		
 		document.addEventListener('DOMContentLoaded', function() {
-			// Chart.js가 로드된 후에 차트 생성
-			barChart(grapeData); //평균 DAO
-			
-		});
+            setTimeout(function() {
+                barChart(grapeData);
+            }, 500);
+        });
+		
 	</script>
-
-
 
 	<jsp:include page="../common/footer.jsp" />
 </body>
