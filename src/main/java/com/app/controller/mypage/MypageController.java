@@ -25,6 +25,9 @@ import com.app.service.user.UserService;
 import com.app.util.SessionManager;
 import com.app.validator.UserValidator;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class MypageController {
 
@@ -36,44 +39,51 @@ public class MypageController {
 
 	@GetMapping("/mypage/nutritionStandard")
 	public String nutritionStandard(Model model, HttpSession session, TotalDietSearchCondition t1) {
+		log.info("호출됨: /mypage/nutritionStandard");
 		
 		if (SessionManager.isLoginedAccount(session)) {
 			// 세션에서 로그인된 사용자의 accountNo와 memberNo를 조회
 			int accountNo = SessionManager.getAccountNo(session);
 			int memberNo = SessionManager.getMemberNo(session);
-						
+			log.debug("로그인된 사용자 - accountNo: {}, memberNo: {}", accountNo, memberNo);
+			
+			// 사용자 정보를 조회			
 			t1.setAccountNo(accountNo);
 			t1.setMemberNo(memberNo);
 	
-			//일주일간 섭취한 영양 성분의 평균
-			Diet AvgWeeklyNutrientByMemberInfo = mypageService.findAvgWeeklyNutrientByMemberInfo(t1);
-			//회원 정보에 알맞은 영양 성분 섭취 기준치
-			List<Diet> NutrientStandardByMemberInfo = mypageService.getNutrientStandardByMemberInfo(t1);
+			//System.out.println(t1);
+			Diet totalDietAvg = mypageService.findTotalDietByAvg(t1);
+			List<Diet> findTotalDietByStandard = mypageService.findTotalDietByStandard(t1);
+			log.debug("표준 다이어트 리스트: {}", findTotalDietByStandard);
 			
-			model.addAttribute("AvgWeeklyNutrientByMemberInfo", AvgWeeklyNutrientByMemberInfo);
-			model.addAttribute("NutrientStandardByMemberInfo", NutrientStandardByMemberInfo);			
+			//System.out.println(totalDietList);
+			System.out.println(findTotalDietByStandard);
+			model.addAttribute("totalDietAvg", totalDietAvg);
+			model.addAttribute("findTotalDietByStandard", findTotalDietByStandard);			
 			
 			return "/mypage/nutritionStandard";
 		}	
+		log.warn("사용자가 로그인되지 않음.");
 		return "/mypage/nutritionStandard";
 	}
 
 	@GetMapping("/mypage/dietProgress")
 	public String dietProgress(Model model, HttpSession session, TotalDietSearchCondition t1) {
-
+		log.info("호출됨: /mypage/dietProgress");
 		int accountNo = SessionManager.getAccountNo(session);
 		int memberNo = SessionManager.getMemberNo(session);
 
 		t1.setAccountNo(accountNo);
 		t1.setMemberNo(memberNo);
-		
-		//한달간 섭취한 영양 성분의 성분별 데이터
-		List<Diet> DailyTotalNutrientForPast30DaysByMemberInfo = mypageService.getDailyTotalNutrientForPast30DaysByMemberInfo(t1);
+
+		log.debug("검색 조건: {}", t1);
 		
 		List<Diet> NutrientStandardByMemberInfo = mypageService.getNutrientStandardByMemberInfo(t1);
 
-		model.addAttribute("DailyTotalNutrientForPast30DaysByMemberInfo", DailyTotalNutrientForPast30DaysByMemberInfo);
-		model.addAttribute("NutrientStandardByMemberInfo", NutrientStandardByMemberInfo);			
+		log.debug("월별 다이어트 합계 리스트: {}", totalDietListMonthSum);
+		
+		model.addAttribute("totalDietListMonthSum", totalDietListMonthSum);
+		model.addAttribute("findTotalDietByStandard", findTotalDietByStandard);			
 		
 
 		return "/mypage/dietProgress";
@@ -81,34 +91,41 @@ public class MypageController {
 
 	@GetMapping("/mypage/dietHistory")
 	public String dietHistory() {
+		log.info("호출됨: /mypage/dietHistory");
 		return "/mypage/dietHistory";
 	}
 
 	@PostMapping("/mypage/dietHistory")
 	public String dietHistory(Model model, TotalDietSearchCondition t1, HttpSession session) {
-		
+		log.info("다이어트 기록 POST 처리 중");
 		int accountNo = SessionManager.getAccountNo(session);
 		int memberNo = SessionManager.getMemberNo(session);
 
 		t1.setAccountNo(accountNo);
 		t1.setMemberNo(memberNo);
 
+		log.debug("검색 조건: {}", t1);
 		
-		List<Diet> TotalDietBySearchCondition = mypageService.findTotalDietBySearchCondition(t1);
-		List<Diet> DailyTotalNutrientBySearchCondition = mypageService.getDailyTotalNutrientBySearchCondition(t1);
+		List<Diet> totalDietList = mypageService.findTotalDietBySaveHistory(t1);
+		List<Diet> totalDietListSum = mypageService.findTotalDietBySaveHistorySum(t1);
 
-		model.addAttribute("TotalDietBySearchCondition", TotalDietBySearchCondition);
-		model.addAttribute("DailyTotalNutrientBySearchCondition", DailyTotalNutrientBySearchCondition);
+		log.debug("다이어트 기록 리스트: {}", totalDietList);
+        log.debug("다이어트 기록 합계: {}", totalDietListSum);
+		model.addAttribute("totalDietList", totalDietList);
+		model.addAttribute("totalDietListSum", totalDietListSum);
 
 		return "/mypage/dietHistory";
 	}
 
 	@GetMapping("/mypage/accountInfo")
 	public String accountInfo(HttpSession session, Model model) {
+		log.info("호출됨: /mypage/accountInfo");
 		if (SessionManager.isLoginedAccount(session)) {
 			// 세션에서 로그인된 사용자의 accountNo와 memberNo를 조회
 			int accountNo = SessionManager.getAccountNo(session);
 			int memberNo = SessionManager.getMemberNo(session);
+			log.debug("사용자 정보 - accountNo: {}, memberNo: {}", accountNo, memberNo);
+			
 			// 사용자 정보를 조회
 			User user = userService.findUserByMemberInfo(accountNo, memberNo);
 			// 사용자의 나이 계산			
@@ -117,6 +134,8 @@ public class MypageController {
 			
 			String userGenderName = userService.getGenderNameByGenderId(user.getGenderId());
 			user.setGenderName(userGenderName);
+			
+			log.debug("사용자 세부 정보: {}", user);
 			
 			model.addAttribute("user", user);
 			
@@ -134,17 +153,18 @@ public class MypageController {
 			
 			return "mypage/accountInfo";
 		}
-
+		log.warn("사용자가 로그인되지 않음. 로그인 페이지로 리다이렉트 중.");
 		return "redirect:/member/login";
 	}
 
 	@GetMapping("/mypage/modifyAccount")
 	public String modifyAccount(HttpSession session, Model model) {
-		
+		log.info("호출됨: /mypage/modifyAccount");
 		int accountNo = SessionManager.getAccountNo(session);
 		int memberNo = SessionManager.getMemberNo(session);
 		
 		User user = userService.findUserByMemberInfo(accountNo, memberNo);
+		log.debug("수정할 사용자: {}", user);
 		
 		model.addAttribute("user", user);
 		
@@ -154,7 +174,7 @@ public class MypageController {
 	@PostMapping("/mypage/modifyAccount")
 	public String modifyAccountAction(HttpSession session, User user, BindingResult br, Model model) {
 		
-		System.out.println("정보수정컨트롤러");
+		log.info("계정 수정 처리 중");
 		
 		user.setAccountNo((int)session.getAttribute("accountNo"));
 		user.setMemberNo((int)session.getAttribute("memberNo"));
@@ -174,14 +194,15 @@ public class MypageController {
 			int result = userService.modifyUser(user);
 
 			if (result > 0) {
+				log.info("계정 정보 수정 성공");
 				return "redirect:/mypage/accountInfo";
 			} else {
-				System.out.println("쿼리문 작동 안됨");
+				log.error("쿼리 실행 실패");
 				return "mypage/modifyAccount";
 			}
 			
 		} else {
-			System.out.println("양식 오류 수정 요망");
+			log.warn("양식 오류 수정 필요");
 			return "mypage/modifyAccount";
 		}
 	}
@@ -189,7 +210,7 @@ public class MypageController {
 
 	@RequestMapping("/mypage/manageProfile")
 	public String manageProfileAction(HttpSession session, Model model)  {
-		
+		log.info("호출됨: /mypage/manageProfile");
 		int accountNo = SessionManager.getAccountNo(session);
 	    
 	    List<User> profiles = userService.findUserListByAccountNo(accountNo);
@@ -209,7 +230,7 @@ public class MypageController {
 	
 	@PostMapping("/addProfile")
 	public String addProfile(@Valid @ModelAttribute User user, HttpSession session, HttpServletResponse response, BindingResult br, Model model) throws IOException {
-		
+		log.info("프로필 추가 처리 시작");
 		UserValidError userValidError = new UserValidError();
 		
 		boolean isValid = UserValidator.validateProfile(user, userValidError);
@@ -229,8 +250,10 @@ public class MypageController {
 				int result = userService.addProfile(user);
 				
 				if(result > 0) {					
+					log.info("프로필 추가 성공");
 					return "redirect:/mypage/manageProfile";
 				} else {
+					log.error("프로필 추가 중 오류 발생");
 					PrintWriter out = response.getWriter();
 					response.setCharacterEncoding("utf-8");
 					response.setContentType("text/html; charset=utf-8");
@@ -239,6 +262,7 @@ public class MypageController {
 					out.close();
 				}
 			}else {
+				log.warn("최대 프로필 수 초과");
 				System.out.println("5개 초과");
 				PrintWriter out = response.getWriter();
 				response.setCharacterEncoding("utf-8");
@@ -249,7 +273,7 @@ public class MypageController {
 			}
 			
 		} else {
-			System.out.println("양식 오류  수정 요망");
+			log.warn("프로필 양식 오류 수정 필요");
 			return "mypage/manageProfile";
 		}
 
