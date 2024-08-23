@@ -37,13 +37,11 @@ public class DietController {
 	@PostMapping("/addDailyDiet")
 	public String addDailyDiet(Diet diet,HttpSession session) {
 		
-		int accountNo = SessionManager.getAccountNo(session);
-		int memberNo = SessionManager.getMemberNo(session);
-		
-		diet.setAccountNo(accountNo);
-		diet.setMemberNo(memberNo);
+		diet.setAccountNo(SessionManager.getAccountNo(session));
+		diet.setMemberNo(SessionManager.getMemberNo(session));
 		
 		log.info("일일 식단 등록 요청: {}", diet);
+		
 		int result = dietService.addFoodToDailyDiet(diet);
 		
 		if(result > 0) {
