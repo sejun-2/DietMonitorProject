@@ -12,6 +12,9 @@ import com.app.dto.search.Nutrient;
 import com.app.dto.search.SearchCategory;
 import com.app.dto.search.SearchInfo;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Repository
 public class SearchDAOImpl implements SearchDAO{
 
@@ -21,49 +24,85 @@ public class SearchDAOImpl implements SearchDAO{
 	@Override
 	public List<SearchCategory> findDataSortList() {
 		
-		List<SearchCategory> searchCategoryList = sqlSessionTemplate.selectList("search_mapper.findDataSortList");
+		try {
+			List<SearchCategory> searchCategoryList = sqlSessionTemplate.selectList("search_mapper.findDataSortList");	
+			log.debug("SearchDAOImpl findDataSortList : {}", searchCategoryList);
+			return searchCategoryList;
+		} catch (Exception e) {
+			log.error("SearchDAOImpl findDataSortList : {}", e.toString());
+		}
 		
-		return searchCategoryList;
+		return null;
 	}
 	
 	@Override
 	public List<SearchCategory> findMainCategoryList() {
 		
-		List<SearchCategory> searchCategoryList = sqlSessionTemplate.selectList("search_mapper.findMainCategoryList");
+		try {
+			List<SearchCategory> searchCategoryList = sqlSessionTemplate.selectList("search_mapper.findMainCategoryList");
+			log.debug("SearchDAOImpl findMainCategoryList : {}", searchCategoryList);
+			return searchCategoryList;
+		} catch (Exception e) {
+			log.error("SearchDAOImpl findMainCategoryList : {}", e.toString());
+		}
 		
-		return searchCategoryList;
+		return null;
 	}
 	
 	@Override
 	public int findFoodTotalItems(SearchInfo searchInfo) {
 		
-		int foodTotalItems = sqlSessionTemplate.selectOne("search_mapper.findfoodTotalItems", searchInfo);
+		try {
+			int foodTotalItems = sqlSessionTemplate.selectOne("search_mapper.findfoodTotalItems", searchInfo);
+			log.debug("SearchDAOImpl findFoodTotalItems : {}", foodTotalItems);
+			return foodTotalItems;
+		} catch (Exception e) {
+			log.error("SearchDAOImpl findFoodTotalItems : {}", e.toString());
+		}
 		
-		return foodTotalItems;
+		return 0;
 	}
 	
 	@Override
 	public List<Food> findFoodList(SearchInfo searchInfo) {
 		
-		List<Food> FoodList = sqlSessionTemplate.selectList("search_mapper.findFoodList", searchInfo);
+		try {
+			List<Food> FoodList = sqlSessionTemplate.selectList("search_mapper.findFoodList", searchInfo);
+			log.debug("SearchDAOImpl findFoodList : {}", FoodList);
+			return FoodList;
+		} catch (Exception e) {
+			log.error("SearchDAOImpl findFoodList : {}", e.toString());
+		}
 		
-		return FoodList;
+		return null;	
 	}
 
 	@Override
 	public Food findFoodByFoodCode(String foodCode) {
 		
-		Food food = sqlSessionTemplate.selectOne("search_mapper.findFoodByFoodCode", foodCode);
+		try {
+			Food food = sqlSessionTemplate.selectOne("search_mapper.findFoodByFoodCode", foodCode);
+			log.debug("SearchDAOImpl findFoodByFoodCode : {}", food);
+			return food;
+		} catch (Exception e) {
+			log.error("SearchDAOImpl findFoodByFoodCode : {}", e.toString());
+		}
 		
-		return food;
+		return null;
 	}
 
 	@Override
 	public List<Nutrient> findNutrientList() {
 		
-		List<Nutrient> nutrientList = sqlSessionTemplate.selectList("search_mapper.findNutrientList");
+		try {
+			List<Nutrient> nutrientList = sqlSessionTemplate.selectList("search_mapper.findNutrientList");
+			log.debug("SearchDAOImpl findNutrientList : {}", nutrientList);
+			return nutrientList;
+		} catch (Exception e) {
+			log.error("SearchDAOImpl findNutrientList : {}", e.toString());
+		}
 		
-		return nutrientList;
+		return null;
 	}
 
 	
