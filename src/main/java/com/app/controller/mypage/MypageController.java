@@ -41,18 +41,17 @@ public class MypageController {
 			// 세션에서 로그인된 사용자의 accountNo와 memberNo를 조회
 			int accountNo = SessionManager.getAccountNo(session);
 			int memberNo = SessionManager.getMemberNo(session);
-			// 사용자 정보를 조회			
+						
 			t1.setAccountNo(accountNo);
 			t1.setMemberNo(memberNo);
 	
-			//System.out.println(t1);
-			Diet totalDietAvg = mypageService.findTotalDietByAvg(t1);
-			List<Diet> findTotalDietByStandard = mypageService.findTotalDietByStandard(t1);
+			//일주일간 섭취한 영양 성분의 평균
+			Diet AvgWeeklyNutrientByMemberInfo = mypageService.findAvgWeeklyNutrientByMemberInfo(t1);
+			//회원 정보에 알맞은 영양 성분 섭취 기준치
+			List<Diet> NutrientStandardByMemberInfo = mypageService.getNutrientStandardByMemberInfo(t1);
 			
-			//System.out.println(totalDietList);
-			System.out.println(findTotalDietByStandard);
-			model.addAttribute("totalDietAvg", totalDietAvg);
-			model.addAttribute("findTotalDietByStandard", findTotalDietByStandard);			
+			model.addAttribute("AvgWeeklyNutrientByMemberInfo", AvgWeeklyNutrientByMemberInfo);
+			model.addAttribute("NutrientStandardByMemberInfo", NutrientStandardByMemberInfo);			
 			
 			return "/mypage/nutritionStandard";
 		}	
@@ -67,15 +66,14 @@ public class MypageController {
 
 		t1.setAccountNo(accountNo);
 		t1.setMemberNo(memberNo);
-
-		System.out.println(t1);
 		
-		List<Diet> totalDietListMonthSum = mypageService.findTotalDietByMonthSum(t1);
-		List<Diet> findTotalDietByStandard = mypageService.findTotalDietByStandard(t1);
+		//한달간 섭취한 영양 성분의 성분별 데이터
+		List<Diet> DailyTotalNutrientForPast30DaysByMemberInfo = mypageService.getDailyTotalNutrientForPast30DaysByMemberInfo(t1);
+		
+		List<Diet> NutrientStandardByMemberInfo = mypageService.getNutrientStandardByMemberInfo(t1);
 
-		System.out.println(totalDietListMonthSum);
-		model.addAttribute("totalDietListMonthSum", totalDietListMonthSum);
-		model.addAttribute("findTotalDietByStandard", findTotalDietByStandard);			
+		model.addAttribute("DailyTotalNutrientForPast30DaysByMemberInfo", DailyTotalNutrientForPast30DaysByMemberInfo);
+		model.addAttribute("NutrientStandardByMemberInfo", NutrientStandardByMemberInfo);			
 		
 
 		return "/mypage/dietProgress";
@@ -95,14 +93,12 @@ public class MypageController {
 		t1.setAccountNo(accountNo);
 		t1.setMemberNo(memberNo);
 
-		System.out.println(t1);
-		List<Diet> totalDietList = mypageService.findTotalDietBySaveHistory(t1);
-		List<Diet> totalDietListSum = mypageService.findTotalDietBySaveHistorySum(t1);
+		
+		List<Diet> TotalDietBySearchCondition = mypageService.findTotalDietBySearchCondition(t1);
+		List<Diet> DailyTotalNutrientBySearchCondition = mypageService.getDailyTotalNutrientBySearchCondition(t1);
 
-		System.out.println(totalDietList);
-		System.out.println(totalDietListSum);
-		model.addAttribute("totalDietList", totalDietList);
-		model.addAttribute("totalDietListSum", totalDietListSum);
+		model.addAttribute("TotalDietBySearchCondition", TotalDietBySearchCondition);
+		model.addAttribute("DailyTotalNutrientBySearchCondition", DailyTotalNutrientBySearchCondition);
 
 		return "/mypage/dietHistory";
 	}

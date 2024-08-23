@@ -81,7 +81,7 @@
 	                    <thead>
 	                        <tr>
 	                            <th>구분</th>
-								<c:forEach var="Standard" items="${findTotalDietByStandard}">
+								<c:forEach var="Standard" items="${NutrientStandardByMemberInfo}">
 								<th>${Standard.foodName}</th>
 						</c:forEach>
 	                        </tr>
@@ -89,7 +89,7 @@
 	                    <tbody>
 	                        <tr>
 	                            <td>기준</td>
-								<c:forEach var="Standard" items="${findTotalDietByStandard}">
+								<c:forEach var="Standard" items="${NutrientStandardByMemberInfo}">
 								<th>
 									<c:if test="${Standard.foodIntake == 9999}">-</c:if>
 									<c:if test="${Standard.foodIntake != 9999}">${Standard.foodIntake}</c:if>							
@@ -99,29 +99,29 @@
 	    
 	                        <tr>
 	                            <td>평균</td>						
-								<th>${totalDietAvg.kcal}</th>
-								<th>${totalDietAvg.water}</th>
-								<th>${totalDietAvg.protein}</th>
-								<th>${totalDietAvg.fat}</th>						
-								<th>${totalDietAvg.carbohydrate}</th>
-								<th>${totalDietAvg.sugars}</th>
-								<th>${totalDietAvg.dietaryFiber}</th>
-								<th>${totalDietAvg.calcium}</th>
-								<th>${totalDietAvg.ironContent}</th>
-								<th>${totalDietAvg.phosphorus}</th>
-								<th>${totalDietAvg.potassium}</th>
-								<th>${totalDietAvg.sodium}</th>
-								<th>${totalDietAvg.vitaminA}</th>
-								<th>${totalDietAvg.retinol}</th>
-								<th>${totalDietAvg.betaCarotene}</th>
-								<th>${totalDietAvg.thiamine}</th>
-								<th>${totalDietAvg.riboflavin}</th>
-								<th>${totalDietAvg.niacin}</th>
-								<th>${totalDietAvg.vitaminC}</th>
-								<th>${totalDietAvg.vitaminD}</th>
-								<th>${totalDietAvg.cholesterol}</th>
-								<th>${totalDietAvg.saturatedFat}</th>
-								<th>${totalDietAvg.transFat}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.kcal}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.water}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.protein}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.fat}</th>						
+								<th>${AvgWeeklyNutrientByMemberInfo.carbohydrate}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.sugars}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.dietaryFiber}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.calcium}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.ironContent}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.phosphorus}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.potassium}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.sodium}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.vitaminA}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.retinol}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.betaCarotene}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.thiamine}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.riboflavin}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.niacin}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.vitaminC}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.vitaminD}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.cholesterol}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.saturatedFat}</th>
+								<th>${AvgWeeklyNutrientByMemberInfo.transFat}</th>
 	                        </tr>
 	                    </tbody>
 	                </table>
@@ -137,8 +137,9 @@
 		//JSP에서 값을 JavaScript 변수로 전달
 		var grapeData = [];
 		
-		var nutrienStandard = [];		
-		<c:forEach var="Standard" items="${findTotalDietByStandard}">
+		var nutrienStandard = [];
+		
+		<c:forEach var="Standard" items="${NutrientStandardByMemberInfo}">
 			<c:if test="${Standard.foodIntake == 9999}">
 				nutrienStandard.push(0);
 			</c:if>
@@ -149,14 +150,14 @@
 		
 		grapeData.push(nutrienStandard);
 		
-		var totalDietAvg = [ '${totalDietAvg.kcal}', '${totalDietAvg.water}', '${totalDietAvg.protein}', '${totalDietAvg.fat}',
-			'${totalDietAvg.carbohydrate}', '${totalDietAvg.sugars}', '${totalDietAvg.dietaryFiber}', '${totalDietAvg.calcium}',
-			'${totalDietAvg.ironContent}', '${totalDietAvg.phosphorus}','${totalDietAvg.potassium}', '${totalDietAvg.sodium}',
-			'${totalDietAvg.vitaminA}', '${totalDietAvg.retinol}', '${totalDietAvg.betaCarotene}', '${totalDietAvg.thiamine}',
-			'${totalDietAvg.riboflavin}', '${totalDietAvg.niacin}', '${totalDietAvg.vitaminC}', '${totalDietAvg.vitaminD}',
-			'${totalDietAvg.cholesterol}', '${totalDietAvg.saturatedFat}', '${totalDietAvg.transFat}' ];
+		var AvgWeeklyNutrientByMemberInfo = [ '${AvgWeeklyNutrientByMemberInfo.kcal}', '${AvgWeeklyNutrientByMemberInfo.water}', '${AvgWeeklyNutrientByMemberInfo.protein}', '${AvgWeeklyNutrientByMemberInfo.fat}',
+			'${AvgWeeklyNutrientByMemberInfo.carbohydrate}', '${AvgWeeklyNutrientByMemberInfo.sugars}', '${AvgWeeklyNutrientByMemberInfo.dietaryFiber}', '${AvgWeeklyNutrientByMemberInfo.calcium}',
+			'${AvgWeeklyNutrientByMemberInfo.ironContent}', '${AvgWeeklyNutrientByMemberInfo.phosphorus}','${AvgWeeklyNutrientByMemberInfo.potassium}', '${AvgWeeklyNutrientByMemberInfo.sodium}',
+			'${AvgWeeklyNutrientByMemberInfo.vitaminA}', '${AvgWeeklyNutrientByMemberInfo.retinol}', '${AvgWeeklyNutrientByMemberInfo.betaCarotene}', '${AvgWeeklyNutrientByMemberInfo.thiamine}',
+			'${AvgWeeklyNutrientByMemberInfo.riboflavin}', '${AvgWeeklyNutrientByMemberInfo.niacin}', '${AvgWeeklyNutrientByMemberInfo.vitaminC}', '${AvgWeeklyNutrientByMemberInfo.vitaminD}',
+			'${AvgWeeklyNutrientByMemberInfo.cholesterol}', '${AvgWeeklyNutrientByMemberInfo.saturatedFat}', '${AvgWeeklyNutrientByMemberInfo.transFat}' ];
 		
-		grapeData.push(totalDietAvg);	
+		grapeData.push(AvgWeeklyNutrientByMemberInfo);	
 		
 		console.log(grapeData);
 		
