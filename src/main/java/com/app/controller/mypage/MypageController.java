@@ -212,7 +212,7 @@ public class MypageController {
 
 	
 	@PostMapping("/addProfile")
-	public String addProfile(@Valid @ModelAttribute User user, HttpSession session, HttpServletResponse response, BindingResult br, Model model) throws IOException {
+	public String addProfile(@Valid @ModelAttribute User user, HttpSession session, HttpServletResponse response, Model model) throws IOException {
 		
 		UserValidError userValidError = new UserValidError();
 		
