@@ -76,17 +76,19 @@ public class DietController {
 	@RequestMapping("/diet/dailyDiet")
 	public String dailyDiet(HttpSession session, Model model, User user, Diet diet) {
 
-		int accountNo = SessionManager.getAccountNo(session);
-		int memberNo = SessionManager.getMemberNo(session);
-		
-		user.setAccountNo(accountNo);
-		user.setMemberNo(memberNo);
+		user.setAccountNo(SessionManager.getAccountNo(session));
+		user.setMemberNo(SessionManager.getMemberNo(session));
 		
 		List<Diet> dailyDiet = dietService.findDailyDietListByMemberInfo(user);
 		Diet totalNutrient = dietService.getTotalNutrientFromDailyDietByMemberInfo(user);
 		List<Nutrient> unitList = searchService.findNutrientList();
-		List<Double> recommendedIntake = dietService.getRecommendedIntakeByMemberInfo(user);
+		List<NutritionStandard> nutritionStandard = userService.getNutritionStandardByMemberInfo(session);
+		List<Double> recommendedIntake = new ArrayList<Double>();
+		for(NutritionStandard ns : nutritionStandard) {
+			recommendedIntake.add(ns.getIntakeRec());
+		}
 		List<Double> calculatedNutrients = NutritionCalculator.calculateStandardMinusTotalIntake(recommendedIntake, totalNutrient);
+		System.out.println(calculatedNutrients);
 		
 		System.out.println("나의 영양 일일 권장량 : " + recommendedIntake);
 		System.out.println("나의 하루 섭취 식품 : " + dailyDiet);
@@ -112,7 +114,11 @@ public class DietController {
 		List<Diet> expectedDiet = dietService.findExpectedDietListByMemberInfo(user);
 		Diet expectedTotalNutrient = dietService.getExpectedTotalNutrientFromDailyDietByMemberInfo(user);
 		List<Nutrient> unitList = searchService.findNutrientList();
-		List<Double> recommendedIntake = dietService.getRecommendedIntakeByMemberInfo(user);
+		List<NutritionStandard> nutritionStandard = userService.getNutritionStandardByMemberInfo(session);
+		List<Double> recommendedIntake = new ArrayList<Double>();
+		for(NutritionStandard ns : nutritionStandard) {
+			recommendedIntake.add(ns.getIntakeRec());
+		}
 		List<Double> calculatedNutrients = NutritionCalculator.calculateStandardMinusTotalIntake(recommendedIntake, expectedTotalNutrient);
 		
 		System.out.println("나의 영양 일일 권장량 : " + recommendedIntake);
