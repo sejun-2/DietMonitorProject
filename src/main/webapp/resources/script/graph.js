@@ -1,7 +1,7 @@
 
 
-
 function barChart(grapeData) {
+	
 	var ctx = document.getElementById("barCanvas").getContext("2d");
 
 	var data = {
@@ -156,7 +156,10 @@ function lineChart(grapeData) {
 		new Chart(ctx[i], {
 				type: 'line',
 				data: data,
-				options: options
+				options: {
+					responsive: true,  // 기본적으로 true로 되어 있지만 명시적으로 설정
+		           maintainAspectRatio: false,
+				}
 		});
 
 	}

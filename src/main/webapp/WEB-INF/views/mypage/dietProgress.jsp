@@ -380,9 +380,8 @@
 		</div>
 	</div>
 
-	<!-- ---------------------그래프-------------------------- -->
+	<!-- ---------------------선 그래프-------------------------- -->
 
-	<div class="graph">
 		<div class="inner">
 			<div class="wrap">
 				<c:forEach var="i" begin="1" end="23">
@@ -392,17 +391,15 @@
 				</c:forEach>
 			</div>
 		</div>
-	</div>
-
-	<!-- ---------------------DB그래프-------------------------- -->
 
 	<script type="text/javascript">
 		//JSP에서 값을 JavaScript 변수로 전달
 
 		var grapeData = [];
 
-		var nutrienStandard = [];		
-		<c:forEach var="Standard" items="${findTotalDietByStandard}">
+		var nutrienStandard = [];
+		
+		<c:forEach var="Standard" items="${NutrientStandardByMemberInfo}">
 			<c:if test="${Standard.foodIntake == 9999}">
 				nutrienStandard.push(0);
 			</c:if>
@@ -415,7 +412,7 @@
 		
 		nutrientIntakePrograss = [];
 		
-		<c:forEach var="item" items="${totalDietListMonthSum}">
+		<c:forEach var="item" items="${DailyTotalNutrientForPast30DaysByMemberInfo}">
 			var nutrientIntakeItem = {
 				saveDate : '${item.saveDate}',
 				kcal : '${item.kcal}',
@@ -449,7 +446,7 @@
 		grapeData.push(nutrientIntakePrograss);		
 		
 		document.addEventListener('DOMContentLoaded', function() {			
-			lineChart(grapeData); //한달
+			lineChart(grapeData); 
 		});
 	</script>
 
