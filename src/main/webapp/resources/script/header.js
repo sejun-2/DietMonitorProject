@@ -142,6 +142,7 @@ $(document).ready(function () {
         $('#header .fa-times').removeClass('active');
         $('#header .fa-bars').removeClass('active');
         $('#header .top_nav').hide();
+        $('.profile_inner').hide();
     });
 
     //모바일 메뉴 아코디언
