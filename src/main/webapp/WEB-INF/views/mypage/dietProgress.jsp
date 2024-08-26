@@ -889,7 +889,7 @@
 		var nutrienStandard = []; //회원별 섭취 영양소 기준 
 		
 		<c:forEach var="Standard" items="${NutrientStandardByMemberInfo}">
-			<c:if test="${Standard.foodIntake == 9999}">
+			<c:if test="${Standard.foodIntake >= 9999}">
 				nutrienStandard.push(0);
 			</c:if>
 			<c:if test="${Standard.foodIntake != 9999}">

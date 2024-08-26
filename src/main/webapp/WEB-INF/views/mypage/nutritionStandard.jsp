@@ -91,7 +91,7 @@
 	                            <td>기준</td>
 								<c:forEach var="Standard" items="${NutrientStandardByMemberInfo}">
 								<th>
-									<c:if test="${Standard.foodIntake == 9999}">-</c:if>
+									<c:if test="${Standard.foodIntake >= 9999}">-</c:if>
 									<c:if test="${Standard.foodIntake != 9999}">${Standard.foodIntake}</c:if>							
 								</th>
 								</c:forEach>
@@ -140,7 +140,7 @@
 		var nutrienStandard = [];	//회원별 섭취 영양소 기준 
 		
 		<c:forEach var="Standard" items="${NutrientStandardByMemberInfo}">
-			<c:if test="${Standard.foodIntake == 9999}">
+			<c:if test="${Standard.foodIntake >= 9999}">
 				nutrienStandard.push(0);
 			</c:if>
 			<c:if test="${Standard.foodIntake != 9999}">
