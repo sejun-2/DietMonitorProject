@@ -394,10 +394,9 @@
 
 	<script type="text/javascript">
 		//JSP에서 값을 JavaScript 변수로 전달
-
 		var grapeData = [];
 
-		var nutrienStandard = [];
+		var nutrienStandard = []; //회원별 섭취 영양소 기준 
 		
 		<c:forEach var="Standard" items="${NutrientStandardByMemberInfo}">
 			<c:if test="${Standard.foodIntake == 9999}">
@@ -410,7 +409,7 @@
 		
 		grapeData.push(nutrienStandard);
 		
-		nutrientIntakePrograss = [];
+		nutrientIntakePrograss = [];	// 그래프로 보내기 위해 JSON 형식으로 배열에 담아서 출력
 		
 		<c:forEach var="item" items="${DailyTotalNutrientForPast30DaysByMemberInfo}">
 			var nutrientIntakeItem = {
@@ -443,9 +442,9 @@
 			nutrientIntakePrograss.push(nutrientIntakeItem);
 		</c:forEach>
 		
-		grapeData.push(nutrientIntakePrograss);		
+		grapeData.push(nutrientIntakePrograss);	
 		
-		document.addEventListener('DOMContentLoaded', function() {			
+		document.addEventListener('DOMContentLoaded', function() {	//그래프 사용 선언
 			lineChart(grapeData); 
 		});
 	</script>

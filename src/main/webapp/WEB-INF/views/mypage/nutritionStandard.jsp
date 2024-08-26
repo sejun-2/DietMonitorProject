@@ -135,9 +135,9 @@
 
 	<script type="text/javascript">
 		//JSP에서 값을 JavaScript 변수로 전달
-		var grapeData = [];
+		var grapeData = [];	
 		
-		var nutrienStandard = [];
+		var nutrienStandard = [];	//회원별 섭취 영양소 기준 
 		
 		<c:forEach var="Standard" items="${NutrientStandardByMemberInfo}">
 			<c:if test="${Standard.foodIntake == 9999}">
@@ -157,11 +157,12 @@
 			'${AvgWeeklyNutrientByMemberInfo.riboflavin}', '${AvgWeeklyNutrientByMemberInfo.niacin}', '${AvgWeeklyNutrientByMemberInfo.vitaminC}', '${AvgWeeklyNutrientByMemberInfo.vitaminD}',
 			'${AvgWeeklyNutrientByMemberInfo.cholesterol}', '${AvgWeeklyNutrientByMemberInfo.saturatedFat}', '${AvgWeeklyNutrientByMemberInfo.transFat}' ];
 		
-		grapeData.push(AvgWeeklyNutrientByMemberInfo);	
+		grapeData.push(AvgWeeklyNutrientByMemberInfo);
+		//회원별 섭취한 영양소의 일주일 데이터
 		
 		console.log(grapeData);
 		
-		document.addEventListener('DOMContentLoaded', function() {
+		document.addEventListener('DOMContentLoaded', function() {	//그래프 사용 선언
             setTimeout(function() {
                 barChart(grapeData);
             }, 500);
