@@ -1,5 +1,6 @@
 package com.app.controller.diet;
 
+import java.util.ArrayList;
 import java.util.List; 
 
 import javax.servlet.http.HttpSession;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.app.dto.diet.Diet;
 import com.app.dto.search.Nutrient;
+import com.app.dto.user.NutritionStandard;
 import com.app.dto.user.User;
 import com.app.service.diet.DietService;
 import com.app.service.search.SearchService;
@@ -82,7 +84,7 @@ public class DietController {
 		user.setAccountNo(SessionManager.getAccountNo(session));
 		user.setMemberNo(SessionManager.getMemberNo(session));
 		
-		log.info("일일 식단 조회 요청: 사용자 계정 번호 {}, 회원 번호 {}", accountNo, memberNo);
+		log.info("일일 식단 조회 요청: 사용자 계정 번호 {}, 회원 번호 {}", user.getAccountNo(), user.getMemberNo());
 		
 		List<Diet> dailyDiet = dietService.findDailyDietListByMemberInfo(user);
 		Diet totalNutrient = dietService.getTotalNutrientFromDailyDietByMemberInfo(user);
