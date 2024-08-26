@@ -61,8 +61,8 @@
 	<section class="decibal_title mb80">
 		<div class="inner">
 			<div class="info">
-				<span class="blue_style">에너지(kcal),</span> <span class="blue_style">탄수화물(g),</span>
-				<span class="blue_style">지방(g)</span> <span class="text">섭취가
+				<span class="blue_style">칼륨(mg),</span> <span class="blue_style">비타민 A(μg),</span>
+				<span class="blue_style">비타민 C(mg)</span> <span class="text">섭취가
 					너무 적어요.</span>
 			</div>
 			<div class="wrap mb50">
@@ -196,7 +196,7 @@
 				
 				<div class="slide_box wrap">
 					<div class="box swiper-slide">
-						<div class="title_food">비타민 A(μg RAE)</div>
+						<div class="title_food">비타민 A(μg)</div>
 						<div class="info">
 							<div class="info_title">비타민 A 섭취가 부족할 경우</div>
 							<div class="info_detail">비타민 A 섭취가 부족하면 야맹증, 안구건조증, 피부질환 등의 증상이 나타날 수 있습니다.  야맹증 : 어두운 곳에서 
