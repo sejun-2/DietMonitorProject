@@ -37,13 +37,11 @@ public class DietController {
 	@PostMapping("/addDailyDiet")
 	public String addDailyDiet(Diet diet,HttpSession session) {
 		
-		int accountNo = SessionManager.getAccountNo(session);
-		int memberNo = SessionManager.getMemberNo(session);
-		
-		diet.setAccountNo(accountNo);
-		diet.setMemberNo(memberNo);
+		diet.setAccountNo(SessionManager.getAccountNo(session));
+		diet.setMemberNo(SessionManager.getMemberNo(session));
 		
 		log.info("일일 식단 등록 요청: {}", diet);
+		
 		int result = dietService.addFoodToDailyDiet(diet);
 		
 		if(result > 0) {
@@ -81,19 +79,21 @@ public class DietController {
 	@RequestMapping("/diet/dailyDiet")
 	public String dailyDiet(HttpSession session, Model model, User user, Diet diet) {
 
-		int accountNo = SessionManager.getAccountNo(session);
-		int memberNo = SessionManager.getMemberNo(session);
-		
-		user.setAccountNo(accountNo);
-		user.setMemberNo(memberNo);
+		user.setAccountNo(SessionManager.getAccountNo(session));
+		user.setMemberNo(SessionManager.getMemberNo(session));
 		
 		log.info("일일 식단 조회 요청: 사용자 계정 번호 {}, 회원 번호 {}", accountNo, memberNo);
 		
 		List<Diet> dailyDiet = dietService.findDailyDietListByMemberInfo(user);
 		Diet totalNutrient = dietService.getTotalNutrientFromDailyDietByMemberInfo(user);
 		List<Nutrient> unitList = searchService.findNutrientList();
-		List<Double> recommendedIntake = dietService.getRecommendedIntakeByMemberInfo(user);
+		List<NutritionStandard> nutritionStandard = userService.getNutritionStandardByMemberInfo(session);
+		List<Double> recommendedIntake = new ArrayList<Double>();
+		for(NutritionStandard ns : nutritionStandard) {
+			recommendedIntake.add(ns.getIntakeRec());
+		}
 		List<Double> calculatedNutrients = NutritionCalculator.calculateStandardMinusTotalIntake(recommendedIntake, totalNutrient);
+		System.out.println(calculatedNutrients);
 		
 		log.debug("나의 일일 권장량: {}", recommendedIntake);
 		log.debug("나의 하루 섭취 식품: {}", dailyDiet);
@@ -121,7 +121,11 @@ public class DietController {
 		List<Diet> expectedDiet = dietService.findExpectedDietListByMemberInfo(user);
 		Diet expectedTotalNutrient = dietService.getExpectedTotalNutrientFromDailyDietByMemberInfo(user);
 		List<Nutrient> unitList = searchService.findNutrientList();
-		List<Double> recommendedIntake = dietService.getRecommendedIntakeByMemberInfo(user);
+		List<NutritionStandard> nutritionStandard = userService.getNutritionStandardByMemberInfo(session);
+		List<Double> recommendedIntake = new ArrayList<Double>();
+		for(NutritionStandard ns : nutritionStandard) {
+			recommendedIntake.add(ns.getIntakeRec());
+		}
 		List<Double> calculatedNutrients = NutritionCalculator.calculateStandardMinusTotalIntake(recommendedIntake, expectedTotalNutrient);
 		
 		log.debug("나의 일일 권장량: {}", recommendedIntake);

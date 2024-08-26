@@ -260,13 +260,12 @@
 				$('input[type="checkbox"][id="pregnant"]').prop('checked',true);
 				$('#pregnantDate').css('display', 'block');
 				let pregnantDate = '${user.pregnantDate}';
-				console.log(pregnantDate);
 				$('input[type="text"][name="pregnantDate"]').val(pregnantDate);
 			</c:if>
 			
 			<c:if test="${user.genderId == 6}">
 				$('input[type="checkbox"][id="lactation"]').prop('checked',true);
-			</c:if>			
+			</c:if>
 			
 			$('input[type="radio"][id="female"]').click( function(){
 				$('input:radio[name="genderId"]').val(4);
@@ -301,8 +300,6 @@
 				if( $('input[type="checkbox"][id="lactation"]').prop("checked") ){
 					$('input:radio[name="genderId"]').val(6);
 				}
-				
-				
 				
 			});
 		});

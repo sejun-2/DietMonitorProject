@@ -10,11 +10,14 @@ import com.app.dto.diet.Diet;
 import com.app.dto.mypage.TotalDietSearchCondition;
 import com.app.service.mypage.MypageService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class MypageServiceImpl implements MypageService {
-	
-	@Autowired
-	MypageDAO mypageDAO;
+
+    @Autowired
+    MypageDAO mypageDAO;
 
 	@Override
 	public Diet findAvgWeeklyNutrientByMemberInfo(TotalDietSearchCondition totalDietSearchCondition) {

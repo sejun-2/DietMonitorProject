@@ -232,8 +232,8 @@ public class MypageController {
 
 	
 	@PostMapping("/addProfile")
-	public String addProfile(@Valid @ModelAttribute User user, HttpSession session, HttpServletResponse response, BindingResult br, Model model) throws IOException {
-		log.info("프로필 추가 처리 시작");
+	public String addProfile(@Valid @ModelAttribute User user, HttpSession session, HttpServletResponse response, Model model) throws IOException {
+		
 		UserValidError userValidError = new UserValidError();
 		
 		boolean isValid = UserValidator.validateProfile(user, userValidError);
