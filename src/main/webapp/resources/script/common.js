@@ -54,10 +54,18 @@ $(document).ready(function() {
     $(".popup .box .close").click(function(){
         $(".popup").hide();
     });
+	
+	
 
-    $(".decibal_title .slide_box .box .more").click(function(){
+    /*$(".decibal_title .slide_box .box .more").click(function(){
         $(".popup").show();
-    });
+    });*/
+	
+	$(".decibal_title .slide_box .box .more").each(function(i) {
+	    $(this).click(function() {
+	        $(".popup").eq(i).show();
+	    });
+	});
 
     const slideDistance = 600; // 슬라이드 이동 거리
     const animationDuration = 300; // 애니메이션 지속 시간 (밀리초)
